@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-2b16bcea.js";
+            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-9c229c40.js"></script>
+        <script src="../../toc-1169b26a.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,16 +176,83 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-22-циклы"><a class="header" href="#глава-22-циклы">Глава 22. Циклы</a></h1>
+<p>В этой главе рассматриваются циклы в bash — for, while, until, select.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_for_loop.html">Цикл for</a></li>
+<li><a href="02_while_until.html">while и until</a></li>
+<li><a href="03_break_continue.html">break и continue</a></li>
+<li><a href="04_select.html">select</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="for"><a class="header" href="#for">for</a></h3>
+<pre><code class="language-bash"># С списком
+for i in 1 2 3; do
+    echo $i
+done
+
+# C-подобный
+for (( i=0; i&lt;10; i++ )); do
+    echo $i
+done
+</code></pre>
+<h3 id="while-и-until"><a class="header" href="#while-и-until">while и until</a></h3>
+<pre><code class="language-bash"># while - пока истинно
+while [[ $i -lt 10 ]]; do
+    echo $i
+    ((i++))
+done
+
+# until - пока ложно
+until [[ $i -ge 10 ]]; do
+    echo $i
+    ((i++))
+done
+</code></pre>
+<h3 id="break-и-continue"><a class="header" href="#break-и-continue">break и continue</a></h3>
+<pre><code class="language-bash"># Выход из цикла
+for i in {1..10}; do
+    [[ $i -eq 5 ]] &amp;&amp; break
+    echo $i
+done
+
+# Пропуск итерации
+for i in {1..5}; do
+    [[ $i -eq 3 ]] &amp;&amp; continue
+    echo $i
+done
+</code></pre>
+<h3 id="select"><a class="header" href="#select">select</a></h3>
+<pre><code class="language-bash">PS3="Выберите: "
+select opt in one two three; do
+    echo "Выбрано: $opt"
+    break
+done
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Какой синтаксис у for?</li>
+<li>В чём разница между while и until?</li>
+<li>Что делает break?</li>
+<li>Что делает continue?</li>
+<li>Для чего используется select?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch21_conditionals/README.html">Условные операторы</a></li>
+<li><a href="../ch23_functions/README.html">Функции</a></li>
+<li><a href="../ch19_variables/03_arrays.html">Массивы</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part3/ch21_conditionals/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part3/ch21_conditionals/04_double_brackets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part3/ch23_functions/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part3/ch22_loops/01_for_loop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -195,11 +262,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part3/ch21_conditionals/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part3/ch21_conditionals/04_double_brackets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part3/ch23_functions/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part3/ch22_loops/01_for_loop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

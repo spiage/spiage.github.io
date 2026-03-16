@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-2b16bcea.js";
+            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-9c229c40.js"></script>
+        <script src="../../toc-1169b26a.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,6 +176,50 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-18-структура-скрипта"><a class="header" href="#глава-18-структура-скрипта">Глава 18. Структура скрипта</a></h1>
+<p>В этой главе рассматриваются основы структуры скрипта Bash: shebang, права на выполнение, комментарии и коды возврата.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_shebang.html">Shebang (#!)</a></li>
+<li><a href="02_executable.html">Права на выполнение</a></li>
+<li><a href="03_comments.html">Комментарии</a></li>
+<li><a href="04_exit_codes.html">Коды возврата</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="shebang-"><a class="header" href="#shebang-">Shebang (#!)</a></h3>
+<p>Shebang — это механизм, позволяющий указать интерпретатор для выполнения скрипта:</p>
+<pre><code class="language-bash">#!/bin/bash
+#!/usr/bin/env bash
+</code></pre>
+<h3 id="права-на-выполнение"><a class="header" href="#права-на-выполнение">Права на выполнение</a></h3>
+<p>Скрипт должен быть исполняемым:</p>
+<pre><code class="language-bash">chmod +x script.sh
+</code></pre>
+<p>Когда Bash находит исполняемый скрипт в <code>$PATH</code>, он создаёт подолочку для его выполнения.</p>
+<h3 id="комментарии"><a class="header" href="#комментарии">Комментарии</a></h3>
+<p>Комментарии начинаются с <code>#</code> и игнорируются оболочкой:</p>
+<pre><code class="language-bash"># Это комментарий
+command  # Это тоже комментарий
+</code></pre>
+<h3 id="коды-возврата"><a class="header" href="#коды-возврата">Коды возврата</a></h3>
+<p>Команда <code>exit</code> завершает скрипт с указанным кодом:</p>
+<pre><code class="language-bash">exit 0   # Успех
+exit 1   # Ошибка
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое shebang и зачем он нужен?</li>
+<li>Как сделать скрипт исполняемым?</li>
+<li>Как начинается комментарий в bash?</li>
+<li>Что делает команда <code>exit</code>?</li>
+<li>Какой статус выхода будет, если <code>exit</code> вызвано без аргумента?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../../refs/bash/03_Basic_Shell_Features/Shell-Scripts.html">Скрипты оболочки</a></li>
+<li><a href="../../refs/bash/05_Shell_Commands/Command-Search-and-Execution.html">Поиск и выполнение команды</a></li>
+<li><a href="../../refs/bash/10_Builtins/Bourne-Shell-Builtins.html">Встроенные команды Bourne</a></li>
+<li><a href="../ch19_variables/README.html">Переменные и типы</a></li>
+</ul>
 
                     </main>
 
@@ -185,7 +229,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part3/ch19_variables/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part3/ch18_structure/01_shebang.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -199,7 +243,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part3/ch19_variables/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part3/ch18_structure/01_shebang.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
