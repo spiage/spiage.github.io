@@ -1,0 +1,794 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Работа с файлами - От основ Linux к мастерству Bash</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../../css/general-2459343d.css">
+        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom-b925bac7.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "navy";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../../searchindex-2b16bcea.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc-9c229c40.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">От основ Linux к мастерству Bash</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="работа-с-файлами-и-директориями"><a class="header" href="#работа-с-файлами-и-директориями">Работа с файлами и директориями</a></h1>
+<p>В этом разделе рассматриваются основные команды для управления файлами и директориями: просмотр списка файлов, копирование, перемещение, создание и удаление.</p>
+<h2 id="ls--вывод-списка-файлов"><a class="header" href="#ls--вывод-списка-файлов">ls — вывод списка файлов</a></h2>
+<p><strong>ls</strong> выводит информацию о файлах в директории.</p>
+<h3 id="синопсис"><a class="header" href="#синопсис">Синопсис</a></h3>
+<pre><code class="language-bash">ls [ОПЦИЯ]... [ФАЙЛ]...
+</code></pre>
+<h3 id="описание"><a class="header" href="#описание">Описание</a></h3>
+<p>Выводит информацию о ФАЙЛах (текущей директории по умолчанию). Сортирует записи по алфавиту, если не указано иное.</p>
+<h3 id="основные-опции"><a class="header" href="#основные-опции">Основные опции</a></h3>
+<ul>
+<li><code>-a</code>, <code>--all</code> — не игнорировать записи, начинающиеся с <code>.</code></li>
+<li><code>-A</code>, <code>--almost-all</code> — как <code>-a</code>, но без <code>.</code> и <code>..</code></li>
+<li><code>-b</code>, <code>--escape</code> — экранировать символы через <code>\</code></li>
+<li><code>-B</code>, <code>--ignore-backups</code> — не выводить резервные копии (файлы <code>~</code>)</li>
+<li><code>-c</code> — сортировать по времени изменения статуса</li>
+<li><code>-C</code> — выводить в колонках (по умолчанию для терминала)</li>
+<li><code>--color[=КОГДА]</code> — раскрашивать вывод: <code>always</code>, <code>auto</code>, <code>never</code></li>
+<li><code>-d</code>, <code>--directory</code> — выводить информацию о директориях, а не их содержимом</li>
+<li><code>-F</code>, <code>--classify</code> — добавлять индикаторы типов файлов (<code>/</code>, <code>*</code>, <code>@</code>)</li>
+<li><code>-f</code> — не сортировать, выводить в порядке директории</li>
+<li><code>-g</code> — как <code>-l</code>, но без владельца</li>
+<li><code>-G</code>, <code>--no-group</code> — как <code>-l</code>, но без группы</li>
+<li><code>-h</code>, <code>--human-readable</code> — выводить размеры в читаемом формате (K, M, G)</li>
+<li><code>--si</code> — как <code>-h</code>, но использовать степени 1000</li>
+<li><code>-i</code>, <code>--inode</code> — выводить номер inode</li>
+<li><code>-l</code> — использовать длинный формат вывода</li>
+<li><code>-L</code>, <code>--dereference</code> — следовать за символическими ссылками</li>
+<li><code>-m</code> — выводить через запятую</li>
+<li><code>-n</code>, <code>--numeric-uid-gid</code> — выводить UID и GID вместо имён</li>
+<li><code>-o</code> — как <code>-l</code>, но без группы</li>
+<li><code>-p</code> — добавлять <code>/</code> к именам директорий</li>
+<li><code>-r</code>, <code>--reverse</code> — обратный порядок сортировки</li>
+<li><code>-R</code>, <code>--recursive</code> — рекурсивно выводить поддиректории</li>
+<li><code>-s</code>, <code>--size</code> — выводить размер каждого файла в блоках</li>
+<li><code>-S</code> — сортировать по размеру (наибольший первый)</li>
+<li><code>--sort=СЛОВО</code> — сортировать по: <code>name</code>, <code>none</code>, <code>size</code>, <code>time</code>, <code>version</code>, <code>extension</code></li>
+<li><code>-t</code> — сортировать по времени изменения (новейший первый)</li>
+<li><code>-u</code> — сортировать по времени доступа</li>
+<li><code>-U</code> — не сортировать</li>
+<li><code>-v</code> — сортировать по версии</li>
+<li><code>-w</code>, <code>--width=КОЛОНКИ</code> — устанавливать ширину вывода</li>
+<li><code>-x</code> — выводить по колонкам, сортировать по горизонтали</li>
+<li><code>-X</code> — сортировать по расширению</li>
+<li><code>-1</code> — выводить по одному файлу в строке</li>
+<li><code>--help</code> — вывести справку</li>
+<li><code>--version</code> — вывести версию</li>
+</ul>
+<h3 id="примеры"><a class="header" href="#примеры">Примеры</a></h3>
+<pre><code class="language-bash"># Вывести все файлы, включая скрытые
+ls -a
+
+# Длинный формат с читаемыми размерами
+ls -lh
+
+# Сортировать по времени (новейшие первые)
+ls -lt
+
+# Сортировать по размеру (наибольшие первые)
+ls -lS
+
+# Рекурсивный вывод
+ls -R
+
+# Вывести только директории
+ls -ld */
+
+# Раскрасить вывод
+ls --color=always
+
+# Вывести inode
+ls -li
+
+# Не выводить резервные копии
+ls -B
+
+# Вывести в колонках
+ls -C
+
+# Вывести по одному файлу в строке
+ls -1
+</code></pre>
+<h3 id="форматы-вывода"><a class="header" href="#форматы-вывода">Форматы вывода</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Опция</th><th>Формат</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-C</code></td><td>Колонки (по умолчанию)</td></tr>
+<tr><td><code>-l</code></td><td>Длинный формат</td></tr>
+<tr><td><code>-m</code></td><td>Через запятую</td></tr>
+<tr><td><code>-1</code></td><td>По одному в строке</td></tr>
+<tr><td><code>-x</code></td><td>По колонкам, горизонтально</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="коды-возврата"><a class="header" href="#коды-возврата">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — незначительные проблемы</li>
+<li><strong>2</strong> — серьёзные проблемы</li>
+</ul>
+<h2 id="cp--копирование-файлов"><a class="header" href="#cp--копирование-файлов">cp — копирование файлов</a></h2>
+<p><strong>cp</strong> копирует файлы и директории.</p>
+<h3 id="синопсис-1"><a class="header" href="#синопсис-1">Синопсис</a></h3>
+<pre><code class="language-bash">cp [ОПЦИЯ]... [-T] ИСТОЧНИК НАЗНАЧЕНИЕ
+cp [ОПЦИЯ]... ИСТОЧНИК... НАЗНАЧЕНИЕ
+cp [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
+</code></pre>
+<h3 id="основные-опции-1"><a class="header" href="#основные-опции-1">Основные опции</a></h3>
+<ul>
+<li><code>-a</code>, <code>--archive</code> — рекурсивное копирование с сохранением всех атрибутов</li>
+<li><code>-b</code> — создавать резервные копии существующих файлов</li>
+<li><code>-d</code> — не следовать за ссылками, копировать ссылки</li>
+<li><code>-f</code>, <code>--force</code> — удалить существующий файл назначения</li>
+<li><code>-i</code>, <code>--interactive</code> — спрашивать перед перезаписью</li>
+<li><code>-l</code>, <code>--link</code> — создавать жёсткие ссылки вместо копирования</li>
+<li><code>-L</code>, <code>--dereference</code> — следовать за всеми ссылками</li>
+<li><code>-n</code>, <code>--no-clobber</code> — не перезаписывать существующие файлы</li>
+<li><code>-P</code>, <code>--no-dereference</code> — не следовать за ссылками</li>
+<li><code>-p</code>, <code>--preserve</code> — сохранить атрибуты (владелец, права, время)</li>
+<li><code>-R</code>, <code>-r</code>, <code>--recursive</code> — рекурсивное копирование директорий</li>
+<li><code>-s</code>, <code>--symbolic-link</code> — создавать символические ссылки</li>
+<li><code>-t</code>, <code>--target-directory=ДИРЕКТОРИЯ</code> — копировать в указанную директорию</li>
+<li><code>-T</code>, <code>--no-target-directory</code> — считать НАЗНАЧЕНИЕ обычным файлом</li>
+<li><code>-u</code>, <code>--update</code> — копировать только если файл новее</li>
+<li><code>-v</code>, <code>--verbose</code> — выводить информацию о копируемых файлах</li>
+<li><code>-x</code>, <code>--one-file-system</code> — не переходить на другие файловые системы</li>
+</ul>
+<h3 id="примеры-1"><a class="header" href="#примеры-1">Примеры</a></h3>
+<pre><code class="language-bash"># Копировать файл
+cp file.txt backup.txt
+
+# Копировать в другую директорию
+cp file.txt /home/user/
+
+# Копировать несколько файлов
+cp file1.txt file2.txt /backup/
+
+# Рекурсивное копирование директории
+cp -r /home/user/docs /backup/
+
+# Копировать с сохранением атрибутов
+cp -a /home/user /backup/
+
+# Интерактивное копирование (спрашивать перед перезаписью)
+cp -i file.txt /existing/
+
+# Не перезаписывать существующие файлы
+cp -n file.txt /existing/
+
+# Копировать только новые файлы
+cp -u file.txt /backup/
+
+# Создать резервную копию при перезаписи
+cp -b file.txt /backup/
+
+# Копировать с сохранением структуры директорий
+cp --parents /home/user/file.txt /backup/
+# Результат: /backup/home/user/file.txt
+
+# Копировать символические ссылки как ссылки
+cp -d link.txt /backup/
+
+# Подробный вывод
+cp -v file.txt /backup/
+</code></pre>
+<h3 id="особенности"><a class="header" href="#особенности">Особенности</a></h3>
+<h4 id="копирование-директорий"><a class="header" href="#копирование-директорий">Копирование директорий</a></h4>
+<p>Для копирования директорий необходимо использовать <code>-R</code> или <code>-r</code>:</p>
+<pre><code class="language-bash"># Ошибка: cp не копирует директории без -R
+cp dir/ /backup/
+
+# Правильно
+cp -R dir/ /backup/
+</code></pre>
+<h4 id="сохранение-атрибутов"><a class="header" href="#сохранение-атрибутов">Сохранение атрибутов</a></h4>
+<p><code>-a</code> (archive) сохраняет все атрибуты:</p>
+<pre><code class="language-bash"># Сохранить владельца, права, время
+cp -a source/ dest/
+
+# Сохранить только права и время
+cp -p source/ dest/
+</code></pre>
+<h4 id="жёсткие-и-символические-ссылки"><a class="header" href="#жёсткие-и-символические-ссылки">Жёсткие и символические ссылки</a></h4>
+<pre><code class="language-bash"># Копировать как жёсткую ссылку
+cp -l file.txt link.txt
+
+# Копировать как символическую ссылку
+cp -s file.txt link.txt
+
+# Следовать за ссылками
+cp -L link.txt copy.txt
+</code></pre>
+<h3 id="коды-возврата-1"><a class="header" href="#коды-возврата-1">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — ошибка при копировании</li>
+</ul>
+<h2 id="mv--перемещение-и-переименование-файлов"><a class="header" href="#mv--перемещение-и-переименование-файлов">mv — перемещение и переименование файлов</a></h2>
+<p><strong>mv</strong> перемещает или переименовывает файлы и директории.</p>
+<h3 id="синопсис-2"><a class="header" href="#синопсис-2">Синопсис</a></h3>
+<pre><code class="language-bash">mv [ОПЦИЯ]... [-T] ИСТОЧНИК НАЗНАЧЕНИЕ
+mv [ОПЦИЯ]... ИСТОЧНИК... НАЗНАЧЕНИЕ
+mv [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
+</code></pre>
+<h3 id="основные-опции-2"><a class="header" href="#основные-опции-2">Основные опции</a></h3>
+<ul>
+<li><code>-b</code>, <code>--backup</code> — создавать резервные копии существующих файлов</li>
+<li><code>-f</code>, <code>--force</code> — не спрашивать перед перезаписью</li>
+<li><code>-i</code>, <code>--interactive</code> — спрашивать перед перезаписью</li>
+<li><code>-n</code>, <code>--no-clobber</code> — не перезаписывать существующие файлы</li>
+<li><code>-S</code>, <code>--suffix=СУФФИКС</code> — суффикс для резервных копий</li>
+<li><code>-t</code>, <code>--target-directory=ДИРЕКТОРИЯ</code> — переместить в указанную директорию</li>
+<li><code>-T</code>, <code>--no-target-directory</code> — считать НАЗНАЧЕНИЕ обычным файлом</li>
+<li><code>-u</code>, <code>--update</code> — перемещать только если файл новее</li>
+<li><code>-v</code>, <code>--verbose</code> — выводить информацию о перемещаемых файлах</li>
+</ul>
+<h3 id="примеры-2"><a class="header" href="#примеры-2">Примеры</a></h3>
+<pre><code class="language-bash"># Переименовать файл
+mv oldname.txt newname.txt
+
+# Переместить файл в другую директорию
+mv file.txt /home/user/
+
+# Переместить несколько файлов
+mv file1.txt file2.txt /backup/
+
+# Переместить директорию
+mv /home/user/old_dir /home/user/new_dir
+
+# Интерактивное перемещение (спрашивать перед перезаписью)
+mv -i file.txt /existing/
+
+# Не перезаписывать существующие файлы
+mv -n file.txt /existing/
+
+# Перемещать только новые файлы
+mv -u file.txt /backup/
+
+# Создать резервную копию при перезаписи
+mv -b file.txt /backup/
+
+# Подробный вывод
+mv -v file.txt /backup/
+
+# Переместить в целевую директорию
+mv -t /backup/ file1.txt file2.txt
+
+# Считать назначение файлом (не директорией)
+mv -T file1.txt file2.txt
+</code></pre>
+<h3 id="особенности-1"><a class="header" href="#особенности-1">Особенности</a></h3>
+<h4 id="перемещение-между-файловыми-системами"><a class="header" href="#перемещение-между-файловыми-системами">Перемещение между файловыми системами</a></h4>
+<p>При перемещении между разными файловыми системами mv фактически копирует и удаляет:</p>
+<pre><code class="language-bash"># Перемещение на другой диск = копирование + удаление
+mv /home/user/file.txt /mnt/external/
+</code></pre>
+<h4 id="переименование-vs-перемещение"><a class="header" href="#переименование-vs-перемещение">Переименование vs перемещение</a></h4>
+<pre><code class="language-bash"># Переименование (в той же директории)
+mv oldname.txt newname.txt
+
+# Перемещение (в другую директорию)
+mv file.txt /home/user/
+
+# Переименование при перемещении
+mv /home/user/old.txt /backup/new.txt
+</code></pre>
+<h4 id="резервное-копирование"><a class="header" href="#резервное-копирование">Резервное копирование</a></h4>
+<pre><code class="language-bash"># Создать резервную копию с суффиксом ~
+mv -b file.txt /backup/
+# file.txt → file.txt~
+
+# Нумерованные резервные копии
+mv --backup=numbered file.txt /backup/
+</code></pre>
+<h3 id="коды-возврата-2"><a class="header" href="#коды-возврата-2">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — ошибка при перемещении</li>
+</ul>
+<h2 id="mkdir--создание-директорий"><a class="header" href="#mkdir--создание-директорий">mkdir — создание директорий</a></h2>
+<p><strong>mkdir</strong> создаёт новые директории.</p>
+<h3 id="синопсис-3"><a class="header" href="#синопсис-3">Синопсис</a></h3>
+<pre><code class="language-bash">mkdir [ОПЦИЯ]... ИМЯ_ДИРЕКТОРИИ...
+</code></pre>
+<h3 id="основные-опции-3"><a class="header" href="#основные-опции-3">Основные опции</a></h3>
+<ul>
+<li><code>-m</code>, <code>--mode=РЕЖИМ</code> — установить права доступа (как в chmod)</li>
+<li><code>-p</code>, <code>--parents</code> — создавать родительские директории; не выдавать ошибку, если директория существует</li>
+<li><code>-v</code>, <code>--verbose</code> — выводить информацию о создаваемых директориях</li>
+<li><code>-Z</code>, <code>--context</code> — установить контекст SELinux</li>
+</ul>
+<h3 id="примеры-3"><a class="header" href="#примеры-3">Примеры</a></h3>
+<pre><code class="language-bash"># Создать одну директорию
+mkdir newdir
+
+# Создать несколько директорий
+mkdir dir1 dir2 dir3
+
+# Создать директорию с правами 755
+mkdir -m 755 newdir
+
+# Создать директорию с правами только для владельца
+mkdir -m 700 private
+
+# Создать директорию с родительскими директориями
+mkdir -p /home/user/project/src
+
+# Создать и вывести информацию
+mkdir -v newdir
+
+# Не выдавать ошибку, если директория существует
+mkdir -p existing_dir
+</code></pre>
+<h3 id="особенности-2"><a class="header" href="#особенности-2">Особенности</a></h3>
+<h4 id="создание-вложенных-директорий"><a class="header" href="#создание-вложенных-директорий">Создание вложенных директорий</a></h4>
+<p>Без <code>-p</code> mkdir не создаёт родительские директории:</p>
+<pre><code class="language-bash"># Ошибка: родительская директория не существует
+mkdir /home/user/project/src
+
+# Правильно: создать все директории
+mkdir -p /home/user/project/src
+</code></pre>
+<h4 id="права-доступа"><a class="header" href="#права-доступа">Права доступа</a></h4>
+<p>По умолчанию mkdir создаёт директории с правами <code>777 - umask</code>:</p>
+<pre><code class="language-bash"># Проверить umask
+umask
+# 0022
+
+# Создать директорию (права будут 755)
+mkdir newdir
+
+# Создать с явными правами
+mkdir -m 700 private
+</code></pre>
+<h4 id="массовое-создание"><a class="header" href="#массовое-создание">Массовое создание</a></h4>
+<pre><code class="language-bash"># Создать несколько директорий
+mkdir dir1 dir2 dir3
+
+# Создать с поддиректориями
+mkdir -p project/{src,docs,tests}
+
+# Создать последовательность
+mkdir dir_{1..10}
+</code></pre>
+<h3 id="коды-возврата-3"><a class="header" href="#коды-возврата-3">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — ошибка при создании</li>
+</ul>
+<h2 id="rm--удаление-файлов-и-директорий"><a class="header" href="#rm--удаление-файлов-и-директорий">rm — удаление файлов и директорий</a></h2>
+<p><strong>rm</strong> удаляет файлы и директории.</p>
+<h3 id="синопсис-4"><a class="header" href="#синопсис-4">Синопсис</a></h3>
+<pre><code class="language-bash">rm [ОПЦИЯ]... ФАЙЛ...
+rm [ОПЦИЯ]... -r --directory=ДИРЕКТОРИЯ...
+</code></pre>
+<h3 id="основные-опции-4"><a class="header" href="#основные-опции-4">Основные опции</a></h3>
+<ul>
+<li><code>-d</code>, <code>--directory</code> — удалять пустые директории (как rmdir)</li>
+<li><code>-f</code>, <code>--force</code> — игнорировать несуществующие файлы, не спрашивать</li>
+<li><code>-i</code> — спрашивать перед удалением каждого файла</li>
+<li><code>-I</code> — спрашивать один раз перед удалением более 3 файлов</li>
+<li><code>--interactive[=КОГДА]</code> — режим опроса: <code>always</code>, <code>never</code>, <code>once</code></li>
+<li><code>-r</code>, <code>-R</code>, <code>--recursive</code> — рекурсивное удаление директорий</li>
+<li><code>-v</code>, <code>--verbose</code> — выводить информацию об удаляемых файлах</li>
+<li><code>--help</code> — вывести справку</li>
+<li><code>--version</code> — вывести версию</li>
+</ul>
+<h3 id="примеры-4"><a class="header" href="#примеры-4">Примеры</a></h3>
+<pre><code class="language-bash"># Удалить файл
+rm file.txt
+
+# Удалить несколько файлов
+rm file1.txt file2.txt
+
+# Интерактивное удаление (спрашивать каждый файл)
+rm -i file.txt
+
+# Спрашивать один раз перед удалением многих файлов
+rm -I *.txt
+
+# Не спрашивать, игнорировать ошибки
+rm -f file.txt
+
+# Рекурсивное удаление директории
+rm -r dir/
+
+# Рекурсивное удаление с подтверждением
+rm -ri dir/
+
+# Удалить пустую директорию
+rm -d empty_dir/
+
+# Подробный вывод
+rm -v file.txt
+
+# Удалить все файлы в директории
+rm /path/to/dir/*
+
+# Удалить директорию со всем содержимым
+rm -rf /path/to/dir/
+</code></pre>
+<h3 id="безопасность"><a class="header" href="#безопасность">Безопасность</a></h3>
+<p>rm — опасная команда, особенно с <code>-rf</code>:</p>
+<pre><code class="language-bash"># ОПАСНО: удаляет всё без вопросов
+rm -rf /
+
+# ОПАСНО: может удалить домашнюю директорию из-за опечатки
+rm -rf /home/user/
+rm -rf /home/user /*  # Пробел после / опасен!
+
+# Безопаснее: использовать интерактивный режим
+rm -ri dir/
+</code></pre>
+<h3 id="удаление-директорий"><a class="header" href="#удаление-директорий">Удаление директорий</a></h3>
+<pre><code class="language-bash"># Ошибка: rm не удаляет директории без -r
+rm dir/
+
+# Правильно: рекурсивное удаление
+rm -r dir/
+
+# Только пустые директории (как rmdir)
+rm -d dir/
+</code></pre>
+<h3 id="восстановление"><a class="header" href="#восстановление">Восстановление</a></h3>
+<p>Удалённые rm файлы <strong>не восстанавливаются</strong>:</p>
+<pre><code class="language-bash"># Файл удалён безвозвратно
+rm important.txt
+
+# Используйте корзину для безопасности
+mv important.txt ~/.trash/
+</code></pre>
+<h3 id="коды-возврата-4"><a class="header" href="#коды-возврата-4">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — ошибка при удалении</li>
+</ul>
+<h2 id="rmdir--удаление-пустых-директорий"><a class="header" href="#rmdir--удаление-пустых-директорий">rmdir — удаление пустых директорий</a></h2>
+<p><strong>rmdir</strong> удаляет только пустые директории.</p>
+<h3 id="синопсис-5"><a class="header" href="#синопсис-5">Синопсис</a></h3>
+<pre><code class="language-bash">rmdir [ОПЦИЯ]... ИМЯ_ДИРЕКТОРИИ...
+</code></pre>
+<h3 id="основные-опции-5"><a class="header" href="#основные-опции-5">Основные опции</a></h3>
+<ul>
+<li><code>-p</code>, <code>--parents</code> — удалять родительские директории после удаления дочерних</li>
+<li><code>-v</code>, <code>--verbose</code> — выводить информацию об удаляемых директориях</li>
+</ul>
+<h3 id="примеры-5"><a class="header" href="#примеры-5">Примеры</a></h3>
+<pre><code class="language-bash"># Удалить пустую директорию
+rmdir empty_dir
+
+# Удалить несколько пустых директорий
+rmdir dir1 dir2 dir3
+
+# Удалить с выводом информации
+rmdir -v empty_dir
+
+# Удалить директорию и пустые родительские
+rmdir -p /home/user/project/src/docs
+# Удаляет: docs, затем src, затем project (если пустые)
+</code></pre>
+<h3 id="особенности-3"><a class="header" href="#особенности-3">Особенности</a></h3>
+<h4 id="только-пустые-директории"><a class="header" href="#только-пустые-директории">Только пустые директории</a></h4>
+<p>rmdir удаляет только пустые директории:</p>
+<pre><code class="language-bash"># Ошибка: директория не пуста
+rmdir dir/
+# rmdir: failed to remove 'dir/': Directory not empty
+
+# Правильно: сначала удалить содержимое
+rm -r dir/
+
+# Или использовать rm с -d для пустых
+rm -d dir/
+</code></pre>
+<h4 id="удаление-цепочки-директорий"><a class="header" href="#удаление-цепочки-директорий">Удаление цепочки директорий</a></h4>
+<p><code>-p</code> удаляет родительские директории, если они становятся пустыми:</p>
+<pre><code class="language-bash"># Создать вложенные директории
+mkdir -p a/b/c/d
+
+# Удалить с конца
+rmdir -p a/b/c/d
+# Удаляет: d → c → b → a (если все пустые)
+</code></pre>
+<h3 id="коды-возврата-5"><a class="header" href="#коды-возврата-5">Коды возврата</a></h3>
+<ul>
+<li><strong>0</strong> — успешно</li>
+<li><strong>1</strong> — ошибка при удалении</li>
+</ul>
+<h2 id="сравнение-команд"><a class="header" href="#сравнение-команд">Сравнение команд</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Команда</th><th>Назначение</th><th>Опасность</th></tr>
+</thead>
+<tbody>
+<tr><td><code>cp</code></td><td>Копирование</td><td>Низкая</td></tr>
+<tr><td><code>mv</code></td><td>Перемещение</td><td>Средняя</td></tr>
+<tr><td><code>mkdir</code></td><td>Создание</td><td>Низкая</td></tr>
+<tr><td><code>rm</code></td><td>Удаление</td><td>Высокая</td></tr>
+<tr><td><code>rmdir</code></td><td>Удаление пустых</td><td>Низкая</td></tr>
+<tr><td><code>ls</code></td><td>Просмотр списка</td><td>Нет</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="практические-примеры"><a class="header" href="#практические-примеры">Практические примеры</a></h2>
+<h3 id="работа-с-проектами"><a class="header" href="#работа-с-проектами">Работа с проектами</a></h3>
+<pre><code class="language-bash"># Создать структуру проекта
+mkdir -p project/{src,docs,tests}
+
+# Скопировать проект
+cp -r project project_backup
+
+# Переместить в архив
+mv project /archive/
+
+# Удалить временные файлы
+rm -rf project/tmp/
+</code></pre>
+<h3 id="резервное-копирование-1"><a class="header" href="#резервное-копирование-1">Резервное копирование</a></h3>
+<pre><code class="language-bash"># Создать резервную копию с датой
+cp -a important/ important_$(date +%Y%m%d)/
+
+# Переместить старую резервную копию
+mv old_backup/ archive/
+
+# Удалить старые резервные копии
+rm -rf archive/backup_2023*/
+</code></pre>
+<h3 id="безопасное-удаление"><a class="header" href="#безопасное-удаление">Безопасное удаление</a></h3>
+<pre><code class="language-bash"># Интерактивное удаление
+rm -i *.tmp
+
+# Сначала просмотреть, потом удалить
+ls *.tmp
+rm *.tmp
+
+# Использовать корзину вместо rm
+mv unwanted.txt ~/.trash/
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как вывести длинный список файлов с читаемыми размерами?</li>
+<li>Как скопировать директорию со всеми файлами?</li>
+<li>Как переименовать файл?</li>
+<li>Как создать вложенную структуру директорий одной командой?</li>
+<li>Как безопасно удалить файлы?</li>
+<li>В чём разница между <code>rm</code> и <code>rmdir</code>?</li>
+<li>Как создать резервную копию при перезаписи файла?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="01_navigation.html">Навигация</a></li>
+<li><a href="../ch12_redirection/README.html">Перенаправление ввода-вывода</a></li>
+<li><a href="../../part1/ch04_filesystem/04_permissions.html">Права доступа</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../part2/ch11_commands/02_viewing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../../part2/ch11_commands/04_search.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../part2/ch11_commands/02_viewing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../../part2/ch11_commands/04_search.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../../mark-09e88c2c.min.js"></script>
+        <script src="../../searcher-c2a407aa.js"></script>
+
+        <script src="../../clipboard-1626706a.min.js"></script>
+        <script src="../../highlight-abc7f01d.js"></script>
+        <script src="../../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid-616a109f.min.js"></script>
+        <script src="../../mermaid-init-fbc57301.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+/* custom.css — кастомные стили для mdBook */
+
+/* Убираем автоматическую нумерацию в sidebar (TOC) */
+.chapter ol,
+.chapter li {
+    list-style: none !important;
+}
+
+/* Убираем отступы у нумерации */
+.chapter strong[aria-hidden="true"] {
+    display: none !important;
+}
+
+/* Сохраняем отступы для вложенных глав */
+.chapter ol.section {
+    padding-left: 1.5em;
+}
+
+/* Разделы (Часть I, Часть II) — выделяем */
+.part-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--sidebar-fg);
+}
+
+/* Разделитель между разделами */
+.spacer {
+    margin: 2em 0;
+}
