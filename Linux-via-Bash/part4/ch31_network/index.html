@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,16 +176,52 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-31-взаимодействие-с-сетью"><a class="header" href="#глава-31-взаимодействие-с-сетью">Глава 31. Взаимодействие с сетью</a></h1>
+<p>Сетевые возможности bash.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_dev_tcp.html">/dev/tcp и /dev/udp</a></li>
+<li><a href="02_network_tools.html">Сетевые утилиты</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="использование-devtcp-и-devudp"><a class="header" href="#использование-devtcp-и-devudp">Использование /dev/tcp и /dev/udp</a></h3>
+<p>Bash-специфичное сетевое взаимодействие:</p>
+<pre><code class="language-bash"># Проверка порта
+echo &gt; /dev/tcp/localhost/80 &amp;&amp; echo "Port open"
+
+# HTTP запрос
+exec 3&lt;&gt;/dev/tcp/www.example.com/80
+echo -e "GET / HTTP/1.0\n\n" &gt;&amp;3
+cat &lt;&amp;3
+</code></pre>
+<h3 id="curl-wget-nc-netcat"><a class="header" href="#curl-wget-nc-netcat">curl, wget, nc (netcat)</a></h3>
+<p>Внешние утилиты для сети:</p>
+<pre><code class="language-bash">curl -s https://api.example.com
+wget -q file.zip
+nc -zv host port
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое /dev/tcp?</li>
+<li>Как проверить порт через bash?</li>
+<li>В чём разница между curl и wget?</li>
+<li>Как использовать netcat?</li>
+<li>Какие ограничения у /dev/udp?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../part1/ch06_ipc/04_sockets.html">Сокеты</a></li>
+<li><a href="../part2/ch12_redirection/README.html">Перенаправления</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part4/ch30_fd/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part4/ch30_fd/02_bidirectional.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part4/ch32_systemd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part4/ch31_network/01_dev_tcp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -195,11 +231,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part4/ch30_fd/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part4/ch30_fd/02_bidirectional.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part4/ch32_systemd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part4/ch31_network/01_dev_tcp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

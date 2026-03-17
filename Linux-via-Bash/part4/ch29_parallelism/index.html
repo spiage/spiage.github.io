@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,16 +176,56 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-29-параллелизм"><a class="header" href="#глава-29-параллелизм">Глава 29. Параллелизм</a></h1>
+<p>Параллельное выполнение задач в bash.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_background.html">Фоновые задачи и wait</a></li>
+<li><a href="02_limiting.html">Ограничение параллелизма</a></li>
+<li><a href="03_coproc.html">Сопроцессы</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="фоновые-задачи--и-ожидание-завершения-wait"><a class="header" href="#фоновые-задачи--и-ожидание-завершения-wait">Фоновые задачи (&amp;) и ожидание завершения (wait)</a></h3>
+<p>Запуск задач в фоне и ожидание:</p>
+<pre><code class="language-bash">task1 &amp;
+task2 &amp;
+wait
+</code></pre>
+<h3 id="ограничение-количества-параллельных-процессов"><a class="header" href="#ограничение-количества-параллельных-процессов">Ограничение количества параллельных процессов</a></h3>
+<p>Контроль числа одновременных задач:</p>
+<pre><code class="language-bash">for i in {1..100}; do
+    ((i % 10 == 0)) &amp;&amp; wait
+    task $i &amp;
+done
+</code></pre>
+<h3 id="сопроцессы-coproc-и-двунаправленные-каналы"><a class="header" href="#сопроцессы-coproc-и-двунаправленные-каналы">Сопроцессы (coproc) и двунаправленные каналы</a></h3>
+<p>Двунаправленная связь с процессом:</p>
+<pre><code class="language-bash">coproc PROC { some_command; }
+echo "input" &gt;&amp;${PROC[1]}
+read output &lt;&amp;${PROC[0]}
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как запустить задачу в фоне?</li>
+<li>Как ждать завершения фоновых задач?</li>
+<li>Как ограничить число параллельных процессов?</li>
+<li>Что такое сопроцесс?</li>
+<li>Как работает coproc?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../part1/ch05_processes/06_signals.html">Сигналы</a></li>
+<li><a href="../part2/ch13_pipes/README.html">Конвейеры</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part4/ch28_expansions/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part4/ch28_expansions/03_eval.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part4/ch30_fd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part4/ch29_parallelism/01_background.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -195,11 +235,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part4/ch28_expansions/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part4/ch28_expansions/03_eval.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part4/ch30_fd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part4/ch29_parallelism/01_background.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

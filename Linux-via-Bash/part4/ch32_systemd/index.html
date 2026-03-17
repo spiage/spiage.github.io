@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Глава 32. Интеграция с сервисами - От основ Linux к мастерству Bash</title>
+        <title>Глава 32. Интеграция с systemd - От основ Linux к мастерству Bash</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,16 +176,70 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-32-интеграция-с-systemd"><a class="header" href="#глава-32-интеграция-с-systemd">Глава 32. Интеграция с systemd</a></h1>
+<p>Работа с системными сервисами.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_systemd.html">systemd и systemctl</a></li>
+<li><a href="02_schedulers.html">Планировщики</a></li>
+<li><a href="03_logging.html">Журналирование</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="systemd-создание-простых-unit-файлов-использование-systemctl"><a class="header" href="#systemd-создание-простых-unit-файлов-использование-systemctl">systemd: создание простых unit-файлов, использование systemctl</a></h3>
+<pre><code class="language-bash"># Создание сервиса
+cat &gt; /etc/systemd/system/myservice.service &lt;&lt;EOF
+[Unit]
+Description=My Service
+
+[Service]
+ExecStart=/usr/bin/myapp
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl enable myservice
+systemctl start myservice
+</code></pre>
+<h3 id="планировщики-cron-и-at"><a class="header" href="#планировщики-cron-и-at">Планировщики: cron и at</a></h3>
+<pre><code class="language-bash"># cron - периодические задачи
+crontab -e
+# 0 2 * * * /backup.sh
+
+# at - одноразовые задачи
+at 2:00 tomorrow
+/backup.sh
+</code></pre>
+<h3 id="работа-с-журналом-journalctl-logger"><a class="header" href="#работа-с-журналом-journalctl-logger">Работа с журналом: journalctl, logger</a></h3>
+<pre><code class="language-bash"># Запись в журнал
+logger -t myapp "Message"
+
+# Чтение журнала
+journalctl -u myservice
+journalctl -f
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как создать systemd сервис?</li>
+<li>В чём разница между cron и at?</li>
+<li>Как записать в journal?</li>
+<li>Как читать логи через journalctl?</li>
+<li>Что такое WantedBy?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../part5/ch40_monitoring/02_logging.html">Логирование</a></li>
+<li><a href="../part1/ch05_processes/06_signals.html">Сигналы</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part4/ch31_network/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part4/ch31_network/02_network_tools.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part4/ch33_optimization/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part4/ch32_systemd/01_systemd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -195,11 +249,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part4/ch31_network/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part4/ch31_network/02_network_tools.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part4/ch33_optimization/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part4/ch32_systemd/01_systemd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

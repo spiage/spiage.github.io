@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,92 +176,12 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="приложение-c-чек-лист-сисадмина"><a class="header" href="#приложение-c-чек-лист-сисадмина">Приложение C. Чек-лист сисадмина</a></h1>
-<p>Контрольный список для системного администратора.</p>
-<h2 id="проверка-прав-доступа"><a class="header" href="#проверка-прав-доступа">Проверка прав доступа</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Проверить права на критические файлы</li>
-<li><input disabled="" type="checkbox"> Убедиться, что нет файлов с SUID/GID без необходимости</li>
-<li><input disabled="" type="checkbox"> Проверить <code>/etc/passwd</code> и <code>/etc/shadow</code></li>
-<li><input disabled="" type="checkbox"> Аудит пользователей с sudo доступом</li>
-</ul>
-<pre><code class="language-bash"># Найти SUID файлы
-find / -perm /4000 -type f
-
-# Найти файлы без владельца
-find / -nouser -o -nogroup
-</code></pre>
-<h2 id="мониторинг-процессов-и-ресурсов"><a class="header" href="#мониторинг-процессов-и-ресурсов">Мониторинг процессов и ресурсов</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Проверить загрузку CPU</li>
-<li><input disabled="" type="checkbox"> Проверить использование памяти</li>
-<li><input disabled="" type="checkbox"> Проверить дисковое пространство</li>
-<li><input disabled="" type="checkbox"> Проверить очередь процессов</li>
-</ul>
-<pre><code class="language-bash"># Загрузка CPU
-top -bn1 | head -5
-
-# Память
-free -h
-
-# Дисковое пространство
-df -h
-
-# Процессы
-ps aux --sort=-%cpu | head -10
-</code></pre>
-<h2 id="анализ-логов"><a class="header" href="#анализ-логов">Анализ логов</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Проверить <code>/var/log/syslog</code></li>
-<li><input disabled="" type="checkbox"> Проверить <code>/var/log/auth.log</code></li>
-<li><input disabled="" type="checkbox"> Проверить логи приложений</li>
-<li><input disabled="" type="checkbox"> Настроить ротацию логов</li>
-</ul>
-<pre><code class="language-bash"># Последние ошибки
-grep -i error /var/log/syslog | tail -20
-
-# Неудачные логины
-grep "Failed password" /var/log/auth.log | tail -10
-</code></pre>
-<h2 id="безопасность-скриптов"><a class="header" href="#безопасность-скриптов">Безопасность скриптов</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Валидация входных данных</li>
-<li><input disabled="" type="checkbox"> Экранирование переменных</li>
-<li><input disabled="" type="checkbox"> Проверка кодов выхода</li>
-<li><input disabled="" type="checkbox"> Безопасная работа с временными файлами</li>
-</ul>
-<pre><code class="language-bash">#!/bin/bash
-set -euo pipefail
-
-# Валидация
-if [[ -z "$1" ]]; then
-    echo "Usage: $0 &lt;argument&gt;" &gt;&amp;2
-    exit 1
-fi
-
-# Безопасный временный файл
-tmpfile=$(mktemp)
-trap 'rm -f "$tmpfile"' EXIT
-</code></pre>
-<h2 id="резервное-копирование"><a class="header" href="#резервное-копирование">Резервное копирование</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Настроить автоматическое резервное копирование</li>
-<li><input disabled="" type="checkbox"> Проверить целостность бэкапов</li>
-<li><input disabled="" type="checkbox"> Тестировать восстановление</li>
-<li><input disabled="" type="checkbox"> Хранить копии оффсайт</li>
-</ul>
-<h2 id="обновление-системы"><a class="header" href="#обновление-системы">Обновление системы</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> Регулярно обновлять пакеты</li>
-<li><input disabled="" type="checkbox"> Проверять список изменений</li>
-<li><input disabled="" type="checkbox"> Иметь план отката</li>
-<li><input disabled="" type="checkbox"> Тестировать в staging</li>
-</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part5/ch37_exercises/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part5/ch41_security/03_injection.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -275,7 +195,7 @@ trap 'rm -f "$tmpfile"' EXIT
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part5/ch37_exercises/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part5/ch41_security/03_injection.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

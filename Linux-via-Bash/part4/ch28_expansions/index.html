@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Глава 28. Подстановки и расширения - От основ Linux к мастерству Bash</title>
+        <title>Глава 28. Углублённая работа с подстановками - От основ Linux к мастерству Bash</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,6 +176,47 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-28-углублённая-работа-с-подстановками"><a class="header" href="#глава-28-углублённая-работа-с-подстановками">Глава 28. Углублённая работа с подстановками</a></h1>
+<p>Расширенные возможности подстановки параметров в bash.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_arrays.html">Работа с массивами</a></li>
+<li><a href="02_process_substitution.html">Подстановка процессов</a></li>
+<li><a href="03_eval.html">Использование eval</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="работа-с-массивами"><a class="header" href="#работа-с-массивами">Работа с массивами</a></h3>
+<p>Расширенные операции с массивами:</p>
+<pre><code class="language-bash"># Все элементы массива
+echo ${array[@]}
+
+# Индексы элементов
+echo ${!array[@]}
+</code></pre>
+<h3 id="подстановка-процессов-в-деталях"><a class="header" href="#подстановка-процессов-в-деталях">Подстановка процессов в деталях</a></h3>
+<p>Использование <code>&lt;(cmd)</code> и <code>&gt;(cmd)</code>:</p>
+<pre><code class="language-bash">diff &lt;(sort file1) &lt;(sort file2)
+</code></pre>
+<h3 id="использование-eval"><a class="header" href="#использование-eval">Использование eval</a></h3>
+<p>Почему <code>eval</code> опасен и когда его можно использовать:</p>
+<pre><code class="language-bash"># ОПАСНО:
+eval "$user_input"
+
+# Безопасная альтернатива:
+declare -n ref="$varname"
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как получить все индексы массива?</li>
+<li>Что такое подстановка процессов?</li>
+<li>Почему eval опасен?</li>
+<li>Какие есть альтернативы eval?</li>
+<li>Когда можно использовать eval?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../part3/ch19_variables/03_arrays.html">Массивы</a></li>
+<li><a href="../part2/ch13_pipes/README.html">Конвейеры</a></li>
+</ul>
 
                     </main>
 
@@ -185,7 +226,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part4/ch29_parallelism/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part4/ch28_expansions/01_arrays.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -199,7 +240,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part4/ch29_parallelism/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part4/ch28_expansions/01_arrays.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,7 +176,78 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-8-безопасность-и-изоляция"><a class="header" href="#глава-8-безопасность-и-изоляция">Глава 8. Безопасность и изоляция</a></h1>
-<p><em>В разработке…</em></p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_permission_checking.html">Проверка прав ядром</a></li>
+<li><a href="02_capabilities.html">Capabilities</a></li>
+<li><a href="03_setuid.html">setuid, setgid, sticky</a></li>
+<li><a href="04_memory_protection.html">Защита памяти</a></li>
+<li><a href="05_bypass_protection.html">Обход защиты</a></li>
+<li><a href="06_namespaces.html">Namespaces и контейнеры</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="проверка-прав-доступа-ядром"><a class="header" href="#проверка-прав-доступа-ядром">Проверка прав доступа ядром</a></h3>
+<p>Ядро проверяет права при каждом syscall:</p>
+<pre><code class="language-bash"># UID/GID процесса
+id
+
+# Права файла
+ls -l file.txt
+</code></pre>
+<h3 id="capabilities"><a class="header" href="#capabilities">Capabilities</a></h3>
+<p>Гранулярные привилегии:</p>
+<pre><code class="language-bash"># Просмотр caps
+getcap /usr/bin/ping
+
+# Установить cap
+setcap cap_net_raw+ep /usr/bin/ping
+</code></pre>
+<h3 id="setuid-setgid-sticky"><a class="header" href="#setuid-setgid-sticky">setuid, setgid, sticky</a></h3>
+<p>Специальные биты:</p>
+<pre><code class="language-bash"># setuid — выполнение от владельца
+ls -l /usr/bin/passwd
+# -rwsr-xr-x 1 root root ...
+
+# sticky — удаление только владельцем
+ls -ld /tmp
+# drwxrwxrwt ...
+</code></pre>
+<h3 id="защита-памяти"><a class="header" href="#защита-памяти">Защита памяти</a></h3>
+<p>Механизмы защиты:</p>
+<ul>
+<li>DEP/NX — неисполняемая память</li>
+<li>ASLR — рандомизация адресов</li>
+<li>Stack Canaries — защита стека</li>
+</ul>
+<h3 id="обход-защиты"><a class="header" href="#обход-защиты">Обход защиты</a></h3>
+<p>Методы обхода:</p>
+<ul>
+<li>ROP (Return-Oriented Programming)</li>
+<li>return-to-libc</li>
+<li>Spectre, Meltdown</li>
+</ul>
+<h3 id="namespaces-и-контейнеры"><a class="header" href="#namespaces-и-контейнеры">Namespaces и контейнеры</a></h3>
+<p>Изоляция процессов:</p>
+<pre><code class="language-bash"># Просмотр namespaces
+ls -l /proc/self/ns/
+
+# Docker использует namespaces
+docker run --rm alpine echo "hello"
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как ядро проверяет права?</li>
+<li>Что такое capabilities?</li>
+<li>Для чего нужен setuid?</li>
+<li>Какие механизмы защиты памяти?</li>
+<li>Что такое namespaces?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch05_processes/README.html">Процессы</a></li>
+<li><a href="../ch04_filesystem/04_permissions.html">Права доступа</a></li>
+<li><a href="https://docs.docker.com/">Контейнеры</a></li>
+</ul>
 
                     </main>
 

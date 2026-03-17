@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,7 +176,75 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-5-процессы"><a class="header" href="#глава-5-процессы">Глава 5. Процессы</a></h1>
-<p><em>В разработке…</em></p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_process_basics.html">Основы процессов</a></li>
+<li><a href="02_fork_exec_wait.html">fork, exec, wait</a></li>
+<li><a href="03_process_states.html">Жизненный цикл и состояния</a></li>
+<li><a href="04_environment.html">Окружение процесса</a></li>
+<li><a href="05_exit_codes.html">Завершение и коды возврата</a></li>
+<li><a href="06_signals.html">Сигналы</a></li>
+<li><a href="07_job_control.html">Управление заданиями</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="основы-процессов"><a class="header" href="#основы-процессов">Основы процессов</a></h3>
+<p>Процесс — экземпляр выполняющейся программы:</p>
+<pre><code class="language-bash"># PID процесса
+echo $$
+
+# Информация о процессе
+ps aux | grep bash
+</code></pre>
+<h3 id="fork-exec-wait"><a class="header" href="#fork-exec-wait">fork, exec, wait</a></h3>
+<p>Создание процессов:</p>
+<pre><code class="language-bash"># fork — копирование процесса
+# exec — замена образа
+# wait — ожидание завершения
+
+# В bash:
+sleep 10 &amp;  # fork + exec
+wait        # wait
+</code></pre>
+<h3 id="состояния-процессов"><a class="header" href="#состояния-процессов">Состояния процессов</a></h3>
+<pre><code class="language-bash">ps aux | awk '{print $8}' | sort | uniq -c
+# R — running
+# S — sleeping
+# Z — zombie
+</code></pre>
+<h3 id="окружение-процесса"><a class="header" href="#окружение-процесса">Окружение процесса</a></h3>
+<p>Переменные окружения наследуются:</p>
+<pre><code class="language-bash">export VAR=value
+bash -c 'echo $VAR'  # value
+</code></pre>
+<h3 id="завершение-и-коды-возврата"><a class="header" href="#завершение-и-коды-возврата">Завершение и коды возврата</a></h3>
+<pre><code class="language-bash">command
+echo $?  # Код выхода последней команды
+</code></pre>
+<h3 id="сигналы"><a class="header" href="#сигналы">Сигналы</a></h3>
+<p>Асинхронные уведомления:</p>
+<pre><code class="language-bash">kill -TERM &lt;pid&gt;
+trap 'echo "Caught"' SIGINT
+</code></pre>
+<h3 id="управление-заданиями"><a class="header" href="#управление-заданиями">Управление заданиями</a></h3>
+<pre><code class="language-bash">sleep 100 &amp;  # Фон
+jobs         # Список
+fg %1        # На передний план
+bg %1        # В фон
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое процесс?</li>
+<li>Как работает fork/exec?</li>
+<li>Какие бывают состояния процессов?</li>
+<li>Что такое коды возврата?</li>
+<li>Как управлять заданиями?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch03_cpu_modes/README.html">Режимы процессора</a></li>
+<li><a href="../ch06_ipc/README.html">IPC</a></li>
+<li><a href="../ch07_debugging/README.html">Отладка</a></li>
+</ul>
 
                     </main>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,7 +176,71 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="глава-7-инструменты-диагностики"><a class="header" href="#глава-7-инструменты-диагностики">Глава 7. Инструменты диагностики</a></h1>
-<p><em>В разработке…</em></p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_strace.html">strace</a></li>
+<li><a href="02_lsof.html">lsof</a></li>
+<li><a href="03_proc_analysis.html">Анализ /proc</a></li>
+<li><a href="04_other_tools.html">Дополнительные утилиты</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="strace--трассировка-syscall"><a class="header" href="#strace--трассировка-syscall">strace — трассировка syscall</a></h3>
+<p>Показывает «разговор» с ядром:</p>
+<pre><code class="language-bash"># Трассировка команды
+strace ls
+
+# Только open syscall
+strace -e open ls
+
+# Прикрепить к процессу
+strace -p &lt;pid&gt;
+</code></pre>
+<h3 id="lsof--открытые-файлы"><a class="header" href="#lsof--открытые-файлы">lsof — открытые файлы</a></h3>
+<p>Просмотр файловых дескрипторов:</p>
+<pre><code class="language-bash"># FD процесса
+lsof -p &lt;pid&gt;
+
+# Кто использует файл
+lsof /var/log/syslog
+</code></pre>
+<h3 id="анализ-proc"><a class="header" href="#анализ-proc">Анализ /proc</a></h3>
+<p>Информация о процессах:</p>
+<pre><code class="language-bash"># FD процесса
+ls -l /proc/&lt;pid&gt;/fd/
+
+# Статус
+cat /proc/&lt;pid&gt;/status
+
+# Окружение
+cat /proc/&lt;pid&gt;/environ | tr '\0' '\n'
+</code></pre>
+<h3 id="дополнительные-утилиты"><a class="header" href="#дополнительные-утилиты">Дополнительные утилиты</a></h3>
+<pre><code class="language-bash"># Процессы
+ps aux
+top
+htop
+
+# Статистика
+vmstat
+iostat
+
+# Время выполнения
+time ls
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Для чего нужен strace?</li>
+<li>Что показывает lsof?</li>
+<li>Как читать /proc?</li>
+<li>Какие утилиты для мониторинга?</li>
+<li>Как измерить время выполнения?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch02_syscalls/README.html">Системные вызовы</a></li>
+<li><a href="../ch05_processes/README.html">Процессы</a></li>
+<li><a href="../part3/ch27_debugging/README.html">Отладка скриптов</a></li>
+</ul>
 
                     </main>
 

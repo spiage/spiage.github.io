@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,66 +177,69 @@
                     <main>
                         <h1 id="глава-1-введение-в-ядро-linux"><a class="header" href="#глава-1-введение-в-ядро-linux">Глава 1. Введение в ядро Linux</a></h1>
 <p>Базовое понимание архитектуры ОС перед изучением bash.</p>
-<h2 id="почему-это-важно"><a class="header" href="#почему-это-важно">Почему это важно</a></h2>
-<p>Представьте: вы пишете скрипт, который читает файл:</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_why_kernel_matters.html">Почему понимание ядра важно</a></li>
+<li><a href="02_user_kernel_space.html">User space vs Kernel space</a></li>
+<li><a href="03_syscalls.html">Что такое системный вызов</a></li>
+<li><a href="04_strace_intro.html">Знакомство со strace</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="почему-это-важно"><a class="header" href="#почему-это-важно">Почему это важно</a></h3>
+<p>Ни одна пользовательская программа не может напрямую работать с файлами, сетью, процессами. Только через ядро:</p>
 <pre><code class="language-bash">content=$(cat /etc/hostname)
+# cat → syscall read → ядро → диск
+# cat → syscall write → ядро → терминал
 </code></pre>
-<p><strong>Что происходит на самом деле?</strong></p>
-<ol>
-<li>Bash запускает внешнюю команду <code>cat</code> (через <code>fork</code>/<code>exec</code>)</li>
-<li><code>cat</code> <strong>не может напрямую прочитать файл</strong> — он в user space</li>
-<li><code>cat</code> просит ядро прочитать файл (системный вызов <code>read</code>)</li>
-<li>Ядро читает данные с диска и возвращает их <code>cat</code></li>
-<li><code>cat</code> записывает данные в терминал (системный вызов <code>write</code>)</li>
-<li>Ядро записывает данные в буфер терминала</li>
-</ol>
-<p><strong>Ключевой момент:</strong> ни одна пользовательская программа не может напрямую работать с файлами, сетью, процессами. Только через <strong>посредника</strong> — ядро.</p>
-<h2 id="user-space-vs-kernel-space"><a class="header" href="#user-space-vs-kernel-space">User space vs Kernel space</a></h2>
+<h3 id="user-space-vs-kernel-space"><a class="header" href="#user-space-vs-kernel-space">User space vs Kernel space</a></h3>
 <pre class="mermaid">flowchart TB
     subgraph User["User Space"]
         bash[bash]
         cat[cat]
-        other[other apps]
     end
-    
+
     subgraph Kernel["Kernel Space"]
-        kernel["Linux Kernel&lt;br/&gt;files, network, processes"]
+        kernel["Linux Kernel"]
     end
-    
+
     bash --&gt;|syscall| kernel
     cat --&gt;|syscall| kernel
-    other --&gt;|syscall| kernel
 </pre>
 
-<p><strong>Граница непроницаема:</strong> программы из user space не могут:</p>
+<p>Программы из user space не могут напрямую:</p>
 <ul>
 <li>Читать память других процессов</li>
-<li>Писать напрямую на диск</li>
+<li>Писать на диск</li>
 <li>Отправлять пакеты в сеть</li>
-<li>Создавать процессы</li>
 </ul>
-<p><strong>Единственный способ</strong> — попросить ядро через <strong>системный вызов</strong>.</p>
-<h2 id="что-такое-системный-вызов"><a class="header" href="#что-такое-системный-вызов">Что такое системный вызов</a></h2>
-<p><strong>Системный вызов (syscall)</strong> — это запрос программы к ядру для выполнения привилегированной операции.</p>
-<pre><code class="language-bash"># Простая команда
-echo "hello" &gt; file.txt
-
-# Соответствующие syscall'ы:
-# 1. openat(AT_FDCWD, "file.txt", O_WRONLY|O_CREAT, ...) = 3
-# 2. write(3, "hello\n", 7) = 7
-# 3. close(3) = 0
+<h3 id="системный-вызов-syscall"><a class="header" href="#системный-вызов-syscall">Системный вызов (syscall)</a></h3>
+<p>Запрос программы к ядру для привилегированной операции:</p>
+<pre><code class="language-bash">echo "hello" &gt; file.txt
+# 1. openat(...) = 3
+# 2. write(3, "hello\n", 7)
+# 3. close(3)
 </code></pre>
-<h2 id="наблюдение-за-syscallами"><a class="header" href="#наблюдение-за-syscallами">Наблюдение за syscall’ами</a></h2>
-<p>Утилита <code>strace</code> показывает все запросы программы к ядру:</p>
-<pre><code class="language-bash"># Трассировка команды
-strace echo "hello"
-
-# Вывод (упрощённо):
-# execve("/bin/echo", ["echo", "hello"], ...) = 0
+<h3 id="наблюдение-за-syscallами"><a class="header" href="#наблюдение-за-syscallами">Наблюдение за syscall’ами</a></h3>
+<p><code>strace</code> показывает все запросы к ядру:</p>
+<pre><code class="language-bash">strace echo "hello"
+# execve("/bin/echo", ...) = 0
 # write(1, "hello\n", 7) = 7
 # exit_group(0) = 0
 </code></pre>
-<p>Это <strong>главный инструмент</strong> для понимания того, что реально происходит при выполнении скрипта.</p>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Почему программы не могут напрямую работать с файлами?</li>
+<li>Что такое user space и kernel space?</li>
+<li>Что такое системный вызов?</li>
+<li>Для чего нужна утилита strace?</li>
+<li>Какие syscall использует команда <code>echo</code>?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch02_syscalls/README.html">Системные вызовы</a></li>
+<li><a href="../ch07_debugging/README.html">Инструменты диагностики</a></li>
+<li><a href="../ch05_processes/README.html">Процессы</a></li>
+</ul>
 
                     </main>
 

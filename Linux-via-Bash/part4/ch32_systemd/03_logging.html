@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Приложение A. Литература и ресурсы - От основ Linux к мастерству Bash</title>
+        <title>Журналирование - От основ Linux к мастерству Bash</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,37 +175,122 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="приложение-a-ресурсы"><a class="header" href="#приложение-a-ресурсы">Приложение A. Ресурсы</a></h1>
-<p>Дополнительная литература и ресурсы для изучения.</p>
-<h2 id="книги"><a class="header" href="#книги">Книги</a></h2>
+                        <h1 id="журналирование"><a class="header" href="#журналирование">Журналирование</a></h1>
+<p>Централизованное логирование через systemd journal.</p>
+<h2 id="работа-с-журналом-journalctl-logger"><a class="header" href="#работа-с-журналом-journalctl-logger">Работа с журналом: journalctl, logger</a></h2>
+<h3 id="journalctl--чтение-журнала"><a class="header" href="#journalctl--чтение-журнала">journalctl — чтение журнала</a></h3>
+<pre><code class="language-bash"># Все логи
+journalctl
+
+# С конца (как tail -f)
+journalctl -f
+
+# За последний час
+journalctl --since "1 hour ago"
+
+# За период
+journalctl --since "2024-01-15 09:00" --until "2024-01-15 17:00"
+
+# Конкретный сервис
+journalctl -u nginx
+
+# Несколько сервисов
+journalctl -u nginx -u php-fpm
+
+# По приоритету
+journalctl -p err
+journalctl -p warning..err
+</code></pre>
+<h3 id="форматирование-вывода"><a class="header" href="#форматирование-вывода">Форматирование вывода</a></h3>
+<pre><code class="language-bash"># Краткий формат
+journalctl -o short
+
+# JSON формат
+journalctl -o json
+
+# С временем в Unix timestamp
+journalctl -o unix
+
+# Без страниц
+journalctl --no-pager
+
+# С номерами строк
+journalctl -n 100
+</code></pre>
+<h3 id="фильтрация"><a class="header" href="#фильтрация">Фильтрация</a></h3>
+<pre><code class="language-bash"># По PID
+journalctl _PID=1234
+
+# По пользователю
+journalctl _UID=1000
+
+# По исполняемому файлу
+journalctl _EXE=/usr/bin/nginx
+
+# По хосту
+journalctl _HOSTNAME=myserver
+</code></pre>
+<h3 id="персистентный-журнал"><a class="header" href="#персистентный-журнал">Персистентный журнал</a></h3>
+<pre><code class="language-bash"># Проверить включено ли сохранение
+ls -la /var/log/journal/
+
+# Включить сохранение
+mkdir -p /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal
+systemctl restart systemd-journald
+
+# Ограничить размер
+journalctl --vacuum-size=500M
+journalctl --vacuum-time=2weeks
+</code></pre>
+<h3 id="logger-в-скриптах"><a class="header" href="#logger-в-скриптах">logger в скриптах</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+
+log_info() {
+    logger -t myapp -p local0.info "$*"
+}
+
+log_error() {
+    logger -t myapp -p local0.err "$*"
+}
+
+log_info "Script started"
+if ! do_work; then
+    log_error "Work failed"
+    exit 1
+fi
+log_info "Script completed"
+</code></pre>
+<h3 id="интеграция-с-syslog"><a class="header" href="#интеграция-с-syslog">Интеграция с syslog</a></h3>
+<pre><code class="language-bash"># /etc/rsyslog.d/myapp.conf
+local0.*    /var/log/myapp.log
+
+# Перезагрузить rsyslog
+systemctl restart rsyslog
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Как читать логи через journalctl?</li>
+<li>Как смотреть логи в реальном времени?</li>
+<li>Как фильтровать по сервису?</li>
+<li>Как записать в журнал из скрипта?</li>
+<li>Как ограничить размер журнала?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
 <ul>
-<li><strong>«Linux Programming Interface»</strong> — Michael Kerrisk</li>
-<li><strong>«Как работает Linux»</strong> — различные авторы</li>
-<li><strong>«Advanced Programming in the UNIX Environment»</strong> — W. Richard Stevens</li>
-</ul>
-<h2 id="онлайн-ресурсы"><a class="header" href="#онлайн-ресурсы">Онлайн-ресурсы</a></h2>
-<ul>
-<li><a href="https://www.gnu.org/software/bash/manual/">GNU Bash Reference Manual</a></li>
-<li><a href="https://man7.org/linux/man-pages/">Linux man pages</a></li>
-<li><a href="https://stackoverflow.com/questions/tagged/bash">Stack Overflow</a></li>
-<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
-</ul>
-<h2 id="курсы"><a class="header" href="#курсы">Курсы</a></h2>
-<ul>
-<li>Linux Foundation Training</li>
-<li>edX Linux courses</li>
-<li>Coursera Unix/Linux courses</li>
+<li><a href="01_systemd.html">systemd</a></li>
+<li><a href="02_schedulers.html">Планировщики</a></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../part4/ch35_best_practices/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../part4/ch32_systemd/02_schedulers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../part5/ch37_exercises/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../part4/ch33_optimization/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -215,11 +300,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../part4/ch35_best_practices/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../part4/ch32_systemd/02_schedulers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../part5/ch37_exercises/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../part4/ch33_optimization/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

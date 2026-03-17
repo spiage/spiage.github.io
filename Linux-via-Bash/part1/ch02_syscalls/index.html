@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,6 +177,64 @@
                     <main>
                         <h1 id="глава-2-системные-вызовы"><a class="header" href="#глава-2-системные-вызовы">Глава 2. Системные вызовы</a></h1>
 <p>Единственный легальный способ взаимодействия с ядром.</p>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_syscall_table.html">Таблица системных вызовов</a></li>
+<li><a href="02_libc_wrappers.html">Библиотечные обёртки</a></li>
+<li><a href="03_error_handling.html">Обработка ошибок</a></li>
+<li><a href="04_blocking_calls.html">Блокирующие вызовы</a></li>
+<li><a href="05_buffering_caching.html">Буферизация и кэширование</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="таблица-системных-вызовов"><a class="header" href="#таблица-системных-вызовов">Таблица системных вызовов</a></h3>
+<p>Ядро хранит таблицу указателей на обработчики syscall:</p>
+<pre><code class="language-bash"># Пример: echo "hello" &gt; file
+# 1. openat(AT_FDCWD, "file", ...) = 3
+# 2. write(3, "hello\n", 7) = 7
+# 3. close(3) = 0
+</code></pre>
+<h3 id="библиотечные-обёртки-glibc"><a class="header" href="#библиотечные-обёртки-glibc">Библиотечные обёртки (glibc)</a></h3>
+<p>Программы используют обёртки над syscall:</p>
+<pre><code class="language-c">// В коде:
+write(fd, buf, count);
+
+// На самом деле:
+// 1. glibc устанавливает номер syscall
+// 2. Инструкция syscall для входа в ядро
+// 3. Ядро выполняет операцию
+</code></pre>
+<h3 id="обработка-ошибок"><a class="header" href="#обработка-ошибок">Обработка ошибок</a></h3>
+<p>Syscall возвращает -1 при ошибке и устанавливает errno:</p>
+<pre><code class="language-bash">strace cat /nonexistent 2&gt;&amp;1 | grep openat
+# openat(AT_FDCWD, "/nonexistent", ...) = -1 ENOENT
+</code></pre>
+<h3 id="блокирующие-вызовы"><a class="header" href="#блокирующие-вызовы">Блокирующие вызовы</a></h3>
+<p>Некоторые syscall блокируют процесс до завершения:</p>
+<pre><code class="language-bash"># read блокирует пока нет данных
+read(0, buffer, 1024)
+</code></pre>
+<h3 id="буферизация-и-кэширование"><a class="header" href="#буферизация-и-кэширование">Буферизация и кэширование</a></h3>
+<p>Ядро кэширует данные в page cache:</p>
+<pre><code class="language-bash"># Первое чтение — с диска
+cat file.txt
+
+# Повторное — из кэша
+cat file.txt  # Быстрее!
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое таблица системных вызовов?</li>
+<li>Зачем нужны библиотечные обёртки?</li>
+<li>Как syscall сообщает об ошибке?</li>
+<li>Что такое блокирующий вызов?</li>
+<li>Для чего нужен page cache?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch01_intro/README.html">Введение в ядро</a></li>
+<li><a href="../ch03_cpu_modes/README.html">Режимы процессора</a></li>
+<li><a href="../ch07_debugging/README.html">Инструменты диагностики</a></li>
+</ul>
 
                     </main>
 

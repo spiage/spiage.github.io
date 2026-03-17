@@ -36,10 +36,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-e0a194c8.js";
+            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1169b26a.js"></script>
+        <script src="../../toc-2dd0a2f7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,8 +175,56 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="глава-6-межпроцессное-взаимодействие"><a class="header" href="#глава-6-межпроцессное-взаимодействие">Глава 6. Межпроцессное взаимодействие</a></h1>
-<p><em>В разработке…</em></p>
+                        <h1 id="глава-6-межпроцессное-взаимодействие-ipc"><a class="header" href="#глава-6-межпроцессное-взаимодействие-ipc">Глава 6. Межпроцессное взаимодействие (IPC)</a></h1>
+<h2 id="содержание-главы"><a class="header" href="#содержание-главы">Содержание главы</a></h2>
+<ul>
+<li><a href="01_pipes.html">Анонимные пайпы</a></li>
+<li><a href="02_fifo.html">Именованные пайпы (FIFO)</a></li>
+<li><a href="03_signals_ipc.html">Сигналы как IPC</a></li>
+<li><a href="04_sockets.html">Сокеты</a></li>
+</ul>
+<h2 id="краткое-содержание"><a class="header" href="#краткое-содержание">Краткое содержание</a></h2>
+<h3 id="анонимные-пайпы-pipe"><a class="header" href="#анонимные-пайпы-pipe">Анонимные пайпы (pipe)</a></h3>
+<p>Однонаправленный канал между процессами:</p>
+<pre><code class="language-bash"># Конвейер
+cmd1 | cmd2
+
+# В bash:
+echo "hello" | cat
+</code></pre>
+<h3 id="именованные-пайпы-fifo"><a class="header" href="#именованные-пайпы-fifo">Именованные пайпы (FIFO)</a></h3>
+<p>Канал через файл:</p>
+<pre><code class="language-bash">mkfifo /tmp/mypipe
+cat /tmp/mypipe &amp;
+echo "hello" &gt; /tmp/mypipe
+</code></pre>
+<h3 id="сигналы-как-ipc"><a class="header" href="#сигналы-как-ipc">Сигналы как IPC</a></h3>
+<p>Уведомление процессов:</p>
+<pre><code class="language-bash"># Перезагрузка демона
+kill -HUP &lt;pid&gt;
+</code></pre>
+<h3 id="сокеты"><a class="header" href="#сокеты">Сокеты</a></h3>
+<p>IPC через файлы или сеть:</p>
+<pre><code class="language-bash"># Unix domain socket
+nc -U /var/run/docker.sock
+
+# Сетевой сокет
+nc localhost 8080
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое pipe?</li>
+<li>Чем FIFO отличается от pipe?</li>
+<li>Как работают сигналы?</li>
+<li>Что такое сокеты?</li>
+<li>Когда использовать IPC?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="../ch05_processes/README.html">Процессы</a></li>
+<li><a href="../ch05_processes/06_signals.html">Сигналы</a></li>
+<li><a href="../part4/ch31_network/README.html">Сеть</a></li>
+</ul>
 
                     </main>
 
