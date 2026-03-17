@@ -36,7 +36,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
+            window.path_to_searchindex_js = "../../searchindex-0d3316e1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-2dd0a2f7.js"></script>
@@ -176,6 +176,142 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="user-space-vs-kernel-space"><a class="header" href="#user-space-vs-kernel-space">User space vs Kernel space</a></h1>
+<h2 id="разделение-привилегий"><a class="header" href="#разделение-привилегий">Разделение привилегий</a></h2>
+<p>Linux разделяет память и доступ на два уровня:</p>
+<pre><code>┌─────────────────────────────────┐
+│  User Space                     │
+│  ┌─────────┐ ┌─────────┐       │
+│  │  bash   │ │   cat   │ ...   │
+│  └─────────┘ └─────────┘       │
+├─────────────────────────────────┤
+│  ┌─────────────────────────┐   │
+│  │   Kernel Space          │   │
+│  │   ┌─────────────────┐   │   │
+│  │   │  Linux Kernel   │   │   │
+│  │   │  files, network │   │   │
+│  │   │  processes      │   │   │
+│  │   └─────────────────┘   │   │
+│  └─────────────────────────┘   │
+└─────────────────────────────────┘
+</code></pre>
+<h2 id="user-space"><a class="header" href="#user-space">User space</a></h2>
+<p><strong>Программы в user space:</strong></p>
+<ul>
+<li>bash, cat, ls, grep</li>
+<li>Веб-серверы (nginx, apache)</li>
+<li>Базы данных (postgresql, mysql)</li>
+</ul>
+<p><strong>Ограничения:</strong></p>
+<ul>
+<li>Нет прямого доступа к оборудованию</li>
+<li>Нет доступа к памяти других процессов</li>
+<li>Нет прямого доступа к диску</li>
+<li>Нет отправки сетевых пакетов</li>
+</ul>
+<h2 id="kernel-space"><a class="header" href="#kernel-space">Kernel space</a></h2>
+<p><strong>Ядро в kernel space:</strong></p>
+<ul>
+<li>Управление памятью</li>
+<li>Управление процессами</li>
+<li>Сетевой стек</li>
+<li>Драйверы устройств</li>
+<li>Файловая система</li>
+</ul>
+<p><strong>Возможности:</strong></p>
+<ul>
+<li>Прямой доступ к оборудованию</li>
+<li>Управление всеми ресурсами</li>
+<li>Обработка прерываний</li>
+</ul>
+<h2 id="граница-непроницаема"><a class="header" href="#граница-непроницаема">Граница непроницаема</a></h2>
+<h3 id="программы-не-могут"><a class="header" href="#программы-не-могут">Программы не могут:</a></h3>
+<pre><code class="language-bash"># Читать память других процессов
+cat /proc/1234/mem  # Permission denied
+
+# Писать напрямую на диск
+echo "data" &gt; /dev/sda  # Permission denied
+
+# Отправлять пакеты без сокетов
+# Требуется socket() syscall
+</code></pre>
+<h3 id="единственный-способ--syscall"><a class="header" href="#единственный-способ--syscall">Единственный способ — syscall</a></h3>
+<pre><code class="language-bash"># Программа запрашивает ядро
+bash → syscall → ядро → результат
+
+# Пример: чтение файла
+cat /etc/hostname
+# 1. openat(AT_FDCWD, "/etc/hostname", ...) = 3
+# 2. read(3, "myhost\n", 8192) = 7
+# 3. close(3) = 0
+</code></pre>
+<h2 id="наблюдение-границы"><a class="header" href="#наблюдение-границы">Наблюдение границы</a></h2>
+<h3 id="strace-показывает-переходы"><a class="header" href="#strace-показывает-переходы">strace показывает переходы</a></h3>
+<pre><code class="language-bash"># Каждый syscall — переход в kernel space
+strace cat /etc/hostname
+
+# Вывод:
+# openat(...) = 3      # переход в ядро
+# read(3, ...) = 7     # переход в ядро
+# write(1, ...) = 7    # переход в ядро
+# close(3) = 0         # переход в ядро
+</code></pre>
+<h3 id="proc-показывает-информацию"><a class="header" href="#proc-показывает-информацию">/proc показывает информацию</a></h3>
+<pre><code class="language-bash"># Информация о процессе из kernel space
+cat /proc/$$/status
+
+# Открытые файлы (FD)
+ls -l /proc/$$/fd/
+
+# Карта памяти
+cat /proc/$$/maps
+</code></pre>
+<h2 id="практическое-значение-для-bash"><a class="header" href="#практическое-значение-для-bash">Практическое значение для bash</a></h2>
+<h3 id="производительность"><a class="header" href="#производительность">Производительность</a></h3>
+<pre><code class="language-bash"># Каждый syscall имеет стоимость
+# Минимизируйте переходы user→kernel
+
+# ПЛОХО: много syscall
+for i in {1..1000}; do
+    echo $i &gt;&gt; file.txt  # open/write/close каждый раз
+done
+
+# ХОРОШО: меньше syscall
+{
+    for i in {1..1000}; do
+        echo $i
+    done
+} &gt; file.txt  # Один open, много write, один close
+</code></pre>
+<h3 id="ошибки-доступа"><a class="header" href="#ошибки-доступа">Ошибки доступа</a></h3>
+<pre><code class="language-bash"># EACCES — нет прав
+cat /etc/shadow
+# strace покажет: openat(...) = -1 EACCES
+
+# ENOENT — файл не найден
+cat /nonexistent
+# strace покажет: openat(...) = -1 ENOENT
+</code></pre>
+<h3 id="буферизация"><a class="header" href="#буферизация">Буферизация</a></h3>
+<pre><code class="language-bash"># Ядро кэширует данные (page cache)
+# Первое чтение — с диска
+time cat large_file.txt
+
+# Повторное чтение — из кэша
+time cat large_file.txt  # Быстрее!
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что такое user space?</li>
+<li>Что такое kernel space?</li>
+<li>Почему программы не могут напрямую работать с железом?</li>
+<li>Как программа получает доступ к ресурсам?</li>
+<li>Как strace показывает переходы в ядро?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="01_why_kernel_matters.html">Почему понимание ядра важно</a></li>
+<li><a href="03_syscalls.html">Системные вызовы</a></li>
+</ul>
 
                     </main>
 

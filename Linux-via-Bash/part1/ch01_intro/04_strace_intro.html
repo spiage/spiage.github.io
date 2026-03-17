@@ -36,7 +36,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-8247b8c1.js";
+            window.path_to_searchindex_js = "../../searchindex-0d3316e1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-2dd0a2f7.js"></script>
@@ -176,6 +176,191 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="знакомство-со-strace"><a class="header" href="#знакомство-со-strace">Знакомство со strace</a></h1>
+<h2 id="что-такое-strace"><a class="header" href="#что-такое-strace">Что такое strace</a></h2>
+<p><strong>strace</strong> — утилита для трассировки системных вызовов процесса.</p>
+<pre><code>Приложение → strace → Ядро
+           (перехватывает syscall)
+</code></pre>
+<h2 id="базовое-использование"><a class="header" href="#базовое-использование">Базовое использование</a></h2>
+<h3 id="трассировка-команды"><a class="header" href="#трассировка-команды">Трассировка команды</a></h3>
+<pre><code class="language-bash"># Полная трассировка
+strace ls
+
+# Вывод (упрощённо):
+# execve("/bin/ls", ["ls"], ...) = 0
+# openat(AT_FDCWD, ".", O_RDONLY) = 3
+# getdents64(3, ...) = 128
+# write(1, "file1\nfile2\n", 12) = 12
+# close(3) = 0
+# exit_group(0) = 0
+</code></pre>
+<h3 id="фильтрация-по-syscall"><a class="header" href="#фильтрация-по-syscall">Фильтрация по syscall</a></h3>
+<pre><code class="language-bash"># Только файловые операции
+strace -e trace=file ls
+
+# Только сетевые операции
+strace -e trace=network curl https://example.com
+
+# Несколько категорий
+strace -e trace=file,network ls
+</code></pre>
+<h3 id="вывод-в-файл"><a class="header" href="#вывод-в-файл">Вывод в файл</a></h3>
+<pre><code class="language-bash"># Сохранить вывод
+strace -o trace.log ls
+
+# С номерами строк
+strace -o trace.log -ff ls
+</code></pre>
+<h2 id="чтение-вывода-strace"><a class="header" href="#чтение-вывода-strace">Чтение вывода strace</a></h2>
+<h3 id="формат-вывода"><a class="header" href="#формат-вывода">Формат вывода</a></h3>
+<pre><code class="language-bash">syscall(args) = return_value
+</code></pre>
+<p><strong>Пример:</strong></p>
+<pre><code class="language-bash">openat(AT_FDCWD, "/etc/passwd", O_RDONLY) = 3
+# │        │              │            │   └─ результат
+# │        │              │            └─ файловый дескриптор
+# │        │              └─ флаги
+# │        └─ путь к файлу
+# └─ syscall
+</code></pre>
+<h3 id="коды-ошибок"><a class="header" href="#коды-ошибок">Коды ошибок</a></h3>
+<pre><code class="language-bash"># Успех
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY) = 3
+
+# Ошибка: файл не найден
+openat(AT_FDCWD, "/nonexistent", O_RDONLY) = -1 ENOENT
+
+# Ошибка: нет прав
+openat(AT_FDCWD, "/etc/shadow", O_RDONLY) = -1 EACCES
+</code></pre>
+<h3 id="распространённые-ошибки"><a class="header" href="#распространённые-ошибки">Распространённые ошибки</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Код</th><th>Описание</th><th>Пример</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ENOENT</code></td><td>No such file or directory</td><td>Файл не найден</td></tr>
+<tr><td><code>EACCES</code></td><td>Permission denied</td><td>Нет прав</td></tr>
+<tr><td><code>EBUSY</code></td><td>Device or resource busy</td><td>Ресурс занят</td></tr>
+<tr><td><code>ENOMEM</code></td><td>Out of memory</td><td>Нет памяти</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="практические-примеры"><a class="header" href="#практические-примеры">Практические примеры</a></h2>
+<h3 id="отладка-падения-команды"><a class="header" href="#отладка-падения-команды">Отладка падения команды</a></h3>
+<pre><code class="language-bash"># Команда падает без сообщения
+failing_command
+
+# strace покажет где
+strace failing_command 2&gt;&amp;1 | tail -20
+</code></pre>
+<h3 id="поиск-файлов"><a class="header" href="#поиск-файлов">Поиск файлов</a></h3>
+<pre><code class="language-bash"># Какие файлы читает программа
+strace -e trace=openat myapp 2&gt;&amp;1 | grep openat
+</code></pre>
+<h3 id="проверка-прав"><a class="header" href="#проверка-прав">Проверка прав</a></h3>
+<pre><code class="language-bash"># Почему нет доступа
+strace cat /etc/shadow 2&gt;&amp;1 | grep openat
+# openat(AT_FDCWD, "/etc/shadow", O_RDONLY) = -1 EACCES
+</code></pre>
+<h3 id="сетевые-соединения"><a class="header" href="#сетевые-соединения">Сетевые соединения</a></h3>
+<pre><code class="language-bash"># Куда подключается программа
+strace -e trace=connect myapp 2&gt;&amp;1 | grep connect
+</code></pre>
+<h2 id="опции-strace"><a class="header" href="#опции-strace">Опции strace</a></h2>
+<h3 id="временные-метки"><a class="header" href="#временные-метки">Временные метки</a></h3>
+<pre><code class="language-bash"># С временем
+strace -t ls
+
+# С точностью до микросекунд
+strace -tt ls
+
+# С относительным временем
+strace -r ls
+</code></pre>
+<h3 id="подсчёт-статистики"><a class="header" href="#подсчёт-статистики">Подсчёт статистики</a></h3>
+<pre><code class="language-bash"># Статистика по syscall
+strace -c ls
+
+# Вывод:
+# % time     seconds  usecs/call     calls    errors syscall
+# ------ ----------- ----------- --------- --------- ----------------
+#  50.00    0.000050          50         1           openat
+#  30.00    0.000030          30         1           write
+#  20.00    0.000020          20         1           close
+</code></pre>
+<h3 id="прикрепление-к-процессу"><a class="header" href="#прикрепление-к-процессу">Прикрепление к процессу</a></h3>
+<pre><code class="language-bash"># Трассировка запущенного процесса
+strace -p &lt;PID&gt;
+
+# С фильтром
+strace -p &lt;PID&gt; -e trace=file
+</code></pre>
+<h3 id="ограничение-вывода"><a class="header" href="#ограничение-вывода">Ограничение вывода</a></h3>
+<pre><code class="language-bash"># Количество строк
+strace -c 10 ls
+
+# Длина строки
+strace -s 1000 ls
+</code></pre>
+<h2 id="стратегии-отладки"><a class="header" href="#стратегии-отладки">Стратегии отладки</a></h2>
+<h3 id="1-поиск-проблемы"><a class="header" href="#1-поиск-проблемы">1. Поиск проблемы</a></h3>
+<pre><code class="language-bash"># Запустить с strace
+strace myapp 2&gt;&amp;1 | grep -E "ENOENT|EACCES"
+</code></pre>
+<h3 id="2-проверка-файлов"><a class="header" href="#2-проверка-файлов">2. Проверка файлов</a></h3>
+<pre><code class="language-bash"># Какие файлы открывает
+strace -e trace=openat myapp 2&gt;&amp;1 | grep openat
+</code></pre>
+<h3 id="3-проверка-сети"><a class="header" href="#3-проверка-сети">3. Проверка сети</a></h3>
+<pre><code class="language-bash"># Сетевые вызовы
+strace -e trace=network myapp 2&gt;&amp;1 | grep -E "connect|send|recv"
+</code></pre>
+<h3 id="4-анализ-производительности"><a class="header" href="#4-анализ-производительности">4. Анализ производительности</a></h3>
+<pre><code class="language-bash"># Какие syscall медленные
+strace -c myapp
+</code></pre>
+<h2 id="примеры-для-скриптов"><a class="header" href="#примеры-для-скриптов">Примеры для скриптов</a></h2>
+<h3 id="медленный-скрипт"><a class="header" href="#медленный-скрипт">Медленный скрипт</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+# slow_script.sh
+
+for file in *.txt; do
+    wc -l $file
+done
+
+# strace покажет проблему:
+# Много open/close для каждого файла
+strace -c ./slow_script.sh
+</code></pre>
+<h3 id="проблема-с-правами"><a class="header" href="#проблема-с-правами">Проблема с правами</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+# permission_script.sh
+
+cat /etc/shadow  # EACCES
+
+# strace покажет:
+# openat(AT_FDCWD, "/etc/shadow", O_RDONLY) = -1 EACCES
+</code></pre>
+<h3 id="конвейер"><a class="header" href="#конвейер">Конвейер</a></h3>
+<pre><code class="language-bash"># Трассировка конвейера
+strace -f bash -c 'ls | grep txt' 2&gt;&amp;1 | head -50
+# -f отслеживает дочерние процессы
+</code></pre>
+<h2 id="вопросы-для-самопроверки"><a class="header" href="#вопросы-для-самопроверки">Вопросы для самопроверки</a></h2>
+<ol>
+<li>Что показывает strace?</li>
+<li>Как отфильтровать только файловые syscall?</li>
+<li>Что означает <code>= -1 ENOENT</code>?</li>
+<li>Как прикрепить strace к запущенному процессу?</li>
+<li>Что показывает <code>strace -c</code>?</li>
+</ol>
+<h2 id="см-также"><a class="header" href="#см-также">См. также</a></h2>
+<ul>
+<li><a href="03_syscalls.html">Системные вызовы</a></li>
+<li><a href="../../part3/ch27_debugging/README.html">Отладка скриптов</a></li>
+</ul>
 
                     </main>
 
