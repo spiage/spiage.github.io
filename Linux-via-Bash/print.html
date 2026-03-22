@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-0d3316e1.js";
+            window.path_to_searchindex_js = "searchindex-c78c6297.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-2dd0a2f7.js"></script>
@@ -4431,7 +4431,7 @@ mkdir private       # 700 (rwx------)
 getfacl file.txt
 
 # Добавить право конкретному пользователю
-setfacl -m u:username:rx file.txt
+setfacl -m u:spiage:rx file.txt
 
 # Добавить право группе
 setfacl -m g:groupname:rx file.txt
@@ -4646,7 +4646,7 @@ df -h
 
 # Процесс всё ещё читает данные
 ls -l /proc/$PID/fd/
-# lrwx------ 1 user user 64 Mar 14 10:00 3 -&gt; /home/user/file.txt (deleted)
+# lrwx------ 1 user user 64 Mar 14 10:00 3 -&gt; /home/spiage/file.txt (deleted)
 </code></pre>
 <p><strong>Решение:</strong></p>
 <pre><code class="language-bash"># 1. Перезапустить процесс
@@ -6280,9 +6280,9 @@ pwd  # Всё ещё /home!
 </thead>
 <tbody>
 <tr><td><code>PATH</code></td><td>Пути поиска команд</td><td><code>/usr/bin:/bin</code></td></tr>
-<tr><td><code>HOME</code></td><td>Домашняя директория</td><td><code>/home/user</code></td></tr>
+<tr><td><code>HOME</code></td><td>Домашняя директория</td><td><code>/home/spiage</code></td></tr>
 <tr><td><code>USER</code></td><td>Имя пользователя</td><td><code>user</code></td></tr>
-<tr><td><code>PWD</code></td><td>Текущая директория</td><td><code>/home/user</code></td></tr>
+<tr><td><code>PWD</code></td><td>Текущая директория</td><td><code>/home/spiage</code></td></tr>
 <tr><td><code>OLDPWD</code></td><td>Предыдущая директория</td><td><code>/home</code></td></tr>
 <tr><td><code>SHELL</code></td><td>Путь к shell</td><td><code>/bin/bash</code></td></tr>
 <tr><td><code>TERM</code></td><td>Тип терминала</td><td><code>xterm-256color</code></td></tr>
@@ -8394,7 +8394,7 @@ lsof
 
 # Вывод:
 # COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-# bash     1234 user  cwd    DIR   8,1     4096    2 /home/user
+# bash     1234 user  cwd    DIR   8,1     4096    2 /home/spiage
 # bash     1234 user  txt    REG   8,1   1113504  123 /bin/bash
 # bash     1234 user    0u   CHR  136,0    0t0    3 /dev/pts/0
 </code></pre>
@@ -8426,7 +8426,7 @@ lsof -c bash -c python
 </code></pre>
 <h3 id="фильтрация-по-пользователю"><a class="header" href="#фильтрация-по-пользователю">Фильтрация по пользователю</a></h3>
 <pre><code class="language-bash"># По имени пользователя
-lsof -u username
+lsof -u spiage
 
 # По нескольким пользователям
 lsof -u user1,user2
@@ -8943,7 +8943,7 @@ ps aux
 </ul>
 <h3 id="фильтрация"><a class="header" href="#фильтрация">Фильтрация</a></h3>
 <pre><code class="language-bash"># Процессы пользователя
-ps -u username
+ps -u spiage
 
 # По имени
 ps -C bash
@@ -10966,7 +10966,7 @@ echo $@    # Все аргументы
 <h3 id="34-расширение-тильды"><a class="header" href="#34-расширение-тильды">3.4. Расширение тильды</a></h3>
 <pre><code class="language-bash"># Домашняя директория
 cd ~
-# /home/user
+# /home/spiage
 
 # Домашняя директория пользователя
 cd ~otheruser
@@ -11050,7 +11050,7 @@ $ files=$(ls *.txt 2&gt;/dev/null); echo "Found ${#files} chars"
 <h2 id="особенности"><a class="header" href="#особенности">Особенности</a></h2>
 <h3 id="кавычки-предотвращают-расширения"><a class="header" href="#кавычки-предотвращают-расширения">Кавычки предотвращают расширения</a></h3>
 <pre><code class="language-bash"># Двойные кавычки — некоторые расширения работают
-echo "$HOME"      # /home/user
+echo "$HOME"      # /home/spiage
 echo "$(date)"    # дата
 
 # Одинарные кавычки — никаких расширений
@@ -12416,21 +12416,21 @@ wait 12345
 <h2 id="примеры-6"><a class="header" href="#примеры-6">Примеры</a></h2>
 <pre><code class="language-bash"># Перейти и сохранить
 pushd /var/log
-# Стек: /var/log /home/user
+# Стек: /var/log /home/spiage
 
 # Ещё одна директория
 pushd /etc
-# Стек: /etc /var/log /home/user
+# Стек: /etc /var/log /home/spiage
 
 # Показать стек
 dirs -v
 # 0  /etc
 # 1  /var/log
-# 2  /home/user
+# 2  /home/spiage
 
 # Вернуться
 popd
-# Стек: /var/log /home/user
+# Стек: /var/log /home/spiage
 
 # Очистить стек
 dirs -c
@@ -12818,15 +12818,15 @@ time ls
 <h3 id="примеры-7"><a class="header" href="#примеры-7">Примеры</a></h3>
 <pre><code class="language-bash"># Вывести текущую директорию
 pwd
-# /home/user/projects
+# /home/spiage/projects
 
 # Вывести физический путь (без символических ссылок)
 pwd -P
-# /home/user/real_projects
+# /home/spiage/real_projects
 
 # Вывести логический путь (с символическими ссылками)
 pwd -L
-# /home/user/projects
+# /home/spiage/projects
 </code></pre>
 <h3 id="переменные-окружения-1"><a class="header" href="#переменные-окружения-1">Переменные окружения</a></h3>
 <ul>
@@ -12856,11 +12856,11 @@ cd $HOME
 <h4 id="переход-в-предыдущую-директорию"><a class="header" href="#переход-в-предыдущую-директорию">Переход в предыдущую директорию</a></h4>
 <pre><code class="language-bash"># В предыдущую директорию
 cd -
-# Выведет: /home/user/previous_dir
+# Выведет: /home/spiage/previous_dir
 </code></pre>
 <h4 id="относительные-и-абсолютные-пути"><a class="header" href="#относительные-и-абсолютные-пути">Относительные и абсолютные пути</a></h4>
 <pre><code class="language-bash"># Абсолютный путь
-cd /home/user/projects
+cd /home/spiage/projects
 
 # Относительный путь
 cd projects
@@ -12870,21 +12870,21 @@ cd ./subdir
 <h4 id="переменная-cdpath"><a class="header" href="#переменная-cdpath">Переменная CDPATH</a></h4>
 <p>Если установлена переменная <code>CDPATH</code>, <code>cd</code> ищет директорию в указанных путях:</p>
 <pre><code class="language-bash"># Установить CDPATH
-export CDPATH=.:~:/home/user/projects
+export CDPATH=.:~:/home/spiage/projects
 
 # Теперь можно перейти в любую директорию из CDPATH
-cd myproject  # Найдёт в ., ~, /home/user/projects
+cd myproject  # Найдёт в ., ~, /home/spiage/projects
 </code></pre>
 <h4 id="физический-vs-логический-путь"><a class="header" href="#физический-vs-логический-путь">Физический vs логический путь</a></h4>
-<pre><code class="language-bash"># Если /home/user/projects -&gt; /var/data/projects (symlink)
+<pre><code class="language-bash"># Если /home/spiage/projects -&gt; /var/data/projects (symlink)
 
 # Логический путь (по умолчанию)
-cd /home/user/projects
+cd /home/spiage/projects
 pwd
-# /home/user/projects
+# /home/spiage/projects
 
 # Физический путь
-cd -P /home/user/projects
+cd -P /home/spiage/projects
 pwd
 # /var/data/projects
 </code></pre>
@@ -12907,12 +12907,12 @@ pwd
 <p><strong>Примеры:</strong></p>
 <pre><code class="language-bash"># Вывести стек
 dirs
-# /home/user/projects /home/user/docs /var/log
+# /home/spiage/projects /home/spiage/docs /var/log
 
 # Вывести с номерами
 dirs -v
-# 0  /home/user/projects
-# 1  /home/user/docs
+# 0  /home/spiage/projects
+# 1  /home/spiage/docs
 # 2  /var/log
 
 # Очистить стек
@@ -12926,7 +12926,7 @@ pushd [+n | -n]
 <p><strong>Примеры:</strong></p>
 <pre><code class="language-bash"># Добавить директорию в стек и перейти в неё
 pushd /var/log
-# /var/log /home/user/projects
+# /var/log /home/spiage/projects
 
 # Добавить текущую директорию в стек
 pushd
@@ -12942,7 +12942,7 @@ pushd +1
 <p><strong>Примеры:</strong></p>
 <pre><code class="language-bash"># Удалить вершину стека и перейти в следующую
 popd
-# /home/user/projects
+# /home/spiage/projects
 
 # Удалить директорию с индексом 1
 popd +1
@@ -12953,31 +12953,31 @@ popd -1
 <h3 id="пример-работы-со-стеком"><a class="header" href="#пример-работы-со-стеком">Пример работы со стеком</a></h3>
 <pre><code class="language-bash"># Начальное состояние
 pwd
-# /home/user
+# /home/spiage
 
 # Добавить директорию в стек
 pushd /var/log
-# /var/log /home/user
+# /var/log /home/spiage
 
 # Добавить ещё одну
 pushd /etc
-# /etc /var/log /home/user
+# /etc /var/log /home/spiage
 
 # Вывести стек
 dirs -v
 # 0  /etc
 # 1  /var/log
-# 2  /home/user
+# 2  /home/spiage
 
 # Вернуться к предыдущей
 popd
-# /var/log /home/user
+# /var/log /home/spiage
 pwd
 # /var/log
 
 # Перейти к третьей в стеке
 pushd +2
-# /home/user /var/log /etc
+# /home/spiage /var/log /etc
 </code></pre>
 <h2 id="практические-примеры-23"><a class="header" href="#практические-примеры-23">Практические примеры</a></h2>
 <h3 id="быстрая-навигация"><a class="header" href="#быстрая-навигация">Быстрая навигация</a></h3>
@@ -12994,7 +12994,7 @@ cd -
 cd ~
 
 # Перейти в директорию пользователя
-cd /home/username
+cd /home/spiage
 </code></pre>
 <h3 id="навигация-с-проверкой"><a class="header" href="#навигация-с-проверкой">Навигация с проверкой</a></h3>
 <pre><code class="language-bash"># Показать где находитесь после перехода
@@ -13556,16 +13556,16 @@ cp [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
 cp file.txt backup.txt
 
 # Копировать в другую директорию
-cp file.txt /home/user/
+cp file.txt /home/spiage/
 
 # Копировать несколько файлов
 cp file1.txt file2.txt /backup/
 
 # Рекурсивное копирование директории
-cp -r /home/user/docs /backup/
+cp -r /home/spiage/docs /backup/
 
 # Копировать с сохранением атрибутов
-cp -a /home/user /backup/
+cp -a /home/spiage /backup/
 
 # Интерактивное копирование (спрашивать перед перезаписью)
 cp -i file.txt /existing/
@@ -13580,8 +13580,8 @@ cp -u file.txt /backup/
 cp -b file.txt /backup/
 
 # Копировать с сохранением структуры директорий
-cp --parents /home/user/file.txt /backup/
-# Результат: /backup/home/user/file.txt
+cp --parents /home/spiage/file.txt /backup/
+# Результат: /backup/home/spiage/file.txt
 
 # Копировать символические ссылки как ссылки
 cp -d link.txt /backup/
@@ -13645,13 +13645,13 @@ mv [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
 mv oldname.txt newname.txt
 
 # Переместить файл в другую директорию
-mv file.txt /home/user/
+mv file.txt /home/spiage/
 
 # Переместить несколько файлов
 mv file1.txt file2.txt /backup/
 
 # Переместить директорию
-mv /home/user/old_dir /home/user/new_dir
+mv /home/spiage/old_dir /home/spiage/new_dir
 
 # Интерактивное перемещение (спрашивать перед перезаписью)
 mv -i file.txt /existing/
@@ -13678,17 +13678,17 @@ mv -T file1.txt file2.txt
 <h4 id="перемещение-между-файловыми-системами"><a class="header" href="#перемещение-между-файловыми-системами">Перемещение между файловыми системами</a></h4>
 <p>При перемещении между разными файловыми системами mv фактически копирует и удаляет:</p>
 <pre><code class="language-bash"># Перемещение на другой диск = копирование + удаление
-mv /home/user/file.txt /mnt/external/
+mv /home/spiage/file.txt /mnt/external/
 </code></pre>
 <h4 id="переименование-vs-перемещение"><a class="header" href="#переименование-vs-перемещение">Переименование vs перемещение</a></h4>
 <pre><code class="language-bash"># Переименование (в той же директории)
 mv oldname.txt newname.txt
 
 # Перемещение (в другую директорию)
-mv file.txt /home/user/
+mv file.txt /home/spiage/
 
 # Переименование при перемещении
-mv /home/user/old.txt /backup/new.txt
+mv /home/spiage/old.txt /backup/new.txt
 </code></pre>
 <h4 id="резервное-копирование-1"><a class="header" href="#резервное-копирование-1">Резервное копирование</a></h4>
 <pre><code class="language-bash"># Создать резервную копию с суффиксом ~
@@ -13729,7 +13729,7 @@ mkdir -m 755 newdir
 mkdir -m 700 private
 
 # Создать директорию с родительскими директориями
-mkdir -p /home/user/project/src
+mkdir -p /home/spiage/project/src
 
 # Создать и вывести информацию
 mkdir -v newdir
@@ -13741,10 +13741,10 @@ mkdir -p existing_dir
 <h4 id="создание-вложенных-директорий"><a class="header" href="#создание-вложенных-директорий">Создание вложенных директорий</a></h4>
 <p>Без <code>-p</code> mkdir не создаёт родительские директории:</p>
 <pre><code class="language-bash"># Ошибка: родительская директория не существует
-mkdir /home/user/project/src
+mkdir /home/spiage/project/src
 
 # Правильно: создать все директории
-mkdir -p /home/user/project/src
+mkdir -p /home/spiage/project/src
 </code></pre>
 <h4 id="права-доступа-2"><a class="header" href="#права-доступа-2">Права доступа</a></h4>
 <p>По умолчанию mkdir создаёт директории с правами <code>777 - umask</code>:</p>
@@ -13831,8 +13831,8 @@ rm -rf /path/to/dir/
 rm -rf /
 
 # ОПАСНО: может удалить домашнюю директорию из-за опечатки
-rm -rf /home/user/
-rm -rf /home/user /*  # Пробел после / опасен!
+rm -rf /home/spiage/
+rm -rf /home/spiage /*  # Пробел после / опасен!
 
 # Безопаснее: использовать интерактивный режим
 rm -ri dir/
@@ -13881,7 +13881,7 @@ rmdir dir1 dir2 dir3
 rmdir -v empty_dir
 
 # Удалить директорию и пустые родительские
-rmdir -p /home/user/project/src/docs
+rmdir -p /home/spiage/project/src/docs
 # Удаляет: docs, затем src, затем project (если пустые)
 </code></pre>
 <h3 id="особенности-3-1"><a class="header" href="#особенности-3-1">Особенности</a></h3>
@@ -14103,7 +14103,7 @@ find . -name "*.tmp" -ok rm {} \;
 </code></pre>
 <h4 id="поиск-по-владельцу-и-группе"><a class="header" href="#поиск-по-владельцу-и-группе">Поиск по владельцу и группе</a></h4>
 <pre><code class="language-bash"># Найти файлы, принадлежащие пользователю
-find /home -user username
+find /home -user spiage
 
 # Найти файлы с определённой группой
 find . -group developers
@@ -14122,7 +14122,7 @@ find . -type f -name "*.txt" -size +1M -mtime -7
 find . -type f -o -type d
 
 # Найти файлы, не принадлежащие пользователю
-find . ! -user username
+find . ! -user spiage
 
 # Найти с группировкой
 find . -type f \( -name "*.txt" -o -name "*.log" \)
@@ -16653,7 +16653,7 @@ echo '$HOME'      # $HOME
 echo '$USER'      # $USER
 
 # Двойные
-echo "$HOME"      # /home/user
+echo "$HOME"      # /home/spiage
 echo "$USER"      # user
 
 # ANSI-C
@@ -17967,6 +17967,35 @@ count=10
 <p><strong>Важно:</strong> Не должно быть пробелов вокруг <code>=</code>!</p>
 <pre><code class="language-bash">name = value  # ОШИБКА!
 </code></pre>
+<h2 id="почему-пробелы-вызывают-ошибку"><a class="header" href="#почему-пробелы-вызывают-ошибку">Почему пробелы вызывают ошибку</a></h2>
+<p><strong>Механизм парсинга bash</strong> (из исходного кода <code>general.c:480-537</code>):</p>
+<p>Функция <code>assignment()</code> определяет, является ли слово присваиванием:</p>
+<ol>
+<li><strong>Проверка первого символа</strong> — должен быть буква, <code>_</code>, или цифра</li>
+<li><strong>Проверка последующих символов</strong> — только буквы, цифры, <code>_</code></li>
+<li><strong>Пробел не является допустимым символом</strong> ни в одном из случаев</li>
+</ol>
+<p><strong>Что видит bash:</strong></p>
+<pre><code class="language-bash">name = value
+│    │
+│    └─ Пробел → конец токена "name"
+└───── bash пытается выполнить команду "name"
+       с аргументами "=" и "value"
+       → "command not found"
+</code></pre>
+<p><strong>Правильно:</strong></p>
+<pre><code class="language-bash">name=value
+│        │
+└────────┘ '=' внутри токена
+           → assignment() возвращает позицию '='
+           → это присваивание, не команда!
+</code></pre>
+<p><strong>Из исходного кода bash (<code>general.c:506-508</code>):</strong></p>
+<pre><code class="language-c">/* '=' в начале слова — НЕ присваивание */
+if (c == '=')
+  return (indx);  // Возвращает позицию '='
+</code></pre>
+<p><strong>Вывод:</strong> Пробелы вокруг <code>=</code> превращают присваивание в попытку выполнить команду.</p>
 <h2 id="обращение-к-переменным"><a class="header" href="#обращение-к-переменным">Обращение к переменным</a></h2>
 <pre><code class="language-bash"># Базовое обращение
 echo $name
@@ -18432,7 +18461,7 @@ echo "$*"  # "arg1:arg2:arg3"
 echo $0  # ./script.sh
 
 # С полным путём
-echo $0  # /home/user/script.sh
+echo $0  # /home/spiage/script.sh
 </code></pre>
 <h2 id="процессы"><a class="header" href="#процессы">Процессы</a></h2>
 <h3 id="--pid-текущего-процесса"><a class="header" href="#--pid-текущего-процесса">$$ — PID текущего процесса</a></h3>
@@ -19182,9 +19211,9 @@ echo ${text,,}  # hello
 cmd=${cmd/ls/ls -A}  # ls -A -la
 </code></pre>
 <h3 id="замена-пути"><a class="header" href="#замена-пути">Замена пути</a></h3>
-<pre><code class="language-bash">path="/home/user/old/project"
+<pre><code class="language-bash">path="/home/spiage/old/project"
 newpath=${path/old/new}
-echo $newpath  # /home/user/new/project
+echo $newpath  # /home/spiage/new/project
 </code></pre>
 <h3 id="нормализация-разделителей"><a class="header" href="#нормализация-разделителей">Нормализация разделителей</a></h3>
 <pre><code class="language-bash">text="one,two;three:four"
@@ -20118,7 +20147,7 @@ if [[ $text =~ Version:\ ([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
 fi
 </code></pre>
 <h3 id="проверка-пути"><a class="header" href="#проверка-пути">Проверка пути</a></h3>
-<pre><code class="language-bash">path="/home/user/docs/file.txt"
+<pre><code class="language-bash">path="/home/spiage/docs/file.txt"
 
 if [[ $path =~ ^/home/([^/]+)/ ]]; then
     user=${BASH_REMATCH[1]}
@@ -21895,7 +21924,7 @@ find_file "config.txt" /home
     echo $total
 }
 
-echo "Размер: $(dir_size /home/user)"
+echo "Размер: $(dir_size /home/spiage)"
 </code></pre>
 <h3 id="дерево-процессов"><a class="header" href="#дерево-процессов">Дерево процессов</a></h3>
 <pre><code class="language-bash">show_tree() {
@@ -25094,7 +25123,7 @@ eval $cmd $arg
 # С подстановкой
 var="HOME"
 eval echo \$$var
-# /home/user
+# /home/spiage
 </code></pre>
 <h3 id="почему-eval-опасен"><a class="header" href="#почему-eval-опасен">Почему eval опасен</a></h3>
 <pre><code class="language-bash"># ОПАСНО: выполнение произвольного кода
@@ -27146,7 +27175,7 @@ check_threshold() {
 #   destination - Директория назначения
 #
 # Пример:
-#   ./backup.sh /home/user /backup
+#   ./backup.sh /home/spiage /backup
 </code></pre>
 <h3 id="тестирование-скриптов-bash_unit-bats"><a class="header" href="#тестирование-скриптов-bash_unit-bats">Тестирование скриптов (bash_unit, BATS)</a></h3>
 <pre><code class="language-bash"># BATS тест
@@ -27275,7 +27304,7 @@ command || die "command failed"
 #   -h, --help       Показать эту справку
 #
 # Примеры:
-#   ./backup.sh /home/user /backup
+#   ./backup.sh /home/spiage /backup
 #   ./backup.sh -v /data /backup/daily
 #
 # Автор: John Doe &lt;john@example.com&gt;

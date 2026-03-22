@@ -36,7 +36,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-0d3316e1.js";
+            window.path_to_searchindex_js = "../../searchindex-c78c6297.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-2dd0a2f7.js"></script>
@@ -193,6 +193,35 @@ count=10
 <p><strong>Важно:</strong> Не должно быть пробелов вокруг <code>=</code>!</p>
 <pre><code class="language-bash">name = value  # ОШИБКА!
 </code></pre>
+<h2 id="почему-пробелы-вызывают-ошибку"><a class="header" href="#почему-пробелы-вызывают-ошибку">Почему пробелы вызывают ошибку</a></h2>
+<p><strong>Механизм парсинга bash</strong> (из исходного кода <code>general.c:480-537</code>):</p>
+<p>Функция <code>assignment()</code> определяет, является ли слово присваиванием:</p>
+<ol>
+<li><strong>Проверка первого символа</strong> — должен быть буква, <code>_</code>, или цифра</li>
+<li><strong>Проверка последующих символов</strong> — только буквы, цифры, <code>_</code></li>
+<li><strong>Пробел не является допустимым символом</strong> ни в одном из случаев</li>
+</ol>
+<p><strong>Что видит bash:</strong></p>
+<pre><code class="language-bash">name = value
+│    │
+│    └─ Пробел → конец токена "name"
+└───── bash пытается выполнить команду "name"
+       с аргументами "=" и "value"
+       → "command not found"
+</code></pre>
+<p><strong>Правильно:</strong></p>
+<pre><code class="language-bash">name=value
+│        │
+└────────┘ '=' внутри токена
+           → assignment() возвращает позицию '='
+           → это присваивание, не команда!
+</code></pre>
+<p><strong>Из исходного кода bash (<code>general.c:506-508</code>):</strong></p>
+<pre><code class="language-c">/* '=' в начале слова — НЕ присваивание */
+if (c == '=')
+  return (indx);  // Возвращает позицию '='
+</code></pre>
+<p><strong>Вывод:</strong> Пробелы вокруг <code>=</code> превращают присваивание в попытку выполнить команду.</p>
 <h2 id="обращение-к-переменным"><a class="header" href="#обращение-к-переменным">Обращение к переменным</a></h2>
 <pre><code class="language-bash"># Базовое обращение
 echo $name

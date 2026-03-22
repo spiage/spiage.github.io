@@ -36,7 +36,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-0d3316e1.js";
+            window.path_to_searchindex_js = "../../searchindex-c78c6297.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-2dd0a2f7.js"></script>
@@ -310,16 +310,16 @@ cp [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
 cp file.txt backup.txt
 
 # Копировать в другую директорию
-cp file.txt /home/user/
+cp file.txt /home/spiage/
 
 # Копировать несколько файлов
 cp file1.txt file2.txt /backup/
 
 # Рекурсивное копирование директории
-cp -r /home/user/docs /backup/
+cp -r /home/spiage/docs /backup/
 
 # Копировать с сохранением атрибутов
-cp -a /home/user /backup/
+cp -a /home/spiage /backup/
 
 # Интерактивное копирование (спрашивать перед перезаписью)
 cp -i file.txt /existing/
@@ -334,8 +334,8 @@ cp -u file.txt /backup/
 cp -b file.txt /backup/
 
 # Копировать с сохранением структуры директорий
-cp --parents /home/user/file.txt /backup/
-# Результат: /backup/home/user/file.txt
+cp --parents /home/spiage/file.txt /backup/
+# Результат: /backup/home/spiage/file.txt
 
 # Копировать символические ссылки как ссылки
 cp -d link.txt /backup/
@@ -399,13 +399,13 @@ mv [ОПЦИЯ]... -t НАЗНАЧЕНИЕ ИСТОЧНИК...
 mv oldname.txt newname.txt
 
 # Переместить файл в другую директорию
-mv file.txt /home/user/
+mv file.txt /home/spiage/
 
 # Переместить несколько файлов
 mv file1.txt file2.txt /backup/
 
 # Переместить директорию
-mv /home/user/old_dir /home/user/new_dir
+mv /home/spiage/old_dir /home/spiage/new_dir
 
 # Интерактивное перемещение (спрашивать перед перезаписью)
 mv -i file.txt /existing/
@@ -432,17 +432,17 @@ mv -T file1.txt file2.txt
 <h4 id="перемещение-между-файловыми-системами"><a class="header" href="#перемещение-между-файловыми-системами">Перемещение между файловыми системами</a></h4>
 <p>При перемещении между разными файловыми системами mv фактически копирует и удаляет:</p>
 <pre><code class="language-bash"># Перемещение на другой диск = копирование + удаление
-mv /home/user/file.txt /mnt/external/
+mv /home/spiage/file.txt /mnt/external/
 </code></pre>
 <h4 id="переименование-vs-перемещение"><a class="header" href="#переименование-vs-перемещение">Переименование vs перемещение</a></h4>
 <pre><code class="language-bash"># Переименование (в той же директории)
 mv oldname.txt newname.txt
 
 # Перемещение (в другую директорию)
-mv file.txt /home/user/
+mv file.txt /home/spiage/
 
 # Переименование при перемещении
-mv /home/user/old.txt /backup/new.txt
+mv /home/spiage/old.txt /backup/new.txt
 </code></pre>
 <h4 id="резервное-копирование"><a class="header" href="#резервное-копирование">Резервное копирование</a></h4>
 <pre><code class="language-bash"># Создать резервную копию с суффиксом ~
@@ -483,7 +483,7 @@ mkdir -m 755 newdir
 mkdir -m 700 private
 
 # Создать директорию с родительскими директориями
-mkdir -p /home/user/project/src
+mkdir -p /home/spiage/project/src
 
 # Создать и вывести информацию
 mkdir -v newdir
@@ -495,10 +495,10 @@ mkdir -p existing_dir
 <h4 id="создание-вложенных-директорий"><a class="header" href="#создание-вложенных-директорий">Создание вложенных директорий</a></h4>
 <p>Без <code>-p</code> mkdir не создаёт родительские директории:</p>
 <pre><code class="language-bash"># Ошибка: родительская директория не существует
-mkdir /home/user/project/src
+mkdir /home/spiage/project/src
 
 # Правильно: создать все директории
-mkdir -p /home/user/project/src
+mkdir -p /home/spiage/project/src
 </code></pre>
 <h4 id="права-доступа"><a class="header" href="#права-доступа">Права доступа</a></h4>
 <p>По умолчанию mkdir создаёт директории с правами <code>777 - umask</code>:</p>
@@ -585,8 +585,8 @@ rm -rf /path/to/dir/
 rm -rf /
 
 # ОПАСНО: может удалить домашнюю директорию из-за опечатки
-rm -rf /home/user/
-rm -rf /home/user /*  # Пробел после / опасен!
+rm -rf /home/spiage/
+rm -rf /home/spiage /*  # Пробел после / опасен!
 
 # Безопаснее: использовать интерактивный режим
 rm -ri dir/
@@ -635,7 +635,7 @@ rmdir dir1 dir2 dir3
 rmdir -v empty_dir
 
 # Удалить директорию и пустые родительские
-rmdir -p /home/user/project/src/docs
+rmdir -p /home/spiage/project/src/docs
 # Удаляет: docs, затем src, затем project (если пустые)
 </code></pre>
 <h3 id="особенности-3"><a class="header" href="#особенности-3">Особенности</a></h3>

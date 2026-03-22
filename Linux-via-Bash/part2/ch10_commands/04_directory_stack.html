@@ -36,7 +36,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-0d3316e1.js";
+            window.path_to_searchindex_js = "../../searchindex-c78c6297.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-2dd0a2f7.js"></script>
@@ -214,21 +214,21 @@
 <h2 id="примеры"><a class="header" href="#примеры">Примеры</a></h2>
 <pre><code class="language-bash"># Перейти и сохранить
 pushd /var/log
-# Стек: /var/log /home/user
+# Стек: /var/log /home/spiage
 
 # Ещё одна директория
 pushd /etc
-# Стек: /etc /var/log /home/user
+# Стек: /etc /var/log /home/spiage
 
 # Показать стек
 dirs -v
 # 0  /etc
 # 1  /var/log
-# 2  /home/user
+# 2  /home/spiage
 
 # Вернуться
 popd
-# Стек: /var/log /home/user
+# Стек: /var/log /home/spiage
 
 # Очистить стек
 dirs -c
