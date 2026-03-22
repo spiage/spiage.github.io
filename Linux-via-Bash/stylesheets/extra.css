@@ -1,0 +1,19 @@
+/* На всю ширину */
+.md-grid {
+  max-width: 100% !important;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+/* Контент на всю ширину */
+.md-content__inner {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+/* TOC справа остаётся фиксированным */
+@media screen and (min-width: 1220px) {
+  .md-sidebar--secondary {
+    width: 15rem;
+  }
+}
