@@ -39,7 +39,7 @@ async function initQuiz() {
   
   if (!settings.subchapters || settings.subchapters.length === 0) {
     console.log("No subchapters selected, redirecting to index");
-    window.location.href = '../';
+    window.location.href = '/Linux-via-Bash/tests/';
     return;
   }
   
@@ -329,11 +329,11 @@ function finishQuiz() {
       `}
       
       <div class="result-actions">
-        <a href="../" class="btn btn-primary">← К выбору глав</a>
+        <a href="/Linux-via-Bash/tests/" class="btn btn-primary">← К выбору глав</a>
         <button onclick="location.reload()" class="btn btn-secondary">
           🔄 Пройти ещё раз
         </button>
-        <a href="../results/" class="btn btn-secondary">
+        <a href="/Linux-via-Bash/tests/results/" class="btn btn-secondary">
           📊 Подробные результаты
         </a>
       </div>
