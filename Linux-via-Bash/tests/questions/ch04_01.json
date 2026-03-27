@@ -1,0 +1,82 @@
+{
+  "chapter": "ch04",
+  "subchapter": "01",
+  "title": "Что такое процесс",
+  "description": "PID, PPID, атрибуты процесса",
+  "learning_objectives": [
+    "Понимать что такое процесс",
+    "Знать PID и PPID"
+  ],
+  "questions": [
+    {
+      "id": "ch04_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое процесс?",
+      "options": [
+        "Запущенная программа в памяти",
+        "Запущенная программа вместе с её окружением: памятью, открытыми файлами, переменными",
+        "Исполняемый файл на диске",
+        "Команда в shell"
+      ],
+      "correct": [1],
+      "explanation": "**Процесс** — это запущенная программа вместе с её окружением: памятью, открытыми файлами, переменными окружения и т.д.",
+      "references": ["vol1/part1/ch04_processes/01_basics.md"],
+      "tags": ["процессы", "базовые понятия"]
+    },
+    {
+      "id": "ch04_01_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что PID 1 — это init/systemd?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. PID 1 — первый процесс (init или systemd), родитель всех процессов.",
+      "references": ["vol1/part1/ch04_processes/01_basics.md"],
+      "tags": ["PID", "init"]
+    },
+    {
+      "id": "ch04_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Почему важно знать PPID процесса?",
+      "options": [
+        "Чтобы узнать владельца процесса",
+        "Чтобы понять иерархию процессов и какой процесс запустил этот",
+        "Чтобы определить приоритет процесса",
+        "PPID не важен"
+      ],
+      "correct": [1],
+      "explanation": "**PPID показывает, какой процесс запустил этот**. Это важно для понимания иерархии процессов.",
+      "references": ["vol1/part1/ch04_processes/01_basics.md"],
+      "tags": ["PPID", "иерархия"]
+    },
+    {
+      "id": "ch04_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие атрибуты есть у процесса? (выберите все правильные)",
+      "options": ["PID", "UID", "Команда", "Цвет"],
+      "correct": [0, 1, 2],
+      "explanation": "**PID, UID, команда** — атрибуты процесса. Цвет — нет.",
+      "references": ["vol1/part1/ch04_processes/01_basics.md"],
+      "tags": ["атрибуты", "процессы"]
+    },
+    {
+      "id": "ch04_01_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какой командой можно посмотреть процессы с их PPID?",
+      "options": ["ps -o pid,ppid", "proc", "list", "show"],
+      "correct": [0],
+      "explanation": "**ps -o pid,ppid** показывает процессы с их родительскими PID.",
+      "references": ["vol1/part1/ch04_processes/01_basics.md"],
+      "tags": ["ps", "команды"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

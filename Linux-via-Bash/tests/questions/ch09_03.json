@@ -1,0 +1,125 @@
+{
+  "chapter": "ch09",
+  "subchapter": "03",
+  "title": "cut, paste, join — работа с колонками",
+  "description": "Извлечение и объединение столбцов данных",
+  "learning_objectives": [
+    "Уметь извлекать колонки из данных",
+    "Уметь объединять файлы по ключу",
+    "Знать разделители полей"
+  ],
+  "questions": [
+    {
+      "id": "ch09_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда cut?",
+      "options": [
+        "Вырезает (удаляет) строки из файла",
+        "Извлекает указанные колонки/поля из каждой строки",
+        "Разрезает файл на части",
+        "Копирует часть файла"
+      ],
+      "correct": [1],
+      "explanation": "**cut** извлекает указанные поля (колонки) из каждой строки.",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["cut", "колонки"]
+    },
+    {
+      "id": "ch09_03_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как извлечь первое поле из CSV файла?",
+      "options": [
+        "cut -d',' -f1 file.csv",
+        "cut -c1 file.csv",
+        "cut -f1 file.csv",
+        "cut -d',' -1 file.csv"
+      ],
+      "correct": [0],
+      "explanation": "**-d','** задаёт разделитель запятую, **-f1** — первое поле.",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["cut", "CSV"]
+    },
+    {
+      "id": "ch09_03_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что paste объединяет файлы построчно (в колонки)?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. paste объединяет строки из нескольких файлов в колонки.",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["paste", "объединение"]
+    },
+    {
+      "id": "ch09_03_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что делает команда join?",
+      "options": [
+        "Объединяет файлы построчно",
+        "Объединяет две строки в одну",
+        "Объединяет файлы по общему полю (ключу)",
+        "Склеивает файлы в один"
+      ],
+      "correct": [2],
+      "explanation": "**join** объединяет строки из двух файлов по общему ключу (как SQL JOIN).",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["join", "ключ"]
+    },
+    {
+      "id": "ch09_03_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как извлечь символы с 1 по 5 из каждой строки?",
+      "options": [
+        "cut -c1-5 file",
+        "cut -f1-5 file",
+        "cut -s1-5 file",
+        "cut -C1-5 file"
+      ],
+      "correct": [0],
+      "explanation": "**-c1-5** извлекает символы (characters) с позиции 1 по 5.",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["cut", "символы"]
+    },
+    {
+      "id": "ch09_03_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что требует команда join для корректной работы? (выберите все правильные)",
+      "options": [
+        "Файлы должны быть отсортированы по ключу",
+        "Файлы должны иметь одинаковый разделитель",
+        "Файлы должны быть одного размера",
+        "Ключ должен быть в первом поле (по умолчанию)"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "**join требует отсортированных файлов**. Разделитель можно задать опцией, размер не важен.",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["join", "требования"]
+    },
+    {
+      "id": "ch09_03_q07",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как объединить два файла в один с разделителем табуляции?",
+      "options": [
+        "paste file1 file2",
+        "join file1 file2",
+        "cat file1 file2",
+        "merge file1 file2"
+      ],
+      "correct": [0],
+      "explanation": "**paste** объединяет файлы построчно, разделяя табуляцией (по умолчанию).",
+      "references": ["vol1/part2/ch09_text_processing/03_cut_paste_join.md"],
+      "tags": ["paste", "объединение"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

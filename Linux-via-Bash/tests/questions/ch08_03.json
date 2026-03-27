@@ -1,0 +1,125 @@
+{
+  "chapter": "ch08",
+  "subchapter": "03",
+  "title": "Файловые операции: cp, mv, rm, mkdir",
+  "description": "Основные команды для работы с файлами и директориями",
+  "learning_objectives": [
+    "Уметь копировать и перемещать файлы",
+    "Уметь удалять файлы и директории",
+    "Уметь создавать директории"
+  ],
+  "questions": [
+    {
+      "id": "ch08_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда cp?",
+      "options": [
+        "Создаёт файл",
+        "Копирует файл или директорию",
+        "Перемещает файл",
+        "Редактирует файл"
+      ],
+      "correct": [1],
+      "explanation": "**cp (copy)** копирует файлы или директории.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["cp", "копирование"]
+    },
+    {
+      "id": "ch08_03_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как создать новую директорию?",
+      "options": [
+        "touch dir",
+        "mkdir dir",
+        "create dir",
+        "newdir dir"
+      ],
+      "correct": [1],
+      "explanation": "**mkdir (make directory)** создаёт новую директорию.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["mkdir", "директории"]
+    },
+    {
+      "id": "ch08_03_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что rm удаляет файлы безвозвратно (без корзины)?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. В Unix нет корзины по умолчанию, rm удаляет файлы навсегда.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["rm", "удаление"]
+    },
+    {
+      "id": "ch08_03_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как рекурсивно скопировать директорию?",
+      "options": [
+        "cp source dest",
+        "cp -r source dest",
+        "cp -R source dest",
+        "cp -r source dest или cp -R source dest"
+      ],
+      "correct": [3],
+      "explanation": "**cp -r** или **cp -R** — рекурсивное копирование директорий.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["cp", "рекурсия"]
+    },
+    {
+      "id": "ch08_03_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как безопасно удалить файл с подтверждением?",
+      "options": [
+        "rm -i file",
+        "rm file",
+        "rm -f file",
+        "del file"
+      ],
+      "correct": [0],
+      "explanation": "**rm -i** запрашивает подтверждение перед удалением каждого файла.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["rm", "безопасность"]
+    },
+    {
+      "id": "ch08_03_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что делает 'mv file1 file2'? (выберите все правильные)",
+      "options": [
+        "Переименовывает file1 в file2",
+        "Копирует file1 в file2",
+        "Перемещает file1 в file2 (если file2 — директория)",
+        "Удаляет file1"
+      ],
+      "correct": [0, 2],
+      "explanation": "**mv** переименовывает файл или перемещает в директорию. Исходный файл удаляется (перемещается).",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["mv", "перемещение"]
+    },
+    {
+      "id": "ch08_03_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как создать несколько вложенных директорий одной командой?",
+      "options": [
+        "mkdir a/b/c",
+        "mkdir -p a/b/c",
+        "mkdir -r a/b/c",
+        "mkdir a && mkdir b && mkdir c"
+      ],
+      "correct": [1],
+      "explanation": "**mkdir -p** создаёт родительские директории при необходимости.",
+      "references": ["vol1/part2/ch08_basic_commands/03_file_ops.md"],
+      "tags": ["mkdir", "опции"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

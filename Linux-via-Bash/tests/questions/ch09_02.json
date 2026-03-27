@@ -1,0 +1,125 @@
+{
+  "chapter": "ch09",
+  "subchapter": "02",
+  "title": "sort, uniq — сортировка и уникальные значения",
+  "description": "Сортировка строк и удаление дубликатов",
+  "learning_objectives": [
+    "Уметь сортировать строки",
+    "Уметь удалять дубликаты",
+    "Знать опции сортировки"
+  ],
+  "questions": [
+    {
+      "id": "ch09_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда sort?",
+      "options": [
+        "Сортирует строки по алфавиту",
+        "Сортирует файлы по размеру",
+        "Перемешивает строки",
+        "Копирует файлы в отсортированном виде"
+      ],
+      "correct": [0],
+      "explanation": "**sort** сортирует строки текста по алфавиту (по умолчанию).",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["sort", "сортировка"]
+    },
+    {
+      "id": "ch09_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что uniq удаляет все дубликаты в файле?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. uniq удаляет только **соседние** дубликаты. Файл должен быть отсортирован.",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["uniq", "дубликаты"]
+    },
+    {
+      "id": "ch09_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как отсортировать числа по возрастанию?",
+      "options": [
+        "sort -n file",
+        "sort -r file",
+        "sort -g file",
+        "sort -k file"
+      ],
+      "correct": [0],
+      "explanation": "**-n** сортирует как числа (1, 2, 10, а не 1, 10, 2).",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["sort", "числа"]
+    },
+    {
+      "id": "ch09_02_q04",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как показать только уникальные строки (без дубликатов)?",
+      "options": [
+        "sort file | uniq",
+        "uniq file",
+        "sort -u file",
+        "sort file | uniq -d"
+      ],
+      "correct": [0],
+      "explanation": "**sort | uniq** — sort группирует дубликаты, uniq оставляет по одному.",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["sort", "uniq"]
+    },
+    {
+      "id": "ch09_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как показать ТОЛЬКО дублирующиеся строки?",
+      "options": [
+        "sort file | uniq -d",
+        "sort file | uniq",
+        "uniq -d file",
+        "sort file | uniq -u"
+      ],
+      "correct": [0],
+      "explanation": "**uniq -d** показывает только дублирующиеся строки (по одной копии).",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["uniq", "дубликаты"]
+    },
+    {
+      "id": "ch09_02_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как отсортировать в обратном порядке? (выберите все правильные)",
+      "options": [
+        "sort -r file",
+        "sort --reverse file",
+        "rev file",
+        "sort file | tac"
+      ],
+      "correct": [0, 1],
+      "explanation": "**-r** или **--reverse** сортируют в обратном порядке. **rev** переворачивает строки, **tac** — порядок строк.",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["sort", "опции"]
+    },
+    {
+      "id": "ch09_02_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что выведет 'uniq -c file'?",
+      "options": [
+        "Только уникальные строки",
+        "Количество вхождений каждой строки",
+        "Только дубликаты",
+        "Отсортированные строки"
+      ],
+      "correct": [1],
+      "explanation": "**uniq -c** показывает количество повторений каждой строки.",
+      "references": ["vol1/part2/ch09_text_processing/02_sort_uniq.md"],
+      "tags": ["uniq", "подсчёт"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

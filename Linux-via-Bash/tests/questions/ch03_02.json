@@ -1,0 +1,77 @@
+{
+  "chapter": "ch03",
+  "subchapter": "02",
+  "title": "Пути и имена",
+  "description": "Абсолютные и относительные пути, правила именования",
+  "learning_objectives": [
+    "Различать абсолютные и относительные пути",
+    "Знать правила именования файлов"
+  ],
+  "questions": [
+    {
+      "id": "ch03_02_q01",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что в Unix имена файлов чувствительны к регистру?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. File.txt и file.txt — это разные файлы в Unix.",
+      "references": ["vol1/part1/ch03_filesystem/02_paths.md"],
+      "tags": ["имена", "регистр"]
+    },
+    {
+      "id": "ch03_02_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой символ НЕ рекомендуется использовать в именах файлов?",
+      "options": ["-", "_", ".", " "],
+      "correct": [3],
+      "explanation": "**\" \" (пробел)** не рекомендуется — требует экранирования в командах.",
+      "references": ["vol1/part1/ch03_filesystem/02_paths.md"],
+      "tags": ["имена", "символы"]
+    },
+    {
+      "id": "ch03_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что такое относительный путь?",
+      "options": [
+        "Путь от корня",
+        "Путь от текущей директории",
+        "Путь к домашней директории",
+        "Путь к родительской директории"
+      ],
+      "correct": [1],
+      "explanation": "**Относительный путь** — от текущей директории. Абсолютный — от корня.",
+      "references": ["vol1/part1/ch03_filesystem/02_paths.md"],
+      "tags": ["пути", "относительные"]
+    },
+    {
+      "id": "ch03_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие символы допустимы в именах файлов? (выберите все правильные)",
+      "options": ["a-z", "0-9", "/", "*"],
+      "correct": [0, 1],
+      "explanation": "**\"a-z\" и \"0-9\"** допустимы. \"/\" и \"*\" — недопустимы (служебные символы).",
+      "references": ["vol1/part1/ch03_filesystem/02_paths.md"],
+      "tags": ["имена", "символы"]
+    },
+    {
+      "id": "ch03_02_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какой единственный символ НЕ допустим в имени файла?",
+      "options": ["/", "\\", ":", "*"],
+      "correct": [0],
+      "explanation": "**\"/\"** — единственный полностью недопустимый символ (разделитель путей).",
+      "references": ["vol1/part1/ch03_filesystem/02_paths.md"],
+      "tags": ["имена", "ограничения"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

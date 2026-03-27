@@ -1,0 +1,78 @@
+{
+  "chapter": "ch01",
+  "subchapter": "02",
+  "title": "Дизайн инструментов",
+  "description": "Стандартные потоки, коды выхода, соглашения об именах в Unix",
+  "learning_objectives": [
+    "Знать три стандартных потока",
+    "Понимать коды выхода программ",
+    "Уметь использовать соглашения об именах"
+  ],
+  "questions": [
+    {
+      "id": "ch01_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой файловый дескриптор имеет stdout?",
+      "options": ["0", "1", "2", "3"],
+      "correct": [1],
+      "explanation": "**stdout имеет FD 1**. stdin = 0, stdout = 1, stderr = 2.",
+      "references": ["vol1/part1/ch01_philosophy/02_tools.md"],
+      "tags": ["потоки", "fd"]
+    },
+    {
+      "id": "ch01_02_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что код выхода 0 означает успех?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. В Unix код выхода 0 означает успех, ненулевой — ошибку.",
+      "references": ["vol1/part1/ch01_philosophy/02_tools.md"],
+      "tags": ["коды выхода"]
+    },
+    {
+      "id": "ch01_02_q03",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие опции означают 'рекурсивно' в Unix-командах? (выберите все правильные)",
+      "options": ["-r", "-f", "--recursive", "--force"],
+      "correct": [0, 2],
+      "explanation": "**-r и --recursive** означают рекурсивно. -f и --force означают 'принудительно'.",
+      "references": ["vol1/part1/ch01_philosophy/02_tools.md"],
+      "tags": ["опции", "конвенции"]
+    },
+    {
+      "id": "ch01_02_q04",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Какой код выхода будет у команды, если она не найдена?",
+      "options": ["126", "127", "128", "1"],
+      "correct": [1],
+      "explanation": "**127** — команда не найдена. 126 — команда найдена, но не исполняема.",
+      "references": ["vol1/part1/ch01_philosophy/02_tools.md"],
+      "tags": ["коды выхода"]
+    },
+    {
+      "id": "ch01_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что означает аргумент '--' в Unix-командах?",
+      "options": [
+        "Конец опций",
+        "Все файлы",
+        "Стандартный ввод",
+        "Рекурсивный режим"
+      ],
+      "correct": [0],
+      "explanation": "**'--' означает конец опций**. Всё что после — позиционные аргументы, даже если начинаются с '-'.",
+      "references": ["vol1/part1/ch01_philosophy/02_tools.md"],
+      "tags": ["аргументы", "конвенции"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

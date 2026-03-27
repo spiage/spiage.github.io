@@ -1,0 +1,109 @@
+{
+  "chapter": "ch06",
+  "subchapter": "04",
+  "title": "Here-документы",
+  "description": "Многострочный ввод через heredoc",
+  "learning_objectives": [
+    "Понимать синтаксис heredoc",
+    "Уметь создавать многострочный ввод",
+    "Знать разницу между << и <<-"
+  ],
+  "questions": [
+    {
+      "id": "ch06_04_q01",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой синтаксис используется для here-документа?",
+      "options": [
+        "cmd << MARKER ... MARKER",
+        "cmd < doc",
+        "cmd >> doc",
+        "cmd < <doc>"
+      ],
+      "correct": [0],
+      "explanation": "**<< MARKER** начинает heredoc, завершается строкой с тем же MARKER.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "синтаксис"]
+    },
+    {
+      "id": "ch06_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что в heredoc без кавычек происходит подстановка переменных?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. В heredoc без кавычек вокруг маркера происходит подстановка переменных и команд.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "подстановка"]
+    },
+    {
+      "id": "ch06_04_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как предотвратить подстановку переменных в heredoc?",
+      "options": [
+        "Использовать << 'MARKER'",
+        "Использовать << MARKER",
+        "Использовать <<-MARKER",
+        "Использовать <<\"MARKER\""
+      ],
+      "correct": [0],
+      "explanation": "**<< 'MARKER'** (маркер в одинарных кавычках) отключает подстановку переменных.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "кавычки"]
+    },
+    {
+      "id": "ch06_04_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что делает оператор <<- (с тире)?",
+      "options": [
+        "Ничего, это ошибка",
+        "Игнорирует ведущие табуляции в heredoc",
+        "Добавляет табуляцию к выводу",
+        "Удаляет пустые строки"
+      ],
+      "correct": [1],
+      "explanation": "**<<-** игнорирует ведущие табуляции, что удобно для вложенного кода в скриптах.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "табуляция"]
+    },
+    {
+      "id": "ch06_04_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Какой маркер завершает heredoc, начатый с 'cat << EOF'?",
+      "options": [
+        "END",
+        "EOF",
+        "DONE",
+        "QUIT"
+      ],
+      "correct": [1],
+      "explanation": "**Маркер должен совпадать**. Если начат с EOF, завершается строкой 'EOF'.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "маркер"]
+    },
+    {
+      "id": "ch06_04_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Где обычно используется heredoc? (выберите все правильные)",
+      "options": [
+        "Передача многострочного ввода командам",
+        "Создание файлов с контентом",
+        "Передача скриптов интерпретаторам",
+        "Чтение файлов построчно"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**Heredoc удобен для многострочного ввода, создания файлов и передачи скриптов**.",
+      "references": ["vol1/part2/ch06_redirection/04_heredoc.md"],
+      "tags": ["heredoc", "применение"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 6
+  }
+}

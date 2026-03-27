@@ -1,0 +1,83 @@
+{
+  "chapter": "ch01",
+  "subchapter": "03",
+  "title": "Текстовые потоки",
+  "description": "Почему текст используется как универсальный формат в Unix",
+  "learning_objectives": [
+    "Понимать преимущества текстового формата",
+    "Знать стандартные текстовые форматы",
+    "Уметь обрабатывать текстовые потоки"
+  ],
+  "questions": [
+    {
+      "id": "ch01_03_q01",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "question": "Какие преимущества у текстового формата в Unix? (выберите все правильные)",
+      "options": [
+        "Читаемо человеком",
+        "Легко обрабатывать скриптами",
+        "Быстрее бинарного формата",
+        "Не зависит от версии программы"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Текст **читаем человеком**, **легко обрабатывается скриптами**, **не зависит от версии программы**. Но не обязательно быстрее бинарного.",
+      "references": ["vol1/part1/ch01_philosophy/03_text_streams.md"],
+      "tags": ["текст", "преимущества"]
+    },
+    {
+      "id": "ch01_03_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда используется для поиска строк по паттерну?",
+      "options": ["find", "grep", "sort", "cut"],
+      "correct": [1],
+      "explanation": "**grep** ищет строки по паттерну. find ищет файлы, sort сортирует, cut извлекает колонки.",
+      "references": ["vol1/part1/ch01_philosophy/03_text_streams.md"],
+      "tags": ["команды", "фильтрация"]
+    },
+    {
+      "id": "ch01_03_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что конвейер передаёт вывод одной команды на вход другой?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Оператор '|' передаёт stdout первой команды на stdin второй.",
+      "references": ["vol1/part1/ch01_philosophy/03_text_streams.md"],
+      "tags": ["конвейеры"]
+    },
+    {
+      "id": "ch01_03_q04",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Какая команда подсчитывает строки, слова и символы?",
+      "options": ["wc", "count", "sum", "stats"],
+      "correct": [0],
+      "explanation": "**wc** (word count) подсчитывает строки (-l), слова (-w), символы (-c).",
+      "references": ["vol1/part1/ch01_philosophy/03_text_streams.md"],
+      "tags": ["команды", "агрегация"]
+    },
+    {
+      "id": "ch01_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какой разделитель используется по умолчанию в awk?",
+      "options": [
+        "Запятая",
+        "Пробел",
+        "Табуляция",
+        "Двоеточие"
+      ],
+      "correct": [1],
+      "explanation": "**Пробел** — разделитель по умолчанию в awk. Можно изменить через -F.",
+      "references": ["vol1/part1/ch01_philosophy/03_text_streams.md"],
+      "tags": ["awk", "разделители"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

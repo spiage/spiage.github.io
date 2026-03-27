@@ -1,0 +1,125 @@
+{
+  "chapter": "ch08",
+  "subchapter": "02",
+  "title": "Просмотр: cat, head, tail, less",
+  "description": "Команды для просмотра содержимого файлов",
+  "learning_objectives": [
+    "Уметь выводить содержимое файлов",
+    "Знать разницу между cat, head, tail, less",
+    "Уметь просматривать большие файлы"
+  ],
+  "questions": [
+    {
+      "id": "ch08_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда cat?",
+      "options": [
+        "Редактирует файл",
+        "Выводит содержимое файла на stdout",
+        "Копирует файл",
+        "Создаёт новую директорию"
+      ],
+      "correct": [1],
+      "explanation": "**cat (concatenate)** выводит содержимое файла на stdout.",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["cat", "просмотр"]
+    },
+    {
+      "id": "ch08_02_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как показать первые 10 строк файла?",
+      "options": [
+        "cat file",
+        "head file",
+        "tail file",
+        "less file"
+      ],
+      "correct": [1],
+      "explanation": "**head** показывает первые 10 строк (по умолчанию).",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["head", "просмотр"]
+    },
+    {
+      "id": "ch08_02_q03",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что tail показывает последние строки файла?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **tail** показывает последние 10 строк (по умолчанию).",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["tail", "просмотр"]
+    },
+    {
+      "id": "ch08_02_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая команда удобна для просмотра больших файлов с навигацией?",
+      "options": [
+        "cat",
+        "head",
+        "less",
+        "echo"
+      ],
+      "correct": [2],
+      "explanation": "**less** позволяет листать файл вверх/вниз, искать текст, выходить по 'q'.",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["less", "просмотр"]
+    },
+    {
+      "id": "ch08_02_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как показать последние 20 строк файла?",
+      "options": [
+        "tail -n 20 file",
+        "head -n 20 file",
+        "tail -20 file",
+        "cat -20 file"
+      ],
+      "correct": [0],
+      "explanation": "**tail -n 20 file** или **tail -20 file** — последние 20 строк.",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["tail", "опции"]
+    },
+    {
+      "id": "ch08_02_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как следить за изменениями файла в реальном времени (например, лога)?",
+      "options": [
+        "tail -f logfile",
+        "tail -F logfile",
+        "cat logfile",
+        "less logfile"
+      ],
+      "correct": [0, 1],
+      "explanation": "**tail -f** следит за файлом. **-F** дополнительно обрабатывает ротацию файлов (GNU extension).",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["tail", "логирование"]
+    },
+    {
+      "id": "ch08_02_q07",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что произойдёт при выполнении 'cat file1 file2 > combined'?",
+      "options": [
+        "Файлы будут объединены в combined",
+        "file2 перезапишет file1",
+        "Ошибка: нельзя объединять файлы",
+        "Содержимое выведется на экран"
+      ],
+      "correct": [0],
+      "explanation": "**cat file1 file2 > combined** — объединяет содержимое file1 и file2 в combined.",
+      "references": ["vol1/part2/ch08_basic_commands/02_viewing.md"],
+      "tags": ["cat", "перенаправление"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

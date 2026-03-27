@@ -1,0 +1,93 @@
+{
+  "chapter": "ch05",
+  "subchapter": "03",
+  "title": "Логин-шелл",
+  "description": "Что такое логин-шелл, конфигурационные файлы",
+  "learning_objectives": [
+    "Понимать что такое логин-шелл",
+    "Знать конфигурационные файлы"
+  ],
+  "questions": [
+    {
+      "id": "ch05_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Когда shell является логин-шеллом?",
+      "options": [
+        "При каждом запуске",
+        "При входе в систему",
+        "При запуске скрипта",
+        "При открытии нового окна терминала"
+      ],
+      "correct": [1],
+      "explanation": "**Логин-шелл** запускается при входе в систему.",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["логин-шелл", "вход"]
+    },
+    {
+      "id": "ch05_03_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что логин-шелл читает ~/.profile?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Логин-шелл читает /etc/profile и ~/.profile (или аналогичный файл).",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["логин-шелл", "profile"]
+    },
+    {
+      "id": "ch05_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой файл читается при запуске логин-шелл?",
+      "options": ["~/.shinit", "~/.profile", "~/.shellrc", "~/.config"],
+      "correct": [1],
+      "explanation": "**~/.profile** — стандартный файл конфигурации для логин-шелл.",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["profile", "конфигурация"]
+    },
+    {
+      "id": "ch05_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие файлы могут читаться при входе? (выберите все правильные)",
+      "options": ["/etc/profile", "~/.profile", "~/.shinit", "~/.shellrc"],
+      "correct": [0, 1, 2],
+      "explanation": "**/etc/profile, ~/.profile** — читаются при входе. **~/.shinit** может читаться для интерактивных shell.",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["конфигурация", "файлы"]
+    },
+    {
+      "id": "ch05_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как запустить shell как логин-шелл вручную?",
+      "options": [
+        "sh -l",
+        "sh --login",
+        "sh login",
+        "sh -l или sh --login"
+      ],
+      "correct": [3],
+      "explanation": "**sh -l** или **sh --login** запускает shell как логин-шелл.",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["логин-шелл", "запуск"]
+    },
+    {
+      "id": "ch05_03_q06",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что имя логин-шелл начинается с '-'?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Логин-шелл имеет имя, начинающееся с '-' (например, '-sh').",
+      "references": ["vol1/part2/ch05_shell_intro/03_login_shell.md"],
+      "tags": ["логин-шелл", "имя"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 6
+  }
+}

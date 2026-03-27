@@ -1,0 +1,77 @@
+{
+  "chapter": "ch04",
+  "subchapter": "03",
+  "title": "Иерархия процессов",
+  "description": "Родительские и дочерние процессы, сироты",
+  "learning_objectives": [
+    "Понимать иерархию процессов",
+    "Знать что такое сироты и зомби"
+  ],
+  "questions": [
+    {
+      "id": "ch04_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Кто является родителем всех процессов?",
+      "options": ["sh", "init/systemd", "kernel", "login"],
+      "correct": [1],
+      "explanation": "**init/systemd (PID 1)** — родитель всех процессов.",
+      "references": ["vol1/part1/ch04_processes/03_hierarchy.md"],
+      "tags": ["init", "иерархия"]
+    },
+    {
+      "id": "ch04_03_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что дочерний процесс наследует окружение родителя?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Дочерний наследует переменные окружения, FD.",
+      "references": ["vol1/part1/ch04_processes/03_hierarchy.md"],
+      "tags": ["наследование", "окружение"]
+    },
+    {
+      "id": "ch04_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что такое процесс-сирота?",
+      "options": [
+        "Процесс без родителя",
+        "Процесс без детей",
+        "Завершённый процесс",
+        "Фоновый процесс"
+      ],
+      "correct": [0],
+      "explanation": "**Сирота** — процесс, родитель которого завершился.",
+      "references": ["vol1/part1/ch04_processes/03_hierarchy.md"],
+      "tags": ["сироты"]
+    },
+    {
+      "id": "ch04_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Что наследует дочерний процесс? (выберите все правильные)",
+      "options": ["UID", "Переменные окружения", "Открытые FD", "PID"],
+      "correct": [0, 1, 2],
+      "explanation": "**UID, окружение, FD** наследуются. PID — новый.",
+      "references": ["vol1/part1/ch04_processes/03_hierarchy.md"],
+      "tags": ["наследование"]
+    },
+    {
+      "id": "ch04_03_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Кто усыновляет процессы-сироты?",
+      "options": ["kernel", "init/systemd", "sh", "Никто"],
+      "correct": [1],
+      "explanation": "**init/systemd** усыновляет сирот (становится родителем).",
+      "references": ["vol1/part1/ch04_processes/03_hierarchy.md"],
+      "tags": ["сироты", "init"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

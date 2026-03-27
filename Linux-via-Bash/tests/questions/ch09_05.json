@@ -1,0 +1,125 @@
+{
+  "chapter": "ch09",
+  "subchapter": "05",
+  "title": "sed — потоковый редактор",
+  "description": "Автоматизированное редактирование текста",
+  "learning_objectives": [
+    "Понимать принцип работы sed",
+    "Уметь заменять текст",
+    "Знать базовые команды sed"
+  ],
+  "questions": [
+    {
+      "id": "ch09_05_q01",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что делает команда sed?",
+      "options": [
+        "Редактирует файлы в интерактивном режиме",
+        "Выполняет автоматические преобразования над текстом",
+        "Сравнивает два файла",
+        "Создаёт резервные копии"
+      ],
+      "correct": [1],
+      "explanation": "**sed (stream editor)** — потоковый редактор для автоматических преобразований.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "редактирование"]
+    },
+    {
+      "id": "ch09_05_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как заменить первое вхождение 'foo' на 'bar' в каждой строке?",
+      "options": [
+        "sed 's/foo/bar/' file",
+        "sed 's/foo/bar/g' file",
+        "sed 'replace/foo/bar/' file",
+        "sed 'foo->bar' file"
+      ],
+      "correct": [0],
+      "explanation": "**s/foo/bar/** заменяет первое вхождение в каждой строке.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "замена"]
+    },
+    {
+      "id": "ch09_05_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что sed по умолчанию изменяет файл на диске?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. sed выводит результат на stdout, не изменяя файл. Для записи используйте -i.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "файлы"]
+    },
+    {
+      "id": "ch09_05_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как заменить ВСЕ вхождения в строке (глобальная замена)?",
+      "options": [
+        "sed 's/foo/bar/g' file",
+        "sed 's/foo/bar/' file",
+        "sed 's/foo/bar/a' file",
+        "sed 's/foo/bar/*' file"
+      ],
+      "correct": [0],
+      "explanation": "**g (global)** заменяет все вхождения в строке.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "замена"]
+    },
+    {
+      "id": "ch09_05_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как изменить файл 'на месте' (записать результат обратно в файл)?",
+      "options": [
+        "sed -i 's/foo/bar/' file",
+        "sed -w 's/foo/bar/' file",
+        "sed -o 's/foo/bar/' file",
+        "sed --inplace 's/foo/bar/' file"
+      ],
+      "correct": [0],
+      "explanation": "**-i** редактирует файл 'на месте' (in-place). Это расширение GNU sed. В POSIX используйте: `sed 's/foo/bar/' file > tmp && mv tmp file`.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "опции"]
+    },
+    {
+      "id": "ch09_05_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как удалить пустые строки из файла? (выберите все правильные)",
+      "options": [
+        "sed '/^$/d' file",
+        "sed '/^$/D' file",
+        "sed -n '/^$/!p' file",
+        "sed 's/^$//' file"
+      ],
+      "correct": [0, 2],
+      "explanation": "**/^$/d** удаляет пустые строки. **-n '/^$/!p'** печатает только непустые.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "удаление"]
+    },
+    {
+      "id": "ch09_05_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что делает команда 'sed -n '5,10p' file'?",
+      "options": [
+        "Удаляет строки 5-10",
+        "Печатает строки с 5 по 10",
+        "Заменяет строки 5-10",
+        "Нумерует строки 5-10"
+      ],
+      "correct": [1],
+      "explanation": "**-n** подавляет вывод, **5,10p** печатает строки 5-10.",
+      "references": ["vol1/part2/ch09_text_processing/05_sed.md"],
+      "tags": ["sed", "диапазон"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

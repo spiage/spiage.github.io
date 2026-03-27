@@ -1,0 +1,141 @@
+{
+  "chapter": "ch09",
+  "subchapter": "06",
+  "title": "awk — обработка структурированных данных",
+  "description": "Язык программирования для работы с полями",
+  "learning_objectives": [
+    "Понимать принцип работы awk",
+    "Уметь извлекать поля",
+    "Знать базовые конструкции awk"
+  ],
+  "questions": [
+    {
+      "id": "ch09_06_q01",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что делает команда awk?",
+      "options": [
+        "Только извлекает колонки из файлов",
+        "Язык программирования для обработки структурированных данных",
+        "Сравнивает файлы построчно",
+        "Конвертирует форматы файлов"
+      ],
+      "correct": [1],
+      "explanation": "**awk** — полноценный язык для обработки данных по полям и записям.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "обработка"]
+    },
+    {
+      "id": "ch09_06_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как напечатать первое поле в awk?",
+      "options": [
+        "awk '{print $1}'",
+        "awk '{print 1}'",
+        "awk '{print $0}'",
+        "awk 'print 1'"
+      ],
+      "correct": [0],
+      "explanation": "**$1** — первое поле, **$0** — вся строка.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "поля"]
+    },
+    {
+      "id": "ch09_06_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что awk по умолчанию использует пробел как разделитель?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. По умолчанию разделитель — пробел/табуляция.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "разделитель"]
+    },
+    {
+      "id": "ch09_06_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как задать разделитель полей (например, для CSV)?",
+      "options": [
+        "awk -F',' '{print $1}'",
+        "awk -d',' '{print $1}'",
+        "awk --delimiter=',' '{print $1}'",
+        "awk -s',' '{print $1}'"
+      ],
+      "correct": [0],
+      "explanation": "**-F** задаёт разделитель полей (field separator).",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "CSV"]
+    },
+    {
+      "id": "ch09_06_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как напечатать только строки, где первое поле больше 100?",
+      "options": [
+        "awk '$1 > 100 {print}'",
+        "awk '$1 > 100'",
+        "awk 'if($1>100) print'",
+        "awk '$1 > 100 {print $0}'"
+      ],
+      "correct": [0],
+      "explanation": "**awk '$1 > 100 {print}'** — условие перед блоком действий.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "условия"]
+    },
+    {
+      "id": "ch09_06_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что выведет 'awk END {print NR}' file? (выберите все правильные)",
+      "options": [
+        "Количество строк в файле",
+        "Последнюю строку файла",
+        "Общее количество записей (NR)",
+        "Номер последней строки"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "**NR** — количество обработанных записей. В END содержит общее число строк.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "переменные"]
+    },
+    {
+      "id": "ch09_06_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как выполнить awk-программу из файла?",
+      "options": [
+        "awk -f script.awk data.txt",
+        "awk --file script.awk data.txt",
+        "awk < script.awk data.txt",
+        "awk script.awk data.txt"
+      ],
+      "correct": [0],
+      "explanation": "**-f** загружает программу из файла.",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "скрипты"]
+    },
+    {
+      "id": "ch09_06_q08",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что означает $0 в awk?",
+      "options": [
+        "Нулевое поле (несуществующее)",
+        "Вся текущая строка",
+        "Количество полей",
+        "Разделитель полей"
+      ],
+      "correct": [1],
+      "explanation": "**$0** — вся текущая запись (строка).",
+      "references": ["vol1/part2/ch09_text_processing/06_awk.md"],
+      "tags": ["awk", "переменные"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 8,
+    "estimated_time_minutes": 7
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "chapter": "ch06",
+  "subchapter": "02",
+  "title": "Перенаправление stderr (2>)",
+  "description": "Работа с потоком ошибок",
+  "learning_objectives": [
+    "Понимать назначение stderr (FD 2)",
+    "Уметь перенаправлять ошибки в файл",
+    "Различать stdout и stderr"
+  ],
+  "questions": [
+    {
+      "id": "ch06_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой файловый дескриптор используется для stderr?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct": [2],
+      "explanation": "**stderr — это файловый дескриптор 2**. Через него выводятся сообщения об ошибках.",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "file descriptors"]
+    },
+    {
+      "id": "ch06_02_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как перенаправить stderr в файл error.log?",
+      "options": [
+        "cmd > error.log",
+        "cmd 2> error.log",
+        "cmd &> error.log",
+        "cmd >> error.log"
+      ],
+      "correct": [1],
+      "explanation": "**2> перенаправляет stderr** (файловый дескриптор 2) в указанный файл.",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "перенаправление"]
+    },
+    {
+      "id": "ch06_02_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что stderr по умолчанию выводится в терминал?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. По умолчанию stderr, как и stdout, выводится в терминал.",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "terminal"]
+    },
+    {
+      "id": "ch06_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие команды выведут сообщение об ошибке в stderr? (выберите все правильные)",
+      "options": [
+        "ls /nonexistent",
+        "cat /etc/passwd",
+        "grep 'pattern' /nonexistent_file",
+        "echo 'hello'"
+      ],
+      "correct": [0, 2],
+      "explanation": "**ls /nonexistent** и **grep с несуществующим файлом** выводят ошибки в stderr.",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "ошибки"]
+    },
+    {
+      "id": "ch06_02_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как подавить вывод stderr (отправить в /dev/null)?",
+      "options": [
+        "cmd 2> /dev/null",
+        "cmd > /dev/null",
+        "cmd &> /dev/null",
+        "cmd 2>> /dev/null"
+      ],
+      "correct": [0],
+      "explanation": "**cmd 2> /dev/null** — перенаправляет stderr в /dev/null (подавляет ошибки).",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "/dev/null"]
+    },
+    {
+      "id": "ch06_02_q06",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Почему важно разделять stdout и stderr?",
+      "options": [
+        "Для красоты вывода",
+        "Чтобы ошибки не смешивались с полезным выводом",
+        "Для экономии места",
+        "Это требование POSIX"
+      ],
+      "correct": [1],
+      "explanation": "**Разделение позволяет фильтровать ошибки отдельно от полезного вывода** (например, в логах или конвейерах).",
+      "references": ["vol1/part2/ch06_redirection/02_stderr.md"],
+      "tags": ["stderr", "stdout", "дизайн"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 5
+  }
+}

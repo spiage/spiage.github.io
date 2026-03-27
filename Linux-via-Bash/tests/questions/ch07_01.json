@@ -1,0 +1,120 @@
+{
+  "chapter": "ch07",
+  "subchapter": "01",
+  "title": "Оператор | (конвейер)",
+  "description": "Создание конвейеров команд",
+  "learning_objectives": [
+    "Понимать назначение оператора |",
+    "Уметь создавать конвейеры команд",
+    "Знать, как данные передаются между командами"
+  ],
+  "questions": [
+    {
+      "id": "ch07_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает оператор | (pipe)?",
+      "options": [
+        "Записывает вывод в файл",
+        "Передаёт stdout одной команды на stdin другой",
+        "Копирует файл",
+        "Запускает команды параллельно"
+      ],
+      "correct": [1],
+      "explanation": "**| передаёт stdout первой команды на stdin второй** без создания временных файлов.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "конвейер"]
+    },
+    {
+      "id": "ch07_01_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что в конвейере 'cmd1 | cmd2' команда cmd2 получает данные от cmd1?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. stdout cmd1 передаётся на stdin cmd2.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "конвейер"]
+    },
+    {
+      "id": "ch07_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что выведет команда 'echo hello | wc -c'?",
+      "options": [
+        "5",
+        "6",
+        "hello",
+        "0"
+      ],
+      "correct": [1],
+      "explanation": "**6** — 5 букв 'hello' + 1 символ новой строки. wc -c считает байты.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "wc"]
+    },
+    {
+      "id": "ch07_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие команды часто используются в конвейерах? (выберите все правильные)",
+      "options": [
+        "grep",
+        "sort",
+        "head",
+        "cd"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**grep, sort, head** обрабатывают stdin и работают в конвейерах. cd меняет директорию и не использует stdin/stdout.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "команды"]
+    },
+    {
+      "id": "ch07_01_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как передать список файлов через sort в uniq для получения уникальных имён?",
+      "options": [
+        "ls | sort | uniq",
+        "ls | uniq | sort",
+        "ls > sort > uniq",
+        "ls & sort & uniq"
+      ],
+      "correct": [0],
+      "explanation": "**ls | sort | uniq** — sort упорядочивает, uniq удаляет дубликаты (требует отсортированных данных).",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "sort", "uniq"]
+    },
+    {
+      "id": "ch07_01_q06",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что происходит с stderr в конвейере 'cmd1 | cmd2'?",
+      "options": [
+        "Передаётся на stdin cmd2",
+        "Игнорируется",
+        "Выводится в терминал (по умолчанию)",
+        "Перенаправляется в /dev/null"
+      ],
+      "correct": [2],
+      "explanation": "**stderr не передаётся по конвейеру**, выводится в терминал. Только stdout участвует в pipe.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "stderr"]
+    },
+    {
+      "id": "ch07_01_q07",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что команды в конвейере выполняются одновременно (параллельно)?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Команды в конвейере запускаются параллельно, данные передаются по мере поступления.",
+      "references": ["vol1/part2/ch07_pipelines/01_pipe_operator.md"],
+      "tags": ["pipe", "параллелизм"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

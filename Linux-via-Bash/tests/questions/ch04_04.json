@@ -1,0 +1,72 @@
+{
+  "chapter": "ch04",
+  "subchapter": "04",
+  "title": "Стандартные потоки",
+  "description": "stdin, stdout, stderr",
+  "learning_objectives": [
+    "Знать три стандартных потока",
+    "Уметь перенаправлять потоки"
+  ],
+  "questions": [
+    {
+      "id": "ch04_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Сколько стандартных потоков у процесса?",
+      "options": ["2", "3", "4", "5"],
+      "correct": [1],
+      "explanation": "**3 потока**: stdin (0), stdout (1), stderr (2).",
+      "references": ["vol1/part1/ch04_processes/04_std_streams.md"],
+      "tags": ["потоки", "стандартные"]
+    },
+    {
+      "id": "ch04_04_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что stderr используется для ошибок?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. stderr (2) — для сообщений об ошибках.",
+      "references": ["vol1/part1/ch04_processes/04_std_streams.md"],
+      "tags": ["stderr"]
+    },
+    {
+      "id": "ch04_04_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой FD у stdout?",
+      "options": ["0", "1", "2", "3"],
+      "correct": [1],
+      "explanation": "**stdout = FD 1**. stdin = 0, stderr = 2.",
+      "references": ["vol1/part1/ch04_processes/04_std_streams.md"],
+      "tags": ["stdout", "FD"]
+    },
+    {
+      "id": "ch04_04_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие потоки буферизуются по умолчанию? (выберите все правильные)",
+      "options": ["stdin", "stdout", "stderr", "Никакие"],
+      "correct": [1],
+      "explanation": "**stdout буферизуется**. stderr — нет (для немедленного вывода ошибок).",
+      "references": ["vol1/part1/ch04_processes/04_std_streams.md"],
+      "tags": ["буферизация", "потоки"]
+    },
+    {
+      "id": "ch04_04_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как перенаправить stdout и stderr в один файл?",
+      "options": ["> file 2>&1", "> file", "2>&1 > file", "&> file"],
+      "correct": [0],
+      "explanation": "**> file 2>&1** — stdout в файл, stderr в stdout.",
+      "references": ["vol1/part1/ch04_processes/04_std_streams.md"],
+      "tags": ["перенаправление", "stderr"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "chapter": "ch02",
+  "subchapter": "03",
+  "title": "Иерархия файлов",
+  "description": "Дерево каталогов, стандарт FHS, абсолютные и относительные пути",
+  "learning_objectives": [
+    "Знать структуру дерева каталогов",
+    "Понимать абсолютные и относительные пути",
+    "Знать стандарт FHS"
+  ],
+  "questions": [
+    {
+      "id": "ch02_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что является корнем файловой системы в Unix?",
+      "options": ["C:\\", "/", "root", "/home"],
+      "correct": [1],
+      "explanation": "**/** — корень файловой системы в Unix. Все пути начинаются от корня.",
+      "references": ["vol1/part1/ch02_architecture/03_filesystem.md"],
+      "tags": ["файловая система", "корень"]
+    },
+    {
+      "id": "ch02_03_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что абсолютный путь начинается с '/'?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Абсолютный путь начинается с корня (/). Относительный — нет.",
+      "references": ["vol1/part1/ch02_architecture/03_filesystem.md"],
+      "tags": ["пути", "абсолютные"]
+    },
+    {
+      "id": "ch02_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что означает '..' в пути?",
+      "options": [
+        "Текущая директория",
+        "Родительская директория",
+        "Домашняя директория",
+        "Корневая директория"
+      ],
+      "correct": [1],
+      "explanation": "**'..'** означает родительскую директорию. '.' — текущая, '~' — домашняя.",
+      "references": ["vol1/part1/ch02_architecture/03_filesystem.md"],
+      "tags": ["пути", "относительные"]
+    },
+    {
+      "id": "ch02_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие директории находятся в корне по стандарту FHS? (выберите все правильные)",
+      "options": ["/bin", "/etc", "/home/user", "/var"],
+      "correct": [0, 1, 3],
+      "explanation": "**/bin, /etc, /var** — в корне. /home/user — внутри /home, не в корне.",
+      "references": ["vol1/part1/ch02_architecture/03_filesystem.md"],
+      "tags": ["FHS", "директории"]
+    },
+    {
+      "id": "ch02_03_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Где хранятся конфигурационные файлы системы по стандарту FHS?",
+      "options": ["/bin", "/etc", "/var", "/opt"],
+      "correct": [1],
+      "explanation": "**/etc** — конфигурационные файлы системы. /bin — бинарники, /var — переменные данные.",
+      "references": ["vol1/part1/ch02_architecture/03_filesystem.md"],
+      "tags": ["FHS", "конфигурация"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

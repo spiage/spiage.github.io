@@ -1,0 +1,83 @@
+{
+  "chapter": "ch02",
+  "subchapter": "02",
+  "title": "Многопользовательская система",
+  "description": "Изоляция пользователей, права доступа, безопасность",
+  "learning_objectives": [
+    "Понимать принципы многопользовательского режима",
+    "Знать механизмы изоляции",
+    "Понимать основы безопасности Unix"
+  ],
+  "questions": [
+    {
+      "id": "ch02_02_q01",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что Unix была разработана как многопользовательская система?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Unix с самого начала проектировалась для работы множества пользователей одновременно.",
+      "references": ["vol1/part1/ch02_architecture/02_multiuser.md"],
+      "tags": ["многопользовательский режим"]
+    },
+    {
+      "id": "ch02_02_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое UID в Unix?",
+      "options": [
+        "Уникальный идентификатор устройства",
+        "Идентификатор пользователя",
+        "Универсальный ID",
+        "Идентификатор группы"
+      ],
+      "correct": [1],
+      "explanation": "**UID (User ID)** — уникальный идентификатор пользователя в системе.",
+      "references": ["vol1/part1/ch02_architecture/02_multiuser.md"],
+      "tags": ["UID", "пользователи"]
+    },
+    {
+      "id": "ch02_02_q03",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие механизмы обеспечивают изоляцию пользователей? (выберите все правильные)",
+      "options": [
+        "Права доступа к файлам",
+        "Отдельные домашние директории",
+        "Изоляция процессов",
+        "Разные ядра для каждого пользователя"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Изоляция обеспечивается **правами доступа**, **домашними директориями**, **изоляцией процессов**. Ядро одно для всех.",
+      "references": ["vol1/part1/ch02_architecture/02_multiuser.md"],
+      "tags": ["изоляция", "безопасность"]
+    },
+    {
+      "id": "ch02_02_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой пользователь имеет UID 0?",
+      "options": ["guest", "admin", "root", "system"],
+      "correct": [2],
+      "explanation": "**root** имеет UID 0 — это суперпользователь с полными правами.",
+      "references": ["vol1/part1/ch02_architecture/02_multiuser.md"],
+      "tags": ["root", "UID"]
+    },
+    {
+      "id": "ch02_02_q05",
+      "type": "true_false",
+      "difficulty": "hard",
+      "question": "Верно ли, что процессы одного пользователя могут видеть процессы другого?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Процессы видны всем (через ps), но управлять чужими процессами может только root.",
+      "references": ["vol1/part1/ch02_architecture/02_multiuser.md"],
+      "tags": ["процессы", "изоляция"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

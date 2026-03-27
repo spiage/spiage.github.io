@@ -1,0 +1,125 @@
+{
+  "chapter": "ch08",
+  "subchapter": "04",
+  "title": "Поиск: find, locate",
+  "description": "Команды для поиска файлов и директорий",
+  "learning_objectives": [
+    "Уметь искать файлы по имени и критериям",
+    "Знать разницу между find и locate",
+    "Уметь использовать find для обработки файлов"
+  ],
+  "questions": [
+    {
+      "id": "ch08_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда find?",
+      "options": [
+        "Ищет файлы по базе данных",
+        "Ищет файлы в директориях в реальном времени",
+        "Ищет текст в файлах",
+        "Показывает содержимое директории"
+      ],
+      "correct": [1],
+      "explanation": "**find** ищет файлы в директориях, проверяя файловую систему в реальном времени.",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["find", "поиск"]
+    },
+    {
+      "id": "ch08_04_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как найти все файлы с расширением .txt в текущей директории?",
+      "options": [
+        "find . -name '*.txt'",
+        "find . '*.txt'",
+        "find -name .txt",
+        "search *.txt"
+      ],
+      "correct": [0],
+      "explanation": "**find . -name '*.txt'** — поиск от текущей директории по имени.",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["find", "имя"]
+    },
+    {
+      "id": "ch08_04_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что locate работает быстрее find?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. locate использует базу данных, которая обновляется периодически (обычно раз в сутки).",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["locate", "быстродействие"]
+    },
+    {
+      "id": "ch08_04_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как найти файлы размером больше 1MB?",
+      "options": [
+        "find . -size +1M",
+        "find . -size 1M",
+        "find . -size >1M",
+        "find . --size 1MB"
+      ],
+      "correct": [0],
+      "explanation": "**find . -size +1M** — файлы больше 1 мегабайта. Суффиксы M, G — расширения GNU find.",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["find", "размер"]
+    },
+    {
+      "id": "ch08_04_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как обновить базу данных для locate?",
+      "options": [
+        "sudo updatedb",
+        "locate --update",
+        "locate -u",
+        "updatedb"
+      ],
+      "correct": [0],
+      "explanation": "**sudo updatedb** обновляет базу данных locate (требует прав root).",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["locate", "updatedb"]
+    },
+    {
+      "id": "ch08_04_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как найти и удалить все .tmp файлы? (выберите все правильные)",
+      "options": [
+        "find . -name '*.tmp' -delete",
+        "find . -name '*.tmp' -exec rm {} \\;",
+        "find . -name '*.tmp' | xargs rm",
+        "rm *.tmp"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**Все три варианта с find работают**. -delete — GNU extension. rm *.tmp удалит только в текущей директории, не рекурсивно.",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["find", "удаление"]
+    },
+    {
+      "id": "ch08_04_q07",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как найти файлы, изменённые за последние 7 дней?",
+      "options": [
+        "find . -mtime -7",
+        "find . -time -7",
+        "find . -days 7",
+        "find . -newer 7"
+      ],
+      "correct": [0],
+      "explanation": "**find . -mtime -7** — файлы, изменённые менее 7 дней назад.",
+      "references": ["vol1/part2/ch08_basic_commands/04_search.md"],
+      "tags": ["find", "время"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 6
+  }
+}

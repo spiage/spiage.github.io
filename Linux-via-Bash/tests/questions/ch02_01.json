@@ -1,0 +1,88 @@
+{
+  "chapter": "ch02",
+  "subchapter": "01",
+  "title": "Ядро и оболочка",
+  "description": "Разделение user space и kernel space, роль shell",
+  "learning_objectives": [
+    "Понимать разницу между ядром и оболочкой",
+    "Знать что такое user space и kernel space",
+    "Понимать роль системных вызовов"
+  ],
+  "questions": [
+    {
+      "id": "ch02_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое shell в Unix?",
+      "options": [
+        "Часть ядра",
+        "Командный интерпретатор",
+        "Системный вызов",
+        "Драйвер устройства"
+      ],
+      "correct": [1],
+      "explanation": "**Shell — это командный интерпретатор**. Он работает в user space и предоставляет интерфейс к ядру.",
+      "references": ["vol1/part1/ch02_architecture/01_kernel_shell.md"],
+      "tags": ["shell", "базовые понятия"]
+    },
+    {
+      "id": "ch02_01_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что программы в user space могут напрямую обращаться к оборудованию?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Программы в user space не могут напрямую обращаться к оборудованию — только через системные вызовы ядра.",
+      "references": ["vol1/part1/ch02_architecture/01_kernel_shell.md"],
+      "tags": ["user space", "kernel space"]
+    },
+    {
+      "id": "ch02_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как программы в user space запрашивают услуги у ядра?",
+      "options": [
+        "Прямой доступ к памяти",
+        "Через системные вызовы",
+        "Через файлы в /proc",
+        "Через环境变量"
+      ],
+      "correct": [1],
+      "explanation": "**Через системные вызовы**. Это единственный легальный способ взаимодействия с ядром.",
+      "references": ["vol1/part1/ch02_architecture/01_kernel_shell.md"],
+      "tags": ["системные вызовы"]
+    },
+    {
+      "id": "ch02_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Что находится в kernel space? (выберите все правильные)",
+      "options": [
+        "Планировщик процессов",
+        "Ваш shell скрипт",
+        "Драйверы устройств",
+        "Сетевой стек"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "В kernel space находятся **планировщик процессов**, **драйверы устройств**, **сетевой стек**. Shell скрипты работают в user space.",
+      "references": ["vol1/part1/ch02_architecture/01_kernel_shell.md"],
+      "tags": ["kernel space"]
+    },
+    {
+      "id": "ch02_01_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какой режим процессора используется для выполнения привилегированных инструкций?",
+      "options": ["user mode", "kernel mode", "safe mode", "protected mode"],
+      "correct": [1],
+      "explanation": "**Kernel mode** используется для выполнения привилегированных инструкций. User mode имеет ограниченные права.",
+      "references": ["vol1/part1/ch02_architecture/01_kernel_shell.md"],
+      "tags": ["режимы процессора"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

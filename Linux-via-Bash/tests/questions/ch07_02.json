@@ -1,0 +1,109 @@
+{
+  "chapter": "ch07",
+  "subchapter": "02",
+  "title": "Команда tee",
+  "description": "Дублирование вывода в файл и на stdout",
+  "learning_objectives": [
+    "Понимать назначение команды tee",
+    "Уметь дублировать вывод в файл и конвейер",
+    "Знать опцию -a для добавления в файл"
+  ],
+  "questions": [
+    {
+      "id": "ch07_02_q01",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что делает команда tee?",
+      "options": [
+        "Только записывает вывод в файл",
+        "Только выводит на экран",
+        "Дублирует stdin: в файл и на stdout",
+        "Копирует файлы"
+      ],
+      "correct": [2],
+      "explanation": "**tee читает stdin и дублирует его в файл и на stdout** одновременно.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "дублирование"]
+    },
+    {
+      "id": "ch07_02_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как добавить вывод в конец файла (не перезаписывая)?",
+      "options": [
+        "tee file",
+        "tee -a file",
+        "tee --append file",
+        "tee + file"
+      ],
+      "correct": [1],
+      "explanation": "**tee -a** добавляет в конец файла (append), а не перезаписывает.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "append"]
+    },
+    {
+      "id": "ch07_02_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что tee можно использовать в середине конвейера?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. tee читает stdin и передаёт дальше на stdout, поэтому работает в конвейере.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "конвейер"]
+    },
+    {
+      "id": "ch07_02_q04",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как сохранить вывод лога в файл и одновременно вывести на экран?",
+      "options": [
+        "command | tee log.txt",
+        "command > log.txt",
+        "command | cat log.txt",
+        "command tee < log.txt"
+      ],
+      "correct": [0],
+      "explanation": "**command | tee log.txt** — вывод и в файл, и на экран.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "логирование"]
+    },
+    {
+      "id": "ch07_02_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что выведет 'echo test | tee file.txt && cat file.txt'? (выберите все правильные)",
+      "options": [
+        "test (от tee)",
+        "test (от cat)",
+        "Ничего",
+        "Ошибка"
+      ],
+      "correct": [0, 1],
+      "explanation": "**tee выведет 'test' и запишет в файл, cat прочитает файл и тоже выведет 'test'**.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "cat"]
+    },
+    {
+      "id": "ch07_02_q06",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как записать вывод в несколько файлов одновременно?",
+      "options": [
+        "tee file1 file2 file3",
+        "tee file1,file2,file3",
+        "tee file1 | tee file2 | tee file3",
+        "tee > file1 > file2 > file3"
+      ],
+      "correct": [0],
+      "explanation": "**tee принимает несколько имён файлов**: tee file1 file2 file3 запишет во все три.",
+      "references": ["vol1/part2/ch07_pipelines/02_tee.md"],
+      "tags": ["tee", "файлы"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 5
+  }
+}

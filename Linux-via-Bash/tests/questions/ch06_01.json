@@ -1,0 +1,104 @@
+{
+  "chapter": "ch06",
+  "subchapter": "01",
+  "title": "Операторы > и <",
+  "description": "Базовое перенаправление stdout и stdin",
+  "learning_objectives": [
+    "Понимать назначение операторов > и <",
+    "Уметь перенаправлять вывод в файл",
+    "Уметь читать ввод из файла"
+  ],
+  "questions": [
+    {
+      "id": "ch06_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает оператор '>'?",
+      "options": [
+        "Читает ввод из файла",
+        "Записывает вывод в файл (перезаписывая его)",
+        "Добавляет вывод в конец файла",
+        "Копирует файл"
+      ],
+      "correct": [1],
+      "explanation": "**Оператор '>' записывает stdout команды в файл, перезаписывая его содержимое**.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["перенаправление", "stdout"]
+    },
+    {
+      "id": "ch06_01_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает оператор '<'?",
+      "options": [
+        "Записывает вывод в файл",
+        "Читает stdin из файла",
+        "Создаёт новый файл",
+        "Удаляет файл"
+      ],
+      "correct": [1],
+      "explanation": "**Оператор '<' перенаправляет содержимое файла на stdin команды**.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["перенаправление", "stdin"]
+    },
+    {
+      "id": "ch06_01_q03",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что 'cat > file' перезапишет файл, если он существует?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Оператор '>' перезаписывает файл при открытии.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["перенаправление", "файлы"]
+    },
+    {
+      "id": "ch06_01_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой файловый дескриптор используется по умолчанию при 'cmd > file'?",
+      "options": [
+        "0 (stdin)",
+        "1 (stdout)",
+        "2 (stderr)",
+        "3 (дополнительный)"
+      ],
+      "correct": [1],
+      "explanation": "**По умолчанию '>' перенаправляет файловый дескриптор 1 (stdout)**.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["file descriptors", "stdout"]
+    },
+    {
+      "id": "ch06_01_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Какая команда прочитает содержимое файла input.txt и выведет его на экран?",
+      "options": [
+        "cat < input.txt",
+        "cat > input.txt",
+        "cat input.txt >",
+        "cat >> input.txt"
+      ],
+      "correct": [0],
+      "explanation": "**cat < input.txt** — читает файл через перенаправление stdin. Эквивалентно 'cat input.txt'.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["cat", "stdin"]
+    },
+    {
+      "id": "ch06_01_q06",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что при перенаправлении '>' файл создаётся, если он не существует?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Shell создаёт файл, если он не существует (при наличии прав).",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["файлы", "создание"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 5
+  }
+}

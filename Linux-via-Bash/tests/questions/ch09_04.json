@@ -1,0 +1,125 @@
+{
+  "chapter": "ch09",
+  "subchapter": "04",
+  "title": "wc — подсчёт строк, слов, байт",
+  "description": "Статистика текстовых файлов",
+  "learning_objectives": [
+    "Уметь считать строки, слова, байты",
+    "Знать опции wc",
+    "Понимать формат вывода"
+  ],
+  "questions": [
+    {
+      "id": "ch09_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда wc?",
+      "options": [
+        "Считает количество строк, слов и байт в файле",
+        "Измеряет размер файла на диске",
+        "Показывает длину самой длинной строки",
+        "Сравнивает два файла"
+      ],
+      "correct": [0],
+      "explanation": "**wc (word count)** выводит количество строк, слов и байт.",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "подсчёт"]
+    },
+    {
+      "id": "ch09_04_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как показать только количество строк?",
+      "options": [
+        "wc -l file",
+        "wc -w file",
+        "wc -c file",
+        "wc -m file"
+      ],
+      "correct": [0],
+      "explanation": "**-l** (lines) показывает только количество строк.",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "опции"]
+    },
+    {
+      "id": "ch09_04_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что wc без аргументов читает из stdin?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. wc без файлов читает из стандартного ввода.",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "stdin"]
+    },
+    {
+      "id": "ch09_04_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что считает 'wc -w'?",
+      "options": [
+        "Количество строк",
+        "Количество слов (разделённых пробелами)",
+        "Количество символов",
+        "Количество байт"
+      ],
+      "correct": [1],
+      "explanation": "**-w** (words) считает слова, разделённые пробелами/табуляцией.",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "слова"]
+    },
+    {
+      "id": "ch09_04_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как посчитать количество файлов в директории (только имена)?",
+      "options": [
+        "ls | wc -l",
+        "wc -l ls",
+        "ls -l | wc",
+        "wc ls"
+      ],
+      "correct": [0],
+      "explanation": "**ls | wc -l** — вывод ls построчно, wc считает строки.",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "ls", "конвейер"]
+    },
+    {
+      "id": "ch09_04_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что выведет 'wc file1 file2'? (выберите все правильные)",
+      "options": [
+        "Статистику для file1",
+        "Статистику для file2",
+        "Суммарную статистику (Total)",
+        "Только количество файлов"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**wc file1 file2** выведет статистику для каждого файла и общую сумму (Total).",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "несколько файлов"]
+    },
+    {
+      "id": "ch09_04_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "В чём разница между -c и -m?",
+      "options": [
+        "Нет разницы",
+        "-c считает байты, -m считает символы (с учётом UTF-8)",
+        "-c считает символы, -m считает байты",
+        "-c для файлов, -m для stdin"
+      ],
+      "correct": [1],
+      "explanation": "**-c** (bytes) считает байты, **-m** (chars) считает символы (важно для многобайтных кодировок).",
+      "references": ["vol1/part2/ch09_text_processing/04_wc.md"],
+      "tags": ["wc", "кодировка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 7,
+    "estimated_time_minutes": 5
+  }
+}

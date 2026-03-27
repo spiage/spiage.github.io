@@ -1,0 +1,115 @@
+{
+  "chapter": "ch04",
+  "subchapter": "02",
+  "title": "fork и exec",
+  "description": "Создание процессов, замена образа, exec в shell",
+  "learning_objectives": [
+    "Понимать fork и exec",
+    "Знать как создаются процессы",
+    "Различать exec с командой и exec с перенаправлением"
+  ],
+  "questions": [
+    {
+      "id": "ch04_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает fork()?",
+      "options": [
+        "Завершает процесс",
+        "Создаёт копию процесса",
+        "Меняет приоритет",
+        "Останавливает процесс"
+      ],
+      "correct": [1],
+      "explanation": "**fork() создаёт копию процесса** (дочерний процесс).",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["fork", "системные вызовы"]
+    },
+    {
+      "id": "ch04_02_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что exec() заменяет образ процесса?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. exec() заменяет текущий процесс новым.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["exec", "системные вызовы"]
+    },
+    {
+      "id": "ch04_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что возвращает fork() в родителе?",
+      "options": [
+        "0",
+        "PID дочернего процесса",
+        "-1",
+        "Ничего"
+      ],
+      "correct": [1],
+      "explanation": "**PID дочернего** в родителе. 0 — в дочернем.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["fork", "возврат"]
+    },
+    {
+      "id": "ch04_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какая последовательность вызовов для запуска команды? (выберите все правильные)",
+      "options": ["fork", "exec", "wait", "exit"],
+      "correct": [0, 1, 2],
+      "explanation": "**fork → exec → wait** — стандартная последовательность.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["fork", "exec", "wait"]
+    },
+    {
+      "id": "ch04_02_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Что происходит если exec() не удался?",
+      "options": ["Процесс завершается", "Возвращается -1", "Процесс ждёт", "Ничего"],
+      "correct": [1],
+      "explanation": "**Возвращается -1**. exec() не возвращается при успехе.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["exec", "ошибки"]
+    },
+    {
+      "id": "ch04_02_q06",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "В чём разница между 'exec команда' и 'exec N>file'?",
+      "options": [
+        "Нет разницы",
+        "Первое заменяет shell, второе управляет FD",
+        "Первое управляет FD, второе заменяет shell",
+        "Оба заменяют shell"
+      ],
+      "correct": [1],
+      "explanation": "**exec команда** заменяет shell процессом команды. **exec N>file** управляет FD в текущем shell.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["exec", "shell"]
+    },
+    {
+      "id": "ch04_02_q07",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Зачем использовать exec в wrapper-скриптах? (выберите все правильные)",
+      "options": [
+        "Не держать лишний shell в памяти",
+        "Основная команда получает правильный PID",
+        "Сигналы идут напрямую в программу",
+        "Чтобы скрипт работал медленнее"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**Экономия памяти**, **правильный PID**, **прямые сигналы** — преимущества exec в wrapper.",
+      "references": ["vol1/part1/ch04_processes/02_fork_exec.md"],
+      "tags": ["exec", "wrapper"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 7,
+    "estimated_time_minutes": 7
+  }
+}

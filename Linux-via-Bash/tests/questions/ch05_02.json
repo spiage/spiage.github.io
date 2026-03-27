@@ -1,0 +1,98 @@
+{
+  "chapter": "ch05",
+  "subchapter": "02",
+  "title": "Интерактивный и неинтерактивный режим",
+  "description": "Разница между режимами shell",
+  "learning_objectives": [
+    "Различать интерактивный и неинтерактивный режим",
+    "Знать когда какой режим используется"
+  ],
+  "questions": [
+    {
+      "id": "ch05_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Когда shell работает в интерактивном режиме?",
+      "options": [
+        "Когда запущен из скрипта",
+        "Когда получает команды от пользователя в терминале",
+        "Когда работает в фоне",
+        "Когда запущен с опцией -c"
+      ],
+      "correct": [1],
+      "explanation": "**Интерактивный режим** — когда shell получает команды от пользователя в терминале.",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["интерактивный", "режимы"]
+    },
+    {
+      "id": "ch05_02_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что скрипты запускаются в неинтерактивном режиме?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Скрипты выполняются в неинтерактивном режиме.",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["неинтерактивный", "скрипты"]
+    },
+    {
+      "id": "ch05_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая переменная показывает, интерактивный ли shell?",
+      "options": ["$SHELL", "$PS1", "$INTERACTIVE", "$TERM"],
+      "correct": [1],
+      "explanation": "**$PS1** — если установлен, shell интерактивный.",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["PS1", "переменные"]
+    },
+    {
+      "id": "ch05_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "В каких случаях shell неинтерактивный? (выберите все правильные)",
+      "options": [
+        "Запуск скрипта",
+        "ssh user@host 'command'",
+        "sh -c 'echo test'",
+        "Открытие терминала"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**Скрипты, ssh с командой, sh -c** — неинтерактивные режимы.",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["неинтерактивный", "примеры"]
+    },
+    {
+      "id": "ch05_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему переменная PS1 не установлена в неинтерактивном режиме?",
+      "options": [
+        "Потому что нет терминала для отображения приглашения",
+        "Потому что это требование безопасности",
+        "Потому что PS1 работает только в логин-шелл",
+        "Потому что неинтерактивный shell не читает конфиги"
+      ],
+      "correct": [0],
+      "explanation": "**PS1 — это приглашение командной строки**. В неинтерактивном режиме нет пользователя, который видит приглашение, поэтому PS1 не устанавливается.",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["PS1", "неинтерактивный"]
+    },
+    {
+      "id": "ch05_02_q06",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как проверить, интерактивный ли shell, в скрипте?",
+      "options": ["[ -n \"$PS1\" ]", "[ -z \"$PS1\" ]", "[ $INTERACTIVE = 1 ]", "[ $TERM = xterm ]"],
+      "correct": [0],
+      "explanation": "**[ -n \"$PS1\" ]** — проверяет, установлена ли PS1 (интерактивный).",
+      "references": ["vol1/part2/ch05_shell_intro/02_modes.md"],
+      "tags": ["PS1", "проверка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-26",
+    "total_questions": 6,
+    "estimated_time_minutes": 6
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "chapter": "ch08",
+  "subchapter": "01",
+  "title": "Навигация: pwd, cd",
+  "description": "Команды для работы с директориями",
+  "learning_objectives": [
+    "Уметь определять текущую директорию",
+    "Уметь переходить между директориями",
+    "Знать специальные обозначения . и .."
+  ],
+  "questions": [
+    {
+      "id": "ch08_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает команда pwd?",
+      "options": [
+        "Показывает содержимое директории",
+        "Выводит полный путь к текущей директории",
+        "Меняет директорию",
+        "Создаёт новую директорию"
+      ],
+      "correct": [1],
+      "explanation": "**pwd (print working directory)** выводит абсолютный путь к текущей директории.",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["pwd", "навигация"]
+    },
+    {
+      "id": "ch08_01_q02",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как перейти в домашнюю директорию?",
+      "options": [
+        "cd ~",
+        "cd /home",
+        "cd home",
+        "cd ."
+      ],
+      "correct": [0],
+      "explanation": "**cd ~** или просто **cd** переходят в домашнюю директорию пользователя.",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["cd", "навигация"]
+    },
+    {
+      "id": "ch08_01_q03",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что '..' обозначает родительскую директорию?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. '..' — родительская директория, '.' — текущая.",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["навигация", "пути"]
+    },
+    {
+      "id": "ch08_01_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как вернуться в предыдущую директорию?",
+      "options": [
+        "cd ..",
+        "cd -",
+        "cd ~",
+        "cd ."
+      ],
+      "correct": [1],
+      "explanation": "**cd -** возвращает в предыдущую директорию (из которой пришли).",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["cd", "навигация"]
+    },
+    {
+      "id": "ch08_01_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как перейти на два уровня вверх по дереву?",
+      "options": [
+        "cd ../..",
+        "cd ..",
+        "cd /..",
+        "cd ~2"
+      ],
+      "correct": [0],
+      "explanation": "**cd ../..** — подъём на два уровня вверх (родитель родителя).",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["cd", "пути"]
+    },
+    {
+      "id": "ch08_01_q06",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие команды изменят директорию на /usr/local? (выберите все правильные, начиная из /home/user)",
+      "options": [
+        "cd /usr/local",
+        "cd ../../usr/local",
+        "cd ../usr/local",
+        "cd ~/../usr/local"
+      ],
+      "correct": [0, 1],
+      "explanation": "**cd /usr/local** (абсолютный путь) и **cd ../../usr/local** (из /home/user: ../.. → /, затем usr/local).",
+      "references": ["vol1/part2/ch08_basic_commands/01_navigation.md"],
+      "tags": ["cd", "пути"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-27",
+    "total_questions": 6,
+    "estimated_time_minutes": 5
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "chapter": "ch04",
+  "subchapter": "08",
+  "title": "export и область видимости",
+  "description": "Локальные и экспортированные переменные",
+  "learning_objectives": [
+    "Различать локальные и экспортированные переменные",
+    "Понимать область видимости"
+  ],
+  "questions": [
+    {
+      "id": "ch04_08_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает export?",
+      "options": [
+        "Удаляет переменную",
+        "Делает переменную переменной окружения",
+        "Показывает переменные",
+        "Копирует переменную"
+      ],
+      "correct": [1],
+      "explanation": "**export** делает переменную переменной окружения (наследуется).",
+      "references": ["vol1/part1/ch04_processes/08_export.md"],
+      "tags": ["export"]
+    },
+    {
+      "id": "ch04_08_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что неэкспортированные переменные не наследуются?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Только экспортированные переменные наследуются.",
+      "references": ["vol1/part1/ch04_processes/08_export.md"],
+      "tags": ["export", "наследование"]
+    },
+    {
+      "id": "ch04_08_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Где видна экспортированная переменная?",
+      "options": [
+        "Только в текущем shell",
+        "В текущем и дочерних",
+        "Во всех shell",
+        "Только в скриптах"
+      ],
+      "correct": [1],
+      "explanation": "**В текущем и дочерних** процессах.",
+      "references": ["vol1/part1/ch04_processes/08_export.md"],
+      "tags": ["область видимости"]
+    },
+    {
+      "id": "ch04_08_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Как экспортировать переменную? (выберите все правильные)",
+      "options": ["export VAR=val", "VAR=val; export VAR", "export VAR", "VAR=val"],
+      "correct": [0, 1, 2],
+      "explanation": "**export VAR=val**, **VAR=val; export VAR**, **export VAR** — все работают.",
+      "references": ["vol1/part1/ch04_processes/08_export.md"],
+      "tags": ["export", "синтаксис"]
+    },
+    {
+      "id": "ch04_08_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как показать только экспортированные переменные?",
+      "options": ["export -p", "export -l", "export -s", "export -a"],
+      "correct": [0],
+      "explanation": "**export -p** показывает экспортированные переменные.",
+      "references": ["vol1/part1/ch04_processes/08_export.md"],
+      "tags": ["export", "просмотр"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "chapter": "ch04",
+  "subchapter": "07",
+  "title": "Переменные окружения",
+  "description": "Что такое, как работают",
+  "learning_objectives": [
+    "Понимать что такое переменные окружения",
+    "Уметь работать с переменными"
+  ],
+  "questions": [
+    {
+      "id": "ch04_07_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда показывает все переменные окружения?",
+      "options": ["env", "set", "export", "show"],
+      "correct": [0],
+      "explanation": "**env** показывает переменные окружения. set — все переменные.",
+      "references": ["vol1/part1/ch04_processes/07_environment_vars.md"],
+      "tags": ["env", "переменные"]
+    },
+    {
+      "id": "ch04_07_q02",
+      "type": "true_false",
+      "difficulty": "easy",
+      "question": "Верно ли, что переменные окружения наследуются?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Дочерние процессы наследуют окружение.",
+      "references": ["vol1/part1/ch04_processes/07_environment_vars.md"],
+      "tags": ["наследование"]
+    },
+    {
+      "id": "ch04_07_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как установить переменную окружения для одной команды?",
+      "options": ["VAR=val cmd", "export VAR=val; cmd", "env VAR=val cmd", "Все варианты"],
+      "correct": [3],
+      "explanation": "**Все варианты** работают. Первый — временно, второй — навсегда в shell, третий — через env.",
+      "references": ["vol1/part1/ch04_processes/07_environment_vars.md"],
+      "tags": ["установка"]
+    },
+    {
+      "id": "ch04_07_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие переменные важные? (выберите все правильные)",
+      "options": ["PATH", "HOME", "USER", "COLOR"],
+      "correct": [0, 1, 2],
+      "explanation": "**PATH, HOME, USER** — важные системные переменные.",
+      "references": ["vol1/part1/ch04_processes/07_environment_vars.md"],
+      "tags": ["переменные", "важные"]
+    },
+    {
+      "id": "ch04_07_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как удалить переменную окружения?",
+      "options": ["unset", "delete", "remove", "clear"],
+      "correct": [0],
+      "explanation": "**unset VAR** удаляет переменную.",
+      "references": ["vol1/part1/ch04_processes/07_environment_vars.md"],
+      "tags": ["unset", "удаление"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

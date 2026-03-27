@@ -1,0 +1,77 @@
+{
+  "chapter": "ch04",
+  "subchapter": "06",
+  "title": "Наследование при fork",
+  "description": "Что наследуется, что нет",
+  "learning_objectives": [
+    "Знать что наследуется при fork",
+    "Понимать различия между родителем и дочерним"
+  ],
+  "questions": [
+    {
+      "id": "ch04_06_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Наследует ли дочерний процесс переменные окружения?",
+      "options": ["Да", "Нет", "Только некоторые", "Только если export"],
+      "correct": [0],
+      "explanation": "**Да**, наследует копию окружения родителя.",
+      "references": ["vol1/part1/ch04_processes/06_inheritance.md"],
+      "tags": ["наследование", "окружение"]
+    },
+    {
+      "id": "ch04_06_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что изменения переменных в дочернем влияют на родителя?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Копия — изменения не влияют на родителя.",
+      "references": ["vol1/part1/ch04_processes/06_inheritance.md"],
+      "tags": ["переменные", "копия"]
+    },
+    {
+      "id": "ch04_06_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что НЕ наследуется при fork?",
+      "options": ["FD", "PID", "Окружение", "Рабочая директория"],
+      "correct": [1],
+      "explanation": "**PID** — новый у каждого процесса. Остальное наследуется.",
+      "references": ["vol1/part1/ch04_processes/06_inheritance.md"],
+      "tags": ["PID", "наследование"]
+    },
+    {
+      "id": "ch04_06_q04",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Что наследуется при fork? (выберите все правильные)",
+      "options": ["FD", "Рабочая директория", "Переменные окружения", "PID"],
+      "correct": [0, 1, 2],
+      "explanation": "**FD, рабочая директория, окружение** наследуются. PID — новый.",
+      "references": ["vol1/part1/ch04_processes/06_inheritance.md"],
+      "tags": ["наследование"]
+    },
+    {
+      "id": "ch04_06_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему переменная, созданная без export, не видна в дочернем процессе?",
+      "options": [
+        "Потому что она локальная для shell и не передаётся при fork",
+        "Потому что дочерний процесс не имеет доступа к памяти родителя",
+        "Потому что export требуется для всех переменных",
+        "Потому что это ограничение безопасности"
+      ],
+      "correct": [0],
+      "explanation": "**Без export переменная локальная для shell** и не попадает в таблицу переменных окружения, которая наследуется при fork.",
+      "references": ["vol1/part1/ch04_processes/06_inheritance.md"],
+      "tags": ["export", "наследование"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}

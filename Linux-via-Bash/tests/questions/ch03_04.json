@@ -1,0 +1,77 @@
+{
+  "chapter": "ch03",
+  "subchapter": "04",
+  "title": "Ссылки",
+  "description": "Жёсткие и символические ссылки",
+  "learning_objectives": [
+    "Различать жёсткие и символические ссылки",
+    "Уметь создавать ссылки"
+  ],
+  "questions": [
+    {
+      "id": "ch03_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда создаёт символическую ссылку?",
+      "options": ["link", "ln -s", "symlink", "cp -s"],
+      "correct": [1],
+      "explanation": "**ln -s** создаёт символическую ссылку. ln без -s — жёсткую.",
+      "references": ["vol1/part1/ch03_filesystem/04_links.md"],
+      "tags": ["ссылки", "команды"]
+    },
+    {
+      "id": "ch03_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что жёсткая ссылка может указывать на директорию?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Жёсткие ссылки на директории запрещены (кроме . и ..).",
+      "references": ["vol1/part1/ch03_filesystem/04_links.md"],
+      "tags": ["жёсткие ссылки"]
+    },
+    {
+      "id": "ch03_04_q03",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Что происходит при удалении оригинала файла? (выберите все правильные)",
+      "options": [
+        "Символическая ссылка становится битой",
+        "Жёсткая ссылка продолжает работать",
+        "Обе ссылки перестают работать",
+        "Жёсткая ссылка удаляется автоматически"
+      ],
+      "correct": [0, 1],
+      "explanation": "**Символическая ссылка становится битой**, **жёсткая продолжает работать** (данные на диске).",
+      "references": ["vol1/part1/ch03_filesystem/04_links.md"],
+      "tags": ["ссылки", "удаление"]
+    },
+    {
+      "id": "ch03_04_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что разделяют жёсткие ссылки?",
+      "options": ["Путь", "Inode", "Имя", "Директорию"],
+      "correct": [1],
+      "explanation": "**Inode** — жёсткие ссылки разделяют один inode. Символические — имеют свой.",
+      "references": ["vol1/part1/ch03_filesystem/04_links.md"],
+      "tags": ["жёсткие ссылки", "inode"]
+    },
+    {
+      "id": "ch03_04_q05",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какой символ обозначает символическую ссылку в 'ls -l'?",
+      "options": ["-", "d", "l", "s"],
+      "correct": [2],
+      "explanation": "**\"l\"** обозначает символическую ссылку. Стрелка показывает куда указывает.",
+      "references": ["vol1/part1/ch03_filesystem/04_links.md"],
+      "tags": ["символические ссылки", "ls"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-22",
+    "total_questions": 5,
+    "estimated_time_minutes": 5
+  }
+}
