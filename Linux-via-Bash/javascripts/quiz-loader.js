@@ -292,7 +292,7 @@ async function startQuiz() {
   }));
 
   // Переходим на страницу теста (абсолютный путь)
-  window.location.href = '/tests/quiz/';
+  window.location.href = '/Linux-via-Bash/tests/quiz/';
 }
 
 function loadProgress() {
