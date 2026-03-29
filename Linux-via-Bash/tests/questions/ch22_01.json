@@ -2,10 +2,11 @@
   "chapter": "ch22",
   "subchapter": "01",
   "title": "systemd и systemctl",
-  "description": "Создание сервисов, управление",
+  "description": "Создание сервисов, управление, EnvironmentFile",
   "learning_objectives": [
     "Уметь создавать unit-файлы",
-    "Знать команды systemctl"
+    "Знать команды systemctl",
+    "Знать про EnvironmentFile"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**systemctl enable** — включить автозагрузку.",
       "references": ["vol2/part5/ch22_integration/01_systemd.md"],
       "tags": ["systemctl", "enable"]
+    },
+    {
+      "id": "ch22_01_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Для чего нужен EnvironmentFile в unit-файле?",
+      "options": [
+        "Загрузить переменные окружения из файла",
+        "Указать путь к конфигурации",
+        "Задать лог-файл",
+        "Указать пользователя"
+      ],
+      "correct": [0],
+      "explanation": "**EnvironmentFile** — загрузить переменные окружения из файла.",
+      "references": ["vol2/part5/ch22_integration/01_systemd.md"],
+      "tags": ["EnvironmentFile", "systemd"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

@@ -53,7 +53,7 @@
         "exit в скрипте закрывает текущий shell"
       ],
       "correct": [0, 2, 3],
-      "explanation": "**source/.** выполняют скрипт в **текущем** shell. Переменные сохраняются, exit закрывает текущий shell. В dash тоже работает.",
+      "explanation": "**source/.** выполняют скрипт в **текущем** shell (не создают процесс). Shebang игнорируется (это комментарий). Переменные сохраняются, exit закрывает текущий shell.",
       "references": ["vol2/part5/ch10_structure/02_execution.md"],
       "tags": ["source", "выполнение"]
     },

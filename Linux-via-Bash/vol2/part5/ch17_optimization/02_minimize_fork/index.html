@@ -10,8 +10,9 @@ grep<span class=w> </span>pattern<span class=w> </span>file<span class=w> </span
 <span class=c1># Ещё лучше (1 fork)</span>
 grep<span class=w> </span>-c<span class=w> </span>pattern<span class=w> </span>file
 
-<span class=c1># Отлично (0 fork, builtin)</span>
-<span class=c1># ... но нет builtin для grep</span>
+<span class=c1># Оптимально (1 fork)</span>
+<span class=c1># builtin для grep нет, но это эффективный способ</span>
+grep<span class=w> </span>-c<span class=w> </span>pattern<span class=w> </span>file
 </code></pre></div> <h3 id=_1>В циклах<a class=headerlink href=#_1 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Плохо (1000 fork)</span>
 <span class=k>for</span><span class=w> </span>i<span class=w> </span><span class=k>in</span><span class=w> </span><span class=o>{</span><span class=m>1</span>..1000<span class=o>}</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span>date<span class=w> </span>+%s
@@ -21,7 +22,7 @@ grep<span class=w> </span>-c<span class=w> </span>pattern<span class=w> </span>f
 <span class=k>for</span><span class=w> </span>i<span class=w> </span><span class=k>in</span><span class=w> </span><span class=o>{</span><span class=m>1</span>..1000<span class=o>}</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=nv>$i</span>
 <span class=k>done</span>
-</code></pre></div> <h3 id=_2>Группировка команд<a class=headerlink href=#_2 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Плохо (3 fork)</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>{1..1000}</code> — расширение bash. В dash используйте <code>seq 1 1000</code> (внешняя команда, 1 fork) или POSIX-цикл <code>i=1; while [ $i -le 1000 ]; do ...; i=$((i+1)); done</code>.</p> </blockquote> <h3 id=_2>Группировка команд<a class=headerlink href=#_2 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Плохо (3 fork)</span>
 ls<span class=w> </span>/etc<span class=w> </span>&gt;<span class=w> </span>out.txt
 ls<span class=w> </span>/var<span class=w> </span>&gt;&gt;<span class=w> </span>out.txt
 ls<span class=w> </span>/tmp<span class=w> </span>&gt;&gt;<span class=w> </span>out.txt

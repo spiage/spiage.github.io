@@ -2,10 +2,11 @@
   "chapter": "ch18",
   "subchapter": "04",
   "title": "Принцип наименьших привилегий",
-  "description": "Минимальные права для выполнения задач",
+  "description": "Минимальные права для выполнения задач, $EUID",
   "learning_objectives": [
     "Понимать принцип наименьших привилегий",
-    "Уметь ограничивать права"
+    "Уметь ограничивать права",
+    "Знать что $EUID только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,22 @@
       "explanation": "**EUID=0** или **UID=0** или **USER=root** — все работают.",
       "references": ["vol2/part5/ch18_security/04_least_privilege.md"],
       "tags": ["root", "проверка"]
+    },
+    {
+      "id": "ch18_04_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что $EUID работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **$EUID** — переменная bash. В dash используйте `id -u`.",
+      "references": ["vol2/part5/ch18_security/04_least_privilege.md"],
+      "tags": ["EUID", "bash", "dash", "POSIX"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

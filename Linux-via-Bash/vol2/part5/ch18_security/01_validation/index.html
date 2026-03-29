@@ -29,11 +29,23 @@
 
 <span class=nv>port</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>
 
+<span class=c1># Сначала проверим, что это число</span>
+<span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=o>[[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span><span class=o>=</span>~<span class=w> </span>^<span class=o>[</span><span class=m>0</span>-9<span class=o>]</span>+$<span class=w> </span><span class=o>]]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Port must be a number&quot;</span>
+<span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
+<span class=k>fi</span>
+
+<span class=c1># Теперь проверим диапазон</span>
 <span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span>-lt<span class=w> </span><span class=m>1</span><span class=w> </span><span class=o>]</span><span class=w> </span><span class=o>||</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span>-gt<span class=w> </span><span class=m>65535</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Port must be 1-65535&quot;</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
 <span class=k>fi</span>
-</code></pre></div> <h3 id=_7>Существующие файлы<a class=headerlink href=#_7 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> В dash используйте <code>grep</code> для проверки типа: <div class=highlight><pre><span></span><code><span class=c1># POSIX способ</span>
+<span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>grep<span class=w> </span>-qE<span class=w> </span><span class=s1>&#39;^[0-9]+$&#39;</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Port must be a number&quot;</span>
+<span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
+<span class=k>fi</span>
+</code></pre></div></p> </blockquote> <h3 id=_7>Существующие файлы<a class=headerlink href=#_7 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=nv>file</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>
 
@@ -64,7 +76,12 @@
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Only PostgreSQL supported&quot;</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
 <span class=k>fi</span>
-</code></pre></div> <h2 id=_9>Белые списки<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Совместимость (Dash):</strong> Проверка регулярных выражений через <code>[[ =~ ]]</code> не работает в <code>dash</code> (POSIX). Используйте <code>grep</code>: <div class=highlight><pre><span></span><code><span class=c1># POSIX способ</span>
+<span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$DATABASE_URL</span><span class=s2>&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>grep<span class=w> </span>-qE<span class=w> </span><span class=s1>&#39;^postgresql://&#39;</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Only PostgreSQL supported&quot;</span>
+<span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
+<span class=k>fi</span>
+</code></pre></div></p> </blockquote> <h2 id=_9>Белые списки<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=nv>action</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>
 

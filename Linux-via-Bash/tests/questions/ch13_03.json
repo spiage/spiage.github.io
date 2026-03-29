@@ -2,11 +2,12 @@
   "chapter": "ch13",
   "subchapter": "03",
   "title": "for",
-  "description": "Цикл по списку, C-подобный for",
+  "description": "Цикл по списку, C-подобный for, brace expansion",
   "learning_objectives": [
     "Понимать синтаксис for",
     "Знать C-подобный for в bash",
-    "Уметь итерировать по файлам"
+    "Уметь итерировать по файлам",
+    "Знать что {1..10} только в bash"
   ],
   "questions": [
     {
@@ -64,14 +65,25 @@
         "for f in \"*.txt\"; do ... done"
       ],
       "correct": [0, 2],
-      "explanation": "**for f in *.txt** — glob expansion. **find | while** — для рекурсивно.",
+      "explanation": "**for f in *.txt** — glob expansion. **find | while** — для рекурсивно. Вариант `for f in \"*.txt\"` неверен — кавычки предотвращают раскрытие шаблона!",
       "references": ["vol2/part5/ch13_loops/03_for.md"],
       "tags": ["for", "glob", "find"]
+    },
+    {
+      "id": "ch13_03_q05",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что {1..10} работает в dash/sh?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Brace expansion `{1..10}` — расширение bash. В dash/sh используйте `seq 1 10`.",
+      "references": ["vol2/part5/ch13_loops/03_for.md"],
+      "tags": ["brace expansion", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

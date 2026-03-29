@@ -32,17 +32,18 @@ myfunc<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=c1># Без pipefail: код = 0 (успех wc)</span>
 <span class=c1># С pipefail: код = 1 (ошибка grep)</span>
 grep<span class=w> </span><span class=s2>&quot;notfound&quot;</span><span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span>wc<span class=w> </span>-l
-</code></pre></div> <h2 id=_3>Комбинация<a class=headerlink href=#_3 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>-o pipefail</code> — расширение Bash. В dash этой опции нет. Для эмуляции в sh используют временные файлы или проверяют <code>PIPESTATUS</code>.</p> </blockquote> <h2 id=_3>Комбинация<a class=headerlink href=#_3 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 <span class=nb>set</span><span class=w> </span>-euo<span class=w> </span>pipefail
 
 <span class=c1># Надёжный скрипт</span>
 <span class=c1># -e: выход при ошибке</span>
 <span class=c1># -u: ошибка при неопределённой переменной</span>
 <span class=c1># -o pipefail: ошибка в конвейере</span>
-</code></pre></div> <h2 id=_4>Практические примеры<a class=headerlink href=#_4 title="Permanent link">&para;</a></h2> <h3 id=_5>Шаблон скрипта<a class=headerlink href=#_5 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>-e</code> и <code>-u</code> стандартизированы POSIX. <code>-o pipefail</code> — расширение Bash (и ksh/zsh), в dash недоступна.</p> </blockquote> <h2 id=_4>Практические примеры<a class=headerlink href=#_4 title="Permanent link">&para;</a></h2> <h3 id=_5>Шаблон скрипта<a class=headerlink href=#_5 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 <span class=nb>set</span><span class=w> </span>-euo<span class=w> </span>pipefail
 
 <span class=c1># Переменные</span>
+<span class=c1># ${BASH_SOURCE[0]} — путь к скрипту (в dash использовать $0)</span>
 <span class=nb>readonly</span><span class=w> </span><span class=nv>SCRIPT_DIR</span><span class=o>=</span><span class=s2>&quot;</span><span class=k>$(</span><span class=nb>cd</span><span class=w> </span><span class=s2>&quot;</span><span class=k>$(</span>dirname<span class=w> </span><span class=s2>&quot;</span><span class=si>${</span><span class=nv>BASH_SOURCE</span><span class=p>[0]</span><span class=si>}</span><span class=s2>&quot;</span><span class=k>)</span><span class=s2>&quot;</span><span class=w> </span><span class=o>&amp;&amp;</span><span class=w> </span><span class=nb>pwd</span><span class=k>)</span><span class=s2>&quot;</span>
 
 <span class=c1># Функции</span>
@@ -63,7 +64,8 @@ main<span class=w> </span><span class=s2>&quot;</span><span class=nv>$@</span><s
 <span class=nb>set</span><span class=w> </span>-euo<span class=w> </span>pipefail
 
 <span class=k>for</span><span class=w> </span>cmd<span class=w> </span><span class=k>in</span><span class=w> </span>git<span class=w> </span>docker<span class=w> </span>kubectl<span class=p>;</span><span class=w> </span><span class=k>do</span>
-<span class=w>    </span><span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=nb>command</span><span class=w> </span>-v<span class=w> </span><span class=s2>&quot;</span><span class=nv>$cmd</span><span class=s2>&quot;</span><span class=w> </span><span class=p>&amp;</span>&gt;<span class=w> </span>/dev/null<span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=c1># &amp;&gt; — только bash! POSIX: &gt; /dev/null 2&gt;&amp;1</span>
+<span class=w>    </span><span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=nb>command</span><span class=w> </span>-v<span class=w> </span><span class=s2>&quot;</span><span class=nv>$cmd</span><span class=s2>&quot;</span><span class=w> </span>&gt;<span class=w> </span>/dev/null<span class=w> </span><span class=m>2</span>&gt;<span class=p>&amp;</span><span class=m>1</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>        </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: </span><span class=nv>$cmd</span><span class=s2> not found&quot;</span>
 <span class=w>        </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
 <span class=w>    </span><span class=k>fi</span>

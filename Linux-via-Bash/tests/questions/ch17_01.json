@@ -2,10 +2,11 @@
   "chapter": "ch17",
   "subchapter": "01",
   "title": "Встроенные vs внешние",
-  "description": "Производительность builtins и external commands",
+  "description": "Производительность builtins и external commands, subshell",
   "learning_objectives": [
     "Понимать разницу между builtin и external",
-    "Знать когда что использовать"
+    "Знать когда что использовать",
+    "Знать про subshell в конвейерах"
   ],
   "questions": [
     {
@@ -66,11 +67,38 @@
       "explanation": "**echo, read, printf** — builtin. **cat** — внешняя (/usr/bin/cat).",
       "references": ["vol2/part5/ch17_optimization/01_builtins_vs_externals.md"],
       "tags": ["builtin", "список"]
+    },
+    {
+      "id": "ch17_01_q05",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что compgen работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **compgen** — builtin только в bash. В dash используйте `type`.",
+      "references": ["vol2/part5/ch17_optimization/01_builtins_vs_externals.md"],
+      "tags": ["compgen", "bash", "dash"]
+    },
+    {
+      "id": "ch17_01_q06",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему 'cat file | while read line' хуже '< file | while read line'?",
+      "options": [
+        "Создаёт subshell, переменные не сохраняются",
+        "Медленнее на 10%",
+        "Не работает в bash",
+        "Нет разницы"
+      ],
+      "correct": [0],
+      "explanation": "**cat file | while** создаёт subshell. Переменные, изменённые внутри цикла, не сохранятся снаружи.",
+      "references": ["vol2/part5/ch17_optimization/01_builtins_vs_externals.md"],
+      "tags": ["subshell", "while", "read"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 6,
+    "estimated_time_minutes": 7
   }
 }

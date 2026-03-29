@@ -2,10 +2,11 @@
   "chapter": "ch16",
   "subchapter": "04",
   "title": "trap",
-  "description": "Перехват сигналов, очистка",
+  "description": "Перехват сигналов, очистка, перезапись trap",
   "learning_objectives": [
     "Уметь использовать trap",
-    "Знать EXIT trap"
+    "Знать EXIT trap",
+    "Знать что trap перезаписывает предыдущие обработчики"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**trap - INT** или **trap '' INT** — сброс к обработчику по умолчанию.",
       "references": ["vol2/part5/ch16_errors/04_trap.md"],
       "tags": ["trap", "сброс"]
+    },
+    {
+      "id": "ch16_04_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что произойдёт при 'trap a EXIT; trap b EXIT'?",
+      "options": [
+        "Выполнятся обе команды",
+        "Выполнится только 'a'",
+        "Выполнится только 'b'",
+        "Ошибка синтаксиса"
+      ],
+      "correct": [2],
+      "explanation": "**Выполнится только 'b'**. Второй trap заменяет первый для того же сигнала.",
+      "references": ["vol2/part5/ch16_errors/04_trap.md"],
+      "tags": ["trap", "перезапись"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

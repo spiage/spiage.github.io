@@ -2,10 +2,11 @@
   "chapter": "ch17",
   "subchapter": "02",
   "title": "Минимизация fork/exec",
-  "description": "Избегание лишних процессов",
+  "description": "Избегание лишних процессов, brace expansion",
   "learning_objectives": [
     "Понимать стоимость fork/exec",
-    "Уметь избегать лишних процессов"
+    "Уметь избегать лишних процессов",
+    "Знать что {1..1000} только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,22 @@
       "explanation": "**builtin** (echo, printf) не создают fork, в отличие от external (cat, grep).",
       "references": ["vol2/part5/ch17_optimization/02_minimize_fork.md"],
       "tags": ["оптимизация", "циклы"]
+    },
+    {
+      "id": "ch17_02_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что {1..1000} работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Brace expansion `{1..1000}` — расширение bash. В dash используйте `seq 1 1000`.",
+      "references": ["vol2/part5/ch17_optimization/02_minimize_fork.md"],
+      "tags": ["brace expansion", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

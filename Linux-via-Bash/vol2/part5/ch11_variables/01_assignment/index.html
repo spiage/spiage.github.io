@@ -13,11 +13,13 @@
 <span class=c1># С пробелами — нужны кавычки</span>
 <span class=nv>message</span><span class=o>=</span><span class=s2>&quot;Hello World&quot;</span>
 </code></pre></div> <h3 id=_5>Числа<a class=headerlink href=#_5 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=nv>count</span><span class=o>=</span><span class=m>42</span>
-<span class=nv>price</span><span class=o>=</span><span class=m>99</span>.99
 
 <span class=c1># Арифметика (только целые числа в bash)</span>
 <span class=o>((</span><span class=nv>count</span><span class=w> </span><span class=o>=</span><span class=w> </span>count<span class=w> </span>+<span class=w> </span><span class=m>1</span><span class=o>))</span>
-</code></pre></div> <h3 id=_6>Специальные символы<a class=headerlink href=#_6 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Пробелы, табуляции</span>
+</code></pre></div> <blockquote> <p><strong>Важно:</strong> Bash поддерживает <strong>только целочисленную арифметику</strong>. Для работы с числами с плавающей точкой используйте <code>bc</code> или <code>awk</code>: <div class=highlight><pre><span></span><code><span class=nv>price</span><span class=o>=</span><span class=m>99</span>.99<span class=w>  </span><span class=c1># хранится как строка</span>
+<span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$price</span><span class=s2>&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>awk<span class=w> </span><span class=s1>&#39;{print $1 + 1}&#39;</span><span class=w>  </span><span class=c1># 100.99</span>
+<span class=nb>echo</span><span class=w> </span><span class=s2>&quot;scale=2; </span><span class=nv>$price</span><span class=s2> + 1&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>bc<span class=w>       </span><span class=c1># 100.99</span>
+</code></pre></div></p> </blockquote> <h3 id=_6>Специальные символы<a class=headerlink href=#_6 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Пробелы, табуляции</span>
 <span class=nv>data</span><span class=o>=</span><span class=s2>&quot;value with spaces&quot;</span>
 
 <span class=c1># Кавычки внутри строки</span>

@@ -11,29 +11,29 @@ find<span class=w> </span>.<span class=w> </span>-name<span class=w> </span><spa
 <span class=c1># Разделитель null (для пробелов в именах)</span>
 find<span class=w> </span>.<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.txt&quot;</span><span class=w> </span>-print0<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-0<span class=w> </span>rm
 
-<span class=c1># Параллельно (GNU xargs)</span>
+<span class=c1># Параллельно (GNU xargs, не в BSD/POSIX)</span>
 find<span class=w> </span>.<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.txt&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-P<span class=w> </span><span class=m>4</span><span class=w> </span>-n<span class=w> </span><span class=m>100</span><span class=w> </span>rm
-</code></pre></div> <h2 id=_3>Практические примеры<a class=headerlink href=#_3 title="Permanent link">&para;</a></h2> <h3 id=_4>Массовое копирование<a class=headerlink href=#_4 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># По одному</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>-P</code> — расширение GNU xargs. В BSD/macOS используйте <code>parallel</code> или последовательную обработку.</p> </blockquote> <h2 id=_3>Практические примеры<a class=headerlink href=#_3 title="Permanent link">&para;</a></h2> <h3 id=_4>Массовое копирование<a class=headerlink href=#_4 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># По одному</span>
 <span class=k>for</span><span class=w> </span>f<span class=w> </span><span class=k>in</span><span class=w> </span>*.txt<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span>cp<span class=w> </span><span class=s2>&quot;</span><span class=nv>$f</span><span class=s2>&quot;</span><span class=w> </span>/backup/
 <span class=k>done</span>
 
-<span class=c1># Пакетами</span>
-ls<span class=w> </span>*.txt<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-I<span class=w> </span><span class=o>{}</span><span class=w> </span>cp<span class=w> </span><span class=o>{}</span><span class=w> </span>/backup/
+<span class=c1># Пакетами (безопасно с -print0)</span>
+find<span class=w> </span>.<span class=w> </span>-maxdepth<span class=w> </span><span class=m>1</span><span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.txt&quot;</span><span class=w> </span>-print0<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-0<span class=w> </span>-I<span class=w> </span><span class=o>{}</span><span class=w> </span>cp<span class=w> </span><span class=o>{}</span><span class=w> </span>/backup/
 
-<span class=c1># Или проще</span>
+<span class=c1># Или проще (если файлов немного)</span>
 cp<span class=w> </span>*.txt<span class=w> </span>/backup/
 </code></pre></div> <h3 id=_5>Обработка списка<a class=headerlink href=#_5 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Список файлов</span>
 cat<span class=w> </span>filelist.txt<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-I<span class=w> </span><span class=o>{}</span><span class=w> </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Processing: {}&quot;</span>
 
 <span class=c1># С аргументами</span>
 cat<span class=w> </span>filelist.txt<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-n<span class=w> </span><span class=m>2</span><span class=w> </span><span class=nb>echo</span>
-</code></pre></div> <h3 id=_6>Удаление старых файлов<a class=headerlink href=#_6 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Найти и удалить (пакетами)</span>
-find<span class=w> </span>/tmp<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.tmp&quot;</span><span class=w> </span>-mtime<span class=w> </span>+7<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>rm
+</code></pre></div> <h3 id=_6>Удаление старых файлов<a class=headerlink href=#_6 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Найти и удалить (пакетами, безопасно с -print0)</span>
+find<span class=w> </span>/tmp<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.tmp&quot;</span><span class=w> </span>-mtime<span class=w> </span>+7<span class=w> </span>-print0<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-0<span class=w> </span>rm
 
 <span class=c1># Безопасно (с подтверждением)</span>
-find<span class=w> </span>/tmp<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.tmp&quot;</span><span class=w> </span>-mtime<span class=w> </span>+7<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>rm<span class=w> </span>-i
-</code></pre></div> <h2 id=parallel-gnu-parallel>parallel (GNU parallel)<a class=headerlink href=#parallel-gnu-parallel title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Параллельная обработка</span>
+find<span class=w> </span>/tmp<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.tmp&quot;</span><span class=w> </span>-mtime<span class=w> </span>+7<span class=w> </span>-print0<span class=w> </span><span class=p>|</span><span class=w> </span>xargs<span class=w> </span>-0<span class=w> </span>rm<span class=w> </span>-i
+</code></pre></div> <blockquote> <p><strong>Важно:</strong> Не используйте <code>ls | xargs</code> — это небезопасно для имён с пробелами/переносами. Используйте <code>find -print0 | xargs -0</code>.</p> </blockquote> <h2 id=parallel-gnu-parallel>parallel (GNU parallel)<a class=headerlink href=#parallel-gnu-parallel title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Параллельная обработка</span>
 find<span class=w> </span>.<span class=w> </span>-name<span class=w> </span><span class=s2>&quot;*.txt&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>parallel<span class=w> </span>-j<span class=w> </span><span class=m>4</span><span class=w> </span>process<span class=w> </span><span class=o>{}</span>
 
 <span class=c1># С аргументами</span>

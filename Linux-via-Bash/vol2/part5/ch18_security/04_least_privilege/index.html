@@ -8,7 +8,11 @@
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Must run as root&quot;</span><span class=w> </span>&gt;<span class=p>&amp;</span><span class=m>2</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
 <span class=k>fi</span>
-</code></pre></div> <h2 id=root>Избегание root<a class=headerlink href=#root title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Плохо (всегда root)</span>
+</code></pre></div> <blockquote> <p><strong>Совместимость (Dash):</strong> Переменная <code>$EUID</code> (Effective User ID) — расширение Bash. В POSIX sh её нет. Используйте <code>id -u</code>: <div class=highlight><pre><span></span><code><span class=c1># POSIX способ</span>
+<span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=k>$(</span>id<span class=w> </span>-u<span class=k>)</span><span class=s2>&quot;</span><span class=w> </span>-eq<span class=w> </span><span class=m>0</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Running as root&quot;</span>
+<span class=k>fi</span>
+</code></pre></div></p> </blockquote> <h2 id=root>Избегание root<a class=headerlink href=#root title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Плохо (всегда root)</span>
 <span class=c1>#!/bin/bash</span>
 <span class=c1># Запуск от root</span>
 
@@ -16,6 +20,7 @@
 <span class=c1>#!/bin/bash</span>
 
 <span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>&quot;--install&quot;</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=c1># $EUID — только bash! POSIX: [ &quot;$(id -u)&quot; -ne 0 ]</span>
 <span class=w>    </span><span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$EUID</span><span class=w> </span>-ne<span class=w> </span><span class=m>0</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>        </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Install requires root&quot;</span>
 <span class=w>        </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>

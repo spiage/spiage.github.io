@@ -67,6 +67,7 @@ safe_divide<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=nb>set</span><span class=w> </span>-o<span class=w> </span>pipefail
 
 grep<span class=w> </span><span class=s2>&quot;pattern&quot;</span><span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span>sort<span class=w> </span><span class=p>|</span><span class=w> </span>uniq
+<span class=c1># PIPESTATUS доступен только в Bash! В dash нет аналога</span>
 <span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=si>${</span><span class=nv>PIPESTATUS</span><span class=p>[0]</span><span class=si>}</span><span class=w> </span>-ne<span class=w> </span><span class=m>0</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;grep failed&quot;</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>

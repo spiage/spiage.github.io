@@ -5,12 +5,12 @@
 <span class=nb>type</span><span class=w> </span>ls
 <span class=c1># ls is /usr/bin/ls</span>
 
-<span class=c1># Список builtin</span>
+<span class=c1># Список builtin (только Bash!)</span>
 <span class=nb>compgen</span><span class=w> </span>-b
 
-<span class=c1># Список всех команд</span>
+<span class=c1># Список всех команд (только Bash!)</span>
 <span class=nb>compgen</span><span class=w> </span>-c
-</code></pre></div> <h2 id=builtin-bash>builtin команды bash<a class=headerlink href=#builtin-bash title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Навигация</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>compgen</code> — builtin только в bash. В dash используйте <code>type</code> для проверки команд.</p> </blockquote> <h2 id=builtin-bash>builtin команды bash<a class=headerlink href=#builtin-bash title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Навигация</span>
 cd,<span class=w> </span>pwd,<span class=w> </span>pushd,<span class=w> </span><span class=nb>popd</span>
 
 <span class=c1># Переменные</span>
@@ -37,10 +37,12 @@ source,<span class=w> </span>alias,<span class=w> </span>unalias,<span class=w> 
 <span class=k>done</span><span class=w> </span>&lt;<span class=w> </span>file
 
 <span class=c1># external (медленнее)</span>
+<span class=c1># Внимание: этот вариант запускает цикл в subshell!</span>
+<span class=c1># Переменные, изменённые внутри, не сохранятся снаружи</span>
 cat<span class=w> </span>file<span class=w> </span><span class=p>|</span><span class=w> </span><span class=k>while</span><span class=w> </span><span class=nb>read</span><span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$line</span><span class=s2>&quot;</span>
 <span class=k>done</span>
-</code></pre></div> <h3 id=cd-vs-pwd>cd vs pwd<a class=headerlink href=#cd-vs-pwd title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># builtin</span>
+</code></pre></div> <blockquote> <p><strong>Важно:</strong> <code>cat file | while read line</code> создаёт subshell. Переменные, изменённые внутри цикла, не сохранятся после выхода. Используйте перенаправление <code>&lt; file</code> для работы в текущем shell.</p> </blockquote> <h3 id=cd-vs-pwd>cd vs pwd<a class=headerlink href=#cd-vs-pwd title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># builtin</span>
 <span class=nb>cd</span><span class=w> </span>/tmp
 <span class=nb>pwd</span>
 

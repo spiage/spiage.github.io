@@ -2,10 +2,11 @@
   "chapter": "ch21",
   "subchapter": "03",
   "title": "Отладочные техники",
-  "description": "Логирование, assert, пошаговая отладка",
+  "description": "Логирование, assert, пошаговая отладка, trap DEBUG",
   "learning_objectives": [
     "Знать техники отладки",
-    "Уметь логировать"
+    "Уметь логировать",
+    "Знать что trap DEBUG только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,38 @@
       "explanation": "**set -x** включает, **set +x** выключает трассировку.",
       "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
       "tags": ["set -x", "трассировка"]
+    },
+    {
+      "id": "ch21_03_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что trap DEBUG работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **trap DEBUG** — расширение bash. В dash недоступно.",
+      "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
+      "tags": ["trap DEBUG", "bash", "dash"]
+    },
+    {
+      "id": "ch21_03_q05",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая конструкция для меню недоступна в dash?",
+      "options": [
+        "select",
+        "case",
+        "while",
+        "if"
+      ],
+      "correct": [0],
+      "explanation": "**select** — башизм. В dash используйте while + case.",
+      "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
+      "tags": ["select", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

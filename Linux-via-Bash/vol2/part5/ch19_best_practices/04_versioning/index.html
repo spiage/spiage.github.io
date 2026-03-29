@@ -85,6 +85,9 @@ bump_version<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=nb>local</span><span class=w> </span>major<span class=w> </span>minor<span class=w> </span>patch
 
 <span class=w>    </span><span class=nv>IFS</span><span class=o>=</span><span class=s1>&#39;.&#39;</span><span class=w> </span><span class=nb>read</span><span class=w> </span>-r<span class=w> </span>major<span class=w> </span>minor<span class=w> </span>patch<span class=w> </span><span class=o>&lt;&lt;&lt;</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$current</span><span class=s2>&quot;</span>
+<span class=w>    </span><span class=c1># &lt;&lt;&lt; (here-string) — только bash! В dash используйте:</span>
+<span class=w>    </span><span class=c1># echo &quot;$current&quot; | IFS=&#39;.&#39; read -r major minor patch</span>
+<span class=w>    </span><span class=c1># Но в pipe read выполняется в subshell, переменные не сохранятся</span>
 
 <span class=w>    </span><span class=k>case</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$type</span><span class=s2>&quot;</span><span class=w> </span><span class=k>in</span>
 <span class=w>        </span>major<span class=o>)</span>

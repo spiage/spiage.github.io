@@ -2,10 +2,11 @@
   "chapter": "ch17",
   "subchapter": "04",
   "title": "awk/sed вместо циклов",
-  "description": "Использование текстовых процессоров для обработки",
+  "description": "Использование текстовых процессоров для обработки, [[ ]] в bash",
   "learning_objectives": [
     "Знать когда использовать awk/sed",
-    "Уметь заменять циклы на awk"
+    "Уметь заменять циклы на awk",
+    "Знать что [[ ]] только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**sum+=$1** суммирует первую колонку, **END** выводит результат.",
       "references": ["vol2/part5/ch17_optimization/04_awk_sed.md"],
       "tags": ["awk", "сумма"]
+    },
+    {
+      "id": "ch17_04_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой синтаксис для фильтрации работает в dash?",
+      "options": [
+        "[[ \"$line\" == *ERROR* ]]",
+        "case \"$line\" in *ERROR*) echo \"$line\" ;; esac",
+        "test \"$line\" == *ERROR*",
+        "if \"$line\" contains ERROR"
+      ],
+      "correct": [1],
+      "explanation": "**case** — POSIX-совместимый способ. **[[ ... ]]** — только bash!",
+      "references": ["vol2/part5/ch17_optimization/04_awk_sed.md"],
+      "tags": ["dash", "POSIX", "case", "bash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

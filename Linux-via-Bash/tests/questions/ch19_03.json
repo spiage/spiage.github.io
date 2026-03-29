@@ -2,10 +2,11 @@
   "chapter": "ch19",
   "subchapter": "03",
   "title": "Тестирование",
-  "description": "BATS, shellcheck, ручное тестирование",
+  "description": "BATS, shellcheck, переменные $status и $output",
   "learning_objectives": [
     "Знать инструменты тестирования",
-    "Уметь писать тесты"
+    "Уметь писать тесты",
+    "Знать переменные BATS"
   ],
   "questions": [
     {
@@ -50,11 +51,43 @@
       "explanation": "**bats test.bats** — запуск тестов BATS.",
       "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
       "tags": ["BATS", "запуск"]
+    },
+    {
+      "id": "ch19_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие переменные предоставляет BATS в тестах? (выберите все правильные)",
+      "options": [
+        "$status",
+        "$output",
+        "$result",
+        "$exit_code"
+      ],
+      "correct": [0, 1],
+      "explanation": "**$status** (код возврата) и **$output** (вывод команды) — переменные BATS.",
+      "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
+      "tags": ["BATS", "переменные"]
+    },
+    {
+      "id": "ch19_03_q05",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой синтаксис использовать для pattern matching в BATS?",
+      "options": [
+        "[[ \"$output\" == *pattern* ]]",
+        "[ \"$output\" == *pattern* ]",
+        "[ \"$output\" = *pattern* ]",
+        "match \"$output\" pattern"
+      ],
+      "correct": [0],
+      "explanation": "**[[ ... ]]** — pattern matching в bash. В [ ] это не работает.",
+      "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
+      "tags": ["BATS", "pattern matching", "bash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

@@ -4,23 +4,23 @@
 </code></pre></div> <p><strong>Логика:</strong> Выполнять, пока условие <strong>не</strong> станет истинным.</p> <h2 id=_2>Примеры<a class=headerlink href=#_2 title="Permanent link">&para;</a></h2> <h3 id=_3>Базовое использование<a class=headerlink href=#_3 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=nv>count</span><span class=o>=</span><span class=m>1</span>
-<span class=k>until</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$count</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>until</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$count</span><span class=s2>&quot;</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Count: </span><span class=nv>$count</span><span class=s2>&quot;</span>
 <span class=w>    </span><span class=nv>count</span><span class=o>=</span><span class=k>$((</span><span class=nv>count</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=m>1</span><span class=k>))</span>
 <span class=k>done</span>
 <span class=c1># Вывод: 1 2 3 4 5</span>
 </code></pre></div> <h3 id=until-vs-while>until vs while<a class=headerlink href=#until-vs-while title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># until</span>
-<span class=k>until</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$count</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>until</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$count</span><span class=s2>&quot;</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span>...
 <span class=k>done</span>
 
 <span class=c1># Эквивалентный while</span>
-<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span>!<span class=w> </span><span class=nv>$count</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span>!<span class=w> </span><span class=s2>&quot;</span><span class=nv>$count</span><span class=s2>&quot;</span><span class=w> </span>-gt<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span>...
 <span class=k>done</span>
 
 <span class=c1># Или</span>
-<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$count</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$count</span><span class=s2>&quot;</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span>...
 <span class=k>done</span>
 </code></pre></div> <p><strong>Правило:</strong> <code>until condition</code> = <code>while ! condition</code></p> <h2 id=_4>Ожидание условия<a class=headerlink href=#_4 title="Permanent link">&para;</a></h2> <h3 id=_5>Ждать пока файл появится<a class=headerlink href=#_5 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
@@ -37,7 +37,7 @@
 <span class=w>    </span>sleep<span class=w> </span><span class=m>2</span>
 <span class=k>done</span>
 <span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Service is up!&quot;</span>
-</code></pre></div> <h3 id=_7>Ждать пока процесс завершится<a class=headerlink href=#_7 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> Для ожидания завершения процесса лучше использовать <code>wait $pid</code>, а не <code>kill -0</code>. <code>kill -0</code> не гарантирует, что процесс именно ваш (PID может освободиться и достаться другому процессу).</p> </blockquote> <h3 id=_7>Ждать пока процесс завершится<a class=headerlink href=#_7 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=c1># Запуск в фоне</span>
 long_task<span class=w> </span><span class=p>&amp;</span>

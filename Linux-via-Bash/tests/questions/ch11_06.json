@@ -2,10 +2,11 @@
   "chapter": "ch11",
   "subchapter": "06",
   "title": "Подстановка команд",
-  "description": "$(cmd), обратные кавычки",
+  "description": "$(cmd), обратные кавычки, here-string",
   "learning_objectives": [
     "Уметь использовать подстановку команд",
-    "Знать разницу между $() и ``"
+    "Знать разницу между $() и ``",
+    "Знать что here-string (<<<) только в bash"
   ],
   "questions": [
     {
@@ -66,11 +67,27 @@
       "explanation": "**$(cmd)** и ``cmd`` эквивалентны для простых случаев. Но $() предпочтительнее.",
       "references": ["vol2/part5/ch11_variables/06_command_subst.md"],
       "tags": ["подстановка", "эквивалентность"]
+    },
+    {
+      "id": "ch11_06_q05",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой синтаксис here-string работает только в bash (не в POSIX sh)?",
+      "options": [
+        "cmd <<< \"string\"",
+        "cmd << EOF",
+        "cmd $(string)",
+        "cmd < string"
+      ],
+      "correct": [0],
+      "explanation": "**<<<** — here-string, расширение bash. В POSIX sh используйте echo \"string\" | cmd.",
+      "references": ["vol2/part5/ch11_variables/06_command_subst.md"],
+      "tags": ["here-string", "bash", "POSIX"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

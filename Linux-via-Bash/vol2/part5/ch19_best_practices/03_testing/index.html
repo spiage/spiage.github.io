@@ -75,9 +75,13 @@ teardown<span class=o>()</span><span class=w> </span><span class=o>{</span>
 
 @test<span class=w> </span><span class=s2>&quot;output contains expected text&quot;</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span>run<span class=w> </span>./script.sh
-<span class=w>    </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$output</span><span class=s2>&quot;</span><span class=w> </span><span class=o>==</span><span class=w> </span>*<span class=s2>&quot;expected&quot;</span>*<span class=w> </span><span class=o>]</span>
+<span class=w>    </span><span class=c1># [[ ... ]] — pattern matching в bash (не работает в [ ])</span>
+<span class=w>    </span><span class=c1># $status и $output — переменные, предоставляемые BATS</span>
+<span class=w>    </span><span class=c1># $status — код возврата команды</span>
+<span class=w>    </span><span class=c1># $output — весь вывод команды (stdout + stderr)</span>
+<span class=w>    </span><span class=o>[[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$output</span><span class=s2>&quot;</span><span class=w> </span><span class=o>==</span><span class=w> </span>*<span class=s2>&quot;expected&quot;</span>*<span class=w> </span><span class=o>]]</span>
 <span class=o>}</span>
-</code></pre></div> <h2 id=_9>Ручное тестирование<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <h3 id=_10>Проверка сценариев<a class=headerlink href=#_10 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Нормальный случай</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> BATS предоставляет переменные <code>$status</code> (код возврата) и <code>$output</code> (вывод команды). Используйте <code>[[ ... ]]</code> для pattern matching в bash.</p> </blockquote> <h2 id=_9>Ручное тестирование<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <h3 id=_10>Проверка сценариев<a class=headerlink href=#_10 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Нормальный случай</span>
 ./script.sh<span class=w> </span>valid_input.txt
 
 <span class=c1># Граничные значения</span>

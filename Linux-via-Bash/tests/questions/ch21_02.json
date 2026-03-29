@@ -2,10 +2,11 @@
   "chapter": "ch21",
   "subchapter": "02",
   "title": "shellcheck",
-  "description": "Статический анализ скриптов",
+  "description": "Статический анализ скриптов, subshell ловушка",
   "learning_objectives": [
     "Уметь использовать shellcheck",
-    "Понимать предупреждения"
+    "Понимать предупреждения",
+    "Знать про subshell в конвейерах"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**# shellcheck disable=SC2086** — игнорирует конкретное правило.",
       "references": ["vol2/part5/ch21_debugging/02_shellcheck.md"],
       "tags": ["shellcheck", "игнорирование"]
+    },
+    {
+      "id": "ch21_02_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему 'find | while read; do exit 1; done' проблематично?",
+      "options": [
+        "exit 1 сработает только в subshell",
+        "Медленнее на 50%",
+        "Не работает в bash",
+        "shellcheck всегда ругается"
+      ],
+      "correct": [0],
+      "explanation": "**find | while** создаёт subshell. exit 1 выйдет только из цикла, не из скрипта.",
+      "references": ["vol2/part5/ch21_debugging/02_shellcheck.md"],
+      "tags": ["subshell", "find", "while"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

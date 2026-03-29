@@ -2,10 +2,11 @@
   "chapter": "ch19",
   "subchapter": "01",
   "title": "Стиль кода",
-  "description": "Читаемость, имена переменных, форматирование",
+  "description": "Читаемость, имена переменных, форматирование, pipefail",
   "learning_objectives": [
     "Знать правила стиля кода",
-    "Уметь писать читаемый код"
+    "Уметь писать читаемый код",
+    "Знать что pipefail только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,38 @@
       "explanation": "**Отступы и переносы** улучшают читаемость.",
       "references": ["vol2/part5/ch19_best_practices/01_style.md"],
       "tags": ["форматирование", "if"]
+    },
+    {
+      "id": "ch19_01_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что set -o pipefail работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **pipefail** — расширение bash. В dash недоступно.",
+      "references": ["vol2/part5/ch19_best_practices/01_style.md"],
+      "tags": ["pipefail", "bash", "dash"]
+    },
+    {
+      "id": "ch19_01_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какая переменная содержит путь к скрипту в bash?",
+      "options": [
+        "$BASH_SOURCE",
+        "$SCRIPT_PATH",
+        "$0",
+        "$BASH_PATH"
+      ],
+      "correct": [0],
+      "explanation": "**$BASH_SOURCE** — путь к скрипту (в dash использовать $0).",
+      "references": ["vol2/part5/ch19_best_practices/01_style.md"],
+      "tags": ["BASH_SOURCE", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

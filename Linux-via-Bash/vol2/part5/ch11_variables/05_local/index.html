@@ -68,7 +68,7 @@ myfunc<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=nb>local</span><span class=w> </span><span class=nv>var</span><span class=o>=</span><span class=s2>&quot;value&quot;</span><span class=w>  </span><span class=c1># Работает в dash!</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$var</span><span class=s2>&quot;</span>
 <span class=o>}</span>
-</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>local</code> — POSIX, но не работает в очень старых sh.</p> </blockquote> <h2 id=_7>Практические примеры<a class=headerlink href=#_7 title="Permanent link">&para;</a></h2> <h3 id=_8>Функция с локальными переменными<a class=headerlink href=#_8 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>local</code> не входит в стандарт POSIX, но поддерживается в dash, bash и большинстве современных sh как расширение.</p> </blockquote> <h2 id=_7>Практические примеры<a class=headerlink href=#_7 title="Permanent link">&para;</a></h2> <h3 id=_8>Функция с локальными переменными<a class=headerlink href=#_8 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 calculate<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=nb>local</span><span class=w> </span><span class=nv>a</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>

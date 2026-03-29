@@ -2,10 +2,11 @@
   "chapter": "ch17",
   "subchapter": "03",
   "title": "Пакетная обработка",
-  "description": "Обработка данных пакетами вместо построчной",
+  "description": "Обработка данных пакетами вместо построчной, xargs безопасность",
   "learning_objectives": [
     "Понимать преимущества пакетной обработки",
-    "Уметь использовать xargs"
+    "Уметь использовать xargs",
+    "Знать про -print0 для безопасности"
   ],
   "questions": [
     {
@@ -50,11 +51,38 @@
       "explanation": "**-n 10** — максимум 10 аргументов за вызов.",
       "references": ["vol2/part5/ch17_optimization/03_batch.md"],
       "tags": ["xargs", "-n"]
+    },
+    {
+      "id": "ch17_03_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Почему 'ls | xargs' хуже 'find -print0 | xargs -0'?",
+      "options": [
+        "ls не работает с пробелами в именах",
+        "Медленнее на 10%",
+        "Не работает в bash",
+        "Нет разницы"
+      ],
+      "correct": [0],
+      "explanation": "**ls | xargs** небезопасен для имён с пробелами/переносами. **find -print0 | xargs -0** использует null-разделитель.",
+      "references": ["vol2/part5/ch17_optimization/03_batch.md"],
+      "tags": ["xargs", "find", "безопасность"]
+    },
+    {
+      "id": "ch17_03_q05",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что xargs -P работает в BSD/macOS?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **-P** — расширение GNU xargs. В BSD/macOS используйте `parallel`.",
+      "references": ["vol2/part5/ch17_optimization/03_batch.md"],
+      "tags": ["xargs", "GNU", "BSD"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

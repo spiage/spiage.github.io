@@ -37,7 +37,7 @@ my_function
 </code></pre></div> <p><strong>Вывод:</strong> <div class=highlight><pre><span></span><code>+ ./script.sh:8: my_function
 + ./script.sh:4: echo &#39;In function&#39;
 In function
-</code></pre></div></p> <h2 id=_2>Запуск с отладкой<a class=headerlink href=#_2 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Весь скрипт</span>
+</code></pre></div></p> <blockquote> <p><strong>Примечание:</strong> <code>BASH_SOURCE</code> — переменная bash. В dash используйте <code>$0</code> (но без пути к файлу). <code>LINENO</code> работает в обоих.</p> </blockquote> <h2 id=_2>Запуск с отладкой<a class=headerlink href=#_2 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Весь скрипт</span>
 bash<span class=w> </span>-x<span class=w> </span>script.sh
 
 <span class=c1># С verbose</span>

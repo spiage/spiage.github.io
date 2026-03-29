@@ -16,7 +16,7 @@
 <span class=nv>count</span><span class=o>=</span><span class=m>5</span>
 <span class=o>((</span>count++<span class=o>))</span>
 <span class=nb>echo</span><span class=w> </span><span class=nv>$count</span><span class=w>  </span><span class=c1># 6</span>
-</code></pre></div> <p><strong>Преимущества bash:</strong> - ✅ Массивы - ✅ <code>[[ ]]</code> с <code>&amp;&amp;</code>, <code>||</code> - ✅ <code>(( ))</code> арифметика - ✅ <code>${var:-default}</code>, <code>${var:0:5}</code> - ✅ Автдополнение Tab - ✅ История команд</p> <h3 id=binsh>#!/bin/sh<a class=headerlink href=#binsh title="Permanent link">&para;</a></h3> <p>Используйте для <strong>переносимости</strong> и скорости:</p> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/sh</span>
+</code></pre></div> <p><strong>Преимущества bash:</strong> - ✅ Массивы - ✅ <code>[[ ]]</code> с <code>&amp;&amp;</code>, <code>||</code> - ✅ <code>(( ))</code> арифметика - ✅ <code>${var:-default}</code>, <code>${var:0:5}</code> - ✅ Расширенная подстановка параметров - ✅ <code>local</code>, <code>declare</code>, ассоциативные массивы</p> <h3 id=binsh>#!/bin/sh<a class=headerlink href=#binsh title="Permanent link">&para;</a></h3> <p>Используйте для <strong>переносимости</strong> и скорости:</p> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/sh</span>
 
 <span class=c1># POSIX-совместимый синтаксис</span>
 <span class=k>for</span><span class=w> </span>file<span class=w> </span><span class=k>in</span><span class=w> </span>file1.txt<span class=w> </span>file2.txt<span class=w> </span>file3.txt<span class=p>;</span><span class=w> </span><span class=k>do</span>

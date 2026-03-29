@@ -2,10 +2,11 @@
   "chapter": "ch18",
   "subchapter": "01",
   "title": "Валидация входных данных",
-  "description": "Проверка аргументов и ввода",
+  "description": "Проверка аргументов и ввода, POSIX совместимость",
   "learning_objectives": [
     "Уметь проверять аргументы",
-    "Знать шаблоны валидации"
+    "Знать шаблоны валидации",
+    "Знать POSIX альтернативы для dash"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**regex ^[0-9]+$** проверяет, что строка состоит только из цифр.",
       "references": ["vol2/part5/ch18_security/01_validation.md"],
       "tags": ["regex", "числа"]
+    },
+    {
+      "id": "ch18_01_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как проверить аргумент на число в dash?",
+      "options": [
+        "[[ $arg =~ ^[0-9]+$ ]]",
+        "echo $arg | grep -qE '^[0-9]+$'",
+        "test $arg is_number",
+        "check_number $arg"
+      ],
+      "correct": [1],
+      "explanation": "**grep -qE** — POSIX-совместимый способ. **[[ ... =~ ... ]]** — только bash!",
+      "references": ["vol2/part5/ch18_security/01_validation.md"],
+      "tags": ["dash", "POSIX", "grep"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

@@ -2,10 +2,11 @@
   "chapter": "ch20",
   "subchapter": "03",
   "title": "Расширения Bash",
-  "description": "Специфичные возможности bash",
+  "description": "Специфичные возможности bash, POSIX vs bash",
   "learning_objectives": [
     "Знать расширения bash",
-    "Понимать отличия от POSIX"
+    "Понимать отличия от POSIX",
+    "Знать что работает в dash"
   ],
   "questions": [
     {
@@ -50,11 +51,43 @@
       "explanation": "**<(cmd)** — process substitution (только bash/zsh).",
       "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
       "tags": ["process substitution"]
+    },
+    {
+      "id": "ch20_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие операции работают в dash? (выберите все правильные)",
+      "options": [
+        "${file%.backup}",
+        "${file/txt/doc}",
+        "${file##*.}",
+        "${file//./_}"
+      ],
+      "correct": [0, 2],
+      "explanation": "**# и %** — POSIX (работают в dash). **/ и //** — только bash.",
+      "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
+      "tags": ["pattern substitution", "POSIX", "dash"]
+    },
+    {
+      "id": "ch20_03_q05",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как заменить here-string (<<<) в dash?",
+      "options": [
+        "echo \"string\" | cmd",
+        "cat < string",
+        "read string",
+        "here-string не работает"
+      ],
+      "correct": [0],
+      "explanation": "**echo | cmd** — POSIX-аналог here-string (<<<).",
+      "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
+      "tags": ["here-string", "dash", "POSIX"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

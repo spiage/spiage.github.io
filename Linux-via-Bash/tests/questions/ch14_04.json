@@ -2,10 +2,11 @@
   "chapter": "ch14",
   "subchapter": "04",
   "title": "Возврат значений",
-  "description": "return, echo, коды возврата",
+  "description": "return, echo, коды возврата, regex в bash",
   "learning_objectives": [
     "Уметь возвращать значения",
-    "Знать разницу return и echo"
+    "Знать разницу return и echo",
+    "Знать что [[ ... =~ ... ]] только в bash"
   ],
   "questions": [
     {
@@ -66,11 +67,27 @@
       "explanation": "**return** без аргумента возвращает код последней выполненной команды.",
       "references": ["vol2/part5/ch14_functions/04_return.md"],
       "tags": ["return", "коды"]
+    },
+    {
+      "id": "ch14_04_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какой синтаксис для проверки email регуляркой работает в dash?",
+      "options": [
+        "[[ $email =~ regex ]]",
+        "echo $email | grep -qE 'regex'",
+        "test $email =~ regex",
+        "match $email regex"
+      ],
+      "correct": [1],
+      "explanation": "**grep -qE** — POSIX-совместимый способ. **[[ ... =~ ... ]]** — только bash!",
+      "references": ["vol2/part5/ch14_functions/04_return.md"],
+      "tags": ["regex", "bash", "dash", "grep"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

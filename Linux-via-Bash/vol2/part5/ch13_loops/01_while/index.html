@@ -4,30 +4,31 @@
 </code></pre></div> <p><strong>Пример:</strong></p> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=nv>count</span><span class=o>=</span><span class=m>1</span>
-<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$count</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$count</span><span class=s2>&quot;</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Count: </span><span class=nv>$count</span><span class=s2>&quot;</span>
 <span class=w>    </span><span class=nv>count</span><span class=o>=</span><span class=k>$((</span><span class=nv>count</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=m>1</span><span class=k>))</span>
 <span class=k>done</span>
 </code></pre></div> <h2 id=stdin>Чтение из stdin<a class=headerlink href=#stdin title="Permanent link">&para;</a></h2> <h3 id=while-read>while read<a class=headerlink href=#while-read title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=c1># Чтение файла построчно</span>
-<span class=k>while</span><span class=w> </span><span class=nb>read</span><span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=c1># IFS= сохраняет пробелы, -r предотвращает интерпретацию \</span>
+<span class=k>while</span><span class=w> </span><span class=nv>IFS</span><span class=o>=</span><span class=w> </span><span class=nb>read</span><span class=w> </span>-r<span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Line: </span><span class=nv>$line</span><span class=s2>&quot;</span>
 <span class=k>done</span><span class=w> </span>&lt;<span class=w> </span>file.txt
 
 <span class=c1># Из конвейера</span>
-cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span><span class=k>while</span><span class=w> </span><span class=nb>read</span><span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
+cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span><span class=k>while</span><span class=w> </span><span class=nv>IFS</span><span class=o>=</span><span class=w> </span><span class=nb>read</span><span class=w> </span>-r<span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Line: </span><span class=nv>$line</span><span class=s2>&quot;</span>
 <span class=k>done</span>
-</code></pre></div> <p><strong>Важно:</strong> <code>while read</code> в конвейере выполняется в подпроцессе!</p> <div class=highlight><pre><span></span><code><span class=c1># Проблема: переменная не доступна после цикла</span>
-cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span><span class=k>while</span><span class=w> </span><span class=nb>read</span><span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
+</code></pre></div> <blockquote> <p><strong>Совет:</strong> Для чтения "сырых" строк без искажений используйте <code>IFS= read -r line</code>. - <code>-r</code> — не даёт <code>read</code> интерпретировать <code>\</code> как экранирование - <code>IFS=</code> — сохраняет ведущие/конечные пробелы</p> </blockquote> <p><strong>Важно:</strong> <code>while IFS= read -r</code> в конвейере выполняется в подпроцессе!</p> <div class=highlight><pre><span></span><code><span class=c1># Проблема: переменная не доступна после цикла</span>
+cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><span class=w> </span><span class=k>while</span><span class=w> </span><span class=nv>IFS</span><span class=o>=</span><span class=w> </span><span class=nb>read</span><span class=w> </span>-r<span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nv>count</span><span class=o>=</span><span class=k>$((</span><span class=nv>count</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=m>1</span><span class=k>))</span>
 <span class=k>done</span>
 <span class=nb>echo</span><span class=w> </span><span class=nv>$count</span><span class=w>  </span><span class=c1># 0 (подпроцесс!)</span>
 
 <span class=c1># Решение: перенаправление</span>
 <span class=nv>count</span><span class=o>=</span><span class=m>0</span>
-<span class=k>while</span><span class=w> </span><span class=nb>read</span><span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=nv>IFS</span><span class=o>=</span><span class=w> </span><span class=nb>read</span><span class=w> </span>-r<span class=w> </span>line<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nv>count</span><span class=o>=</span><span class=k>$((</span><span class=nv>count</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=m>1</span><span class=k>))</span>
 <span class=k>done</span><span class=w> </span>&lt;<span class=w> </span>file.txt
 <span class=nb>echo</span><span class=w> </span><span class=nv>$count</span><span class=w>  </span><span class=c1># Правильно!</span>
@@ -64,9 +65,9 @@ cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><sp
 
 <span class=c1># Таблица умножения</span>
 <span class=nv>i</span><span class=o>=</span><span class=m>1</span>
-<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$i</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$i</span><span class=s2>&quot;</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=nv>j</span><span class=o>=</span><span class=m>1</span>
-<span class=w>    </span><span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$j</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=w>    </span><span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$j</span><span class=s2>&quot;</span><span class=w> </span>-le<span class=w> </span><span class=m>5</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>        </span><span class=nb>printf</span><span class=w> </span><span class=s2>&quot;%4d&quot;</span><span class=w> </span><span class=k>$((</span><span class=nv>i</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=nv>j</span><span class=k>))</span>
 <span class=w>        </span><span class=nv>j</span><span class=o>=</span><span class=k>$((</span><span class=nv>j</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=m>1</span><span class=k>))</span>
 <span class=w>    </span><span class=k>done</span>
@@ -87,7 +88,7 @@ cat<span class=w> </span>file.txt<span class=w> </span><span class=p>|</span><sp
 
 <span class=c1># Ждать пока сервис запустится</span>
 <span class=nv>timeout</span><span class=o>=</span><span class=m>30</span>
-<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=nv>$timeout</span><span class=w> </span>-gt<span class=w> </span><span class=m>0</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
+<span class=k>while</span><span class=w> </span><span class=o>[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$timeout</span><span class=s2>&quot;</span><span class=w> </span>-gt<span class=w> </span><span class=m>0</span><span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=k>if</span><span class=w> </span>curl<span class=w> </span>-s<span class=w> </span>http://localhost:8080/health<span class=w> </span>&gt;<span class=w> </span>/dev/null<span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>        </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Service is up!&quot;</span>
 <span class=w>        </span><span class=k>break</span>

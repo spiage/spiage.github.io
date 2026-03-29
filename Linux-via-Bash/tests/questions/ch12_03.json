@@ -2,10 +2,11 @@
   "chapter": "ch12",
   "subchapter": "03",
   "title": "case",
-  "description": "Множественный выбор, шаблоны",
+  "description": "Множественный выбор, шаблоны, ;;&",
   "learning_objectives": [
     "Понимать синтаксис case",
-    "Уметь использовать шаблоны"
+    "Уметь использовать шаблоны",
+    "Знать ;;& для fall-through в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": **"|"** — ИЛИ. Совпадение с pattern1 или pattern2.",
       "references": ["vol2/part5/ch12_conditionals/03_case.md"],
       "tags": ["шаблоны", "|"]
+    },
+    {
+      "id": "ch12_03_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что делает ;;& в case (bash 4+)?",
+      "options": [
+        "Завершает case",
+        "Продолжает проверку следующих паттернов (fall-through)",
+        "Пропускает текущий паттерн",
+        "Вызывает ошибку"
+      ],
+      "correct": [1],
+      "explanation": "**;;&** — продолжает проверку следующих паттернов после выполнения команд текущего. Только bash 4+!",
+      "references": ["vol2/part5/ch12_conditionals/03_case.md"],
+      "tags": [";;&", "bash", "fall-through"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

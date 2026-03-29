@@ -66,9 +66,10 @@ log_exit<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Exit at </span><span class=k>$(</span>date<span class=k>)</span><span class=s2>&quot;</span><span class=w> </span>&gt;&gt;<span class=w> </span>/var/log/script.log
 <span class=o>}</span>
 
-<span class=nb>trap</span><span class=w> </span>cleanup<span class=w> </span>EXIT
-<span class=nb>trap</span><span class=w> </span>log_exit<span class=w> </span>EXIT<span class=w> </span>INT<span class=w> </span>TERM
-</code></pre></div> <h3 id=graceful-shutdown>Graceful shutdown<a class=headerlink href=#graceful-shutdown title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+<span class=c1># Важно: trap перезаписывает предыдущую ловушку для того же сигнала!</span>
+<span class=c1># Объединяем действия в одной команде:</span>
+<span class=nb>trap</span><span class=w> </span><span class=s1>&#39;cleanup; log_exit&#39;</span><span class=w> </span>EXIT<span class=w> </span>INT<span class=w> </span>TERM
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> Если вызвать <code>trap cleanup EXIT</code> затем <code>trap log_exit EXIT</code>, вторая команда заменит первую. При выходе выполнится только <code>log_exit</code>, а <code>cleanup</code> — <strong>не выполнится</strong>!</p> </blockquote> <h3 id=graceful-shutdown>Graceful shutdown<a class=headerlink href=#graceful-shutdown title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=nv>running</span><span class=o>=</span><span class=nb>true</span>
 

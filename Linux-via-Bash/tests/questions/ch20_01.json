@@ -2,10 +2,11 @@
   "chapter": "ch20",
   "subchapter": "01",
   "title": "Индексированные массивы",
-  "description": "Создание, доступ, операции",
+  "description": "Создание, доступ, операции, глоббинг",
   "learning_objectives": [
     "Уметь создавать массивы",
-    "Знать операции с массивами"
+    "Знать операции с массивами",
+    "Знать безопасный способ чтения файлов"
   ],
   "questions": [
     {
@@ -50,11 +51,27 @@
       "explanation": "**${arr[@]}** — все элементы отдельно. **${arr[*]}** — одно слово.",
       "references": ["vol2/part5/ch20_arrays/01_indexed.md"],
       "tags": ["массивы", "доступ"]
+    },
+    {
+      "id": "ch20_01_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как безопасно прочитать файлы с пробелами в именах?",
+      "options": [
+        "files=(*.txt)",
+        "files=($(ls *.txt))",
+        "files=$(ls *.txt)",
+        "read files < *.txt"
+      ],
+      "correct": [0],
+      "explanation": "**files=(*.txt)** — глоббинг безопасен. **$(ls)** ломается на пробелах.",
+      "references": ["vol2/part5/ch20_arrays/01_indexed.md"],
+      "tags": ["глоббинг", "безопасность"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

@@ -2,10 +2,11 @@
   "chapter": "ch19",
   "subchapter": "04",
   "title": "Версионирование",
-  "description": "git, семантическое версионирование, CHANGELOG",
+  "description": "git, семантическое версионирование, CHANGELOG, here-string",
   "learning_objectives": [
     "Знать основы git",
-    "Понимать семантическое версионирование"
+    "Понимать семантическое версионирование",
+    "Знать что <<< только в bash"
   ],
   "questions": [
     {
@@ -45,11 +46,22 @@
       "explanation": "**CHANGELOG.md, HISTORY.txt, NEWS.md** — все используются.",
       "references": ["vol2/part5/ch19_best_practices/04_versioning.md"],
       "tags": ["CHANGELOG"]
+    },
+    {
+      "id": "ch19_04_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что here-string (<<<) работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **<<<** — расширение bash. В dash используйте `echo | read`.",
+      "references": ["vol2/part5/ch19_best_practices/04_versioning.md"],
+      "tags": ["here-string", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

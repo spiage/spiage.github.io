@@ -2,10 +2,11 @@
   "chapter": "ch16",
   "subchapter": "01",
   "title": "set -e, set -u",
-  "description": "Опции для строгого режима",
+  "description": "Опции для строгого режима, POSIX совместимость",
   "learning_objectives": [
     "Знать set -e, set -u, set -o pipefail",
-    "Понимать когда использовать"
+    "Понимать когда использовать",
+    "Знать какие опции только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,38 @@
       "explanation": "**pipefail** — код конвейера = код первой ошибочной команды.",
       "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
       "tags": ["pipefail", "конвейеры"]
+    },
+    {
+      "id": "ch16_01_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что set -o pipefail работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **pipefail** — расширение bash. В dash этой опции нет.",
+      "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
+      "tags": ["pipefail", "bash", "dash", "POSIX"]
+    },
+    {
+      "id": "ch16_01_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие опции стандартизированы POSIX? (выберите все правильные)",
+      "options": [
+        "set -e",
+        "set -u",
+        "set -o pipefail",
+        "set -x"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "**-e, -u, -x** — стандарт POSIX. **pipefail** — расширение bash.",
+      "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
+      "tags": ["POSIX", "bash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

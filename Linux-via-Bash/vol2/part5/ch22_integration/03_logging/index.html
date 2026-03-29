@@ -63,32 +63,43 @@ notice<span class=w>   </span><span class=c1># 5  Нормальное, но в�
 info<span class=w>     </span><span class=c1># 6  Информация</span>
 debug<span class=w>    </span><span class=c1># 7  Отладка</span>
 </code></pre></div> <h2 id=_7>Практические примеры<a class=headerlink href=#_7 title="Permanent link">&para;</a></h2> <h3 id=_8>Скрипт с логированием<a class=headerlink href=#_8 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+<span class=c1># Продвинутый пример логирования (Bash 4.0+)</span>
 
 <span class=nb>readonly</span><span class=w> </span><span class=nv>SCRIPT_NAME</span><span class=o>=</span><span class=k>$(</span>basename<span class=w> </span><span class=s2>&quot;</span><span class=nv>$0</span><span class=s2>&quot;</span><span class=k>)</span>
 
+<span class=c1># Башизм: Ассоциативный массив для маппинга уровней логов</span>
+<span class=nb>declare</span><span class=w> </span>-A<span class=w> </span><span class=nv>LOG_LEVELS</span><span class=o>=(</span>
+<span class=w>    </span><span class=o>[</span>INFO<span class=o>]=</span>local0.info
+<span class=w>    </span><span class=o>[</span>ERROR<span class=o>]=</span>local0.err
+<span class=w>    </span><span class=o>[</span>WARN<span class=o>]=</span>local0.warning
+<span class=w>    </span><span class=o>[</span>DEBUG<span class=o>]=</span>local0.debug
+<span class=o>)</span>
+
 log<span class=o>()</span><span class=w> </span><span class=o>{</span>
-<span class=w>    </span>logger<span class=w> </span>-t<span class=w> </span><span class=s2>&quot;</span><span class=nv>$SCRIPT_NAME</span><span class=s2>&quot;</span><span class=w> </span>-p<span class=w> </span>local0.info<span class=w> </span><span class=s2>&quot;</span><span class=nv>$*</span><span class=s2>&quot;</span>
+<span class=w>    </span><span class=nb>local</span><span class=w> </span><span class=nv>level</span><span class=o>=</span><span class=s2>&quot;</span><span class=si>${</span><span class=nv>1</span><span class=k>:-</span><span class=nv>INFO</span><span class=si>}</span><span class=s2>&quot;</span>
+<span class=w>    </span><span class=nb>shift</span>
+<span class=w>    </span><span class=c1># Подстановка значения из массива, дефолт — info</span>
+<span class=w>    </span>logger<span class=w> </span>-t<span class=w> </span><span class=s2>&quot;</span><span class=nv>$SCRIPT_NAME</span><span class=s2>&quot;</span><span class=w> </span>-p<span class=w> </span><span class=s2>&quot;</span><span class=si>${</span><span class=nv>LOG_LEVELS</span><span class=p>[</span><span class=nv>$level</span><span class=p>]</span><span class=k>:-</span><span class=nv>local0</span><span class=p>.info</span><span class=si>}</span><span class=s2>&quot;</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$*</span><span class=s2>&quot;</span>
 <span class=o>}</span>
 
-log_error<span class=o>()</span><span class=w> </span><span class=o>{</span>
-<span class=w>    </span>logger<span class=w> </span>-t<span class=w> </span><span class=s2>&quot;</span><span class=nv>$SCRIPT_NAME</span><span class=s2>&quot;</span><span class=w> </span>-p<span class=w> </span>local0.err<span class=w> </span><span class=s2>&quot;</span><span class=nv>$*</span><span class=s2>&quot;</span>
+log<span class=w> </span><span class=s2>&quot;INFO&quot;</span><span class=w> </span><span class=s2>&quot;Запуск скрипта&quot;</span>
+<span class=c1># Код скрипта…</span>
+<span class=k>if</span><span class=w> </span>!<span class=w> </span>some_command<span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span>log<span class=w> </span><span class=s2>&quot;ERROR&quot;</span><span class=w> </span><span class=s2>&quot;Команда завершилась с ошибкой&quot;</span>
+<span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
+<span class=k>fi</span>
+</code></pre></div> <blockquote> <p><strong>Справочно (dash):</strong> Ассоциативные массивы (<code>declare -A</code>) — это башизм, они недоступны в dash (и в стандарте POSIX sh). Для написания переносимых скриптов используйте <code>case</code>: <div class=highlight><pre><span></span><code><span class=ch>#!/bin/sh</span>
+<span class=c1># POSIX-совместимый вариант (работает в dash)</span>
+log<span class=o>()</span><span class=w> </span><span class=o>{</span>
+<span class=w>    </span><span class=nv>level</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span><span class=p>;</span><span class=w> </span><span class=nb>shift</span>
+<span class=w>    </span><span class=k>case</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$level</span><span class=s2>&quot;</span><span class=w> </span><span class=k>in</span>
+<span class=w>        </span>ERROR<span class=o>)</span><span class=w> </span><span class=nv>priority</span><span class=o>=</span><span class=s2>&quot;local0.err&quot;</span><span class=w> </span><span class=p>;;</span>
+<span class=w>        </span>WARN<span class=o>)</span><span class=w>  </span><span class=nv>priority</span><span class=o>=</span><span class=s2>&quot;local0.warning&quot;</span><span class=w> </span><span class=p>;;</span>
+<span class=w>        </span>*<span class=o>)</span><span class=w>     </span><span class=nv>priority</span><span class=o>=</span><span class=s2>&quot;local0.info&quot;</span><span class=w> </span><span class=p>;;</span>
+<span class=w>    </span><span class=k>esac</span>
+<span class=w>    </span>logger<span class=w> </span>-t<span class=w> </span><span class=s2>&quot;</span><span class=k>$(</span>basename<span class=w> </span><span class=s2>&quot;</span><span class=nv>$0</span><span class=s2>&quot;</span><span class=k>)</span><span class=s2>&quot;</span><span class=w> </span>-p<span class=w> </span><span class=s2>&quot;</span><span class=nv>$priority</span><span class=s2>&quot;</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$*</span><span class=s2>&quot;</span>
 <span class=o>}</span>
-
-main<span class=o>()</span><span class=w> </span><span class=o>{</span>
-<span class=w>    </span>log<span class=w> </span><span class=s2>&quot;Starting&quot;</span>
-
-<span class=w>    </span><span class=c1># Код</span>
-
-<span class=w>    </span><span class=k>if</span><span class=w> </span><span class=o>[</span><span class=w> </span>error<span class=w> </span><span class=o>]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
-<span class=w>        </span>log_error<span class=w> </span><span class=s2>&quot;Something went wrong&quot;</span>
-<span class=w>        </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
-<span class=w>    </span><span class=k>fi</span>
-
-<span class=w>    </span>log<span class=w> </span><span class=s2>&quot;Completed successfully&quot;</span>
-<span class=o>}</span>
-
-main<span class=w> </span><span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span>
-</code></pre></div> <h3 id=_9>Мониторинг с логированием<a class=headerlink href=#_9 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div></p> </blockquote> <h3 id=_9>Мониторинг с логированием<a class=headerlink href=#_9 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 check_service<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=nb>local</span><span class=w> </span><span class=nv>service</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>

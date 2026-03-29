@@ -87,6 +87,7 @@ usage<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=k>done</span>
 
 <span class=c1># Оставшиеся аргументы</span>
+<span class=c1># Только bash! Массивы не работают в dash</span>
 <span class=nv>files</span><span class=o>=(</span><span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span><span class=o>)</span>
 </code></pre></div> <h2 id=_9>Практические примеры<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <h3 id=_10>Универсальный парсер<a class=headerlink href=#_10 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
@@ -115,6 +116,8 @@ usage<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>    </span><span class=k>case</span><span class=w> </span><span class=nv>$opt</span><span class=w> </span><span class=k>in</span>
 <span class=w>        </span>p<span class=o>)</span>
 <span class=w>            </span><span class=nv>port</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$OPTARG</span><span class=s2>&quot;</span>
+<span class=w>            </span><span class=c1># [[ ... =~ ... ]] — только bash!</span>
+<span class=w>            </span><span class=c1># В dash используйте: echo &quot;$port&quot; | grep -qE &#39;^[0-9]+$&#39;</span>
 <span class=w>            </span><span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=o>[[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span><span class=o>=</span>~<span class=w> </span>^<span class=o>[</span><span class=m>0</span>-9<span class=o>]</span>+$<span class=w> </span><span class=o>]]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>                </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Port must be number&quot;</span>
 <span class=w>                </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
@@ -129,7 +132,10 @@ usage<span class=o>()</span><span class=w> </span><span class=o>{</span>
 <span class=w>            </span><span class=p>;;</span>
 <span class=w>    </span><span class=k>esac</span>
 <span class=k>done</span>
-</code></pre></div> <h3 id=_12>Комбинированный подход<a class=headerlink href=#_12 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> В dash/POSIX используйте <code>case</code> для проверки чисел: <div class=highlight><pre><span></span><code><span class=k>case</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$port</span><span class=s2>&quot;</span><span class=w> </span><span class=k>in</span>
+<span class=w>    </span><span class=s1>&#39;&#39;</span><span class=p>|</span>*<span class=o>[</span>!0-9<span class=o>]</span>*<span class=o>)</span><span class=w> </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Error: Not a number&quot;</span><span class=p>;</span><span class=w> </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span><span class=w> </span><span class=p>;;</span>
+<span class=k>esac</span>
+</code></pre></div></p> </blockquote> <h3 id=_12>Комбинированный подход<a class=headerlink href=#_12 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 
 <span class=c1># Короткие опции</span>
 <span class=k>while</span><span class=w> </span><span class=nb>getopts</span><span class=w> </span><span class=s2>&quot;f:o:&quot;</span><span class=w> </span>opt<span class=p>;</span><span class=w> </span><span class=k>do</span>

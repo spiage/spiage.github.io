@@ -107,6 +107,7 @@ Arg:<span class=w> </span>file<span class=w> </span><span class=m>1</span>.txt<s
 </code></pre></div> <h3 id=getopts-posix>getopts (POSIX)<a class=headerlink href=#getopts-posix title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/sh</span>
 
 <span class=c1># POSIX-совместимый парсинг</span>
+<span class=c1># getopts работает в sh и bash — это предпочтительный стандартный способ</span>
 <span class=k>while</span><span class=w> </span><span class=nb>getopts</span><span class=w> </span><span class=s2>&quot;f:vh&quot;</span><span class=w> </span>opt<span class=p>;</span><span class=w> </span><span class=k>do</span>
 <span class=w>    </span><span class=k>case</span><span class=w> </span><span class=nv>$opt</span><span class=w> </span><span class=k>in</span>
 <span class=w>        </span>f<span class=o>)</span>

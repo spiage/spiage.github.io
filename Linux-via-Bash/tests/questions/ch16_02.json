@@ -2,10 +2,11 @@
   "chapter": "ch16",
   "subchapter": "02",
   "title": "Проверка ошибок",
-  "description": "if, ||, && для обработки ошибок",
+  "description": "if, ||, && для обработки ошибок, PIPESTATUS",
   "learning_objectives": [
     "Уметь проверять ошибки",
-    "Знать || и &&"
+    "Знать || и &&",
+    "Знать что PIPESTATUS только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,22 @@
       "explanation": "Все варианты работают. **if cmd** предпочтительнее.",
       "references": ["vol2/part5/ch16_errors/02_error_checking.md"],
       "tags": ["проверка", "if"]
+    },
+    {
+      "id": "ch16_02_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что PIPESTATUS работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **PIPESTATUS** — массив bash. В dash нет аналога для получения кодов команд в конвейере.",
+      "references": ["vol2/part5/ch16_errors/02_error_checking.md"],
+      "tags": ["PIPESTATUS", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

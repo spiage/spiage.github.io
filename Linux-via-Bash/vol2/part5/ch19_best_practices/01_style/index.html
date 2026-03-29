@@ -57,6 +57,7 @@ init<span class=o>()</span><span class=w> </span><span class=o>{</span>
 
 <span class=c1># Константы</span>
 <span class=nb>readonly</span><span class=w> </span><span class=nv>VERSION</span><span class=o>=</span><span class=s2>&quot;1.0.0&quot;</span>
+<span class=c1># ${BASH_SOURCE[0]} — путь к скрипту (в dash использовать $0)</span>
 <span class=nb>readonly</span><span class=w> </span><span class=nv>SCRIPT_DIR</span><span class=o>=</span><span class=s2>&quot;</span><span class=k>$(</span><span class=nb>cd</span><span class=w> </span><span class=s2>&quot;</span><span class=k>$(</span>dirname<span class=w> </span><span class=s2>&quot;</span><span class=si>${</span><span class=nv>BASH_SOURCE</span><span class=p>[0]</span><span class=si>}</span><span class=s2>&quot;</span><span class=k>)</span><span class=s2>&quot;</span><span class=w> </span><span class=o>&amp;&amp;</span><span class=w> </span><span class=nb>pwd</span><span class=k>)</span><span class=s2>&quot;</span>
 
 <span class=c1># Глобальные переменные</span>
@@ -76,7 +77,7 @@ main<span class=o>()</span><span class=w> </span><span class=o>{</span>
 
 <span class=c1># Точка входа</span>
 main<span class=w> </span><span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span>
-</code></pre></div> <h2 id=_9>Практические примеры<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <h3 id=_10>Шаблон скрипта<a class=headerlink href=#_10 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+</code></pre></div> <blockquote> <p><strong>Примечание:</strong> <code>set -euo pipefail</code> — лучшие практики для bash. - <code>-e</code> и <code>-u</code> стандартизированы POSIX - <code>-o pipefail</code> — расширение bash (в dash недоступно)</p> <p><code>$BASH_SOURCE</code> — переменная bash. В dash используйте <code>$0</code> (но это не работает с симлинками).</p> </blockquote> <h2 id=_9>Практические примеры<a class=headerlink href=#_9 title="Permanent link">&para;</a></h2> <h3 id=_10>Шаблон скрипта<a class=headerlink href=#_10 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
 <span class=nb>set</span><span class=w> </span>-euo<span class=w> </span>pipefail
 
 <span class=nb>readonly</span><span class=w> </span><span class=nv>SCRIPT_NAME</span><span class=o>=</span><span class=k>$(</span>basename<span class=w> </span><span class=s2>&quot;</span><span class=nv>$0</span><span class=s2>&quot;</span><span class=k>)</span>

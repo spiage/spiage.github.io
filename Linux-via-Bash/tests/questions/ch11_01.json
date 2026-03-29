@@ -6,7 +6,8 @@
   "learning_objectives": [
     "Уметь присваивать переменные",
     "Знать разницу между var=value и var = value",
-    "Понимать quoting"
+    "Понимать quoting",
+    "Знать про целочисленную арифметику в bash"
   ],
   "questions": [
     {
@@ -67,11 +68,22 @@
       "explanation": "**Одинарные кавычки** предотвращают подстановку. Двойные — разрешают.",
       "references": ["vol2/part5/ch11_variables/01_assignment.md"],
       "tags": ["кавычки", "подстановка"]
+    },
+    {
+      "id": "ch11_01_q05",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что bash поддерживает арифметику с плавающей точкой (float)?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Bash поддерживает **только целочисленную арифметику**. Для float используйте bc или awk.",
+      "references": ["vol2/part5/ch11_variables/01_assignment.md"],
+      "tags": ["арифметика", "float"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

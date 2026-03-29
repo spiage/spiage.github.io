@@ -13,8 +13,13 @@ grep<span class=w> </span><span class=s2>&quot;</span><span class=nv>$pattern</s
 
 <span class=c1># Безопасно</span>
 <span class=nv>$command</span><span class=w>  </span><span class=c1># Без eval</span>
+<span class=c1># Примечание: $command без кавычек разбивает строку на аргументы по пробелам,</span>
+<span class=c1># но не исполняет разделители команд (;, &amp;&amp;, ||), в отличие от eval.</span>
+<span class=c1># Если command=&quot;ls -la&quot;, выполнится &quot;ls -la&quot;.</span>
+<span class=c1># Если command=&quot;ls; rm -rf /&quot;, Bash попытается найти команду с именем &quot;ls; rm -rf /&quot;</span>
+<span class=c1># и выдаст &quot;command not found&quot; — это безопаснее eval!</span>
 
-<span class=c1># Или case</span>
+<span class=c1># Или case (лучший способ)</span>
 <span class=k>case</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$command</span><span class=s2>&quot;</span><span class=w> </span><span class=k>in</span>
 <span class=w>    </span>start<span class=p>|</span>stop<span class=p>|</span>restart<span class=o>)</span>
 <span class=w>        </span><span class=s2>&quot;</span><span class=nv>$command</span><span class=s2>&quot;</span>
@@ -25,6 +30,7 @@ grep<span class=w> </span><span class=s2>&quot;</span><span class=nv>$pattern</s
 <span class=w>        </span><span class=p>;;</span>
 <span class=k>esac</span>
 </code></pre></div> <h3 id=_4>Проверка ввода<a class=headerlink href=#_4 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1># Только буквы и цифры</span>
+<span class=c1># [[ ... =~ ... ]] — только bash! В dash используйте grep</span>
 <span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=o>[[</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$username</span><span class=s2>&quot;</span><span class=w> </span><span class=o>=</span>~<span class=w> </span>^<span class=o>[</span>a-zA-Z0-9<span class=o>]</span>+$<span class=w> </span><span class=o>]]</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Invalid username&quot;</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
@@ -35,7 +41,12 @@ grep<span class=w> </span><span class=s2>&quot;</span><span class=nv>$pattern</s
 <span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Invalid port&quot;</span>
 <span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
 <span class=k>fi</span>
-</code></pre></div> <h2 id=sql-injection>SQL injection (для скриптов с БД)<a class=headerlink href=#sql-injection title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Уязвимо</span>
+</code></pre></div> <blockquote> <p><strong>Совместимость (Dash):</strong> Для проверки регулярных выражений используйте <code>grep</code>: <div class=highlight><pre><span></span><code><span class=c1># POSIX способ</span>
+<span class=k>if</span><span class=w> </span>!<span class=w> </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;</span><span class=nv>$username</span><span class=s2>&quot;</span><span class=w> </span><span class=p>|</span><span class=w> </span>grep<span class=w> </span>-qE<span class=w> </span><span class=s1>&#39;^[a-zA-Z0-9]+$&#39;</span><span class=p>;</span><span class=w> </span><span class=k>then</span>
+<span class=w>    </span><span class=nb>echo</span><span class=w> </span><span class=s2>&quot;Invalid username&quot;</span>
+<span class=w>    </span><span class=nb>exit</span><span class=w> </span><span class=m>1</span>
+<span class=k>fi</span>
+</code></pre></div></p> </blockquote> <h2 id=sql-injection>SQL injection (для скриптов с БД)<a class=headerlink href=#sql-injection title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=c1># Уязвимо</span>
 <span class=nv>query</span><span class=o>=</span><span class=s2>&quot;SELECT * FROM users WHERE name=&#39;</span><span class=nv>$name</span><span class=s2>&#39;&quot;</span>
 
 <span class=c1># Безопасно (prepared statements)</span>

@@ -2,10 +2,11 @@
   "chapter": "ch22",
   "subchapter": "03",
   "title": "Журналирование: journalctl, logger",
-  "description": "Работа с логами systemd",
+  "description": "Работа с логами systemd, ассоциативные массивы",
   "learning_objectives": [
     "Уметь читать логи",
-    "Знать как писать в journal"
+    "Знать как писать в journal",
+    "Знать что declare -A только в bash"
   ],
   "questions": [
     {
@@ -50,11 +51,22 @@
       "explanation": "**-u unit** — логи конкретного unit/service.",
       "references": ["vol2/part5/ch22_integration/03_logging.md"],
       "tags": ["journalctl", "сервис"]
+    },
+    {
+      "id": "ch22_03_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что declare -A работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **declare -A** (ассоциативные массивы) — башизм. В dash используйте case.",
+      "references": ["vol2/part5/ch22_integration/03_logging.md"],
+      "tags": ["declare -A", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 4,
+    "estimated_time_minutes": 5
   }
 }

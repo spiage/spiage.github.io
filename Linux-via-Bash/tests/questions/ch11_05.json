@@ -31,7 +31,7 @@
       "question": "Верно ли, что local работает в dash?",
       "options": ["Верно", "Неверно"],
       "correct": [0],
-      "explanation": "**Верно**. local — POSIX, работает в bash и dash (но не в старых sh).",
+      "explanation": "**Верно**. local поддерживается в dash и bash, но не входит в стандарт POSIX.",
       "references": ["vol2/part5/ch11_variables/05_local.md"],
       "tags": ["local", "dash", "POSIX"]
     },

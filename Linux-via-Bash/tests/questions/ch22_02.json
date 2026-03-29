@@ -2,10 +2,11 @@
   "chapter": "ch22",
   "subchapter": "02",
   "title": "Планировщики: cron, at",
-  "description": "Автоматическое выполнение задач",
+  "description": "Автоматическое выполнение задач, окружение cron",
   "learning_objectives": [
     "Уметь настраивать cron",
-    "Знать разницу cron и at"
+    "Знать разницу cron и at",
+    "Знать про окружение cron и dash"
   ],
   "questions": [
     {
@@ -50,11 +51,43 @@
       "explanation": "**\* \* \* \* \*** — каждую минуту (минута, час, день, месяц, день недели).",
       "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
       "tags": ["cron", "расписание"]
+    },
+    {
+      "id": "ch22_02_q04",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Почему скрипт с башизмами может не работать в cron?",
+      "options": [
+        "cron использует dash (/bin/sh) по умолчанию",
+        "cron не поддерживает bash",
+        "cron отключает все скрипты",
+        "cron требует root"
+      ],
+      "correct": [0],
+      "explanation": "В Debian/Ubuntu `/bin/sh` — это dash. Скрипты с башизмами упадут без `#!/bin/bash`.",
+      "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
+      "tags": ["cron", "dash", "bash"]
+    },
+    {
+      "id": "ch22_02_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие переменные могут отсутствовать в окружении cron? (выберите все правильные)",
+      "options": [
+        "$PATH",
+        "$USER",
+        "$HOME",
+        "Все вышеперечисленные"
+      ],
+      "correct": [3],
+      "explanation": "Cron запускает задачи в минимальном окружении. PATH, USER, HOME могут отсутствовать.",
+      "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
+      "tags": ["cron", "окружение"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

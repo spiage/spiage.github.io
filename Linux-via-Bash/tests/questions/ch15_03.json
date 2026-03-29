@@ -2,10 +2,11 @@
   "chapter": "ch15",
   "subchapter": "03",
   "title": "Обработка аргументов",
-  "description": "getopts, парсинг опций",
+  "description": "getopts, парсинг опций, bash vs dash",
   "learning_objectives": [
     "Уметь парсить опции",
-    "Знать getopts"
+    "Знать getopts",
+    "Знать ограничения dash"
   ],
   "questions": [
     {
@@ -45,11 +46,38 @@
       "explanation": "**OPTIND** — индекс следующего аргумента для обработки.",
       "references": ["vol2/part5/ch15_io/03_args.md"],
       "tags": ["getopts", "OPTIND"]
+    },
+    {
+      "id": "ch15_03_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что files=(\"$@\") работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Массивы — расширение bash. В dash обрабатывайте \"$@\" напрямую в цикле.",
+      "references": ["vol2/part5/ch15_io/03_args.md"],
+      "tags": ["массивы", "bash", "dash"]
+    },
+    {
+      "id": "ch15_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как проверить, что аргумент — число в dash?",
+      "options": [
+        "[[ $arg =~ ^[0-9]+$ ]]",
+        "case $arg in ''|*[!0-9]*) error ;; esac",
+        "test $arg =~ ^[0-9]+$",
+        "is_number $arg"
+      ],
+      "correct": [1],
+      "explanation": "**case** — POSIX-совместимый способ. **[[ ... =~ ... ]]** — только bash!",
+      "references": ["vol2/part5/ch15_io/03_args.md"],
+      "tags": ["валидация", "dash", "POSIX", "case"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 3,
-    "estimated_time_minutes": 4
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

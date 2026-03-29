@@ -5,7 +5,9 @@
   "description": "local, область видимости в функциях",
   "learning_objectives": [
     "Понимать local",
-    "Знать область видимости"
+    "Знать область видимости",
+    "Знать что local не в POSIX",
+    "Знать что вложенные функции становятся глобальными"
   ],
   "questions": [
     {
@@ -34,11 +36,49 @@
       "explanation": "**Верно**. Без local переменная изменяет глобальную.",
       "references": ["vol2/part5/ch14_functions/03_local.md"],
       "tags": ["local", "глобальные"]
+    },
+    {
+      "id": "ch14_03_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что local входит в стандарт POSIX?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. local не входит в POSIX, но поддерживается в dash, bash и большинстве современных sh.",
+      "references": ["vol2/part5/ch14_functions/03_local.md"],
+      "tags": ["local", "POSIX"]
+    },
+    {
+      "id": "ch14_03_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что происходит с функцией, объявленной внутри другой функции?",
+      "options": [
+        "Остаётся локальной",
+        "Становится глобальной после вызова внешней функции",
+        "Удаляется после выхода",
+        "Вызывает ошибку"
+      ],
+      "correct": [1],
+      "explanation": "**Становится глобальной**. Определение функции внутри функции не делает её локальной в bash.",
+      "references": ["vol2/part5/ch14_functions/03_local.md"],
+      "tags": ["вложенные функции", "область видимости"]
+    },
+    {
+      "id": "ch14_03_q05",
+      "type": "true_false",
+      "difficulty": "hard",
+      "question": "Верно ли, что local -a arr=(1 2 3) работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Массивы — расширение bash. В dash массивов нет!",
+      "references": ["vol2/part5/ch14_functions/03_local.md"],
+      "tags": ["массивы", "bash", "dash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 2,
-    "estimated_time_minutes": 3
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }

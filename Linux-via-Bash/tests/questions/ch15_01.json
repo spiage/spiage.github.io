@@ -2,11 +2,12 @@
   "chapter": "ch15",
   "subchapter": "01",
   "title": "read",
-  "description": "Чтение ввода, опции -p, -r, -t",
+  "description": "Чтение ввода, опции -p, -r, -t, совместимость",
   "learning_objectives": [
     "Уметь читать ввод",
     "Знать опции read",
-    "Понимать IFS"
+    "Понимать IFS",
+    "Знать какие опции только в bash"
   ],
   "questions": [
     {
@@ -67,11 +68,38 @@
       "explanation": "**read var1 var2** разделяет по IFS (пробел/табуляция).",
       "references": ["vol2/part5/ch15_io/01_read.md"],
       "tags": ["read", "IFS"]
+    },
+    {
+      "id": "ch15_01_q05",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что read -p работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **-p** — расширение bash. В dash используйте `printf \"Prompt: \"; read var`.",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "bash", "dash", "POSIX"]
+    },
+    {
+      "id": "ch15_01_q06",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие опции read работают в POSIX/dash? (выберите все правильные)",
+      "options": [
+        "-r",
+        "-p prompt",
+        "-t timeout",
+        "-a array"
+      ],
+      "correct": [0],
+      "explanation": "Только **-r** — стандарт POSIX. Остальные опции (-p, -t, -a) — расширения bash.",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "POSIX", "bash"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 6,
+    "estimated_time_minutes": 7
   }
 }

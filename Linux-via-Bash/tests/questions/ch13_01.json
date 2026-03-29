@@ -6,7 +6,8 @@
   "learning_objectives": [
     "Понимать синтаксис while",
     "Уметь читать из stdin в цикле",
-    "Знать про break, continue"
+    "Знать про break, continue",
+    "Знать IFS= read -r для безопасного чтения"
   ],
   "questions": [
     {
@@ -56,17 +57,33 @@
       "id": "ch13_01_q04",
       "type": "fill_blank",
       "difficulty": "hard",
-      "question": "Что выведет?\ni=1; while [ $i -lt 3 ]; do echo $i; i=$((i+1)); done",
+      "question": "Что выведет?\ni=1; while [ \"$i\" -lt 3 ]; do echo $i; i=$((i+1)); done",
       "options": ["1 2", "1 2 3", "2 3", "1"],
       "correct": [0],
-      "explanation": "**1 2** — цикл выполняется пока i < 3 (1, затем 2).",
+      "explanation": "**1 2** — цикл выполняется пока i < 3. В bash лучше использовать кавычки: [ \"$i\" -lt 3 ].",
       "references": ["vol2/part5/ch13_loops/01_while.md"],
       "tags": ["while", "счётчик"]
+    },
+    {
+      "id": "ch13_01_q05",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой синтаксис read предотвращает интерпретацию обратных слешей?",
+      "options": [
+        "read line",
+        "read -r line",
+        "IFS= read line",
+        "IFS= read -r line"
+      ],
+      "correct": [3],
+      "explanation": "**IFS= read -r line** — наиболее безопасный вариант: -r предотвращает интерпретацию \\, IFS= сохраняет пробелы.",
+      "references": ["vol2/part5/ch13_loops/01_while.md"],
+      "tags": ["read", "IFS", "best practice"]
     }
   ],
   "metadata": {
     "created": "2026-03-28",
-    "total_questions": 4,
-    "estimated_time_minutes": 5
+    "total_questions": 5,
+    "estimated_time_minutes": 6
   }
 }
