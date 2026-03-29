@@ -1,0 +1,60 @@
+{
+  "chapter": "ch22",
+  "subchapter": "03",
+  "title": "Журналирование: journalctl, logger",
+  "description": "Работа с логами systemd",
+  "learning_objectives": [
+    "Уметь читать логи",
+    "Знать как писать в journal"
+  ],
+  "questions": [
+    {
+      "id": "ch22_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда читает логи systemd?",
+      "options": [
+        "journalctl",
+        "logctl",
+        "syslogctl",
+        "readlog"
+      ],
+      "correct": [0],
+      "explanation": "**journalctl** — утилита для чтения journal логов.",
+      "references": ["vol2/part5/ch22_integration/03_logging.md"],
+      "tags": ["journalctl", "логи"]
+    },
+    {
+      "id": "ch22_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что logger пишет в syslog?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **logger** отправляет сообщения в syslog/journal.",
+      "references": ["vol2/part5/ch22_integration/03_logging.md"],
+      "tags": ["logger", "syslog"]
+    },
+    {
+      "id": "ch22_03_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как читать логи конкретного сервиса?",
+      "options": [
+        "journalctl -u service",
+        "journalctl -s service",
+        "journalctl service",
+        "log service"
+      ],
+      "correct": [0],
+      "explanation": "**-u unit** — логи конкретного unit/service.",
+      "references": ["vol2/part5/ch22_integration/03_logging.md"],
+      "tags": ["journalctl", "сервис"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

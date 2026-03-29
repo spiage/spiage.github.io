@@ -1,0 +1,60 @@
+{
+  "chapter": "ch16",
+  "subchapter": "01",
+  "title": "set -e, set -u",
+  "description": "Опции для строгого режима",
+  "learning_objectives": [
+    "Знать set -e, set -u, set -o pipefail",
+    "Понимать когда использовать"
+  ],
+  "questions": [
+    {
+      "id": "ch16_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает set -e?",
+      "options": [
+        "Выход при любой ошибке",
+        "Выход при неопределённой переменной",
+        "Вывод команд",
+        "Запрет globbing"
+      ],
+      "correct": [0],
+      "explanation": "**set -e** — выход, если команда вернула не 0.",
+      "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
+      "tags": ["set -e", "ошибки"]
+    },
+    {
+      "id": "ch16_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что set -u вызывает ошибку при неопределённой переменной?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **set -u** (nounset) — ошибка при использовании неопределённой переменной.",
+      "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
+      "tags": ["set -u", "переменные"]
+    },
+    {
+      "id": "ch16_01_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что делает set -o pipefail?",
+      "options": [
+        "Ошибка, если любая команда в конвейере ошиблась",
+        "Ошибка, если последняя команда ошиблась",
+        "Игнорировать ошибки в конвейерах",
+        "Вывод всех команд в конвейере"
+      ],
+      "correct": [0],
+      "explanation": "**pipefail** — код конвейера = код первой ошибочной команды.",
+      "references": ["vol2/part5/ch16_errors/01_set_eu.md"],
+      "tags": ["pipefail", "конвейеры"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

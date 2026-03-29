@@ -1,0 +1,77 @@
+{
+  "chapter": "ch10",
+  "subchapter": "02",
+  "title": "Запуск скрипта",
+  "description": "Способы выполнения скриптов, права доступа",
+  "learning_objectives": [
+    "Уметь запускать скрипты разными способами",
+    "Понимать разницу между запуском и source",
+    "Знать про chmod +x"
+  ],
+  "questions": [
+    {
+      "id": "ch10_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как сделать скрипт исполняемым?",
+      "options": [
+        "chmod +x script.sh",
+        "chmod 777 script.sh",
+        "exec script.sh",
+        "run script.sh"
+      ],
+      "correct": [0],
+      "explanation": "**chmod +x** добавляет бит выполнения. Работает и в bash, и в dash.",
+      "references": ["vol2/part5/ch10_structure/02_execution.md"],
+      "tags": ["chmod", "права"]
+    },
+    {
+      "id": "ch10_02_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "В чём разница между './script.sh' и 'bash script.sh'?",
+      "options": [
+        "Нет разницы",
+        "./script.sh использует shebang, bash script.sh игнорирует shebang",
+        "bash script.sh быстрее",
+        "./script.sh работает только с bash"
+      ],
+      "correct": [1],
+      "explanation": "**./script.sh** читает shebang и запускает указанный интерпретатор. **bash script.sh** всегда использует bash, игнорируя shebang.",
+      "references": ["vol2/part5/ch10_structure/02_execution.md"],
+      "tags": ["запуск", "shebang"]
+    },
+    {
+      "id": "ch10_02_q03",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что делает 'source script.sh' или '. script.sh'? (выберите все правильные)",
+      "options": [
+        "Выполняет скрипт в текущем shell",
+        "Создаёт новый процесс",
+        "Переменные скрипта доступны после выполнения",
+        "exit в скрипте закрывает текущий shell"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "**source/.** выполняют скрипт в **текущем** shell. Переменные сохраняются, exit закрывает текущий shell. В dash тоже работает.",
+      "references": ["vol2/part5/ch10_structure/02_execution.md"],
+      "tags": ["source", "выполнение"]
+    },
+    {
+      "id": "ch10_02_q04",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что $BASH_SOURCE работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **$BASH_SOURCE** — переменная bash. В dash используйте **$0**.",
+      "references": ["vol2/part5/ch10_structure/02_execution.md"],
+      "tags": ["BASH_SOURCE", "dash", "bash"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

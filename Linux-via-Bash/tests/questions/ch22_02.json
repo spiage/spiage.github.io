@@ -1,0 +1,60 @@
+{
+  "chapter": "ch22",
+  "subchapter": "02",
+  "title": "Планировщики: cron, at",
+  "description": "Автоматическое выполнение задач",
+  "learning_objectives": [
+    "Уметь настраивать cron",
+    "Знать разницу cron и at"
+  ],
+  "questions": [
+    {
+      "id": "ch22_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Для чего используется cron?",
+      "options": [
+        "Периодическое выполнение задач",
+        "Однократное выполнение",
+        "Мониторинг процессов",
+        "Управление сервисами"
+      ],
+      "correct": [0],
+      "explanation": "**cron** — для периодического выполнения по расписанию.",
+      "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
+      "tags": ["cron", "планировщик"]
+    },
+    {
+      "id": "ch22_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что at используется для однократного выполнения?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **at** — для однократного выполнения в указанное время.",
+      "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
+      "tags": ["at", "планировщик"]
+    },
+    {
+      "id": "ch22_02_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Что означает '* * * * *' в cron?",
+      "options": [
+        "Каждую минуту",
+        "Каждый час",
+        "Каждый день",
+        "Никогда"
+      ],
+      "correct": [0],
+      "explanation": "**\* \* \* \* \*** — каждую минуту (минута, час, день, месяц, день недели).",
+      "references": ["vol2/part5/ch22_integration/02_schedulers.md"],
+      "tags": ["cron", "расписание"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

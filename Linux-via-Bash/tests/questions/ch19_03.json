@@ -1,0 +1,60 @@
+{
+  "chapter": "ch19",
+  "subchapter": "03",
+  "title": "Тестирование",
+  "description": "BATS, shellcheck, ручное тестирование",
+  "learning_objectives": [
+    "Знать инструменты тестирования",
+    "Уметь писать тесты"
+  ],
+  "questions": [
+    {
+      "id": "ch19_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое BATS?",
+      "options": [
+        "Bash Automated Testing System",
+        "Basic Automation Test Suite",
+        "Bash Application Test System",
+        "Binary Analysis Tool Suite"
+      ],
+      "correct": [0],
+      "explanation": "**BATS** — фреймворк для тестирования bash скриптов.",
+      "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
+      "tags": ["BATS", "тестирование"]
+    },
+    {
+      "id": "ch19_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что shellcheck находит ошибки в скриптах?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **shellcheck** — статический анализатор для shell.",
+      "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
+      "tags": ["shellcheck"]
+    },
+    {
+      "id": "ch19_03_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как запустить тест BATS?",
+      "options": [
+        "bats test.bats",
+        "bash test.bats",
+        "run test.bats",
+        "test test.bats"
+      ],
+      "correct": [0],
+      "explanation": "**bats test.bats** — запуск тестов BATS.",
+      "references": ["vol2/part5/ch19_best_practices/03_testing.md"],
+      "tags": ["BATS", "запуск"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

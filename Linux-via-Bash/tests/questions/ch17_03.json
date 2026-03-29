@@ -1,0 +1,60 @@
+{
+  "chapter": "ch17",
+  "subchapter": "03",
+  "title": "Пакетная обработка",
+  "description": "Обработка данных пакетами вместо построчной",
+  "learning_objectives": [
+    "Понимать преимущества пакетной обработки",
+    "Уметь использовать xargs"
+  ],
+  "questions": [
+    {
+      "id": "ch17_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое пакетная обработка?",
+      "options": [
+        "Обработка нескольких элементов за раз",
+        "Обработка по одному элементу",
+        "Параллельная обработка",
+        "Асинхронная обработка"
+      ],
+      "correct": [0],
+      "explanation": "**Пакетная** — обработка группы элементов за один вызов.",
+      "references": ["vol2/part5/ch17_optimization/03_batch.md"],
+      "tags": ["пакетная", "оптимизация"]
+    },
+    {
+      "id": "ch17_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что xargs выполняет пакетную обработку?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **xargs** передаёт несколько аргументов за один вызов.",
+      "references": ["vol2/part5/ch17_optimization/03_batch.md"],
+      "tags": ["xargs", "пакетная"]
+    },
+    {
+      "id": "ch17_03_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как передать 10 аргументов за раз в xargs?",
+      "options": [
+        "xargs -n 10 cmd",
+        "xargs -10 cmd",
+        "xargs --batch 10 cmd",
+        "xargs -b 10 cmd"
+      ],
+      "correct": [0],
+      "explanation": "**-n 10** — максимум 10 аргументов за вызов.",
+      "references": ["vol2/part5/ch17_optimization/03_batch.md"],
+      "tags": ["xargs", "-n"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

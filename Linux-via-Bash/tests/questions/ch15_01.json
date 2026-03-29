@@ -1,0 +1,77 @@
+{
+  "chapter": "ch15",
+  "subchapter": "01",
+  "title": "read",
+  "description": "Чтение ввода, опции -p, -r, -t",
+  "learning_objectives": [
+    "Уметь читать ввод",
+    "Знать опции read",
+    "Понимать IFS"
+  ],
+  "questions": [
+    {
+      "id": "ch15_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как прочитать ввод пользователя в переменную?",
+      "options": [
+        "read var",
+        "input var",
+        "get var",
+        "scan var"
+      ],
+      "correct": [0],
+      "explanation": "**read var** читает строку из stdin в переменную.",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "ввод"]
+    },
+    {
+      "id": "ch15_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что -r предотвращает экранирование?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **-r** (raw) предотвращает экранирование обратных слешей.",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "-r"]
+    },
+    {
+      "id": "ch15_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как вывести приглашение для read?",
+      "options": [
+        "read -p \"Prompt: \" var",
+        "read \"Prompt: \" var",
+        "echo \"Prompt: \"; read var",
+        "Оба варианта верны"
+      ],
+      "correct": [3],
+      "explanation": "**-p** выводит приглашение. **echo; read** тоже работает.",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "-p"]
+    },
+    {
+      "id": "ch15_01_q04",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как прочитать 2 переменные из одной строки?",
+      "options": [
+        "read var1 var2",
+        "read var1; read var2",
+        "read var1,var2",
+        "read var1+var2"
+      ],
+      "correct": [0],
+      "explanation": "**read var1 var2** разделяет по IFS (пробел/табуляция).",
+      "references": ["vol2/part5/ch15_io/01_read.md"],
+      "tags": ["read", "IFS"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

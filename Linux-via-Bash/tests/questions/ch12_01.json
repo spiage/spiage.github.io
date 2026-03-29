@@ -1,0 +1,93 @@
+{
+  "chapter": "ch12",
+  "subchapter": "01",
+  "title": "if-then-else",
+  "description": "Условные конструкции, test, [[ ]]",
+  "learning_objectives": [
+    "Понимать синтаксис if",
+    "Знать разницу между [ ] и [[ ]]",
+    "Уметь использовать elif, else"
+  ],
+  "questions": [
+    {
+      "id": "ch12_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой синтаксис if правильный?",
+      "options": [
+        "if (condition) then fi",
+        "if condition; then ... fi",
+        "if {condition} then end",
+        "if condition then end if"
+      ],
+      "correct": [1],
+      "explanation": "**if condition; then ... fi** — правильный POSIX синтаксис.",
+      "references": ["vol2/part5/ch12_conditionals/01_if.md"],
+      "tags": ["if", "синтаксис"]
+    },
+    {
+      "id": "ch12_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что [[ ]] работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **[[ ]]** — расширение bash. В dash используйте **[ ]**.",
+      "references": ["vol2/part5/ch12_conditionals/01_if.md"],
+      "tags": ["[[ ]]", "bash", "dash"]
+    },
+    {
+      "id": "ch12_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что означает код выхода 0 в условии?",
+      "options": [
+        "Ложь (false)",
+        "Истина (true)",
+        "Ошибка",
+        "Пустое значение"
+      ],
+      "correct": [1],
+      "explanation": "**0** = успех = истина. **Не 0** = ошибка = ложь.",
+      "references": ["vol2/part5/ch12_conditionals/01_if.md"],
+      "tags": ["коды возврата", "условия"]
+    },
+    {
+      "id": "ch12_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие операторы работают в [[ ]]? (выберите все правильные)",
+      "options": [
+        "&&",
+        "||",
+        "-a",
+        "-o"
+      ],
+      "correct": [0, 1],
+      "explanation": "**&&, ||** работают в [[ ]]. **-a, -o** — в [ ] (но не рекомендуются).",
+      "references": ["vol2/part5/ch12_conditionals/01_if.md"],
+      "tags": ["[[ ]]", "операторы"]
+    },
+    {
+      "id": "ch12_01_q05",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как проверить, что файл существует и читаем?",
+      "options": [
+        "if [[ -f file && -r file ]]",
+        "if [[ -f file && -r file ]]",
+        "if [ -f file ] && [ -r file ]",
+        "Все варианты верны"
+      ],
+      "correct": [3],
+      "explanation": "Все варианты работают. **[[ ]]** предпочтительнее в bash.",
+      "references": ["vol2/part5/ch12_conditionals/01_if.md"],
+      "tags": ["файлы", "проверки"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

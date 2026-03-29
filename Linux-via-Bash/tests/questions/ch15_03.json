@@ -1,0 +1,55 @@
+{
+  "chapter": "ch15",
+  "subchapter": "03",
+  "title": "Обработка аргументов",
+  "description": "getopts, парсинг опций",
+  "learning_objectives": [
+    "Уметь парсить опции",
+    "Знать getopts"
+  ],
+  "questions": [
+    {
+      "id": "ch15_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает getopts?",
+      "options": [
+        "Парсит опции командной строки",
+        "Получает опции shell",
+        "Настраивает функции",
+        "Проверяет аргументы"
+      ],
+      "correct": [0],
+      "explanation": "**getopts** парсит коротки опции (-f, -o value) в цикле.",
+      "references": ["vol2/part5/ch15_io/03_args.md"],
+      "tags": ["getopts", "опции"]
+    },
+    {
+      "id": "ch15_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что getopts поддерживает длинные опции (--file)?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. getopts поддерживает только короткие (-f). Для длинных — ручной парсинг.",
+      "references": ["vol2/part5/ch15_io/03_args.md"],
+      "tags": ["getopts", "опции"]
+    },
+    {
+      "id": "ch15_03_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Где getopts хранит индекс следующего аргумента?",
+      "options": ["OPTIND", "OPTARG", "OPTERR", "INDEX"],
+      "correct": [0],
+      "explanation": "**OPTIND** — индекс следующего аргумента для обработки.",
+      "references": ["vol2/part5/ch15_io/03_args.md"],
+      "tags": ["getopts", "OPTIND"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

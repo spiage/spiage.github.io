@@ -1,0 +1,72 @@
+{
+  "chapter": "ch13",
+  "subchapter": "01",
+  "title": "while",
+  "description": "Цикл с условием продолжения",
+  "learning_objectives": [
+    "Понимать синтаксис while",
+    "Уметь читать из stdin в цикле",
+    "Знать про break, continue"
+  ],
+  "questions": [
+    {
+      "id": "ch13_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Когда выполняется тело цикла while?",
+      "options": [
+        "Пока условие истинно (код возврата 0)",
+        "Пока условие ложно (код возврата не 0)",
+        "Ровно 10 раз",
+        "Бесконечно"
+      ],
+      "correct": [0],
+      "explanation": "**while** выполняет тело, пока условие возвращает 0 (успех).",
+      "references": ["vol2/part5/ch13_loops/01_while.md"],
+      "tags": ["while", "циклы"]
+    },
+    {
+      "id": "ch13_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что 'while read line' читает файл построчно?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Конвейер в while read читает stdin построчно.",
+      "references": ["vol2/part5/ch13_loops/01_while.md"],
+      "tags": ["while", "read"]
+    },
+    {
+      "id": "ch13_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как прервать цикл досрочно?",
+      "options": [
+        "exit",
+        "break",
+        "return",
+        "stop"
+      ],
+      "correct": [1],
+      "explanation": "**break** прерывает цикл. **exit** завершает скрипт.",
+      "references": ["vol2/part5/ch13_loops/01_while.md"],
+      "tags": ["break", "циклы"]
+    },
+    {
+      "id": "ch13_01_q04",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Что выведет?\ni=1; while [ $i -lt 3 ]; do echo $i; i=$((i+1)); done",
+      "options": ["1 2", "1 2 3", "2 3", "1"],
+      "correct": [0],
+      "explanation": "**1 2** — цикл выполняется пока i < 3 (1, затем 2).",
+      "references": ["vol2/part5/ch13_loops/01_while.md"],
+      "tags": ["while", "счётчик"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

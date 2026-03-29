@@ -1,0 +1,77 @@
+{
+  "chapter": "ch13",
+  "subchapter": "03",
+  "title": "for",
+  "description": "Цикл по списку, C-подобный for",
+  "learning_objectives": [
+    "Понимать синтаксис for",
+    "Знать C-подобный for в bash",
+    "Уметь итерировать по файлам"
+  ],
+  "questions": [
+    {
+      "id": "ch13_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой синтаксис for правильный?",
+      "options": [
+        "for i in 1 2 3; do ... done",
+        "for (i=0; i<3; i++) { ... }",
+        "for i from 1 to 3 do ... end",
+        "foreach i in 1 2 3 do ... done"
+      ],
+      "correct": [0],
+      "explanation": "**for i in list; do ... done** — POSIX синтаксис.",
+      "references": ["vol2/part5/ch13_loops/03_for.md"],
+      "tags": ["for", "синтаксис"]
+    },
+    {
+      "id": "ch13_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что for i; do ... эквивалентно for i in \"$@\"; do ...?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Без 'in list' используется \"$@\" (все аргументы).",
+      "references": ["vol2/part5/ch13_loops/03_for.md"],
+      "tags": ["for", "$@"]
+    },
+    {
+      "id": "ch13_03_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какой синтаксис C-подобного for в bash?",
+      "options": [
+        "for ((i=0; i<10; i++)); do ... done",
+        "for (i=0; i<10; i++) { ... }",
+        "for i from 0 to 10; do ... done",
+        "for i in range(10); do ... done"
+      ],
+      "correct": [0],
+      "explanation": "**for ((init; cond; incr))** — C-подобный синтаксис (только bash).",
+      "references": ["vol2/part5/ch13_loops/03_for.md"],
+      "tags": ["for", "bash", "C-style"]
+    },
+    {
+      "id": "ch13_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как обработать все файлы .txt? (выберите все правильные)",
+      "options": [
+        "for f in *.txt; do ... done",
+        "for f in $files; do ... done (files=\"*.txt\")",
+        "find . -name '*.txt' | while read f; do ... done",
+        "for f in \"*.txt\"; do ... done"
+      ],
+      "correct": [0, 2],
+      "explanation": "**for f in *.txt** — glob expansion. **find | while** — для рекурсивно.",
+      "references": ["vol2/part5/ch13_loops/03_for.md"],
+      "tags": ["for", "glob", "find"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

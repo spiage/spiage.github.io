@@ -1,0 +1,93 @@
+{
+  "chapter": "ch10",
+  "subchapter": "01",
+  "title": "Shebang и интерпретатор",
+  "description": "Выбор интерпретатора, отличия bash от dash",
+  "learning_objectives": [
+    "Понимать назначение shebang",
+    "Знать разницу между #!/bin/bash и #!/bin/sh",
+    "Уметь проверять версию bash"
+  ],
+  "questions": [
+    {
+      "id": "ch10_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что означает #!/bin/bash в первой строке скрипта?",
+      "options": [
+        "Это комментарий, не влияющий на выполнение",
+        "Указывает ядру использовать /bin/bash для выполнения скрипта",
+        "Запрещает использование dash",
+        "Включает режим отладки"
+      ],
+      "correct": [1],
+      "explanation": "**Shebang (#!)** указывает ядру, какой интерпретатор использовать для выполнения скрипта.",
+      "references": ["vol2/part5/ch10_structure/01_shebang.md"],
+      "tags": ["shebang", "bash"]
+    },
+    {
+      "id": "ch10_01_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "В чём разница между #!/bin/bash и #!/bin/sh?",
+      "options": [
+        "Нет разницы, это одно и то же",
+        "bash — полноценный bash, sh — POSIX-совместимый shell (часто dash)",
+        "sh быстрее bash",
+        "bash устарел, нужно использовать sh"
+      ],
+      "correct": [1],
+      "explanation": "**bash** поддерживает расширения (массивы, [[ ]], (( )). **sh** (часто dash в Linux) — только POSIX-синтаксис.",
+      "references": ["vol2/part5/ch10_structure/01_shebang.md"],
+      "tags": ["bash", "sh", "dash"]
+    },
+    {
+      "id": "ch10_01_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что в Ubuntu /bin/sh — это ссылка на dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. В Debian/Ubuntu /bin/sh → dash для скорости и POSIX-совместимости.",
+      "references": ["vol2/part5/ch10_structure/01_shebang.md"],
+      "tags": ["dash", "sh", "Ubuntu"]
+    },
+    {
+      "id": "ch10_01_q04",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как проверить версию bash в скрипте?",
+      "options": [
+        "echo $BASH_VERSION",
+        "echo $SHELL_VERSION",
+        "bash --version",
+        "echo $BASH"
+      ],
+      "correct": [0],
+      "explanation": "**$BASH_VERSION** — переменная bash с версией. В dash этой переменной нет!",
+      "references": ["vol2/part5/ch10_structure/01_shebang.md"],
+      "tags": ["bash", "переменные"]
+    },
+    {
+      "id": "ch10_01_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие конструкции НЕ работают в dash? (выберите все правильные)",
+      "options": [
+        "[[ condition ]]",
+        "(( arithmetic ))",
+        "array=(1 2 3)",
+        "if [ condition ]; then fi"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**[[ ]], (( )), массивы** — расширения bash. В dash используйте **[ ], expr, отдельные переменные**.",
+      "references": ["vol2/part5/ch10_structure/01_shebang.md"],
+      "tags": ["bash", "dash", "синтаксис"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "chapter": "ch19",
+  "subchapter": "01",
+  "title": "Стиль кода",
+  "description": "Читаемость, имена переменных, форматирование",
+  "learning_objectives": [
+    "Знать правила стиля кода",
+    "Уметь писать читаемый код"
+  ],
+  "questions": [
+    {
+      "id": "ch19_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой стиль имён переменных предпочтителен в bash?",
+      "options": [
+        "snake_case (my_var)",
+        "camelCase (myVar)",
+        "PascalCase (MyVar)",
+        "kebab-case (my-var)"
+      ],
+      "correct": [0],
+      "explanation": "**snake_case** — стандарт для shell скриптов.",
+      "references": ["vol2/part5/ch19_best_practices/01_style.md"],
+      "tags": ["стиль", "имена"]
+    },
+    {
+      "id": "ch19_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что функции должны быть короткими?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Функции должны делать одну вещь и быть читаемыми.",
+      "references": ["vol2/part5/ch19_best_practices/01_style.md"],
+      "tags": ["функции", "стиль"]
+    },
+    {
+      "id": "ch19_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как правильно форматировать if?",
+      "options": [
+        "if [ cond ]; then\\n    cmd\\nfi",
+        "if [ cond ] then cmd fi",
+        "if(cond) { cmd }",
+        "Все варианты верны"
+      ],
+      "correct": [0],
+      "explanation": "**Отступы и переносы** улучшают читаемость.",
+      "references": ["vol2/part5/ch19_best_practices/01_style.md"],
+      "tags": ["форматирование", "if"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

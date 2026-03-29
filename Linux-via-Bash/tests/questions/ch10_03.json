@@ -1,0 +1,44 @@
+{
+  "chapter": "ch10",
+  "subchapter": "03",
+  "title": "Комментарии",
+  "description": "Синтаксис комментариев, особенности",
+  "learning_objectives": [
+    "Уметь писать комментарии",
+    "Знать ограничения комментариев"
+  ],
+  "questions": [
+    {
+      "id": "ch10_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как начинается комментарий в shell?",
+      "options": [
+        "//",
+        "/* */",
+        "#",
+        "--"
+      ],
+      "correct": [2],
+      "explanation": "**#** начинает комментарий. Работает одинаково в bash и dash.",
+      "references": ["vol2/part5/ch10_structure/03_comments.md"],
+      "tags": ["комментарии", "синтаксис"]
+    },
+    {
+      "id": "ch10_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что # внутри кавычек начинает комментарий?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Внутри кавычек **#** — это обычный символ, не комментарий.",
+      "references": ["vol2/part5/ch10_structure/03_comments.md"],
+      "tags": ["комментарии", "кавычки"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 2,
+    "estimated_time_minutes": 3
+  }
+}

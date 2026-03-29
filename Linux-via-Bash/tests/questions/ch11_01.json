@@ -1,0 +1,77 @@
+{
+  "chapter": "ch11",
+  "subchapter": "01",
+  "title": "Присваивание переменных",
+  "description": "Синтаксис, типы, quoting",
+  "learning_objectives": [
+    "Уметь присваивать переменные",
+    "Знать разницу между var=value и var = value",
+    "Понимать quoting"
+  ],
+  "questions": [
+    {
+      "id": "ch11_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как правильно присвоить значение переменной?",
+      "options": [
+        "var = value",
+        "var=value",
+        "set var = value",
+        "let var = value"
+      ],
+      "correct": [1],
+      "explanation": "**var=value** без пробелов вокруг =. Пробелы делают var командой!",
+      "references": ["vol2/part5/ch11_variables/01_assignment.md"],
+      "tags": ["переменные", "синтаксис"]
+    },
+    {
+      "id": "ch11_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что echo $var и echo \"$var\" всегда эквивалентны?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Без кавычек слово splitting и globbing работают. С кавычками — нет.",
+      "references": ["vol2/part5/ch11_variables/01_assignment.md"],
+      "tags": ["кавычки", "переменные"]
+    },
+    {
+      "id": "ch11_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что выведет 'var=\"a b c\"; echo $var'?",
+      "options": [
+        "a b c",
+        "abc",
+        "a\nb\nc",
+        "Ошибка"
+      ],
+      "correct": [0],
+      "explanation": "**a b c** — bash сохраняет пробелы. Но без кавычек может быть word splitting.",
+      "references": ["vol2/part5/ch11_variables/01_assignment.md"],
+      "tags": ["кавычки", "пробелы"]
+    },
+    {
+      "id": "ch11_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие кавычки предотвращают подстановку переменных? (выберите все правильные)",
+      "options": [
+        "'$var'",
+        "\"$var\"",
+        "$var",
+        "'\"$var\"'"
+      ],
+      "correct": [0, 3],
+      "explanation": "**Одинарные кавычки** предотвращают подстановку. Двойные — разрешают.",
+      "references": ["vol2/part5/ch11_variables/01_assignment.md"],
+      "tags": ["кавычки", "подстановка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

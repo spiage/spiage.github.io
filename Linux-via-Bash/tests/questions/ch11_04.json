@@ -1,0 +1,71 @@
+{
+  "chapter": "ch11",
+  "subchapter": "04",
+  "title": "Специальные переменные",
+  "description": "$?, $$, $!, $0, $-",
+  "learning_objectives": [
+    "Знать специальные переменные bash",
+    "Уметь использовать $$ и $!"
+  ],
+  "questions": [
+    {
+      "id": "ch11_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что содержит $$?",
+      "options": [
+        "Количество аргументов",
+        "PID текущего shell/скрипта",
+        "PID последнего фонового процесса",
+        "Код последней команды"
+      ],
+      "correct": [1],
+      "explanation": "**$$** — PID текущего shell. Работает в bash и dash.",
+      "references": ["vol2/part5/ch11_variables/04_special.md"],
+      "tags": ["$$", "PID"]
+    },
+    {
+      "id": "ch11_04_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что содержит $!?",
+      "options": [
+        "PID текущего shell",
+        "PID последнего фонового процесса",
+        "Код последней команды",
+        "Список опций shell"
+      ],
+      "correct": [1],
+      "explanation": "**$!** — PID последнего запущенного фонового процесса (&).",
+      "references": ["vol2/part5/ch11_variables/04_special.md"],
+      "tags": ["$!", "PID", "фон"]
+    },
+    {
+      "id": "ch11_04_q03",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как получить код последней команды?",
+      "options": ["$?", "$#", "$$", "$!"],
+      "correct": [0],
+      "explanation": "**$?** — код последней команды (0 = успех).",
+      "references": ["vol2/part5/ch11_variables/04_special.md"],
+      "tags": ["$?", "коды возврата"]
+    },
+    {
+      "id": "ch11_04_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие переменные работают и в bash, и в dash? (выберите все правильные)",
+      "options": ["$?", "$$", "$!", "$BASH_SOURCE"],
+      "correct": [0, 1, 2],
+      "explanation": "**$?, $$, $!** — POSIX. **$BASH_SOURCE** — только bash.",
+      "references": ["vol2/part5/ch11_variables/04_special.md"],
+      "tags": ["bash", "dash", "POSIX"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

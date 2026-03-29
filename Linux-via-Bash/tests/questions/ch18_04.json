@@ -1,0 +1,60 @@
+{
+  "chapter": "ch18",
+  "subchapter": "04",
+  "title": "Принцип наименьших привилегий",
+  "description": "Минимальные права для выполнения задач",
+  "learning_objectives": [
+    "Понимать принцип наименьших привилегий",
+    "Уметь ограничивать права"
+  ],
+  "questions": [
+    {
+      "id": "ch18_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое принцип наименьших привилегий?",
+      "options": [
+        "Давать минимальные права для выполнения задачи",
+        "Всегда использовать root",
+        "Давать все права заранее",
+        "Не использовать права"
+      ],
+      "correct": [0],
+      "explanation": "**Наименьшие привилегии** — давать только необходимые права.",
+      "references": ["vol2/part5/ch18_security/04_least_privilege.md"],
+      "tags": ["привилегии", "безопасность"]
+    },
+    {
+      "id": "ch18_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что не стоит запускать скрипт от root без необходимости?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Root должен использоваться только когда необходим.",
+      "references": ["vol2/part5/ch18_security/04_least_privilege.md"],
+      "tags": ["root", "привилегии"]
+    },
+    {
+      "id": "ch18_04_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как проверить, что скрипт запущен от root?",
+      "options": [
+        "[ $EUID -eq 0 ]",
+        "[ $USER = root ]",
+        "[ $UID = 0 ]",
+        "Все варианты верны"
+      ],
+      "correct": [3],
+      "explanation": "**EUID=0** или **UID=0** или **USER=root** — все работают.",
+      "references": ["vol2/part5/ch18_security/04_least_privilege.md"],
+      "tags": ["root", "проверка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

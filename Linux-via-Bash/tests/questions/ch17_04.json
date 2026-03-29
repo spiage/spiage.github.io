@@ -1,0 +1,60 @@
+{
+  "chapter": "ch17",
+  "subchapter": "04",
+  "title": "awk/sed вместо циклов",
+  "description": "Использование текстовых процессоров для обработки",
+  "learning_objectives": [
+    "Знать когда использовать awk/sed",
+    "Уметь заменять циклы на awk"
+  ],
+  "questions": [
+    {
+      "id": "ch17_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Почему awk быстрее цикла bash?",
+      "options": [
+        "Один процесс вместо множества",
+        "awk написан на C",
+        "awk использует меньше памяти",
+        "Все варианты верны"
+      ],
+      "correct": [3],
+      "explanation": "**awk** — один процесс, оптимизированный C код, эффективная обработка.",
+      "references": ["vol2/part5/ch17_optimization/04_awk_sed.md"],
+      "tags": ["awk", "производительность"]
+    },
+    {
+      "id": "ch17_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что sed может заменить простой цикл for?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. sed обрабатывает весь файл за один проход.",
+      "references": ["vol2/part5/ch17_optimization/04_awk_sed.md"],
+      "tags": ["sed", "циклы"]
+    },
+    {
+      "id": "ch17_04_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Что выведет 'awk '{sum+=$1} END {print sum}' file'?",
+      "options": [
+        "Сумму всех чисел в первой колонке",
+        "Количество строк",
+        "Первое число",
+        "Последнее число"
+      ],
+      "correct": [0],
+      "explanation": "**sum+=$1** суммирует первую колонку, **END** выводит результат.",
+      "references": ["vol2/part5/ch17_optimization/04_awk_sed.md"],
+      "tags": ["awk", "сумма"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "chapter": "ch20",
+  "subchapter": "03",
+  "title": "Расширения Bash",
+  "description": "Специфичные возможности bash",
+  "learning_objectives": [
+    "Знать расширения bash",
+    "Понимать отличия от POSIX"
+  ],
+  "questions": [
+    {
+      "id": "ch20_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой синтаксис для арифметики в bash?",
+      "options": [
+        "$((expression))",
+        "expr expression",
+        "let expression",
+        "Все варианты верны"
+      ],
+      "correct": [3],
+      "explanation": "**$(( )), expr, let** — все работают в bash.",
+      "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
+      "tags": ["арифметика", "bash"]
+    },
+    {
+      "id": "ch20_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что [[ ]] работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **[[ ]]** — расширение bash.",
+      "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
+      "tags": ["[[ ]]", "dash"]
+    },
+    {
+      "id": "ch20_03_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как выполнить подстановку процесса?",
+      "options": [
+        "<(command)",
+        "$(command)",
+        "`command`",
+        "{command}"
+      ],
+      "correct": [0],
+      "explanation": "**<(cmd)** — process substitution (только bash/zsh).",
+      "references": ["vol2/part5/ch20_arrays/03_extensions.md"],
+      "tags": ["process substitution"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

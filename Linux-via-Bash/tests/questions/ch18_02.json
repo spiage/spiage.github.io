@@ -1,0 +1,60 @@
+{
+  "chapter": "ch18",
+  "subchapter": "02",
+  "title": "Защита от инъекций",
+  "description": "Command injection, SQL injection",
+  "learning_objectives": [
+    "Понимать риски инъекций",
+    "Уметь защищаться"
+  ],
+  "questions": [
+    {
+      "id": "ch18_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое command injection?",
+      "options": [
+        "Выполнение произвольных команд через ввод",
+        "Вставка команд в скрипт",
+        "Копирование команд",
+        "Импортирование функций"
+      ],
+      "correct": [0],
+      "explanation": "**Command injection** — выполнение злоумышленником команд через невалидированный ввод.",
+      "references": ["vol2/part5/ch18_security/02_injection.md"],
+      "tags": ["injection", "безопасность"]
+    },
+    {
+      "id": "ch18_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что кавычки защищают от injection?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **\"$var\"** предотвращает word splitting и globbing.",
+      "references": ["vol2/part5/ch18_security/02_injection.md"],
+      "tags": ["кавычки", "защита"]
+    },
+    {
+      "id": "ch18_02_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как безопасно выполнить команду с аргументом?",
+      "options": [
+        "cmd \"$arg\"",
+        "cmd $arg",
+        "eval cmd $arg",
+        "bash -c \"cmd $arg\""
+      ],
+      "correct": [0],
+      "explanation": **"\"$arg\"** — кавычки предотвращают injection.",
+      "references": ["vol2/part5/ch18_security/02_injection.md"],
+      "tags": ["кавычки", "безопасность"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

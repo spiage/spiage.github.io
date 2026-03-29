@@ -1,0 +1,60 @@
+{
+  "chapter": "ch16",
+  "subchapter": "04",
+  "title": "trap",
+  "description": "Перехват сигналов, очистка",
+  "learning_objectives": [
+    "Уметь использовать trap",
+    "Знать EXIT trap"
+  ],
+  "questions": [
+    {
+      "id": "ch16_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает trap?",
+      "options": [
+        "Перехватывает сигналы",
+        "Останавливает скрипт",
+        "Завершает процессы",
+        "Ловит ошибки"
+      ],
+      "correct": [0],
+      "explanation": "**trap** выполняет команду при получении сигнала.",
+      "references": ["vol2/part5/ch16_errors/04_trap.md"],
+      "tags": ["trap", "сигналы"]
+    },
+    {
+      "id": "ch16_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что trap EXIT выполняется при выходе?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **trap EXIT** выполняется при любом выходе из скрипта.",
+      "references": ["vol2/part5/ch16_errors/04_trap.md"],
+      "tags": ["EXIT", "trap"]
+    },
+    {
+      "id": "ch16_04_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как отменить обработчик SIGINT?",
+      "options": [
+        "trap - INT",
+        "trap INT",
+        "trap '' INT",
+        "Оба варианта верны"
+      ],
+      "correct": [3],
+      "explanation": "**trap - INT** или **trap '' INT** — сброс к обработчику по умолчанию.",
+      "references": ["vol2/part5/ch16_errors/04_trap.md"],
+      "tags": ["trap", "сброс"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

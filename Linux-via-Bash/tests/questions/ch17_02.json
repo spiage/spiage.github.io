@@ -1,0 +1,60 @@
+{
+  "chapter": "ch17",
+  "subchapter": "02",
+  "title": "Минимизация fork/exec",
+  "description": "Избегание лишних процессов",
+  "learning_objectives": [
+    "Понимать стоимость fork/exec",
+    "Уметь избегать лишних процессов"
+  ],
+  "questions": [
+    {
+      "id": "ch17_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое fork/exec?",
+      "options": [
+        "Создание нового процесса",
+        "Копирование файла",
+        "Запуск функции",
+        "Чтение ввода"
+      ],
+      "correct": [0],
+      "explanation": "**fork** создаёт процесс, **exec** заменяет его на программу.",
+      "references": ["vol2/part5/ch17_optimization/02_minimize_fork.md"],
+      "tags": ["fork", "exec"]
+    },
+    {
+      "id": "ch17_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что каждый вызов команды создаёт новый процесс?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно** для внешних команд. builtin не создают процессов.",
+      "references": ["vol2/part5/ch17_optimization/02_minimize_fork.md"],
+      "tags": ["процессы"]
+    },
+    {
+      "id": "ch17_02_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как избежать fork в цикле?",
+      "options": [
+        "Использовать builtin вместо external",
+        "Запустить в фоне",
+        "Использовать pipe",
+        "Никак"
+      ],
+      "correct": [0],
+      "explanation": "**builtin** (echo, printf) не создают fork, в отличие от external (cat, grep).",
+      "references": ["vol2/part5/ch17_optimization/02_minimize_fork.md"],
+      "tags": ["оптимизация", "циклы"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

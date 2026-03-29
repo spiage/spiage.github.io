@@ -1,0 +1,60 @@
+{
+  "chapter": "ch14",
+  "subchapter": "02",
+  "title": "Аргументы функций",
+  "description": "$1, $@, $#, shift в функциях",
+  "learning_objectives": [
+    "Уметь передавать аргументы",
+    "Знать $@ и $* в функциях"
+  ],
+  "questions": [
+    {
+      "id": "ch14_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как получить количество аргументов функции?",
+      "options": [
+        "$#",
+        "$@",
+        "$*",
+        "$!"
+      ],
+      "correct": [0],
+      "explanation": "**$#** — количество аргументов (в функции — аргументы функции).",
+      "references": ["vol2/part5/ch14_functions/02_arguments.md"],
+      "tags": ["$#", "аргументы"]
+    },
+    {
+      "id": "ch14_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что $@ в функции содержит аргументы функции?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. $@ и $* в функции — аргументы функции, не скрипта.",
+      "references": ["vol2/part5/ch14_functions/02_arguments.md"],
+      "tags": ["$@", "функции"]
+    },
+    {
+      "id": "ch14_02_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что делает shift в функции?",
+      "options": [
+        "Сдвигает аргументы функции",
+        "Сдвигает аргументы скрипта",
+        "Завершает функцию",
+        "Возвращает значение"
+      ],
+      "correct": [0],
+      "explanation": "**shift** сдвигает аргументы функции (не скрипта).",
+      "references": ["vol2/part5/ch14_functions/02_arguments.md"],
+      "tags": ["shift", "аргументы"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

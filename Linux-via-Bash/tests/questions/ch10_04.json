@@ -1,0 +1,93 @@
+{
+  "chapter": "ch10",
+  "subchapter": "04",
+  "title": "Коды возврата",
+  "description": "exit, return, $?, PIPESTATUS",
+  "learning_objectives": [
+    "Понимать коды возврата",
+    "Уметь использовать $?",
+    "Знать про PIPESTATUS в bash"
+  ],
+  "questions": [
+    {
+      "id": "ch10_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что означает код возврата 0?",
+      "options": [
+        "Ошибка",
+        "Успех",
+        "Предупреждение",
+        "Бесконечный цикл"
+      ],
+      "correct": [1],
+      "explanation": "**0** = успех. **1-255** = ошибка. Стандарт POSIX, работает везде.",
+      "references": ["vol2/part5/ch10_structure/04_exit_codes.md"],
+      "tags": ["коды возврата", "exit"]
+    },
+    {
+      "id": "ch10_04_q02",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как получить код последней команды?",
+      "options": [
+        "$?",
+        "$#",
+        "$!",
+        "$$"
+      ],
+      "correct": [0],
+      "explanation": "**$?** содержит код последней команды. Работает в bash и dash.",
+      "references": ["vol2/part5/ch10_structure/04_exit_codes.md"],
+      "tags": ["$?", "переменные"]
+    },
+    {
+      "id": "ch10_04_q03",
+      "type": "true_false",
+      "difficulty": "hard",
+      "question": "Верно ли, что PIPESTATUS работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **PIPESTATUS** — массив bash для кодов конвейера. В dash используйте только $? (код последней команды в конвейере).",
+      "references": ["vol2/part5/ch10_structure/04_exit_codes.md"],
+      "tags": ["PIPESTATUS", "bash", "dash", "конвейеры"]
+    },
+    {
+      "id": "ch10_04_q04",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Что делает 'exit 5' в скрипте?",
+      "options": [
+        "Завершает скрипт с кодом 5",
+        "Возвращает 5 из функции",
+        "Пропускает 5 строк",
+        "Ждёт 5 секунд"
+      ],
+      "correct": [0],
+      "explanation": "**exit N** завершает скрипт с кодом N. **return N** возвращает код из функции.",
+      "references": ["vol2/part5/ch10_structure/04_exit_codes.md"],
+      "tags": ["exit", "коды возврата"]
+    },
+    {
+      "id": "ch10_04_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как получить коды всех команд в конвейере 'cmd1 | cmd2 | cmd3' в bash? (выберите все правильные)",
+      "options": [
+        "echo ${PIPESTATUS[@]}",
+        "echo $?",
+        "echo ${PIPESTATUS[0]} ${PIPESTATUS[1]} ${PIPESTATUS[2]}",
+        "echo $PIPESTATUS"
+      ],
+      "correct": [0, 2],
+      "explanation": "**${PIPESTATUS[@]}** — все коды. **${PIPESTATUS[0]}** — cmd1, и т.д. **$?** — только код последней команды (cmd3). В dash PIPESTATUS недоступен!",
+      "references": ["vol2/part5/ch10_structure/04_exit_codes.md"],
+      "tags": ["PIPESTATUS", "bash", "конвейеры"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

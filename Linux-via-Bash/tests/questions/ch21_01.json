@@ -1,0 +1,55 @@
+{
+  "chapter": "ch21",
+  "subchapter": "01",
+  "title": "Режимы отладки",
+  "description": "set -x, set -v, PS4",
+  "learning_objectives": [
+    "Уметь включать отладку",
+    "Знать опции set"
+  ],
+  "questions": [
+    {
+      "id": "ch21_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как включить трассировку выполнения?",
+      "options": [
+        "set -x",
+        "set -v",
+        "set -e",
+        "set -u"
+      ],
+      "correct": [0],
+      "explanation": "**set -x** — выводит команды перед выполнением.",
+      "references": ["vol2/part5/ch21_debugging/01_debug_modes.md"],
+      "tags": ["отладка", "set -x"]
+    },
+    {
+      "id": "ch21_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что set -v выводит переменные?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **set -v** выводит ввод (как set -x, но до подстановки).",
+      "references": ["vol2/part5/ch21_debugging/01_debug_modes.md"],
+      "tags": ["set -v", "отладка"]
+    },
+    {
+      "id": "ch21_01_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какая переменная задаёт префикс трассировки?",
+      "options": ["PS4", "PS1", "DEBUG", "TRACE"],
+      "correct": [0],
+      "explanation": "**PS4** — префикс для set -x (по умолчанию '+').",
+      "references": ["vol2/part5/ch21_debugging/01_debug_modes.md"],
+      "tags": ["PS4", "трассировка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

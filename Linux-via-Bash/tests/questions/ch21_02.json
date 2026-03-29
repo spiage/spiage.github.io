@@ -1,0 +1,60 @@
+{
+  "chapter": "ch21",
+  "subchapter": "02",
+  "title": "shellcheck",
+  "description": "Статический анализ скриптов",
+  "learning_objectives": [
+    "Уметь использовать shellcheck",
+    "Понимать предупреждения"
+  ],
+  "questions": [
+    {
+      "id": "ch21_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое shellcheck?",
+      "options": [
+        "Статический анализатор для shell",
+        "Интерпретатор shell",
+        "Тестовый фреймворк",
+        "Редактор скриптов"
+      ],
+      "correct": [0],
+      "explanation": "**shellcheck** — статический анализатор, находит ошибки в скриптах.",
+      "references": ["vol2/part5/ch21_debugging/02_shellcheck.md"],
+      "tags": ["shellcheck", "анализ"]
+    },
+    {
+      "id": "ch21_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что shellcheck находит ошибки времени выполнения?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. shellcheck — статический анализ, не выполняет код.",
+      "references": ["vol2/part5/ch21_debugging/02_shellcheck.md"],
+      "tags": ["shellcheck", "статический"]
+    },
+    {
+      "id": "ch21_02_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как игнорировать конкретное предупреждение?",
+      "options": [
+        "# shellcheck disable=SC2086",
+        "# ignore SC2086",
+        "# noqa SC2086",
+        "# shellcheck ignore=2086"
+      ],
+      "correct": [0],
+      "explanation": "**# shellcheck disable=SC2086** — игнорирует конкретное правило.",
+      "references": ["vol2/part5/ch21_debugging/02_shellcheck.md"],
+      "tags": ["shellcheck", "игнорирование"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

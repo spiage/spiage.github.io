@@ -1,0 +1,60 @@
+{
+  "chapter": "ch18",
+  "subchapter": "01",
+  "title": "Валидация входных данных",
+  "description": "Проверка аргументов и ввода",
+  "learning_objectives": [
+    "Уметь проверять аргументы",
+    "Знать шаблоны валидации"
+  ],
+  "questions": [
+    {
+      "id": "ch18_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Зачем проверять аргументы?",
+      "options": [
+        "Предотвратить ошибки и уязвимости",
+        "Ускорить скрипт",
+        "Сократить код",
+        "Для красоты"
+      ],
+      "correct": [0],
+      "explanation": "**Валидация** предотвращает ошибки, injection атаки, повреждение данных.",
+      "references": ["vol2/part5/ch18_security/01_validation.md"],
+      "tags": ["валидация", "безопасность"]
+    },
+    {
+      "id": "ch18_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что нужно проверять все внешние данные?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Аргументы, переменные окружения, ввод пользователя — всё нужно проверять.",
+      "references": ["vol2/part5/ch18_security/01_validation.md"],
+      "tags": ["валидация"]
+    },
+    {
+      "id": "ch18_01_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как проверить, что аргумент — число?",
+      "options": [
+        "[[ $arg =~ ^[0-9]+$ ]]",
+        "[ $arg -gt 0 ]",
+        "is_number $arg",
+        "Все варианты верны"
+      ],
+      "correct": [0],
+      "explanation": "**regex ^[0-9]+$** проверяет, что строка состоит только из цифр.",
+      "references": ["vol2/part5/ch18_security/01_validation.md"],
+      "tags": ["regex", "числа"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

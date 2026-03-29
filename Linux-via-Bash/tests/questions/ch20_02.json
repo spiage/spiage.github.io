@@ -1,0 +1,60 @@
+{
+  "chapter": "ch20",
+  "subchapter": "02",
+  "title": "Ассоциативные массивы",
+  "description": "Хеш-таблицы в bash",
+  "learning_objectives": [
+    "Уметь создавать ассоциативные массивы",
+    "Знать отличия от индексированных"
+  ],
+  "questions": [
+    {
+      "id": "ch20_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как объявить ассоциативный массив?",
+      "options": [
+        "declare -A arr",
+        "declare -a arr",
+        "declare -i arr",
+        "hash arr"
+      ],
+      "correct": [0],
+      "explanation": "**declare -A** — ассоциативный массив (bash 4+).",
+      "references": ["vol2/part5/ch20_arrays/02_associative.md"],
+      "tags": ["ассоциативные", "declare"]
+    },
+    {
+      "id": "ch20_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что ассоциативные массивы работают в bash 3?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Ассоциативные массивы только в bash 4+.",
+      "references": ["vol2/part5/ch20_arrays/02_associative.md"],
+      "tags": ["ассоциативные", "версия"]
+    },
+    {
+      "id": "ch20_02_q03",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как получить все ключи ассоциативного массива?",
+      "options": [
+        "${!arr[@]}",
+        "${arr[@]}",
+        "${arr.keys}",
+        "keys arr"
+      ],
+      "correct": [0],
+      "explanation": "**${!arr[@]}** — все ключи массива.",
+      "references": ["vol2/part5/ch20_arrays/02_associative.md"],
+      "tags": ["ассоциативные", "ключи"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

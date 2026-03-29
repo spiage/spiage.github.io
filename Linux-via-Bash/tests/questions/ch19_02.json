@@ -1,0 +1,55 @@
+{
+  "chapter": "ch19",
+  "subchapter": "02",
+  "title": "Документирование",
+  "description": "Комментарии, README, help",
+  "learning_objectives": [
+    "Уметь документировать код",
+    "Знать лучшие практики"
+  ],
+  "questions": [
+    {
+      "id": "ch19_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Зачем документировать код?",
+      "options": [
+        "Для понимания другими и собой в будущем",
+        "Для красоты",
+        "Требование стандарта",
+        "Не нужно"
+      ],
+      "correct": [0],
+      "explanation": "**Документация** помогает понять код позже.",
+      "references": ["vol2/part5/ch19_best_practices/02_documentation.md"],
+      "tags": ["документация"]
+    },
+    {
+      "id": "ch19_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что комментарии должны объяснять 'почему', а не 'что'?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Код показывает 'что', комментарии — 'почему'.",
+      "references": ["vol2/part5/ch19_best_practices/02_documentation.md"],
+      "tags": ["комментарии"]
+    },
+    {
+      "id": "ch19_02_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какая опция обычно используется для help в скриптах?",
+      "options": ["-h", "-?", "--help", "Все варианты верны"],
+      "correct": [3],
+      "explanation": "**-h, -?, --help** — все используются для справки.",
+      "references": ["vol2/part5/ch19_best_practices/02_documentation.md"],
+      "tags": ["help", "опции"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "chapter": "ch13",
+  "subchapter": "02",
+  "title": "until",
+  "description": "Цикл с условием остановки",
+  "learning_objectives": [
+    "Понимать разницу между while и until",
+    "Уметь использовать until"
+  ],
+  "questions": [
+    {
+      "id": "ch13_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Когда выполняется тело цикла until?",
+      "options": [
+        "Пока условие истинно",
+        "Пока условие ложно (код возврата не 0)",
+        "Ровно 10 раз",
+        "Никогда"
+      ],
+      "correct": [1],
+      "explanation": "**until** выполняет тело, пока условие возвращает не 0 (ошибка).",
+      "references": ["vol2/part5/ch13_loops/02_until.md"],
+      "tags": ["until", "циклы"]
+    },
+    {
+      "id": "ch13_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что until — это инверсия while?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. until condition = while ! condition.",
+      "references": ["vol2/part5/ch13_loops/02_until.md"],
+      "tags": ["until", "while"]
+    },
+    {
+      "id": "ch13_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой цикл лучше для 'ждать пока файл не появится'?",
+      "options": [
+        "while [ -f file ]; do ...",
+        "until [ -f file ]; do ...",
+        "for file in ...",
+        "case ... esac"
+      ],
+      "correct": [1],
+      "explanation": "**until [ -f file ]** — ждём, пока файл не появится (условие станет истинным).",
+      "references": ["vol2/part5/ch13_loops/02_until.md"],
+      "tags": ["until", "ожидание"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

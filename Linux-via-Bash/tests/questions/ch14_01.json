@@ -1,0 +1,72 @@
+{
+  "chapter": "ch14",
+  "subchapter": "01",
+  "title": "Объявление функций",
+  "description": "Синтаксис, вызов, область видимости",
+  "learning_objectives": [
+    "Уметь объявлять функции",
+    "Знать синтаксис function и name()",
+    "Понимать область видимости"
+  ],
+  "questions": [
+    {
+      "id": "ch14_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой синтаксис объявления функции правильный?",
+      "options": [
+        "function name { }",
+        "name() { }",
+        "func name { }",
+        "Оба варианта верны"
+      ],
+      "correct": [3],
+      "explanation": "**function name()** и **name()** — оба работают в bash. name() — POSIX.",
+      "references": ["vol2/part5/ch14_functions/01_declaration.md"],
+      "tags": ["функции", "синтаксис"]
+    },
+    {
+      "id": "ch14_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что function name() работает в dash?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **function** — расширение bash. В dash используйте **name()**.",
+      "references": ["vol2/part5/ch14_functions/01_declaration.md"],
+      "tags": ["function", "dash", "bash"]
+    },
+    {
+      "id": "ch14_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как вызвать функцию?",
+      "options": [
+        "call name",
+        "name",
+        "run name",
+        "execute name"
+      ],
+      "correct": [1],
+      "explanation": "**name** или **name arg1 arg2** — без скобок и ключевых слов.",
+      "references": ["vol2/part5/ch14_functions/01_declaration.md"],
+      "tags": ["вызов", "функции"]
+    },
+    {
+      "id": "ch14_01_q04",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Что выведет?\nname() { echo $1; }; name hello",
+      "options": ["hello", "$1", "пусто", "Ошибка"],
+      "correct": [0],
+      "explanation": "**hello** — $1 содержит первый аргумент функции.",
+      "references": ["vol2/part5/ch14_functions/01_declaration.md"],
+      "tags": ["аргументы", "$1"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

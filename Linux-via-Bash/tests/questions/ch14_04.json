@@ -1,0 +1,76 @@
+{
+  "chapter": "ch14",
+  "subchapter": "04",
+  "title": "Возврат значений",
+  "description": "return, echo, коды возврата",
+  "learning_objectives": [
+    "Уметь возвращать значения",
+    "Знать разницу return и echo"
+  ],
+  "questions": [
+    {
+      "id": "ch14_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как вернуть числовое значение из функции?",
+      "options": [
+        "return N",
+        "echo N",
+        "exit N",
+        "yield N"
+      ],
+      "correct": [0],
+      "explanation": "**return N** возвращает код (0-255). **echo** выводит текст.",
+      "references": ["vol2/part5/ch14_functions/04_return.md"],
+      "tags": ["return", "коды"]
+    },
+    {
+      "id": "ch14_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что return может вернуть только 0-255?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. return возвращает код выхода (байт). Для больших чисел используйте echo.",
+      "references": ["vol2/part5/ch14_functions/04_return.md"],
+      "tags": ["return", "диапазон"]
+    },
+    {
+      "id": "ch14_04_q03",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Как получить вывод функции в переменную?",
+      "options": [
+        "var=$(func)",
+        "var=`func`",
+        "read var < func",
+        "var=func"
+      ],
+      "correct": [0],
+      "explanation": "**$(func)** — подстановка команды, захватывает echo функции.",
+      "references": ["vol2/part5/ch14_functions/04_return.md"],
+      "tags": ["echo", "подстановка"]
+    },
+    {
+      "id": "ch14_04_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что делает 'return' без аргумента?",
+      "options": [
+        "Возвращает 0",
+        "Возвращает код последней команды",
+        "Завершает скрипт",
+        "Вызывает ошибку"
+      ],
+      "correct": [1],
+      "explanation": "**return** без аргумента возвращает код последней выполненной команды.",
+      "references": ["vol2/part5/ch14_functions/04_return.md"],
+      "tags": ["return", "коды"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 4,
+    "estimated_time_minutes": 5
+  }
+}

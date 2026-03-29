@@ -1,0 +1,60 @@
+{
+  "chapter": "ch12",
+  "subchapter": "03",
+  "title": "case",
+  "description": "Множественный выбор, шаблоны",
+  "learning_objectives": [
+    "Понимать синтаксис case",
+    "Уметь использовать шаблоны"
+  ],
+  "questions": [
+    {
+      "id": "ch12_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой синтаксис case правильный?",
+      "options": [
+        "case $var in pattern) cmd ;; esac",
+        "case $var { pattern: cmd }",
+        "switch $var case pattern: cmd end",
+        "case $var do pattern: cmd done"
+      ],
+      "correct": [0],
+      "explanation": "**case $var in pattern) cmd ;; esac** — правильный синтаксис.",
+      "references": ["vol2/part5/ch12_conditionals/03_case.md"],
+      "tags": ["case", "синтаксис"]
+    },
+    {
+      "id": "ch12_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что * совпадает с чем угодно?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **\*** — шаблон для любого значения (по умолчанию).",
+      "references": ["vol2/part5/ch12_conditionals/03_case.md"],
+      "tags": ["шаблоны", "*"]
+    },
+    {
+      "id": "ch12_03_q03",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "question": "Что означает 'pattern1|pattern2)' в case?",
+      "options": [
+        "pattern1 И pattern2",
+        "pattern1 ИЛИ pattern2",
+        "pattern1 затем pattern2",
+        "Ошибка синтаксиса"
+      ],
+      "correct": [1],
+      "explanation": **"|"** — ИЛИ. Совпадение с pattern1 или pattern2.",
+      "references": ["vol2/part5/ch12_conditionals/03_case.md"],
+      "tags": ["шаблоны", "|"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

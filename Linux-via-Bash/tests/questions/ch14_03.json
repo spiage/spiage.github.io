@@ -1,0 +1,44 @@
+{
+  "chapter": "ch14",
+  "subchapter": "03",
+  "title": "Локальные переменные",
+  "description": "local, область видимости в функциях",
+  "learning_objectives": [
+    "Понимать local",
+    "Знать область видимости"
+  ],
+  "questions": [
+    {
+      "id": "ch14_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что делает local в функции?",
+      "options": [
+        "Создаёт глобальную переменную",
+        "Создаёт локальную переменную",
+        "Экспортирует переменную",
+        "Удаляет переменную"
+      ],
+      "correct": [1],
+      "explanation": "**local** создаёт переменную, видимую только внутри функции.",
+      "references": ["vol2/part5/ch14_functions/03_local.md"],
+      "tags": ["local", "область видимости"]
+    },
+    {
+      "id": "ch14_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что без local переменная в функции глобальная?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Без local переменная изменяет глобальную.",
+      "references": ["vol2/part5/ch14_functions/03_local.md"],
+      "tags": ["local", "глобальные"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 2,
+    "estimated_time_minutes": 3
+  }
+}

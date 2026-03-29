@@ -1,0 +1,60 @@
+{
+  "chapter": "ch16",
+  "subchapter": "02",
+  "title": "Проверка ошибок",
+  "description": "if, ||, && для обработки ошибок",
+  "learning_objectives": [
+    "Уметь проверять ошибки",
+    "Знать || и &&"
+  ],
+  "questions": [
+    {
+      "id": "ch16_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как выполнить команду только если предыдущая успешна?",
+      "options": [
+        "cmd1 && cmd2",
+        "cmd1 || cmd2",
+        "cmd1 ; cmd2",
+        "cmd1 & cmd2"
+      ],
+      "correct": [0],
+      "explanation": "**&&** — выполнить, если предыдущая успешна (код 0).",
+      "references": ["vol2/part5/ch16_errors/02_error_checking.md"],
+      "tags": ["&&", "ошибки"]
+    },
+    {
+      "id": "ch16_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что cmd || exit 1 выйдет при ошибке cmd?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Если cmd ошибётся (не 0), выполнится exit 1.",
+      "references": ["vol2/part5/ch16_errors/02_error_checking.md"],
+      "tags": ["||", "exit"]
+    },
+    {
+      "id": "ch16_02_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как проверить, что команда успешна?",
+      "options": [
+        "if cmd; then ... fi",
+        "if [ $? -eq 0 ]; then ... fi",
+        "cmd && ...",
+        "Все варианты верны"
+      ],
+      "correct": [3],
+      "explanation": "Все варианты работают. **if cmd** предпочтительнее.",
+      "references": ["vol2/part5/ch16_errors/02_error_checking.md"],
+      "tags": ["проверка", "if"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

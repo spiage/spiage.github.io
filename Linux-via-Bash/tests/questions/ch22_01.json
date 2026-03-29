@@ -1,0 +1,60 @@
+{
+  "chapter": "ch22",
+  "subchapter": "01",
+  "title": "systemd и systemctl",
+  "description": "Создание сервисов, управление",
+  "learning_objectives": [
+    "Уметь создавать unit-файлы",
+    "Знать команды systemctl"
+  ],
+  "questions": [
+    {
+      "id": "ch22_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда управляет сервисами в systemd?",
+      "options": [
+        "systemctl",
+        "service",
+        "initctl",
+        "rcctl"
+      ],
+      "correct": [0],
+      "explanation": "**systemctl** — основная команда управления systemd.",
+      "references": ["vol2/part5/ch22_integration/01_systemd.md"],
+      "tags": ["systemctl", "systemd"]
+    },
+    {
+      "id": "ch22_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что сервисы systemd должны быть в /etc/systemd/system/?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Пользовательские unit-файлы в /etc/systemd/system/.",
+      "references": ["vol2/part5/ch22_integration/01_systemd.md"],
+      "tags": ["systemd", "unit-файлы"]
+    },
+    {
+      "id": "ch22_01_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как включить сервис при загрузке?",
+      "options": [
+        "systemctl enable service",
+        "systemctl start service",
+        "systemctl add service",
+        "chkconfig service on"
+      ],
+      "correct": [0],
+      "explanation": "**systemctl enable** — включить автозагрузку.",
+      "references": ["vol2/part5/ch22_integration/01_systemd.md"],
+      "tags": ["systemctl", "enable"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

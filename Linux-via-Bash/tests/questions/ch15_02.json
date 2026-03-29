@@ -1,0 +1,60 @@
+{
+  "chapter": "ch15",
+  "subchapter": "02",
+  "title": "printf",
+  "description": "Форматированный вывод",
+  "learning_objectives": [
+    "Знать спецификаторы формата",
+    "Уметь использовать printf"
+  ],
+  "questions": [
+    {
+      "id": "ch15_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой спецификатор для строк?",
+      "options": [
+        "%s",
+        "%d",
+        "%f",
+        "%c"
+      ],
+      "correct": [0],
+      "explanation": "**%s** — строка. **%d** — число. **%f** — float.",
+      "references": ["vol2/part5/ch15_io/02_printf.md"],
+      "tags": ["printf", "формат"]
+    },
+    {
+      "id": "ch15_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что printf добавляет newline автоматически?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. printf не добавляет \\n автоматически, нужно указать явно.",
+      "references": ["vol2/part5/ch15_io/02_printf.md"],
+      "tags": ["printf", "newline"]
+    },
+    {
+      "id": "ch15_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что выведет 'printf \"%5d\" 42'?",
+      "options": [
+        "   42",
+        "42   ",
+        "00042",
+        "42"
+      ],
+      "correct": [0],
+      "explanation": "**%5d** — ширина 5, выравнивание вправо (3 пробела + 42).",
+      "references": ["vol2/part5/ch15_io/02_printf.md"],
+      "tags": ["printf", "ширина"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

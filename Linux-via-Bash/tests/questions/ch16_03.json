@@ -1,0 +1,60 @@
+{
+  "chapter": "ch16",
+  "subchapter": "03",
+  "title": "Сигналы",
+  "description": "SIGINT, SIGTERM, SIGKILL",
+  "learning_objectives": [
+    "Знать основные сигналы",
+    "Понимать обработку сигналов"
+  ],
+  "questions": [
+    {
+      "id": "ch16_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой сигнал посылает Ctrl+C?",
+      "options": [
+        "SIGINT",
+        "SIGTERM",
+        "SIGKILL",
+        "SIGHUP"
+      ],
+      "correct": [0],
+      "explanation": "**SIGINT** (2) — прерывание от клавиатуры.",
+      "references": ["vol2/part5/ch16_errors/03_signals.md"],
+      "tags": ["сигналы", "SIGINT"]
+    },
+    {
+      "id": "ch16_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что SIGKILL можно перехватить?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **SIGKILL** и **SIGSTOP** нельзя перехватить.",
+      "references": ["vol2/part5/ch16_errors/03_signals.md"],
+      "tags": ["SIGKILL", "сигналы"]
+    },
+    {
+      "id": "ch16_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой сигнал посылает kill без опций?",
+      "options": [
+        "SIGTERM",
+        "SIGKILL",
+        "SIGINT",
+        "SIGHUP"
+      ],
+      "correct": [0],
+      "explanation": "**kill PID** посылает **SIGTERM** (15) — завершение.",
+      "references": ["vol2/part5/ch16_errors/03_signals.md"],
+      "tags": ["kill", "SIGTERM"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

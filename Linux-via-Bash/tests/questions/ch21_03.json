@@ -1,0 +1,60 @@
+{
+  "chapter": "ch21",
+  "subchapter": "03",
+  "title": "Отладочные техники",
+  "description": "Логирование, assert, пошаговая отладка",
+  "learning_objectives": [
+    "Знать техники отладки",
+    "Уметь логировать"
+  ],
+  "questions": [
+    {
+      "id": "ch21_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как вывести отладочное сообщение?",
+      "options": [
+        "echo \"DEBUG: message\" >&2",
+        "log DEBUG message",
+        "debug \"message\"",
+        "print DEBUG message"
+      ],
+      "correct": [0],
+      "explanation": "**>&2** — вывод в stderr, не смешивается с обычным выводом.",
+      "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
+      "tags": ["логирование", "stderr"]
+    },
+    {
+      "id": "ch21_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что trap DEBUG выполняется перед каждой командой?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **trap DEBUG** выполняется перед каждой командой.",
+      "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
+      "tags": ["trap DEBUG", "отладка"]
+    },
+    {
+      "id": "ch21_03_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Как включить отладку только для части скрипта?",
+      "options": [
+        "set -x ... set +x",
+        "debug on ... debug off",
+        "trace on ... trace off",
+        "set -o xtrace ... set +o xtrace"
+      ],
+      "correct": [0],
+      "explanation": "**set -x** включает, **set +x** выключает трассировку.",
+      "references": ["vol2/part5/ch21_debugging/03_techniques.md"],
+      "tags": ["set -x", "трассировка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "chapter": "ch19",
+  "subchapter": "04",
+  "title": "Версионирование",
+  "description": "git, семантическое версионирование, CHANGELOG",
+  "learning_objectives": [
+    "Знать основы git",
+    "Понимать семантическое версионирование"
+  ],
+  "questions": [
+    {
+      "id": "ch19_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое семантическое версионирование?",
+      "options": [
+        "MAJOR.MINOR.PATCH",
+        "VERSION.BUILD",
+        "YEAR.MONTH.DAY",
+        "RELEASE.VERSION"
+      ],
+      "correct": [0],
+      "explanation": "**MAJOR.MINOR.PATCH** — семантическое версионирование.",
+      "references": ["vol2/part5/ch19_best_practices/04_versioning.md"],
+      "tags": ["версионирование"]
+    },
+    {
+      "id": "ch19_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что git commit должен иметь описание?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Коммиты должны быть понятными.",
+      "references": ["vol2/part5/ch19_best_practices/04_versioning.md"],
+      "tags": ["git", "commits"]
+    },
+    {
+      "id": "ch19_04_q03",
+      "type": "fill_blank",
+      "difficulty": "hard",
+      "question": "Какой файл используется для истории изменений?",
+      "options": ["CHANGELOG.md", "HISTORY.txt", "NEWS.md", "Все варианты верны"],
+      "correct": [3],
+      "explanation": "**CHANGELOG.md, HISTORY.txt, NEWS.md** — все используются.",
+      "references": ["vol2/part5/ch19_best_practices/04_versioning.md"],
+      "tags": ["CHANGELOG"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-03-28",
+    "total_questions": 3,
+    "estimated_time_minutes": 4
+  }
+}
