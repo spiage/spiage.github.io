@@ -37,8 +37,20 @@
   border-radius: 8px;
 }
 
+.quiz-part-header {
+  margin-bottom: 1rem;
+}
+
+.quiz-part-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
 .quiz-part h3 {
-  margin-top: 0;
+  margin: 0;
   color: var(--md-primary-fg-color);
   border-bottom: 2px solid var(--md-primary-fg-color);
   padding-bottom: 0.5rem;
@@ -46,11 +58,24 @@
 
 .quiz-chapter {
   margin: 1rem 0;
+  padding: 0.5rem;
   padding-left: 1rem;
+  border-left: 3px solid var(--md-default-fg-color--lightest);
+}
+
+.quiz-chapter-header {
+  margin: 0.5rem 0;
+}
+
+.quiz-chapter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 .quiz-chapter h4 {
-  margin: 0.5rem 0;
+  margin: 0;
   color: var(--md-accent-fg-color);
 }
 

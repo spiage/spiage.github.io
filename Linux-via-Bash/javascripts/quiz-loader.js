@@ -111,6 +111,147 @@ const QUIZ_CONFIG = {
           ]
         }
       ]
+    },
+    {
+      part: "Часть III. Программирование на Shell",
+      chapters: [
+        {
+          id: "ch10",
+          title: "Глава 10. Структура скрипта",
+          subchapters: [
+            { id: "ch10_01", title: "01. Shebang", questions: 4 },
+            { id: "ch10_02", title: "02. Запуск скрипта", questions: 4 },
+            { id: "ch10_03", title: "03. Комментарии", questions: 2 },
+            { id: "ch10_04", title: "04. Коды возврата", questions: 5 }
+          ]
+        },
+        {
+          id: "ch11",
+          title: "Глава 11. Переменные в скриптах",
+          subchapters: [
+            { id: "ch11_01", title: "01. Присваивание", questions: 4 },
+            { id: "ch11_02", title: "02. Обращение к переменным", questions: 3 },
+            { id: "ch11_03", title: "03. Позиционные параметры", questions: 4 },
+            { id: "ch11_04", title: "04. Специальные переменные", questions: 4 },
+            { id: "ch11_05", title: "05. Локальные переменные", questions: 3 },
+            { id: "ch11_06", title: "06. Подстановка команд", questions: 4 }
+          ]
+        },
+        {
+          id: "ch12",
+          title: "Глава 12. Условные операторы",
+          subchapters: [
+            { id: "ch12_01", title: "01. if-then-else", questions: 5 },
+            { id: "ch12_02", title: "02. test и [ ]", questions: 4 },
+            { id: "ch12_03", title: "03. case", questions: 3 }
+          ]
+        },
+        {
+          id: "ch13",
+          title: "Глава 13. Циклы",
+          subchapters: [
+            { id: "ch13_01", title: "01. while", questions: 4 },
+            { id: "ch13_02", title: "02. until", questions: 3 },
+            { id: "ch13_03", title: "03. for", questions: 4 }
+          ]
+        },
+        {
+          id: "ch14",
+          title: "Глава 14. Функции",
+          subchapters: [
+            { id: "ch14_01", title: "01. Объявление функций", questions: 4 },
+            { id: "ch14_02", title: "02. Аргументы функций", questions: 3 },
+            { id: "ch14_03", title: "03. Локальные переменные", questions: 2 },
+            { id: "ch14_04", title: "04. Возврат значений", questions: 4 }
+          ]
+        },
+        {
+          id: "ch15",
+          title: "Глава 15. Ввод и вывод в скриптах",
+          subchapters: [
+            { id: "ch15_01", title: "01. read", questions: 4 },
+            { id: "ch15_02", title: "02. printf", questions: 3 },
+            { id: "ch15_03", title: "03. Обработка аргументов", questions: 3 }
+          ]
+        },
+        {
+          id: "ch16",
+          title: "Глава 16. Обработка ошибок и сигналы",
+          subchapters: [
+            { id: "ch16_01", title: "01. set -e, set -u", questions: 3 },
+            { id: "ch16_02", title: "02. Проверка ошибок", questions: 3 },
+            { id: "ch16_03", title: "03. Сигналы", questions: 3 },
+            { id: "ch16_04", title: "04. trap", questions: 3 }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Часть IV. Продвинутые темы",
+      chapters: [
+        {
+          id: "ch17",
+          title: "Глава 17. Оптимизация скриптов",
+          subchapters: [
+            { id: "ch17_01", title: "01. Встроенные vs внешние", questions: 4 },
+            { id: "ch17_02", title: "02. Минимизация fork/exec", questions: 3 },
+            { id: "ch17_03", title: "03. Пакетная обработка", questions: 3 },
+            { id: "ch17_04", title: "04. awk/sed вместо циклов", questions: 3 }
+          ]
+        },
+        {
+          id: "ch18",
+          title: "Глава 18. Безопасность скриптов",
+          subchapters: [
+            { id: "ch18_01", title: "01. Валидация входных данных", questions: 3 },
+            { id: "ch18_02", title: "02. Защита от инъекций", questions: 3 },
+            { id: "ch18_03", title: "03. Временные файлы", questions: 3 },
+            { id: "ch18_04", title: "04. Принцип наименьших привилегий", questions: 3 }
+          ]
+        },
+        {
+          id: "ch19",
+          title: "Глава 19. Лучшие практики",
+          subchapters: [
+            { id: "ch19_01", title: "01. Стиль кода", questions: 3 },
+            { id: "ch19_02", title: "02. Документирование", questions: 3 },
+            { id: "ch19_03", title: "03. Тестирование", questions: 3 },
+            { id: "ch19_04", title: "04. Версионирование", questions: 3 }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Часть V. Bash-specific",
+      chapters: [
+        {
+          id: "ch20",
+          title: "Глава 20. Массивы и расширения Bash",
+          subchapters: [
+            { id: "ch20_01", title: "01. Индексированные массивы", questions: 3 },
+            { id: "ch20_02", title: "02. Ассоциативные массивы", questions: 3 },
+            { id: "ch20_03", title: "03. Расширения Bash", questions: 3 }
+          ]
+        },
+        {
+          id: "ch21",
+          title: "Глава 21. Отладка в Bash",
+          subchapters: [
+            { id: "ch21_01", title: "01. Режимы отладки", questions: 3 },
+            { id: "ch21_02", title: "02. shellcheck", questions: 3 },
+            { id: "ch21_03", title: "03. Отладочные техники", questions: 3 }
+          ]
+        },
+        {
+          id: "ch22",
+          title: "Глава 22. Интеграция с системой",
+          subchapters: [
+            { id: "ch22_01", title: "01. systemd и systemctl", questions: 3 },
+            { id: "ch22_02", title: "02. Планировщики: cron, at", questions: 3 },
+            { id: "ch22_03", title: "03. Журналирование: journalctl, logger", questions: 3 }
+          ]
+        }
+      ]
     }
   ]
 };
@@ -120,7 +261,7 @@ console.log("QUIZ_CONFIG loaded:", QUIZ_CONFIG);
 // Используем стандартный подход для mkdocs
 (function() {
   console.log("Quiz loader IIFE started");
-  
+
   if (document.readyState === "loading") {
     console.log("Document loading, adding DOMContentLoaded listener");
     document.addEventListener("DOMContentLoaded", init);
@@ -128,20 +269,20 @@ console.log("QUIZ_CONFIG loaded:", QUIZ_CONFIG);
     console.log("Document already loaded, calling init directly");
     init();
   }
-  
+
   function init() {
     console.log("Quiz init started");
     console.log("Chapter selector element:", document.getElementById("chapter-selector"));
-    
+
     // Читаем query параметр subchapter
     const urlParams = new URLSearchParams(window.location.search);
     const preselectSubchapter = urlParams.get('subchapter');
     console.log("Preselect subchapter:", preselectSubchapter);
-    
+
     initChapterSelector(preselectSubchapter);
     initButtons();
     loadProgress();
-    
+
     // Если есть preselect, автоматически выбираем и запускаем тест
     if (preselectSubchapter) {
       setTimeout(() => {
@@ -183,13 +324,24 @@ function initChapterSelector(preselectSubchapter = null) {
   let html = '';
 
   QUIZ_CONFIG.chapters.forEach((part, partIndex) => {
-    console.log("Adding part:", part.part);
-    html += `<div class="quiz-part">`;
-    html += `<h3>${part.part}</h3>`;
+    const partId = `part-${partIndex}`;
+    html += `<div class="quiz-part" id="${partId}">`;
+    html += `<div class="quiz-part-header">`;
+    html += `<label class="quiz-part-label">`;
+    html += `<input type="checkbox" class="part-checkbox" data-part="${partIndex}">`;
+    html += `<strong>${part.part}</strong>`;
+    html += `</label>`;
+    html += `</div>`;
 
     part.chapters.forEach((chapter, chapterIndex) => {
-      html += `<div class="quiz-chapter">`;
-      html += `<h4>${chapter.title}</h4>`;
+      const chapterId = `${partId}-ch${chapterIndex}`;
+      html += `<div class="quiz-chapter" id="${chapterId}">`;
+      html += `<div class="quiz-chapter-header">`;
+      html += `<label class="quiz-chapter-label">`;
+      html += `<input type="checkbox" class="chapter-checkbox" data-part="${partIndex}" data-chapter="${chapterIndex}">`;
+      html += `<span>${chapter.title}</span>`;
+      html += `</label>`;
+      html += `</div>`;
       html += `<div class="quiz-subchapters">`;
 
       chapter.subchapters.forEach((sub, subIndex) => {
@@ -201,22 +353,91 @@ function initChapterSelector(preselectSubchapter = null) {
                    name="subchapter"
                    value="${subId}"
                    data-questions="${sub.questions}"
+                   data-part="${partIndex}"
+                   data-chapter="${chapterIndex}"
                    ${checked}>
             <span class="subchapter-title">${sub.title}</span>
             <span class="subchapter-count">(${sub.questions} вопросов)</span>
           </label>
         `;
       });
-      
+
       html += `</div></div>`;
     });
-    
+
     html += `</div>`;
   });
-  
+
   console.log("Setting container HTML");
   container.innerHTML = html;
   console.log("Chapter selector initialized");
+
+  // Добавляем обработчики для группового выбора
+  addGroupSelectHandlers();
+}
+
+function addGroupSelectHandlers() {
+  // Обработчики для чекбоксов частей
+  document.querySelectorAll('.part-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const partIndex = this.dataset.part;
+      const subchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"]`);
+      subchapters.forEach(cb => {
+        cb.checked = this.checked;
+        cb.closest('.quiz-subchapter').classList.toggle('selected', this.checked);
+      });
+      updateStartButton();
+      updateChapterCheckbox(partIndex);
+    });
+  });
+
+  // Обработчики для чекбоксов глав
+  document.querySelectorAll('.chapter-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const partIndex = this.dataset.part;
+      const chapterIndex = this.dataset.chapter;
+      const subchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"][data-chapter="${chapterIndex}"]`);
+      subchapters.forEach(cb => {
+        cb.checked = this.checked;
+        cb.closest('.quiz-subchapter').classList.toggle('selected', this.checked);
+      });
+      updateStartButton();
+      updatePartCheckbox(partIndex);
+    });
+  });
+
+  // Обработчики для индивидуальных подглав
+  document.querySelectorAll('input[name="subchapter"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      this.closest('.quiz-subchapter').classList.toggle('selected', this.checked);
+      updateStartButton();
+      updateChapterCheckbox(this.dataset.part);
+      updatePartCheckbox(this.dataset.part);
+    });
+  });
+}
+
+function updatePartCheckbox(partIndex) {
+  const partCheckbox = document.querySelector(`.part-checkbox[data-part="${partIndex}"]`);
+  if (!partCheckbox) return;
+
+  const subchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"]`);
+  const checkedSubchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"]:checked`);
+  
+  partCheckbox.checked = subchapters.length > 0 && checkedSubchapters.length === subchapters.length;
+  partCheckbox.indeterminate = checkedSubchapters.length > 0 && checkedSubchapters.length < subchapters.length;
+}
+
+function updateChapterCheckbox(partIndex) {
+  const chapterCheckboxes = document.querySelectorAll(`.chapter-checkbox[data-part="${partIndex}"]`);
+  chapterCheckboxes.forEach(chapterCheckbox => {
+    const chapterIndex = chapterCheckbox.dataset.chapter;
+    const subchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"][data-chapter="${chapterIndex}"]`);
+    const checkedSubchapters = document.querySelectorAll(`input[name="subchapter"][data-part="${partIndex}"][data-chapter="${chapterIndex}"]:checked`);
+    
+    chapterCheckbox.checked = subchapters.length > 0 && checkedSubchapters.length === subchapters.length;
+    chapterCheckbox.indeterminate = checkedSubchapters.length > 0 && checkedSubchapters.length < subchapters.length;
+  });
 }
 
 function initButtons() {
@@ -229,7 +450,7 @@ function initButtons() {
   } else {
     console.error("Start button not found!");
   }
-  
+
   // Кнопка экспорта
   const exportBtn = document.getElementById('export-progress');
   if (exportBtn) {
@@ -238,7 +459,7 @@ function initButtons() {
   } else {
     console.error("Export button not found!");
   }
-  
+
   // Кнопка импорта
   const importBtn = document.getElementById('import-progress');
   const importFile = document.getElementById('import-file');
@@ -249,13 +470,9 @@ function initButtons() {
   } else {
     console.error("Import button or file input not found!");
   }
-  
+
   // Обновление состояния кнопки "Начать"
-  const checkboxes = document.querySelectorAll('input[name="subchapter"]');
-  console.log("Found checkboxes:", checkboxes.length);
-  checkboxes.forEach(cb => {
-    cb.addEventListener('change', updateStartButton);
-  });
+  updateStartButton();
 }
 
 function updateStartButton() {
@@ -303,15 +520,15 @@ function loadProgress() {
     console.error("Progress summary container not found!");
     return;
   }
-  
+
   const totalSubchapters = QUIZ_CONFIG.chapters.reduce(
     (sum, part) => sum + part.chapters.reduce((s, ch) => s + ch.subchapters.length, 0),
     0
   );
-  
+
   const completedSubchapters = Object.keys(progress).length;
   const percentage = Math.round((completedSubchapters / totalSubchapters) * 100);
-  
+
   let html = `
     <div class="progress-card">
       <h3>Общий прогресс</h3>
@@ -321,7 +538,7 @@ function loadProgress() {
       <p>${completedSubchapters} из ${totalSubchapters} подглав (${percentage}%)</p>
     </div>
   `;
-  
+
   // Последние результаты
   const recentResults = JSON.parse(localStorage.getItem('quiz_results') || '[]');
   if (recentResults.length > 0) {
@@ -340,7 +557,7 @@ function loadProgress() {
     });
     html += `</div>`;
   }
-  
+
   container.innerHTML = html;
   console.log("Progress loaded");
 }
@@ -353,7 +570,7 @@ function exportProgress() {
     settings: localStorage.getItem('quiz_settings'),
     exported: new Date().toISOString()
   };
-  
+
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -371,13 +588,13 @@ function importProgress(event) {
     console.error("No file selected");
     return;
   }
-  
+
   const reader = new FileReader();
   reader.onload = (e) => {
     try {
       const data = JSON.parse(e.target.result);
       console.log("Imported data:", data);
-      
+
       if (data.progress) {
         localStorage.setItem('quiz_progress', data.progress);
       }
@@ -387,7 +604,7 @@ function importProgress(event) {
       if (data.settings) {
         localStorage.setItem('quiz_settings', data.settings);
       }
-      
+
       alert('Прогресс успешно загружен!');
       location.reload();
     } catch (err) {
