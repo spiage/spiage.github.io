@@ -1,4 +1,4 @@
-/* На всю ширину */
+/* На всю ширину — десктоп */
 .md-grid {
   max-width: 100% !important;
   margin: 0;
@@ -14,6 +14,35 @@
 /* TOC справа остаётся фиксированным */
 @media screen and (min-width: 1220px) {
   .md-sidebar--secondary {
+    width: 15rem;
+  }
+}
+
+/* Планшеты */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .md-grid {
+    padding: 0 1rem;
+  }
+
+  .md-content__inner {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+/* Мобильные устройства */
+@media screen and (max-width: 768px) {
+  .md-grid {
+    padding: 0 0.5rem;
+  }
+
+  .md-content__inner {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  /* Уменьшаем боковую панель на мобильных */
+  .md-sidebar--primary {
     width: 15rem;
   }
 }
