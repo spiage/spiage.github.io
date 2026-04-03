@@ -1,0 +1,120 @@
+{
+  "chapter": "ch23",
+  "subchapter": "09",
+  "title": "ZFS: файловая система для бэкапов",
+  "description": "Архитектура ZFS, снапшоты, репликация, сжатие, целостность данных",
+  "learning_objectives": [
+    "Понимать архитектуру ZFS",
+    "Уметь создавать снапшоты и реплицировать",
+    "Знать преимущества ZFS для бэкапов"
+  ],
+  "questions": [
+    {
+      "id": "ch23_09_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое ZFS?",
+      "options": [
+        "Файловая система и менеджер томов с защитой от повреждения данных",
+        "Утилита для сжатия файлов",
+        "Протокол сетевого хранения",
+        "Менеджер загрузчика"
+      ],
+      "correct": [0],
+      "explanation": "**ZFS** — объединяет файловую систему и менеджер томов, обеспечивает целостность данных через checksums.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "архитектура"]
+    },
+    {
+      "id": "ch23_09_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что снапшоты ZFS занимают место только при изменении данных?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Снапшоты ZFS используют copy-on-write — место занимает только разница с оригиналом.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "снапшоты"]
+    },
+    {
+      "id": "ch23_09_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как создать снапшот ZFS?",
+      "options": [
+        "zfs snapshot pool/dataset@snapname",
+        "zfs snap pool/dataset",
+        "zfs create snapshot pool/dataset",
+        "zfs clone pool/dataset@snapname"
+      ],
+      "correct": [0],
+      "explanation": "**zfs snapshot pool/dataset@snapname** — создание снапшота.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "снапшот"]
+    },
+    {
+      "id": "ch23_09_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие преимущества ZFS для бэкапов? (выберите все правильные)",
+      "options": [
+        "Мгновенные снапшоты",
+        "Встроенное сжатие (lz4, zstd)",
+        "Репликация (zfs send/receive)",
+        "Автоматическое шифрование"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "ZFS: снапшоты, сжатие, репликация. Шифрование — отдельная функция (zfs encrypt, ZFS 2.1+).",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "преимущества"]
+    },
+    {
+      "id": "ch23_09_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как реплицировать снапшот ZFS на удалённый хост?",
+      "options": [
+        "zfs send pool/dataset@snap | ssh remote zfs recv backup/dataset",
+        "zfs replicate pool/dataset remote",
+        "zfs copy pool/dataset remote:backup",
+        "rsync pool/dataset remote:backup"
+      ],
+      "correct": [0],
+      "explanation": "**zfs send | ssh | zfs recv** — инкрементальная репликация снапшотов.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "репликация"]
+    },
+    {
+      "id": "ch23_09_q06",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что ZFS автоматически проверяет целостность данных через checksums?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. ZFS хранит checksum для каждого блока и обнаруживает silent corruption.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "checksum", "целостность"]
+    },
+    {
+      "id": "ch23_09_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какая команда проверяет целостность пула ZFS?",
+      "options": [
+        "zpool scrub poolname",
+        "zfs check poolname",
+        "zpool verify poolname",
+        "zfs scrub poolname"
+      ],
+      "correct": [0],
+      "explanation": "**zpool scrub** — проверяет все блоки на целостность, исправляет ошибки при наличии реплик.",
+      "references": ["vol3/part6/ch23_data_anatomy/09_zfs.md"],
+      "tags": ["ZFS", "scrub", "проверка"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 7,
+    "estimated_time_minutes": 8
+  }
+}

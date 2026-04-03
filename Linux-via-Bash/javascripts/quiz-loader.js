@@ -266,7 +266,9 @@ const QUIZ_CONFIG = {
             { id: "ch23_04", title: "04. ACL и расширенные атрибуты (xattr)", questions: 5 },
             { id: "ch23_05", title: "05. Файловые системы: ext4, btrfs, xfs", questions: 5 },
             { id: "ch23_06", title: "06. Физический уровень: диски, разделы, LVM", questions: 5 },
-            { id: "ch23_07", title: "07. Загрузчик GRUB и этапы старта", questions: 5 }
+            { id: "ch23_07", title: "07. Загрузчик GRUB и этапы старта", questions: 5 },
+            { id: "ch23_08", title: "08. Современные загрузчики: systemd-boot и EFISTUB", questions: 6 },
+            { id: "ch23_09", title: "09. ZFS: файловая система для бэкапов", questions: 7 }
           ]
         },
         {
