@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "01",
+  "title": "Архитектура скрипта: проверки, flock, коды возврата",
+  "description": "Структура надёжного скрипта бэкапа",
+  "learning_objectives": [
+    "Знать структуру скрипта бэкапа",
+    "Уметь использовать flock",
+    "Понимать коды возврата"
+  ],
+  "questions": [
+    {
+      "id": "ch26_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Зачем нужен flock в скрипте бэкапа?",
+      "options": [
+        "Предотвратить одновременный запуск нескольких копий скрипта",
+        "Зашифровать бэкап",
+        "Сжать данные",
+        "Проверить целостность"
+      ],
+      "correct": [0],
+      "explanation": "**flock** — блокировка файла. Не даёт запуститься второй копии скрипта одновременно.",
+      "references": ["vol3/part6/ch26_automation/01_architecture.md"],
+      "tags": ["flock", "блокировка"]
+    },
+    {
+      "id": "ch26_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что скрипт бэкапа должен проверять свободное место перед запуском?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Проверка места предотвращает падение бэкапа на середине.",
+      "references": ["vol3/part6/ch26_automation/01_architecture.md"],
+      "tags": ["проверки", "место"]
+    },
+    {
+      "id": "ch26_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой код возврата означает ошибку в скрипте?",
+      "options": [
+        "0",
+        "1",
+        "-1",
+        "100"
+      ],
+      "correct": [1],
+      "explanation": "**0** — успех. **1** (и любое ненулевое) — ошибка.",
+      "references": ["vol3/part6/ch26_automation/01_architecture.md"],
+      "tags": ["коды возврата", "ошибка"]
+    },
+    {
+      "id": "ch26_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие проверки должен делать скрипт бэкапа? (выберите все правильные)",
+      "options": [
+        "Свободное место на диске",
+        "Доступность целевого хранилища",
+        "Отсутствие другого запущенного бэкапа (flock)",
+        "Наличие необходимых утилит"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Все проверки важны: место, доступность, блокировка, утилиты.",
+      "references": ["vol3/part6/ch26_automation/01_architecture.md"],
+      "tags": ["проверки", "архитектура"]
+    },
+    {
+      "id": "ch26_01_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как правильно использовать flock в скрипте?",
+      "options": [
+        "exec 200>/var/lock/backup.lock; flock -n 200 || exit 1",
+        "flock backup.sh",
+        "lock backup.sh",
+        "flock -e backup.sh"
+      ],
+      "correct": [0],
+      "explanation": "**exec 200>lockfile; flock -n 200** — неблокирующая блокировка. exit 1 если уже занято.",
+      "references": ["vol3/part6/ch26_automation/01_architecture.md"],
+      "tags": ["flock", "паттерн"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

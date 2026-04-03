@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "03",
+  "title": "Логирование и уведомления",
+  "description": "logger, journald, curl (Telegram/mail)",
+  "learning_objectives": [
+    "Уметь логировать бэкап",
+    "Знать как отправлять уведомления",
+    "Понимать уровни логирования"
+  ],
+  "questions": [
+    {
+      "id": "ch26_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда пишет в syslog/journal?",
+      "options": [
+        "logger",
+        "echo",
+        "cat",
+        "syslog"
+      ],
+      "correct": [0],
+      "explanation": "**logger** — отправляет сообщения в syslog/journal.",
+      "references": ["vol3/part6/ch26_automation/03_logging.md"],
+      "tags": ["logger", "syslog"]
+    },
+    {
+      "id": "ch26_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что curl можно использовать для отправки уведомлений в Telegram?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. **curl** с Telegram Bot API — популярный способ отправки уведомлений.",
+      "references": ["vol3/part6/ch26_automation/03_logging.md"],
+      "tags": ["curl", "Telegram"]
+    },
+    {
+      "id": "ch26_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой приоритет logger для ошибок?",
+      "options": [
+        "local0.err",
+        "local0.info",
+        "local0.debug",
+        "local0.warning"
+      ],
+      "correct": [0],
+      "explanation": "**local0.err** — для ошибок. info — для информации, warning — для предупреждений.",
+      "references": ["vol3/part6/ch26_automation/03_logging.md"],
+      "tags": ["logger", "приоритет"]
+    },
+    {
+      "id": "ch26_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие способы уведомлений о бэкапе существуют? (выберите все правильные)",
+      "options": [
+        "Telegram Bot API через curl",
+        "Email через mail/sendmail",
+        "Запись в journalctl",
+        "Звуковой сигнал"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Telegram, email, journalctl — основные способы. Звуковой сигнал — не для серверов.",
+      "references": ["vol3/part6/ch26_automation/03_logging.md"],
+      "tags": ["уведомления", "способы"]
+    },
+    {
+      "id": "ch26_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как прочитать логи конкретного скрипта бэкапа?",
+      "options": [
+        "journalctl -t backup_script",
+        "journalctl -u backup",
+        "cat /var/log/backup.log",
+        "log backup_script"
+      ],
+      "correct": [0],
+      "explanation": "**journalctl -t tag** — логи по тегу (указывается через logger -t).",
+      "references": ["vol3/part6/ch26_automation/03_logging.md"],
+      "tags": ["journalctl", "логи"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

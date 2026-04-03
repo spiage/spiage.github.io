@@ -1,0 +1,93 @@
+{
+  "chapter": "ch23",
+  "subchapter": "01",
+  "title": "FHS: что бэкапить, что игнорировать",
+  "description": "Filesystem Hierarchy Standard, критичные и временные данные",
+  "learning_objectives": [
+    "Понимать структуру FHS",
+    "Знать что бэкапить, что игнорировать",
+    "Уметь составлять исключения"
+  ],
+  "questions": [
+    {
+      "id": "ch23_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое FHS?",
+      "options": [
+        "Filesystem Hierarchy Standard — стандарт структуры файловой системы",
+        "File Handling System — система обработки файлов",
+        "Free Host Storage — свободное хранилище",
+        "Fast Hash System — быстрая хеш-система"
+      ],
+      "correct": [0],
+      "explanation": "**FHS** — стандарт, определяющий структуру каталогов в Linux.",
+      "references": ["vol3/part6/ch23_data_anatomy/01_fhs.md"],
+      "tags": ["FHS", "структура"]
+    },
+    {
+      "id": "ch23_01_q02",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "question": "Какие каталоги ОБЯЗАТЕЛЬНО бэкапить? (выберите все правильные)",
+      "options": [
+        "/home",
+        "/etc",
+        "/tmp",
+        "/var/www"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "**/home** — данные пользователей, **/etc** — конфигурация, **/var/www** — веб-данные. **/tmp** — временные файлы, не бэкапим.",
+      "references": ["vol3/part6/ch23_data_anatomy/01_fhs.md"],
+      "tags": ["бэкап", "каталоги"]
+    },
+    {
+      "id": "ch23_01_q03",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что /proc и /sys нужно бэкапить?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. **/proc** и **/sys** — виртуальные ФС, содержат данные ядра в памяти. Бэкапить бессмысленно.",
+      "references": ["vol3/part6/ch23_data_anatomy/01_fhs.md"],
+      "tags": ["proc", "sys", "виртуальная ФС"]
+    },
+    {
+      "id": "ch23_01_q04",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какой каталог содержит пользовательские конфиги приложений?",
+      "options": [
+        "~/.config",
+        "/etc",
+        "/usr/local",
+        "/opt"
+      ],
+      "correct": [0],
+      "explanation": "**~/.config** — стандартное место для конфигов приложений пользователя (XDG Base Directory).",
+      "references": ["vol3/part6/ch23_data_anatomy/01_fhs.md"],
+      "tags": ["config", "XDG"]
+    },
+    {
+      "id": "ch23_01_q05",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие каталоги можно ИСКЛЮЧИТЬ из бэкапа? (выберите все правильные)",
+      "options": [
+        "/tmp",
+        "/var/cache",
+        "/home/user/.cache",
+        "/etc"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**/tmp**, **/var/cache**, **~/.cache** — кэши и временные файлы. Их можно пересоздать.",
+      "references": ["vol3/part6/ch23_data_anatomy/01_fhs.md"],
+      "tags": ["исключения", "кэш"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "07",
+  "title": "Мониторинг свежести и алертинг",
+  "description": "Отслеживание актуальности бэкапов, уведомления по метрикам",
+  "learning_objectives": [
+    "Понимать мониторинг свежести",
+    "Уметь настраивать алерты",
+    "Знать расчётные метрики"
+  ],
+  "questions": [
+    {
+      "id": "ch26_07_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое мониторинг свежести бэкапа?",
+      "options": [
+        "Проверка что последний бэкап создан вовремя",
+        "Проверка размера бэкапа",
+        "Проверка скорости создания",
+        "Проверка шифрования"
+      ],
+      "correct": [0],
+      "explanation": "**Свежесть** — проверка что бэкап создан в ожидаемое время (не просрочен).",
+      "references": ["vol3/part6/ch26_automation/07_monitoring.md"],
+      "tags": ["свежесть", "мониторинг"]
+    },
+    {
+      "id": "ch26_07_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что алерт должен срабатывать если бэкап не создан вовремя?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Алерт уведомляет о проблеме ДО того как данные потеряны.",
+      "references": ["vol3/part6/ch26_automation/07_monitoring.md"],
+      "tags": ["алерт", "уведомление"]
+    },
+    {
+      "id": "ch26_07_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как проверить свежесть бэкапа в Bash?",
+      "options": [
+        "find /backup -name 'latest.tar.gz' -mtime +1 && alert",
+        "ls -la /backup",
+        "cat /backup/latest.tar.gz",
+        "df -h /backup"
+      ],
+      "correct": [0],
+      "explanation": "**find -mtime +1** — файл старше 1 дня. Если найден — алерт.",
+      "references": ["vol3/part6/ch26_automation/07_monitoring.md"],
+      "tags": ["find", "свежесть"]
+    },
+    {
+      "id": "ch26_07_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие метрики нужно отслеживать для бэкапов? (выберите все правильные)",
+      "options": [
+        "Время последнего бэкапа",
+        "Размер бэкапа (отклонение от нормы)",
+        "Код возврата последнего бэкапа",
+        "Свободное место на хранилище"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Все метрики важны: время, размер, код возврата, место.",
+      "references": ["vol3/part6/ch26_automation/07_monitoring.md"],
+      "tags": ["метрики", "мониторинг"]
+    },
+    {
+      "id": "ch26_07_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как рассчитать отклонение размера бэкапа?",
+      "options": [
+        "Сравнить текущий размер со средним за последние N дней",
+        "Посмотреть размер файла",
+        "Проверить дату создания",
+        "Посчитать количество файлов"
+      ],
+      "correct": [0],
+      "explanation": "Сравнение с **средним размером** за N дней выявляет аномалии (резкий рост/падение).",
+      "references": ["vol3/part6/ch26_automation/07_monitoring.md"],
+      "tags": ["размер", "отклонение"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

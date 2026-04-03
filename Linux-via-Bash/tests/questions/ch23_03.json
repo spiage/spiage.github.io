@@ -1,0 +1,93 @@
+{
+  "chapter": "ch23",
+  "subchapter": "03",
+  "title": "Метаданные: права, владельцы, специальные биты",
+  "description": "Сохранение прав, SUID/SGID/Sticky при бэкапе",
+  "learning_objectives": [
+    "Знать типы метаданных",
+    "Понимать SUID/SGID/Sticky",
+    "Уметь сохранять метаданные при бэкапе"
+  ],
+  "questions": [
+    {
+      "id": "ch23_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какая команда сохраняет права и владельцев при копировании?",
+      "options": [
+        "cp -a",
+        "cp -r",
+        "cp -f",
+        "cp -v"
+      ],
+      "correct": [0],
+      "explanation": "**cp -a** (archive) — сохраняет права, владельцев, timestamps, symlinks.",
+      "references": ["vol3/part6/ch23_data_anatomy/03_metadata.md"],
+      "tags": ["cp", "метаданные"]
+    },
+    {
+      "id": "ch23_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что SUID бит позволяет запускать файл от имени владельца?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. SUID (Set User ID) — файл выполняется от имени владельца файла (часто root).",
+      "references": ["vol3/part6/ch23_data_anatomy/03_metadata.md"],
+      "tags": ["SUID", "права"]
+    },
+    {
+      "id": "ch23_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что делает Sticky bit на каталоге?",
+      "options": [
+        "Только владелец файла может удалить его в каталоге",
+        "Запрещает удаление каталога",
+        "Делает файлы только для чтения",
+        "Автоматически бэкапит каталог"
+      ],
+      "correct": [0],
+      "explanation": "**Sticky bit** — в каталоге с sticky только владелец файла может удалить/переименовать свой файл (пример: /tmp).",
+      "references": ["vol3/part6/ch23_data_anatomy/03_metadata.md"],
+      "tags": ["sticky", "каталог"]
+    },
+    {
+      "id": "ch23_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие флаги tar сохраняют метаданные? (выберите все правильные)",
+      "options": [
+        "--preserve-permissions",
+        "-p",
+        "--same-owner",
+        "--no-same-owner"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**-p** или **--preserve-permissions** — сохраняет права. **--same-owner** — сохраняет владельца.",
+      "references": ["vol3/part6/ch23_data_anatomy/03_metadata.md"],
+      "tags": ["tar", "метаданные"]
+    },
+    {
+      "id": "ch23_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему rsync может не сохранить SUID/SGID биты?",
+      "options": [
+        "Запущен не от root",
+        "Файловая система не поддерживает",
+        "rsync не поддерживает SUID",
+        "Нужен флаг --special"
+      ],
+      "correct": [0],
+      "explanation": "Для сохранения SUID/SGID нужен **root**. Обычный пользователь не может установить эти биты.",
+      "references": ["vol3/part6/ch23_data_anatomy/03_metadata.md"],
+      "tags": ["rsync", "SUID", "root"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "chapter": "ch23",
+  "subchapter": "07",
+  "title": "Загрузчик GRUB и этапы старта системы",
+  "description": "Конфигурация GRUB, восстановление загрузчика",
+  "learning_objectives": [
+    "Понимать этапы загрузки Linux",
+    "Знать конфигурацию GRUB",
+    "Уметь восстанавливать GRUB"
+  ],
+  "questions": [
+    {
+      "id": "ch23_07_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какой файл конфигурации GRUB2?",
+      "options": [
+        "/boot/grub/grub.cfg",
+        "/etc/grub.conf",
+        "/boot/grub2/menu.lst",
+        "/etc/default/grub.cfg"
+      ],
+      "correct": [0],
+      "explanation": "**/boot/grub/grub.cfg** — основной конфиг GRUB2 (генерируется из /etc/default/grub).",
+      "references": ["vol3/part6/ch23_data_anatomy/07_grub.md"],
+      "tags": ["GRUB", "конфигурация"]
+    },
+    {
+      "id": "ch23_07_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что grub.cfg нужно редактировать вручную?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. grub.cfg генерируется автоматически через **update-grub** или **grub2-mkconfig**.",
+      "references": ["vol3/part6/ch23_data_anatomy/07_grub.md"],
+      "tags": ["GRUB", "конфигурация"]
+    },
+    {
+      "id": "ch23_07_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой порядок загрузки Linux?",
+      "options": [
+        "BIOS/UEFI → Bootloader → Kernel → Initramfs → Init/Systemd",
+        "Kernel → BIOS → Bootloader → Init",
+        "Bootloader → Kernel → BIOS → Init",
+        "Init → Kernel → Bootloader → BIOS"
+      ],
+      "correct": [0],
+      "explanation": **BIOS/UEFI → Bootloader (GRUB) → Kernel → Initramfs → Init/Systemd**.",
+      "references": ["vol3/part6/ch23_data_anatomy/07_grub.md"],
+      "tags": ["загрузка", "порядок"]
+    },
+    {
+      "id": "ch23_07_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как восстановить GRUB из LiveUSB? (выберите все правильные)",
+      "options": [
+        "grub-install /dev/sda",
+        "update-grub",
+        "grub-mkconfig -o /boot/grub/grub.cfg",
+        "fdisk /dev/sda"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "**grub-install** — устанавливает загрузчик. **update-grub/grub-mkconfig** — генерирует конфиг.",
+      "references": ["vol3/part6/ch23_data_anatomy/07_grub.md"],
+      "tags": ["GRUB", "восстановление"]
+    },
+    {
+      "id": "ch23_07_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что нужно бэкапить для восстановления GRUB?",
+      "options": [
+        "/boot/grub/grub.cfg и /etc/default/grub",
+        "Только /etc/fstab",
+        "Только /boot/vmlinuz",
+        "Весь /usr"
+      ],
+      "correct": [0],
+      "explanation": "**/boot/grub/grub.cfg** и **/etc/default/grub** — критичны для восстановления GRUB.",
+      "references": ["vol3/part6/ch23_data_anatomy/07_grub.md"],
+      "tags": ["GRUB", "бэкап"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

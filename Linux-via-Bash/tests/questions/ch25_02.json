@@ -1,0 +1,93 @@
+{
+  "chapter": "ch25",
+  "subchapter": "02",
+  "title": "Десктоп: Bare Metal Recovery",
+  "description": "Полное восстановление системы на новое железо",
+  "learning_objectives": [
+    "Понимать BMR",
+    "Знать dd vs rsync",
+    "Уметь восстанавливать систему"
+  ],
+  "questions": [
+    {
+      "id": "ch25_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое Bare Metal Recovery?",
+      "options": [
+        "Полное восстановление системы на «голое» железо",
+        "Бэкап только конфигурационных файлов",
+        "Восстановление из облачного хранилища",
+        "Копирование данных между серверами"
+      ],
+      "correct": [0],
+      "explanation": "**BMR** — полное восстановление ОС, данных и настроек на новый/чистый диск.",
+      "references": ["vol3/part6/ch25_scenarios/02_bare_metal.md"],
+      "tags": ["BMR", "восстановление"]
+    },
+    {
+      "id": "ch25_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что dd копирует только используемые блоки?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. dd копирует ВСЕ блоки, включая пустые. rsync копирует только файлы.",
+      "references": ["vol3/part6/ch25_scenarios/02_bare_metal.md"],
+      "tags": ["dd", "копирование"]
+    },
+    {
+      "id": "ch25_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой порядок действий при BMR?",
+      "options": [
+        "LiveUSB → разметка → распаковка → chroot → GRUB → fstab",
+        "GRUB → распаковка → LiveUSB → fstab",
+        "fstab → chroot → распаковка → LiveUSB",
+        "LiveUSB → GRUB → распаковка → fstab"
+      ],
+      "correct": [0],
+      "explanation": "**LiveUSB → разметка → распаковка → chroot → GRUB → fstab** — правильный порядок.",
+      "references": ["vol3/part6/ch25_scenarios/02_bare_metal.md"],
+      "tags": ["BMR", "порядок"]
+    },
+    {
+      "id": "ch25_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие риски при использовании dd для бэкапа? (выберите все правильные)",
+      "options": [
+        "Можно случайно перезаписать не тот диск",
+        "Копирует всё включая пустое место",
+        "Не сохраняет метаданные",
+        "Медленнее rsync для больших дисков"
+      ],
+      "correct": [0, 1],
+      "explanation": "dd опасен (не тот диск) и неэффективен (копирует пустоту). Метаданные сохраняет.",
+      "references": ["vol3/part6/ch25_scenarios/02_bare_metal.md"],
+      "tags": ["dd", "риски"]
+    },
+    {
+      "id": "ch25_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Зачем нужен chroot при восстановлении GRUB?",
+      "options": [
+        "Чтобы выполнить команды от имени восстанавливаемой системы",
+        "Чтобы зашифровать диск",
+        "Чтобы создать снапшот",
+        "Чтобы проверить целостность файлов"
+      ],
+      "correct": [0],
+      "explanation": "**chroot** — «корень» в восстанавливаемую систему для установки GRUB и обновления конфигов.",
+      "references": ["vol3/part6/ch25_scenarios/02_bare_metal.md"],
+      "tags": ["chroot", "GRUB"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

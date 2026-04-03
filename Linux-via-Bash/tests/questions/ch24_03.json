@@ -1,0 +1,93 @@
+{
+  "chapter": "ch24",
+  "subchapter": "03",
+  "title": "Расчёт ёмкости хранилища (формулы)",
+  "description": "Прямой и обратный расчёт, коэффициенты",
+  "learning_objectives": [
+    "Понимать формулы расчёта",
+    "Уметь считать объём бэкапа",
+    "Знать коэффициенты сжатия"
+  ],
+  "questions": [
+    {
+      "id": "ch24_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое K_compress в формуле расчёта?",
+      "options": [
+        "Коэффициент сжатия данных",
+        "Коэффициент скорости копирования",
+        "Коэффициент надёжности",
+        "Коэффициент шифрования"
+      ],
+      "correct": [0],
+      "explanation": "**K_compress** — коэффициент сжатия (обычно 0.5-0.8 для текстовых данных).",
+      "references": ["vol3/part6/ch24_strategies/03_capacity_calc.md"],
+      "tags": ["формула", "сжатие"]
+    },
+    {
+      "id": "ch24_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что K_change = 0.1 означает 10% изменений данных в день?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. K_change — доля изменяемых данных за период (обычно день).",
+      "references": ["vol3/part6/ch24_strategies/03_capacity_calc.md"],
+      "tags": ["K_change", "изменения"]
+    },
+    {
+      "id": "ch24_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая формула для обратного расчёта?",
+      "options": [
+        "V_max_source = V_available / (K_compress × (1 + K_change × N_retention) × K_test × K_safety)",
+        "V_max_source = V_available × K_compress",
+        "V_max_source = V_available / N_retention",
+        "V_max_source = V_available + K_compress"
+      ],
+      "correct": [0],
+      "explanation": "**Обратный расчёт** — сколько данных можно бэкапить при заданном объёме хранилища.",
+      "references": ["vol3/part6/ch24_strategies/03_capacity_calc.md"],
+      "tags": ["формула", "обратный расчёт"]
+    },
+    {
+      "id": "ch24_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие коэффициенты влияют на объём хранилища? (выберите все правильные)",
+      "options": [
+        "K_compress (сжатие)",
+        "K_change (изменения)",
+        "N_retention (период хранения)",
+        "K_safety (запас)"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Все коэффициенты влияют на итоговый объём: сжатие уменьшает, изменения/хранение/запас увеличивают.",
+      "references": ["vol3/part6/ch24_strategies/03_capacity_calc.md"],
+      "tags": ["коэффициенты", "формула"]
+    },
+    {
+      "id": "ch24_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как измерить change_rate в Bash?",
+      "options": [
+        "Сравнить размер изменений через find -mtime и du",
+        "Посмотреть в /proc/change_rate",
+        "Использовать команду change_rate",
+        "Это константа, не измеряется"
+      ],
+      "correct": [0],
+      "explanation": "**change_rate** измеряется через сравнение изменённых файлов за период (find -mtime + du).",
+      "references": ["vol3/part6/ch24_strategies/03_capacity_calc.md"],
+      "tags": ["change_rate", "измерение"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

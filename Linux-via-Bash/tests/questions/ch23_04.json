@@ -1,0 +1,93 @@
+{
+  "chapter": "ch23",
+  "subchapter": "04",
+  "title": "ACL и расширенные атрибуты (xattr)",
+  "description": "Риски потери, методы сохранения при бэкапе",
+  "learning_objectives": [
+    "Понимать ACL и xattr",
+    "Знать риски потери",
+    "Уметь сохранять ACL/xattr"
+  ],
+  "questions": [
+    {
+      "id": "ch23_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое ACL?",
+      "options": [
+        "Access Control List — расширенный список доступа",
+        "Archive Compression Level — уровень сжатия",
+        "Automatic Check List — автоматический список проверок",
+        "Advanced Copy List — расширенный список копирования"
+      ],
+      "correct": [0],
+      "explanation": "**ACL** — позволяет задавать права для конкретных пользователей/групп, помимо стандартных rwx.",
+      "references": ["vol3/part6/ch23_data_anatomy/04_acl_xattr.md"],
+      "tags": ["ACL", "права"]
+    },
+    {
+      "id": "ch23_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что cp по умолчанию сохраняет ACL?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. cp по умолчанию НЕ сохраняет ACL. Нужен флаг **--preserve=acl** или **-a**.",
+      "references": ["vol3/part6/ch23_data_anatomy/04_acl_xattr.md"],
+      "tags": ["cp", "ACL"]
+    },
+    {
+      "id": "ch23_04_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая команда показывает ACL файла?",
+      "options": [
+        "getfacl",
+        "ls -l",
+        "stat",
+        "xattr"
+      ],
+      "correct": [0],
+      "explanation": "**getfacl** — показывает ACL. **ls -l** показывает только стандартные права.",
+      "references": ["vol3/part6/ch23_data_anatomy/04_acl_xattr.md"],
+      "tags": ["getfacl", "ACL"]
+    },
+    {
+      "id": "ch23_04_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие флаги rsync сохраняют ACL и xattr? (выберите все правильные)",
+      "options": [
+        "--acls",
+        "--xattrs",
+        "-A",
+        "-X"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "**-A** = **--acls**, **-X** = **--xattrs**. Оба нужны для полного сохранения метаданных.",
+      "references": ["vol3/part6/ch23_data_anatomy/04_acl_xattr.md"],
+      "tags": ["rsync", "ACL", "xattr"]
+    },
+    {
+      "id": "ch23_04_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что произойдёт при восстановлении без --acls --xattrs?",
+      "options": [
+        "Файлы восстановятся, но ACL/xattr будут потеряны",
+        "Восстановление завершится ошибкой",
+        "Файлы не восстановятся",
+        "Автоматически применятся стандартные права"
+      ],
+      "correct": [0],
+      "explanation": "Без **-AX** файлы восстановятся, но расширенные права и атрибуты будут утеряны.",
+      "references": ["vol3/part6/ch23_data_anatomy/04_acl_xattr.md"],
+      "tags": ["rsync", "восстановление"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

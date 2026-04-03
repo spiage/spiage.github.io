@@ -1,0 +1,93 @@
+{
+  "chapter": "ch24",
+  "subchapter": "01",
+  "title": "Политики хранения",
+  "description": "Full, Incremental, Differential, Snapshot — сравнение",
+  "learning_objectives": [
+    "Понимать типы бэкапов",
+    "Знать плюсы и минусы каждого",
+    "Уметь выбирать тип бэкапа"
+  ],
+  "questions": [
+    {
+      "id": "ch24_01_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое Full backup?",
+      "options": [
+        "Полная копия всех данных",
+        "Копия только изменённых файлов",
+        "Копия только новых файлов",
+        "Снапшот файловой системы"
+      ],
+      "correct": [0],
+      "explanation": "**Full backup** — полная копия всех выбранных данных.",
+      "references": ["vol3/part6/ch24_strategies/01_policies.md"],
+      "tags": ["full backup", "типы"]
+    },
+    {
+      "id": "ch24_01_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что Incremental backup быстрее Full?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Incremental копирует только изменения с последнего бэкапа.",
+      "references": ["vol3/part6/ch24_strategies/01_policies.md"],
+      "tags": ["incremental", "скорость"]
+    },
+    {
+      "id": "ch24_01_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Чем Differential отличается от Incremental?",
+      "options": [
+        "Копирует изменения с последнего Full backup",
+        "Копирует изменения с последнего бэкапа любого типа",
+        "Это одно и то же",
+        "Differential медленнее"
+      ],
+      "correct": [0],
+      "explanation": "**Differential** — изменения с последнего Full. **Incremental** — с последнего любого бэкапа.",
+      "references": ["vol3/part6/ch24_strategies/01_policies.md"],
+      "tags": ["differential", "incremental"]
+    },
+    {
+      "id": "ch24_01_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие типы бэкапов требуют все предыдущие инкременты для восстановления? (выберите все правильные)",
+      "options": [
+        "Full",
+        "Incremental",
+        "Differential",
+        "Snapshot"
+      ],
+      "correct": [1],
+      "explanation": "**Incremental** требует цепочки: Full + все инкременты. Differential — только Full + последний differential.",
+      "references": ["vol3/part6/ch24_strategies/01_policies.md"],
+      "tags": ["восстановление", "incremental"]
+    },
+    {
+      "id": "ch24_01_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Какой тип бэкапа занимает больше всего места?",
+      "options": [
+        "Full",
+        "Incremental",
+        "Differential",
+        "Snapshot"
+      ],
+      "correct": [0],
+      "explanation": "**Full** — полная копия всех данных каждый раз. Занимает больше всего места.",
+      "references": ["vol3/part6/ch24_strategies/01_policies.md"],
+      "tags": ["full", "место"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

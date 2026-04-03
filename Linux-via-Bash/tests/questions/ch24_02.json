@@ -1,0 +1,93 @@
+{
+  "chapter": "ch24",
+  "subchapter": "02",
+  "title": "Правило 3-2-1 и схемы ротации (GFS)",
+  "description": "Стратегии хранения, Grandfather-Father-Son",
+  "learning_objectives": [
+    "Знать правило 3-2-1",
+    "Понимать схему GFS",
+    "Уметь планировать ротацию"
+  ],
+  "questions": [
+    {
+      "id": "ch24_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что означает правило 3-2-1?",
+      "options": [
+        "3 копии, 2 разных носителя, 1 копия вне сайта",
+        "3 бэкапа в неделю, 2 в месяц, 1 в год",
+        "3 сервера, 2 диска, 1 сеть",
+        "3 пользователя, 2 пароля, 1 ключ"
+      ],
+      "correct": [0],
+      "explanation": "**3-2-1**: 3 копии данных, 2 разных типа носителей, 1 копия вне сайта (offsite).",
+      "references": ["vol3/part6/ch24_strategies/02_321_gfs.md"],
+      "tags": ["3-2-1", "правило"]
+    },
+    {
+      "id": "ch24_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что GFS означает Grandfather-Father-Son?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. GFS — схема ротации: Son (ежедневно), Father (еженедельно), Grandfather (ежемесячно).",
+      "references": ["vol3/part6/ch24_strategies/02_321_gfs.md"],
+      "tags": ["GFS", "ротация"]
+    },
+    {
+      "id": "ch24_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой уровень GFS хранится дольше всего?",
+      "options": [
+        "Grandfather (ежемесячный)",
+        "Father (еженедельный)",
+        "Son (ежедневный)",
+        "Все хранятся одинаково"
+      ],
+      "correct": [0],
+      "explanation": "**Grandfather** — ежемесячные бэкапы, хранятся дольше всего (годы).",
+      "references": ["vol3/part6/ch24_strategies/02_321_gfs.md"],
+      "tags": ["GFS", "хранение"]
+    },
+    {
+      "id": "ch24_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Какие преимущества правила 3-2-1? (выберите все правильные)",
+      "options": [
+        "Защита от отказа одного носителя",
+        "Защита от катастрофы на сайте",
+        "Автоматическое шифрование",
+        "Возможность восстановления из разных источников"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "3-2-1 защищает от отказа носителя, катастрофы на сайте, даёт варианты восстановления. Шифрование — отдельная задача.",
+      "references": ["vol3/part6/ch24_strategies/02_321_gfs.md"],
+      "tags": ["3-2-1", "преимущества"]
+    },
+    {
+      "id": "ch24_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Сколько бэкапов нужно хранить при GFS с 30-дневным Grandfather?",
+      "options": [
+        "7 ежедневных + 4 еженедельных + 12 ежемесячных",
+        "30 ежедневных + 12 еженедельных",
+        "Только 12 ежемесячных",
+        "Зависит от политики хранения"
+      ],
+      "correct": [3],
+      "explanation": "Количество зависит от **политики хранения**. Типичная схема: 7 daily + 4 weekly + 12 monthly.",
+      "references": ["vol3/part6/ch24_strategies/02_321_gfs.md"],
+      "tags": ["GFS", "количество"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "05",
+  "title": "Ротация GFS и безопасная очистка",
+  "description": "Автоматическая ротация бэкапов, удаление старых",
+  "learning_objectives": [
+    "Понимать автоматическую ротацию",
+    "Уметь безопасно удалять старые бэкапы",
+    "Знать как обрабатывать зависимые цепочки"
+  ],
+  "questions": [
+    {
+      "id": "ch26_05_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое ротация бэкапов?",
+      "options": [
+        "Автоматическое удаление старых бэкапов по политике",
+        "Перемещение бэкапов между дисками",
+        "Шифрование бэкапов",
+        "Сжатие бэкапов"
+      ],
+      "correct": [0],
+      "explanation": "**Ротация** — удаление старых бэкапов согласно политике (например, хранить 30 дней).",
+      "references": ["vol3/part6/ch26_automation/05_gfs_rotation.md"],
+      "tags": ["ротация", "удаление"]
+    },
+    {
+      "id": "ch26_05_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что при удалении incremental бэкапа нужно проверять зависимые?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Удаление incremental может сломать цепочку восстановления.",
+      "references": ["vol3/part6/ch26_automation/05_gfs_rotation.md"],
+      "tags": ["incremental", "зависимости"]
+    },
+    {
+      "id": "ch26_05_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как найти файлы старше 30 дней?",
+      "options": [
+        "find /backup -mtime +30",
+        "find /backup -age 30",
+        "ls -la /backup | grep 30",
+        "find /backup -older 30"
+      ],
+      "correct": [0],
+      "explanation": "**find -mtime +30** — файлы, изменённые более 30 дней назад.",
+      "references": ["vol3/part6/ch26_automation/05_gfs_rotation.md"],
+      "tags": ["find", "mtime"]
+    },
+    {
+      "id": "ch26_05_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что нужно проверить перед удалением старого бэкапа? (выберите все правильные)",
+      "options": [
+        "Нет ли зависимых инкрементальных бэкапов",
+        "Есть ли более свежая копия",
+        "Записан ли бэкап в лог",
+        "Прошел ли бэкап верификацию"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Проверить зависимости, наличие свежей копии, логирование. Верификация — желательна, но не обязательна.",
+      "references": ["vol3/part6/ch26_automation/05_gfs_rotation.md"],
+      "tags": ["удаление", "проверки"]
+    },
+    {
+      "id": "ch26_05_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как безопасно удалить старые бэкапы в скрипте?",
+      "options": [
+        "find /backup -mtime +30 -type f -delete && logger \"Old backups removed\"",
+        "rm -rf /backup/*",
+        "find /backup -delete",
+        "rm /backup/old"
+      ],
+      "correct": [0],
+      "explanation": "**find -mtime +30 -delete** — безопасное удаление старых файлов с логированием.",
+      "references": ["vol3/part6/ch26_automation/05_gfs_rotation.md"],
+      "tags": ["find", "безопасное удаление"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

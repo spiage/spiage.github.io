@@ -1,0 +1,93 @@
+{
+  "chapter": "ch25",
+  "subchapter": "03",
+  "title": "Homelab: контейнеры, ВМ, сеть",
+  "description": "Бэкап Docker/Podman volumes, KVM/VirtualBox, NFS/SMB",
+  "learning_objectives": [
+    "Знать как бэкапить контейнеры",
+    "Уметь экспортировать ВМ",
+    "Понимать бэкап сетевых сервисов"
+  ],
+  "questions": [
+    {
+      "id": "ch25_03_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Как бэкапить Docker volume?",
+      "options": [
+        "docker run --rm -v volume_name:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz -C /data .",
+        "docker backup volume_name",
+        "cp -r /var/lib/docker/volumes/volume_name",
+        "docker export volume_name"
+      ],
+      "correct": [0],
+      "explanation": "**docker run с томами** — безопасный способ: монтируем volume и архивируем.",
+      "references": ["vol3/part6/ch25_scenarios/03_homelab.md"],
+      "tags": ["docker", "volume"]
+    },
+    {
+      "id": "ch25_03_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что базы данных можно бэкапить простым копированием файлов?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. БД требуют дампа (pg_dump, mysqldump) для консистентности. Простое копирование может дать битые данные.",
+      "references": ["vol3/part6/ch25_scenarios/03_homelab.md"],
+      "tags": ["базы данных", "дамп"]
+    },
+    {
+      "id": "ch25_03_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Как экспортировать KVM виртуальную машину?",
+      "options": [
+        "virsh dumpxml + копирование disk image",
+        "virsh export",
+        "cp /etc/libvirt/qemu/",
+        "kvm-backup vm_name"
+      ],
+      "correct": [0],
+      "explanation": "**virsh dumpxml** — экспорт конфигурации + копирование disk image (.qcow2).",
+      "references": ["vol3/part6/ch25_scenarios/03_homelab.md"],
+      "tags": ["KVM", "экспорт"]
+    },
+    {
+      "id": "ch25_03_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что нужно бэкапить для полного восстановления homelab? (выберите все правильные)",
+      "options": [
+        "Docker compose файлы",
+        "Docker volumes",
+        "Конфигурации NFS/SMB",
+        "Дампы баз данных"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Все перечисленное критично: compose-файлы, volumes, сетевые конфиги, дампы БД.",
+      "references": ["vol3/part6/ch25_scenarios/03_homelab.md"],
+      "tags": ["homelab", "бэкап"]
+    },
+    {
+      "id": "ch25_03_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как проверить работоспособность сервисов после восстановления?",
+      "options": [
+        "curl/wget для HTTP, pg_isready для БД, docker ps для контейнеров",
+        "Только перезагрузить сервер",
+        "Посмотреть логи",
+        "Проверить место на диске"
+      ],
+      "correct": [0],
+      "explanation": "**curl, pg_isready, docker ps** — активные проверки работоспособности сервисов.",
+      "references": ["vol3/part6/ch25_scenarios/03_homelab.md"],
+      "tags": ["верификация", "сервисы"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

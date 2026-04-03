@@ -1,0 +1,93 @@
+{
+  "chapter": "ch23",
+  "subchapter": "02",
+  "title": "Inode, жёсткие и символьные ссылки",
+  "description": "Поведение при копировании, сохранение связей",
+  "learning_objectives": [
+    "Понимать что такое inode",
+    "Знать разницу hard и symlink",
+    "Уметь сохранять ссылки при бэкапе"
+  ],
+  "questions": [
+    {
+      "id": "ch23_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое inode?",
+      "options": [
+        "Структура данных, хранящая метаданные файла",
+        "Имя файла",
+        "Путь к файлу",
+        "Размер файла"
+      ],
+      "correct": [0],
+      "explanation": "**Inode** — структура, хранящая метаданные: права, владельца, размер, указатели на данные.",
+      "references": ["vol3/part6/ch23_data_anatomy/02_inodes_links.md"],
+      "tags": ["inode", "метаданные"]
+    },
+    {
+      "id": "ch23_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что hardlink работает на разных файловых системах?",
+      "options": ["Верно", "Неверно"],
+      "correct": [1],
+      "explanation": "**Неверно**. Hardlink работает только в пределах одной ФС. Symlink — работает между ФС.",
+      "references": ["vol3/part6/ch23_data_anatomy/02_inodes_links.md"],
+      "tags": ["hardlink", "файловая система"]
+    },
+    {
+      "id": "ch23_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Что произойдёт с symlink при бэкапе с tar --dereference?",
+      "options": [
+        "Скопируется содержимое целевого файла",
+        "Скопируется сама ссылка",
+        "Ссылка будет удалена",
+        "Ошибка"
+      ],
+      "correct": [0],
+      "explanation": "**--dereference** — tar следует по symlink и копирует содержимое целевого файла.",
+      "references": ["vol3/part6/ch23_data_anatomy/02_inodes_links.md"],
+      "tags": ["symlink", "tar", "dereference"]
+    },
+    {
+      "id": "ch23_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Как сохранить hardlinks при бэкапе с rsync? (выберите все правильные)",
+      "options": [
+        "rsync -H",
+        "rsync --hard-links",
+        "rsync -l",
+        "rsync --links"
+      ],
+      "correct": [0, 1],
+      "explanation": "**-H** или **--hard-links** — сохраняет hardlinks. **-l** — копирует symlinks как symlinks.",
+      "references": ["vol3/part6/ch23_data_anatomy/02_inodes_links.md"],
+      "tags": ["rsync", "hardlinks"]
+    },
+    {
+      "id": "ch23_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Что произойдёт если удалить оригинал файла с hardlink?",
+      "options": [
+        "Hardlink останется рабочим",
+        "Hardlink станет битым",
+        "Оба файла удалятся",
+        "Ошибка системы"
+      ],
+      "correct": [0],
+      "explanation": "Hardlink указывает на тот же inode. Файл удаляется только когда все ссылки удалены (link count = 0).",
+      "references": ["vol3/part6/ch23_data_anatomy/02_inodes_links.md"],
+      "tags": ["hardlink", "удаление"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

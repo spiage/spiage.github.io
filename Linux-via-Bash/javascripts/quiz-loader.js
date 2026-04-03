@@ -252,6 +252,57 @@ const QUIZ_CONFIG = {
           ]
         }
       ]
+    },
+    {
+      part: "Часть VI. Backups via Bash",
+      chapters: [
+        {
+          id: "ch23",
+          title: "Глава 23. Анатомия данных в Linux",
+          subchapters: [
+            { id: "ch23_01", title: "01. FHS: что бэкапить, что игнорировать", questions: 5 },
+            { id: "ch23_02", title: "02. Inode, жёсткие и символьные ссылки", questions: 5 },
+            { id: "ch23_03", title: "03. Метаданные: права, владельцы, специальные биты", questions: 5 },
+            { id: "ch23_04", title: "04. ACL и расширенные атрибуты (xattr)", questions: 5 },
+            { id: "ch23_05", title: "05. Файловые системы: ext4, btrfs, xfs", questions: 5 },
+            { id: "ch23_06", title: "06. Физический уровень: диски, разделы, LVM", questions: 5 },
+            { id: "ch23_07", title: "07. Загрузчик GRUB и этапы старта", questions: 5 }
+          ]
+        },
+        {
+          id: "ch24",
+          title: "Глава 24. Стратегии и расчёты резервного копирования",
+          subchapters: [
+            { id: "ch24_01", title: "01. Политики хранения", questions: 5 },
+            { id: "ch24_02", title: "02. Правило 3-2-1 и схемы ротации (GFS)", questions: 5 },
+            { id: "ch24_03", title: "03. Расчёт ёмкости хранилища (формулы)", questions: 5 },
+            { id: "ch24_04", title: "04. Пример расчёта «на пальцах»", questions: 5 }
+          ]
+        },
+        {
+          id: "ch25",
+          title: "Глава 25. Интегрированные сценарии: создание и восстановление",
+          subchapters: [
+            { id: "ch25_01", title: "01. Десктоп/Ноутбук: /home и конфиги", questions: 5 },
+            { id: "ch25_02", title: "02. Десктоп: Bare Metal Recovery", questions: 5 },
+            { id: "ch25_03", title: "03. Homelab: контейнеры, ВМ, сеть", questions: 5 },
+            { id: "ch25_04", title: "04. Верификация восстановления", questions: 5 }
+          ]
+        },
+        {
+          id: "ch26",
+          title: "Глава 26. Автоматизация и Bash-скрипты",
+          subchapters: [
+            { id: "ch26_01", title: "01. Архитектура скрипта: проверки, flock, коды возврата", questions: 5 },
+            { id: "ch26_02", title: "02. Обработка ошибок и идемпотентность", questions: 5 },
+            { id: "ch26_03", title: "03. Логирование и уведомления", questions: 5 },
+            { id: "ch26_04", title: "04. Планировщики: cron vs systemd timers", questions: 5 },
+            { id: "ch26_05", title: "05. Ротация GFS и безопасная очистка", questions: 5 },
+            { id: "ch26_06", title: "06. Автоматическое тестовое восстановление", questions: 5 },
+            { id: "ch26_07", title: "07. Мониторинг свежести и алертинг", questions: 5 }
+          ]
+        }
+      ]
     }
   ]
 };

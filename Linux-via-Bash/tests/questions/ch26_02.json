@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "02",
+  "title": "Обработка ошибок и идемпотентность",
+  "description": "Откат неудачного бэкапа, повторный запуск",
+  "learning_objectives": [
+    "Понимать идемпотентность",
+    "Уметь обрабатывать ошибки",
+    "Знать как откатить бэкап"
+  ],
+  "questions": [
+    {
+      "id": "ch26_02_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Что такое идемпотентность скрипта?",
+      "options": [
+        "Повторный запуск даёт тот же результат, что и первый",
+        "Скрипт выполняется быстро",
+        "Скрипт не использует память",
+        "Скрипт работает только с root"
+      ],
+      "correct": [0],
+      "explanation": "**Идемпотентность** — повторный запуск не ломает уже сделанное.",
+      "references": ["vol3/part6/ch26_automation/02_error_handling.md"],
+      "tags": ["идемпотентность", "повторный запуск"]
+    },
+    {
+      "id": "ch26_02_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что при ошибке бэкапа нужно удалять частичный файл?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. Частичный бэкап может быть битым. Лучше удалить и начать заново.",
+      "references": ["vol3/part6/ch26_automation/02_error_handling.md"],
+      "tags": ["ошибка", "откат"]
+    },
+    {
+      "id": "ch26_02_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какая конструкция обеспечивает обработку ошибок в Bash?",
+      "options": [
+        "command || { echo error; cleanup; exit 1; }",
+        "command && exit 1",
+        "if command; then exit 1; fi",
+        "try { command } catch { error }"
+      ],
+      "correct": [0],
+      "explanation": "**|| { ... }** — выполняется при ошибке команды. cleanup + exit 1 — откат и выход.",
+      "references": ["vol3/part6/ch26_automation/02_error_handling.md"],
+      "tags": ["обработка ошибок", "паттерн"]
+    },
+    {
+      "id": "ch26_02_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Что должно происходить при падении бэкапа на середине? (выберите все правильные)",
+      "options": [
+        "Удалить частичный архив",
+        "Записать ошибку в лог",
+        "Отправить уведомление",
+        "Продолжить со следующего файла"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Удалить битый архив, залогировать, уведомить. Продолжение невозможно — начинать заново.",
+      "references": ["vol3/part6/ch26_automation/02_error_handling.md"],
+      "tags": ["ошибка", "действия"]
+    },
+    {
+      "id": "ch26_02_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как сделать скрипт идемпотентным при копировании?",
+      "options": [
+        "Использовать rsync (пропускает существующие файлы)",
+        "Всегда удалять целевой каталог перед копированием",
+        "Проверять каждый файл вручную",
+        "Использовать cp -f"
+      ],
+      "correct": [0],
+      "explanation": "**rsync** — идемпотентен: пропускает уже скопированные файлы, копирует только изменения.",
+      "references": ["vol3/part6/ch26_automation/02_error_handling.md"],
+      "tags": ["rsync", "идемпотентность"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}

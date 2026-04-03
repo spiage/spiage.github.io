@@ -1,0 +1,93 @@
+{
+  "chapter": "ch26",
+  "subchapter": "04",
+  "title": "Планировщики: cron vs systemd timers",
+  "description": "Выбор планировщика, зависимости от сети/питания",
+  "learning_objectives": [
+    "Знать различия cron и systemd timers",
+    "Уметь выбирать планировщик",
+    "Понимать зависимости"
+  ],
+  "questions": [
+    {
+      "id": "ch26_04_q01",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "question": "Какое преимущество systemd timers перед cron?",
+      "options": [
+        "Поддержка зависимостей (сеть, питание)",
+        "Проще синтаксис",
+        "Работает без systemd",
+        "Не требует настройки"
+      ],
+      "correct": [0],
+      "explanation": "**systemd timers** — могут зависеть от network-online.target, battery и других.",
+      "references": ["vol3/part6/ch26_automation/04_schedulers.md"],
+      "tags": ["systemd", "cron"]
+    },
+    {
+      "id": "ch26_04_q02",
+      "type": "true_false",
+      "difficulty": "medium",
+      "question": "Верно ли, что cron не может зависеть от наличия сети?",
+      "options": ["Верно", "Неверно"],
+      "correct": [0],
+      "explanation": "**Верно**. cron запускает задачи по расписанию, без проверки состояния сети.",
+      "references": ["vol3/part6/ch26_automation/04_schedulers.md"],
+      "tags": ["cron", "сеть"]
+    },
+    {
+      "id": "ch26_04_q03",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "question": "Какой файл определяет расписание systemd timer?",
+      "options": [
+        ".timer файл с OnCalendar= или OnUnitActiveSec=",
+        "crontab",
+        "/etc/systemd/schedule.conf",
+        "systemctl schedule"
+      ],
+      "correct": [0],
+      "explanation": "**.timer** файл: **OnCalendar=** для календаря, **OnUnitActiveSec=** для интервалов.",
+      "references": ["vol3/part6/ch26_automation/04_schedulers.md"],
+      "tags": ["systemd timer", "расписание"]
+    },
+    {
+      "id": "ch26_04_q04",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "question": "Когда выбрать systemd timer вместо cron? (выберите все правильные)",
+      "options": [
+        "Нужна зависимость от сети",
+        "Нужна зависимость от питания (ноутбук)",
+        "Нужно логирование в journalctl",
+        "Нужна максимальная простота"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "systemd timers: зависимости, journalctl. cron — проще для базовых задач.",
+      "references": ["vol3/part6/ch26_automation/04_schedulers.md"],
+      "tags": ["systemd timer", "выбор"]
+    },
+    {
+      "id": "ch26_04_q05",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Как проверить статус systemd timer?",
+      "options": [
+        "systemctl list-timers",
+        "crontab -l",
+        "timer status",
+        "systemctl timers"
+      ],
+      "correct": [0],
+      "explanation": "**systemctl list-timers** — показывает все активные таймеры и следующее срабатывание.",
+      "references": ["vol3/part6/ch26_automation/04_schedulers.md"],
+      "tags": ["systemd timer", "статус"]
+    }
+  ],
+  "metadata": {
+    "created": "2026-04-03",
+    "total_questions": 5,
+    "estimated_time_minutes": 6
+  }
+}
