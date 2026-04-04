@@ -1,53 +1,7 @@
-/* На всю ширину — десктоп */
-.md-grid {
-  max-width: 100% !important;
-  margin: 0;
-  padding: 0 2rem;
-}
-
-/* Контент на всю ширину */
-.md-content__inner {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-/* TOC справа остаётся фиксированным */
-@media screen and (min-width: 1220px) {
-  .md-sidebar--secondary {
-    width: 15rem;
-  }
-}
-
-/* Планшеты */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .md-grid {
-    padding: 0 1rem;
-  }
-
-  .md-content__inner {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-}
-
-/* Мобильные устройства */
+/* Минимальные отступы для мобильных — НЕ трогаем layout Material */
 @media screen and (max-width: 768px) {
-  /* Скрываем левую панель навигации — доступна через гамбургер-меню */
-  .md-sidebar--primary {
-    display: none;
-  }
-
-  /* Контент занимает всю ширину */
-  .md-main__inner {
-    margin: 0;
-  }
-
-  .md-grid {
-    padding: 0 0.5rem;
-  }
-
   .md-content__inner {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
