@@ -94,11 +94,27 @@
       "explanation": "**Верно**. Shell создаёт файл, если он не существует (при наличии прав).",
       "references": ["vol1/part2/ch06_redirection/01_operators.md"],
       "tags": ["файлы", "создание"]
+    },
+    {
+      "id": "ch06_01_q07",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "question": "Почему команда 'sudo echo nameserver 8.8.8.8 > /etc/resolv.conf' вернёт ошибку 'Permission denied', даже с sudo?",
+      "options": [
+        "sudo не может работать с перенаправлением вывода",
+        "Файл /etc/resolv.conf защищён от записи даже от root",
+        "Shell обрабатывает '>' до запуска sudo — файл открывается от обычного пользователя",
+        "Нужно использовать 2> вместо >"
+      ],
+      "correct": [2],
+      "explanation": "**Перенаправление '>' выполняется оболочкой (shell) ДО запуска команды.** Shell открывает /etc/resolv.conf для записи от имени текущего пользователя — без sudo. Правильный способ: 'echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf' или 'sudo sh -c \"echo nameserver 8.8.8.8 > /etc/resolv.conf\"'.",
+      "references": ["vol1/part2/ch06_redirection/01_operators.md"],
+      "tags": ["sudo", "перенаправление", "ловушка"]
     }
   ],
   "metadata": {
     "created": "2026-03-27",
-    "total_questions": 6,
-    "estimated_time_minutes": 5
+    "total_questions": 7,
+    "estimated_time_minutes": 6
   }
 }
