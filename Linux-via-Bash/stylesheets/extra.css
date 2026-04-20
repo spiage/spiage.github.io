@@ -4,7 +4,4 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  .md-content__inner p { 
-    font-size: 1.5rem; /* Увеличит только обычные абзацы */
-  }  
 }
